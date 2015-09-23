@@ -1,5 +1,7 @@
-# ITHelp
-ITHelp App
+# BriskIT
+<img src="ITWebApp/assets/git_logo.png" style="width:300px;height:auto;">
+
+App for IT help
 
 There's a small setup process for this project
 1) I would setup a virtualenv. This [link](http://stackoverflow.com/questions/12410113/migrating-virtualenv-and-github-between-computers) shows it well.
