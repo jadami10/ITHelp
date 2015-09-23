@@ -18,4 +18,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    #url(r'^', include('ITWebAPIData2.urls')),
+    #url(r'^users/', include('')),
+    #url(r'^users/(?P<pk>[0-9]+)/$', views.ITUserDetail.as_view()),
+    url(r'^api/', include('ITWebAPIData2.urls'))
 ]
