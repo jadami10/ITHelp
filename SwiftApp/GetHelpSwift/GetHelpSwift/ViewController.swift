@@ -7,12 +7,20 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var trialLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        Alamofire.request(.GET, "http://localhost:3000/post").responseJSON(){
+            (data) in
+            let json = JSON(data: data)
+            self.trialLabel.text = String(data)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,4 +30,3 @@ class ViewController: UIViewController {
 
 
 }
-
