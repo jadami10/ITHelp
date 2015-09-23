@@ -14,7 +14,11 @@
 		4C2F51D31BB2237900B6206A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C2F51D11BB2237900B6206A /* LaunchScreen.storyboard */; };
 		4C2F51DE1BB2237900B6206A /* BriskITTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F51DD1BB2237900B6206A /* BriskITTests.swift */; };
 		4C2F51E91BB2237900B6206A /* BriskITUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2F51E81BB2237900B6206A /* BriskITUITests.swift */; };
-		4CE652DE1BB2497A00A74AAE /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE652DD1BB2497A00A74AAE /* ViewController2.swift */; settings = {ASSET_TAGS = (); }; };
+		4CE653031BB2509100A74AAE /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE652FA1BB2506300A74AAE /* SwiftyJSON.framework */; };
+		4CE653041BB2509100A74AAE /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE652FA1BB2506300A74AAE /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CE653081BB250A200A74AAE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE652E81BB2505A00A74AAE /* Alamofire.framework */; };
+		4CE653091BB250A200A74AAE /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4CE652E81BB2505A00A74AAE /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4CE6530D1BB2535600A74AAE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CE6530C1BB2535600A74AAE /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +36,106 @@
 			remoteGlobalIDString = 4C2F51C41BB2237900B6206A;
 			remoteInfo = BriskIT;
 		};
+		4CE652E71BB2505A00A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3319A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
+		4CE652E91BB2505A00A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4DD67C0B1A5C55C900ED2280;
+			remoteInfo = "Alamofire OSX";
+		};
+		4CE652EB1BB2505A00A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4202FE01B667AA100C997FB;
+			remoteInfo = "Alamofire watchOS";
+		};
+		4CE652ED1BB2505A00A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F8111E3E19A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS Tests";
+		};
+		4CE652EF1BB2505A00A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F829C6B21A7A94F100A2CD59;
+			remoteInfo = "Alamofire OSX Tests";
+		};
+		4CE652F91BB2506300A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFDB19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		4CE652FB1BB2506300A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFE619575BE100351305;
+			remoteInfo = "SwiftyJSON iOS Tests";
+		};
+		4CE652FD1BB2506300A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC5B1A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX";
+		};
+		4CE652FF1BB2506300A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC651A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX Tests";
+		};
+		4CE653011BB2506300A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4D7CCE81B9465A700EE7221;
+			remoteInfo = "SwiftyJSON watchOS";
+		};
+		4CE653051BB2509100A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 2E4FEFDA19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		4CE6530A1BB250A200A74AAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = F8111E3219A95C8B0040E7D1;
+			remoteInfo = "Alamofire iOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4CE653071BB2509100A74AAE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4CE653041BB2509100A74AAE /* SwiftyJSON.framework in Embed Frameworks */,
+				4CE653091BB250A200A74AAE /* Alamofire.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4C2F51C51BB2237900B6206A /* BriskIT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BriskIT.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,14 +144,15 @@
 		4C2F51CD1BB2237900B6206A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4C2F51CF1BB2237900B6206A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4C2F51D21BB2237900B6206A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4C2F51D41BB2237900B6206A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C2F51D91BB2237900B6206A /* BriskITTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BriskITTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2F51DD1BB2237900B6206A /* BriskITTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskITTests.swift; sourceTree = "<group>"; };
 		4C2F51DF1BB2237900B6206A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C2F51E41BB2237900B6206A /* BriskITUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BriskITUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C2F51E81BB2237900B6206A /* BriskITUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskITUITests.swift; sourceTree = "<group>"; };
 		4C2F51EA1BB2237900B6206A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4CE652DD1BB2497A00A74AAE /* ViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
+		4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Alamofire.xcodeproj; path = "Alamofire-master/Alamofire.xcodeproj"; sourceTree = "<group>"; };
+		4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
+		4CE6530C1BB2535600A74AAE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE653031BB2509100A74AAE /* SwiftyJSON.framework in Frameworks */,
+				4CE653081BB250A200A74AAE /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +185,8 @@
 		4C2F51BC1BB2237900B6206A = {
 			isa = PBXGroup;
 			children = (
+				4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */,
+				4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */,
 				4C2F51C71BB2237900B6206A /* BriskIT */,
 				4C2F51DC1BB2237900B6206A /* BriskITTests */,
 				4C2F51E71BB2237900B6206A /* BriskITUITests */,
@@ -101,11 +209,10 @@
 			children = (
 				4C2F51C81BB2237900B6206A /* AppDelegate.swift */,
 				4C2F51CA1BB2237900B6206A /* ViewController.swift */,
-				4CE652DD1BB2497A00A74AAE /* ViewController2.swift */,
 				4C2F51CC1BB2237900B6206A /* Main.storyboard */,
 				4C2F51CF1BB2237900B6206A /* Assets.xcassets */,
 				4C2F51D11BB2237900B6206A /* LaunchScreen.storyboard */,
-				4C2F51D41BB2237900B6206A /* Info.plist */,
+				4CE6530C1BB2535600A74AAE /* Info.plist */,
 			);
 			path = BriskIT;
 			sourceTree = "<group>";
@@ -128,6 +235,30 @@
 			path = BriskITUITests;
 			sourceTree = "<group>";
 		};
+		4CE652E01BB2505A00A74AAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CE652E81BB2505A00A74AAE /* Alamofire.framework */,
+				4CE652EA1BB2505A00A74AAE /* Alamofire.framework */,
+				4CE652EC1BB2505A00A74AAE /* Alamofire.framework */,
+				4CE652EE1BB2505A00A74AAE /* Alamofire iOS Tests.xctest */,
+				4CE652F01BB2505A00A74AAE /* Alamofire OSX Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CE652F21BB2506300A74AAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CE652FA1BB2506300A74AAE /* SwiftyJSON.framework */,
+				4CE652FC1BB2506300A74AAE /* SwiftyJSON iOS Tests.xctest */,
+				4CE652FE1BB2506300A74AAE /* SwiftyJSON.framework */,
+				4CE653001BB2506300A74AAE /* SwiftyJSON OSX Tests.xctest */,
+				4CE653021BB2506300A74AAE /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,10 +269,13 @@
 				4C2F51C11BB2237900B6206A /* Sources */,
 				4C2F51C21BB2237900B6206A /* Frameworks */,
 				4C2F51C31BB2237900B6206A /* Resources */,
+				4CE653071BB2509100A74AAE /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4CE653061BB2509100A74AAE /* PBXTargetDependency */,
+				4CE6530B1BB250A200A74AAE /* PBXTargetDependency */,
 			);
 			name = BriskIT;
 			productName = BriskIT;
@@ -217,6 +351,16 @@
 			mainGroup = 4C2F51BC1BB2237900B6206A;
 			productRefGroup = 4C2F51C61BB2237900B6206A /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4CE652E01BB2505A00A74AAE /* Products */;
+					ProjectRef = 4CE652DF1BB2505A00A74AAE /* Alamofire.xcodeproj */;
+				},
+				{
+					ProductGroup = 4CE652F21BB2506300A74AAE /* Products */;
+					ProjectRef = 4CE652F11BB2506300A74AAE /* SwiftyJSON.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C2F51C41BB2237900B6206A /* BriskIT */,
@@ -226,11 +370,85 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		4CE652E81BB2505A00A74AAE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 4CE652E71BB2505A00A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652EA1BB2505A00A74AAE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 4CE652E91BB2505A00A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652EC1BB2505A00A74AAE /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 4CE652EB1BB2505A00A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652EE1BB2505A00A74AAE /* Alamofire iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire iOS Tests.xctest";
+			remoteRef = 4CE652ED1BB2505A00A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652F01BB2505A00A74AAE /* Alamofire OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Alamofire OSX Tests.xctest";
+			remoteRef = 4CE652EF1BB2505A00A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652FA1BB2506300A74AAE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 4CE652F91BB2506300A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652FC1BB2506300A74AAE /* SwiftyJSON iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON iOS Tests.xctest";
+			remoteRef = 4CE652FB1BB2506300A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE652FE1BB2506300A74AAE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 4CE652FD1BB2506300A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE653001BB2506300A74AAE /* SwiftyJSON OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON OSX Tests.xctest";
+			remoteRef = 4CE652FF1BB2506300A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CE653021BB2506300A74AAE /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 4CE653011BB2506300A74AAE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		4C2F51C31BB2237900B6206A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE6530D1BB2535600A74AAE /* Info.plist in Resources */,
 				4C2F51D31BB2237900B6206A /* LaunchScreen.storyboard in Resources */,
 				4C2F51D01BB2237900B6206A /* Assets.xcassets in Resources */,
 				4C2F51CE1BB2237900B6206A /* Main.storyboard in Resources */,
@@ -260,7 +478,6 @@
 			files = (
 				4C2F51CB1BB2237900B6206A /* ViewController.swift in Sources */,
 				4C2F51C91BB2237900B6206A /* AppDelegate.swift in Sources */,
-				4CE652DE1BB2497A00A74AAE /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +509,16 @@
 			isa = PBXTargetDependency;
 			target = 4C2F51C41BB2237900B6206A /* BriskIT */;
 			targetProxy = 4C2F51E51BB2237900B6206A /* PBXContainerItemProxy */;
+		};
+		4CE653061BB2509100A74AAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftyJSON iOS";
+			targetProxy = 4CE653051BB2509100A74AAE /* PBXContainerItemProxy */;
+		};
+		4CE6530B1BB250A200A74AAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Alamofire iOS";
+			targetProxy = 4CE6530A1BB250A200A74AAE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -400,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = BriskIT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ITHelp.app.BriskIT;
@@ -411,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = BriskIT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ITHelp.app.BriskIT;
