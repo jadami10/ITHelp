@@ -1,5 +1,6 @@
 # BriskIT
 ![logo](ITWebApp/assets/git_logo.png)
+
 App for IT help
 
 There's a small setup process for this project
