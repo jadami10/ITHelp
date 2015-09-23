@@ -1,5 +1,5 @@
 # BriskIT
-![logo](ITWebApp/assets/git_logo.png)
+<img src="ITWebApp/assets/git_logo.png" style="width:300px;height:auto;">
 
 App for IT help
 
