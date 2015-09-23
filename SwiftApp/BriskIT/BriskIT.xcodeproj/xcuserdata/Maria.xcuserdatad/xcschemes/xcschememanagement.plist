@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GetHelpSwift.xcscheme</key>
+		<key>BriskIT.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>4C9B772F1BB075CF0070A1BE</key>
+		<key>4C2F51C41BB2237900B6206A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C9B77431BB075CF0070A1BE</key>
+		<key>4C2F51D81BB2237900B6206A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C9B774E1BB075CF0070A1BE</key>
+		<key>4C2F51E31BB2237900B6206A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

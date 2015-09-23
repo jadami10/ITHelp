@@ -1,15 +1,15 @@
 //
-//  GetHelpSwiftTests.swift
-//  GetHelpSwiftTests
+//  BriskITTests.swift
+//  BriskITTests
 //
-//  Created by X on 9/21/15.
+//  Created by X on 9/22/15.
 //  Copyright © 2015 ITHelp. All rights reserved.
 //
 
 import XCTest
-@testable import GetHelpSwift
+@testable import BriskIT
 
-class GetHelpSwiftTests: XCTestCase {
+class BriskITTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

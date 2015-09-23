@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C9B772F1BB075CF0070A1BE"
-               BuildableName = "GetHelpSwift.app"
-               BlueprintName = "GetHelpSwift"
-               ReferencedContainer = "container:GetHelpSwift.xcodeproj">
+               BlueprintIdentifier = "4C2F51C41BB2237900B6206A"
+               BuildableName = "BriskIT.app"
+               BlueprintName = "BriskIT"
+               ReferencedContainer = "container:BriskIT.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C9B77431BB075CF0070A1BE"
-               BuildableName = "GetHelpSwiftTests.xctest"
-               BlueprintName = "GetHelpSwiftTests"
-               ReferencedContainer = "container:GetHelpSwift.xcodeproj">
+               BlueprintIdentifier = "4C2F51D81BB2237900B6206A"
+               BuildableName = "BriskITTests.xctest"
+               BlueprintName = "BriskITTests"
+               ReferencedContainer = "container:BriskIT.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C9B774E1BB075CF0070A1BE"
-               BuildableName = "GetHelpSwiftUITests.xctest"
-               BlueprintName = "GetHelpSwiftUITests"
-               ReferencedContainer = "container:GetHelpSwift.xcodeproj">
+               BlueprintIdentifier = "4C2F51E31BB2237900B6206A"
+               BuildableName = "BriskITUITests.xctest"
+               BlueprintName = "BriskITUITests"
+               ReferencedContainer = "container:BriskIT.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C9B772F1BB075CF0070A1BE"
-            BuildableName = "GetHelpSwift.app"
-            BlueprintName = "GetHelpSwift"
-            ReferencedContainer = "container:GetHelpSwift.xcodeproj">
+            BlueprintIdentifier = "4C2F51C41BB2237900B6206A"
+            BuildableName = "BriskIT.app"
+            BlueprintName = "BriskIT"
+            ReferencedContainer = "container:BriskIT.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C9B772F1BB075CF0070A1BE"
-            BuildableName = "GetHelpSwift.app"
-            BlueprintName = "GetHelpSwift"
-            ReferencedContainer = "container:GetHelpSwift.xcodeproj">
+            BlueprintIdentifier = "4C2F51C41BB2237900B6206A"
+            BuildableName = "BriskIT.app"
+            BlueprintName = "BriskIT"
+            ReferencedContainer = "container:BriskIT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C9B772F1BB075CF0070A1BE"
-            BuildableName = "GetHelpSwift.app"
-            BlueprintName = "GetHelpSwift"
-            ReferencedContainer = "container:GetHelpSwift.xcodeproj">
+            BlueprintIdentifier = "4C2F51C41BB2237900B6206A"
+            BuildableName = "BriskIT.app"
+            BlueprintName = "BriskIT"
+            ReferencedContainer = "container:BriskIT.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
