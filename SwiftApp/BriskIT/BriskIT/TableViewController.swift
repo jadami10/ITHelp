@@ -10,16 +10,21 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-var allMessages:NSMutableArray = []
+var allMessages: [NSDictionary] = []
 var count = 0
 var dict:NSDictionary = [:]
-func getMessage(){
-    Alamofire.request(.GET, "http://localhost:3000/messages").responseJSON(){
+func getMessage(tv: UITableView){
+    Alamofire.request(.GET, "http://127.0.0.1:8000/home/messaging/").responseJSON(){
         (data) in
-        dict = data.result.value as! NSDictionary
+        if (data.result.value != nil) {
+            allMessages = data.result.value as! [NSDictionary]
+            print (allMessages)
+            tv.reloadData()
+        }
+        
     }
-    print(dict)
-    allMessages.addObject(dict)
+    //print(dict)
+    
 /*
     let queue = dispatch_queue_create("com.ITHelp.manager-response-queue", DISPATCH_QUEUE_CONCURRENT)
     
@@ -43,12 +48,12 @@ func getMessage(){
 }
 
 func postMessage(message: String){
-    var parameters: [String: AnyObject] = ["Sender":"Maria", "Message":message]
-    var request = Alamofire.request(.POST, "http://localhost:3000/messages", parameters: parameters, encoding: .JSON)
+    var parameters: [String: AnyObject] = ["sender":"Maria", "text":message]
+    var request = Alamofire.request(.POST, "http://127.0.0.1:8000/home/messaging/", parameters: parameters, encoding: .JSON)
     request.responseJSON { data in
         dict = data.result.value as! NSDictionary
         print(dict)
-        allMessages.addObject(dict)
+        //allMessages.addObject(dict)
 
     }
 }
@@ -61,13 +66,14 @@ class TableViewController: UITableViewController {
     @IBAction func sendButton(sender: UIButton) {
         if let message = messageTextField.text{
             postMessage(message)
+            getMessage(self.tableView)
         }
-        tableView.reloadData()
+        self.messageTextField.text = ""
+        //tableView.reloadData()
 
     }
     @IBAction func refreshMessages(sender: UIButton) {
-        getMessage()
-        tableView.reloadData()
+        getMessage(tableView)
     }
     @IBOutlet weak var tableTitle: UILabel!
     override func viewDidLoad() {
@@ -94,12 +100,12 @@ class TableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("cell")
         if cell == nil {
-            cell = UITableViewCell(style: UITableViewCellStyle.Value2, reuseIdentifier: "cell")
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: "cell")
         }
         //let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UITableViewCell
-        let data = allMessages[indexPath.row].valueForKey("Message") as? String
+        let data = allMessages[indexPath.row].valueForKey("text") as? String
         cell!.textLabel!.text = data
-        cell!.detailTextLabel?.text = dict.valueForKey("Sender") as? String
+        cell!.detailTextLabel?.text = allMessages[indexPath.row].valueForKey("sender") as? String
         //cell!.textLabel!.text = self.data[indexPath.row]as? String
         //cell!.detailTextLabel?.text = self.data[indexPath.row]as? String
 
