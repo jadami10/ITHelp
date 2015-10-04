@@ -43,12 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment the line inside ParseStartProject-Bridging-Header and the following line here:
         // PFFacebookUtils.initializeFacebook()
         // ****************************************************************************
-
-        PFUser.enableAutomaticUser()
         
         // Initialize Parse
         Parse.setApplicationId("Dxf9sHTC4H9iQoYP7FUPmkX8o99KTTJ01O1tBhjK",
         clientKey:"gOg8aKBfmnT1jkEPJB9AoiP85Za0Ob9GTOGcwu0k")
+        
+        PFUser.enableAutomaticUser()
+        
+        PFUser.enableRevocableSessionInBackground()
+        //[PFUser enableRevocableSessionInBackground]
 
         let defaultACL = PFACL();
 
