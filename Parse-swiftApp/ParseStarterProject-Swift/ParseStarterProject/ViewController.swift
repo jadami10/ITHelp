@@ -14,10 +14,16 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    @IBOutlet weak var headerImage: UIImageView!
+    var goodToSegue = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view, typically from a nib.
+        let image = UIImage(named: "AuthHeader.png");
+        headerImage.image = image;
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,34 +32,58 @@ class ViewController: UIViewController {
     }
     
     @IBAction func logInPressed(sender: AnyObject) {
-    }
-    
-    @IBAction func signUpPressed(sender: AnyObject) {
-        var user = PFUser()
-        user.username = userTextField.text
-        user.password = passTextField.text
-        //user.email = "email@example.com"
-        // other fields can be set just like with PFObject
-        //user["phone"] = "415-392-0202"
-        
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                let errorString = error.userInfo["error"] as? NSString
-                print(errorString)
-            } else {
-                print("YAY!!")
+        if (checkTextFields()) {
+            let userName = userTextField.text!
+            let pass = passTextField.text!
+            PFUser.logInWithUsernameInBackground(userName, password:pass) {
+                (user: PFUser?, error: NSError?) -> Void in
+                if user != nil {
+                    print("YAY Logged in!")
+                } else {
+                    if let error = error {
+                        let errorString = error.userInfo["error"] as? NSString
+                        let errorCode = error.code
+                        
+                        switch errorCode {
+                        case 100:
+                            self.presentAlert("No Connection", message: "Please check network connection")
+                            break
+                        case 101:
+                            self.presentAlert("Invalid Username", message: "Incorrect Username or Password")
+                            break
+                        default:
+                            self.presentAlert("Error", message: "Please try again later")
+                            print(NSString(format: "Unhandled Error: %d", errorCode))
+                            break
+                        }
+                        print(errorString)
+                    } else {
+                        print("YAY!!")
+                    }
+                }
             }
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        if segue.identifier == "RequestViewControllerIdentifier" {
-            let requestViewControllerObject = self.storyboard?.instantiateViewControllerWithIdentifier("RequestViewController") as? RequestViewController
-            self.navigationController?.pushViewController(requestViewControllerObject!, animated: true)
+    func checkTextFields() -> Bool {
+        var good = true
+        if (userTextField.text!.isEmpty) {
+            userTextField.shakeTextField()
+            good = false
         }
-
+        if (passTextField.text!.isEmpty) {
+            passTextField.shakeTextField()
+            good = false
+        }
+        return good
     }
     
+    func presentAlert(title: NSString, message: NSString) {
+        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
 }

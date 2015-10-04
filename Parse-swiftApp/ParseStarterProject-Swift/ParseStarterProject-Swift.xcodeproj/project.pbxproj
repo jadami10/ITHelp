@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		68226EB21BC085F40069D627 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68226EB11BC085F40069D627 /* MessageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		68226EB41BC089560069D627 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68226EB31BC089560069D627 /* RequestViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		68F855FD1BC0CC7100580996 /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F855FC1BC0CC7100580996 /* UIEffects.swift */; settings = {ASSET_TAGS = (); }; };
+		68F856001BC0CC8600580996 /* AuthHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F855FF1BC0CC8600580996 /* AuthHeader.png */; settings = {ASSET_TAGS = (); }; };
+		68F856031BC0CCBF00580996 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F856021BC0CCBF00580996 /* UIConstants.swift */; settings = {ASSET_TAGS = (); }; };
+		68F856051BC1744400580996 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F856041BC1744400580996 /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		814C3ACA1B69877600E307BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC61B69877600E307BB /* Main.storyboard */; };
 		814C3ACB1B69877600E307BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 814C3AC81B69877600E307BB /* Images.xcassets */; };
 		81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81BA814A1A49DA1800E65899 /* AppDelegate.swift */; };
@@ -24,6 +28,10 @@
 /* Begin PBXFileReference section */
 		68226EB11BC085F40069D627 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		68226EB31BC089560069D627 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		68F855FC1BC0CC7100580996 /* UIEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIEffects.swift; path = UIEffects/UIEffects.swift; sourceTree = "<group>"; };
+		68F855FF1BC0CC8600580996 /* AuthHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AuthHeader.png; path = Images/AuthHeader.png; sourceTree = "<group>"; };
+		68F856021BC0CCBF00580996 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIConstants.swift; path = UIEffects/UIConstants.swift; sourceTree = "<group>"; };
+		68F856041BC1744400580996 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		814C3AC71B69877600E307BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		814C3AC81B69877600E307BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		814C3AC91B69877600E307BB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,9 +66,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		68F855FE1BC0CC7E00580996 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				68F855FF1BC0CC8600580996 /* AuthHeader.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		68F856011BC0CC9D00580996 /* Effects */ = {
+			isa = PBXGroup;
+			children = (
+				68F855FC1BC0CC7100580996 /* UIEffects.swift */,
+				68F856021BC0CCBF00580996 /* UIConstants.swift */,
+			);
+			name = Effects;
+			sourceTree = "<group>";
+		};
 		814C3AC51B69877600E307BB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				68F856011BC0CC9D00580996 /* Effects */,
+				68F855FE1BC0CC7E00580996 /* Images */,
 				814C3AC81B69877600E307BB /* Images.xcassets */,
 				814C3AC91B69877600E307BB /* Info.plist */,
 			);
@@ -93,6 +120,7 @@
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				68226EB31BC089560069D627 /* RequestViewController.swift */,
 				68226EB11BC085F40069D627 /* MessageViewController.swift */,
+				68F856041BC1744400580996 /* SignUpViewController.swift */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -158,7 +186,7 @@
 				};
 			};
 			buildConfigurationList = 81BA81401A49DA1800E65899 /* Build configuration list for PBXProject "ParseStarterProject-Swift" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -180,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68F856001BC0CC8600580996 /* AuthHeader.png in Resources */,
 				814C3ACA1B69877600E307BB /* Main.storyboard in Resources */,
 				814C3ACB1B69877600E307BB /* Images.xcassets in Resources */,
 			);
@@ -210,9 +239,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
+				68F856051BC1744400580996 /* SignUpViewController.swift in Sources */,
 				68226EB21BC085F40069D627 /* MessageViewController.swift in Sources */,
+				68F855FD1BC0CC7100580996 /* UIEffects.swift in Sources */,
 				68226EB41BC089560069D627 /* RequestViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
+				68F856031BC0CCBF00580996 /* UIConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +353,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
@@ -337,6 +370,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "ParseStarterProject-Swift";

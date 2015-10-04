@@ -14,7 +14,7 @@
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "ParseStarterProject-Swift",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "parse-starter-project-1.8.5\/ParseStarterProject-Swift\/ParseStarterProject-Swift.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Parse-swiftApp\/ParseStarterProject-Swift\/ParseStarterProject-Swift.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sfforeigner\/ITHelp.git",
