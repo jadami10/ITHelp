@@ -32,15 +32,6 @@ class SignUpViewController: UIViewController {
         checkTextFieldsList.append(emailTextField)
         checkTextFieldsList.append(userTextField)
         checkTextFieldsList.append(passTextField)
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
-    }
-    
-    //Calls this function when the tap is recognized.
-    func DismissKeyboard(){
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
 
     @IBAction func signUpPressed(sender: AnyObject) {
@@ -74,7 +65,7 @@ class SignUpViewController: UIViewController {
                     }
                     print(errorString)
                 } else {
-                    self.presentAlert("Sign up successful!", message: "You're in!")
+                    print("YAY!!")
                 }
             }
         }

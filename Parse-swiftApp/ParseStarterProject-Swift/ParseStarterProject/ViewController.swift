@@ -24,15 +24,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         let image = UIImage(named: "AuthHeader.png");
         headerImage.image = image;
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "DismissKeyboard")
-        view.addGestureRecognizer(tap)
-    }
-    
-    //Calls this function when the tap is recognized.
-    func DismissKeyboard(){
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +39,6 @@ class ViewController: UIViewController {
                 (user: PFUser?, error: NSError?) -> Void in
                 if user != nil {
                     print("YAY Logged in!")
-                    self.presentAlert("Login Successful!", message: "You are now logged in")
                 } else {
                     if let error = error {
                         let errorString = error.userInfo["error"] as? NSString
