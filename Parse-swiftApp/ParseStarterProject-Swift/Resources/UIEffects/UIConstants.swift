@@ -15,7 +15,7 @@ struct UIConstants {
 }
 
 extension UIColor {
-    static func colorWithRealValue(redValue: CGFloat, greenValue: CGFloat, blueValue: CGFloat, alpha: CGFloat) -> UIColor {
+    public static func colorWithRealValue(redValue: CGFloat, greenValue: CGFloat, blueValue: CGFloat, alpha: CGFloat) -> UIColor {
         return UIColor(red: redValue/255.0, green: greenValue/255.0, blue: blueValue/255.0, alpha: alpha)
     }
 }
