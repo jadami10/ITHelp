@@ -8,9 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		2D04DF31224AB635B4C37CE1 /* libPods-ITHelpApp-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3843646DE630606F820B9B54 /* libPods-ITHelpApp-iOS.a */; };
+		684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7A1BC5A886008460C6 /* MainTabController.swift */; settings = {ASSET_TAGS = (); }; };
+		684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		684CEA801BC5B150008460C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA7E1BC5B150008460C6 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
+		684CEA841BC5B92A008460C6 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA831BC5B92A008460C6 /* TicketTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		684CEA861BC5BC62008460C6 /* TicketTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA871BC5CC2A008460C6 /* login.storyboard */; settings = {ASSET_TAGS = (); }; };
+		684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA891BC5CC9C008460C6 /* home.storyboard */; settings = {ASSET_TAGS = (); }; };
+		684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA8B1BC5CD43008460C6 /* InitViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		684F8C6F1BC4943A0046345C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C6E1BC4943A0046345C /* AppDelegate.swift */; };
-		684F8C711BC4943A0046345C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C701BC4943A0046345C /* ViewController.swift */; };
-		684F8C741BC4943A0046345C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684F8C721BC4943A0046345C /* Main.storyboard */; };
+		684F8C711BC4943A0046345C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C701BC4943A0046345C /* LoginViewController.swift */; };
 		684F8C761BC4943A0046345C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 684F8C751BC4943A0046345C /* Assets.xcassets */; };
 		684F8C791BC4943A0046345C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684F8C771BC4943A0046345C /* LaunchScreen.storyboard */; };
 		684F8C841BC4943A0046345C /* ITHelpApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C831BC4943A0046345C /* ITHelpApp_iOSTests.swift */; };
@@ -45,10 +52,17 @@
 /* Begin PBXFileReference section */
 		3843646DE630606F820B9B54 /* libPods-ITHelpApp-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITHelpApp-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455D6243885F25C1DAE9F12E /* Pods-ITHelpApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		684CEA7A1BC5A886008460C6 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
+		684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		684CEA7F1BC5B150008460C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		684CEA831BC5B92A008460C6 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		684CEA871BC5CC2A008460C6 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
+		684CEA891BC5CC9C008460C6 /* home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = home.storyboard; sourceTree = "<group>"; };
+		684CEA8B1BC5CD43008460C6 /* InitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitViewController.swift; sourceTree = "<group>"; };
 		684F8C6B1BC4943A0046345C /* ITHelpApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ITHelpApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		684F8C6E1BC4943A0046345C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		684F8C701BC4943A0046345C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		684F8C731BC4943A0046345C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		684F8C701BC4943A0046345C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		684F8C751BC4943A0046345C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		684F8C781BC4943A0046345C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		684F8C7A1BC4943A0046345C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +121,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		684CEA791BC5A84F008460C6 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				684CEA7A1BC5A886008460C6 /* MainTabController.swift */,
+				684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */,
+				684CEA831BC5B92A008460C6 /* TicketTableViewController.swift */,
+				684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */,
+				684CEA891BC5CC9C008460C6 /* home.storyboard */,
+			);
+			name = MainView;
+			path = HomePage;
+			sourceTree = "<group>";
+		};
 		684F8C621BC4943A0046345C = {
 			isa = PBXGroup;
 			children = (
@@ -133,18 +160,18 @@
 		684F8C6D1BC4943A0046345C /* ITHelpApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				684CEA791BC5A84F008460C6 /* MainView */,
 				6896F5431BC4A18200ACA509 /* Login */,
 				684F8CA31BC496CF0046345C /* MessageViewController.swift */,
 				684F8CA41BC496CF0046345C /* RequestViewController.swift */,
-				684F8CA51BC496CF0046345C /* SignUpViewController.swift */,
 				684F8C6E1BC4943A0046345C /* AppDelegate.swift */,
-				684F8C701BC4943A0046345C /* ViewController.swift */,
-				684F8C721BC4943A0046345C /* Main.storyboard */,
+				684CEA7E1BC5B150008460C6 /* Main.storyboard */,
 				684F8C751BC4943A0046345C /* Assets.xcassets */,
 				684F8C771BC4943A0046345C /* LaunchScreen.storyboard */,
 				684F8C7A1BC4943A0046345C /* Info.plist */,
 				684F8CAA1BC496DE0046345C /* Bridge.m */,
 				684F8CA91BC496DE0046345C /* ITHelpApp-iOS-Bridging-Header.h */,
+				684CEA8B1BC5CD43008460C6 /* InitViewController.swift */,
 			);
 			path = "ITHelpApp-iOS";
 			sourceTree = "<group>";
@@ -196,9 +223,12 @@
 		6896F5431BC4A18200ACA509 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				684CEA871BC5CC2A008460C6 /* login.storyboard */,
+				684F8C701BC4943A0046345C /* LoginViewController.swift */,
 				6896F5441BC4A19E00ACA509 /* LoginHandler.swift */,
+				684F8CA51BC496CF0046345C /* SignUpViewController.swift */,
 			);
-			name = Login;
+			path = Login;
 			sourceTree = "<group>";
 		};
 		993A2D5ECC85F5A35D241A4A /* Frameworks */ = {
@@ -318,9 +348,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				684F8CB11BC499C10046345C /* AuthHeader.png in Resources */,
+				684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */,
 				684F8C791BC4943A0046345C /* LaunchScreen.storyboard in Resources */,
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
-				684F8C741BC4943A0046345C /* Main.storyboard in Resources */,
+				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
+				684CEA801BC5B150008460C6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,13 +410,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				684CEA861BC5BC62008460C6 /* TicketTableCellTableViewCell.swift in Sources */,
 				6896F5451BC4A19E00ACA509 /* LoginHandler.swift in Sources */,
 				684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */,
-				684F8C711BC4943A0046345C /* ViewController.swift in Sources */,
+				684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */,
+				684F8C711BC4943A0046345C /* LoginViewController.swift in Sources */,
 				684F8CA61BC496CF0046345C /* MessageViewController.swift in Sources */,
 				684F8CA71BC496CF0046345C /* RequestViewController.swift in Sources */,
+				684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */,
+				684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */,
 				684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */,
 				684F8C6F1BC4943A0046345C /* AppDelegate.swift in Sources */,
+				684CEA841BC5B92A008460C6 /* TicketTableViewController.swift in Sources */,
 				684F8CAB1BC496DE0046345C /* Bridge.m in Sources */,
 				684F8CA81BC496CF0046345C /* SignUpViewController.swift in Sources */,
 			);
@@ -422,10 +459,10 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		684F8C721BC4943A0046345C /* Main.storyboard */ = {
+		684CEA7E1BC5B150008460C6 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				684F8C731BC4943A0046345C /* Base */,
+				684CEA7F1BC5B150008460C6 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
