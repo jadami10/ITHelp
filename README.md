@@ -4,7 +4,7 @@
 # BriskIT
 <img src="ITWebApp/assets/git_logo.png" style="width:300px;height:auto;">
 
-App for IT help
+BriskIT is an iOS app that allows you to get IT help whenever and wherever your tech breaks down. Just send us a quick message of your issue, take a photo of the error message, and one of our distributed IT professionals will help resolve your issue. Currently, we're supporting IT help for Mac OS.
 
 Continuous Integration with Travis CI
 
