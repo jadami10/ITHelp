@@ -4,7 +4,7 @@ branches:
  only:
  - master
 
-xcode_project: SwiftApp/ITHelpApp-iOS/ITHelpApp-iOS.xcworkspace
+xcode_workspace: SwiftApp/ITHelpApp-iOS/ITHelpApp-iOS.xcworkspace
 xcode_scheme: SwiftApp/ITHelpApp-iOSTests
 osx_image: xcode7
 xcode_sdk: iphonesimulator9.0
