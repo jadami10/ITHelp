@@ -4,10 +4,11 @@ branches:
  only:
  - master
 
-xcode_project: ITHelpApp-iOS.xcworkspace
-xcode_scheme: ITHelpApp-iOSTests
+xcode_project: SwiftApp/ITHelpApp-iOS/ITHelpApp-iOS.xcworkspace
+xcode_scheme: SwiftApp/ITHelpApp-iOSTests
 osx_image: xcode7
 xcode_sdk: iphonesimulator9.0
+podfile: SwiftApp/ITHelpApp-iOS/Podfile
 
 script:
 - xcodebuild clean build test -project ITHelpApp-iOS.xcworkspace -scheme ITHelpApp-iOSTests
