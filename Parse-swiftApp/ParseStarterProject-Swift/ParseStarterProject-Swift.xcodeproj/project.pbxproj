@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68226EB21BC085F40069D627 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68226EB11BC085F40069D627 /* MessageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		68226EB41BC089560069D627 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68226EB31BC089560069D627 /* RequestViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		684F8CA21BC4962D0046345C /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CA11BC4962D0046345C /* Bridge.m */; settings = {ASSET_TAGS = (); }; };
 		68F855FD1BC0CC7100580996 /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F855FC1BC0CC7100580996 /* UIEffects.swift */; settings = {ASSET_TAGS = (); }; };
 		68F856001BC0CC8600580996 /* AuthHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 68F855FF1BC0CC8600580996 /* AuthHeader.png */; settings = {ASSET_TAGS = (); }; };
 		68F856031BC0CCBF00580996 /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F856021BC0CCBF00580996 /* UIConstants.swift */; settings = {ASSET_TAGS = (); }; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		68226EB11BC085F40069D627 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
 		68226EB31BC089560069D627 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		684F8CA01BC4962C0046345C /* ParseStarterProject-Swift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ParseStarterProject-Swift-Bridging-Header.h"; sourceTree = "<group>"; };
+		684F8CA11BC4962D0046345C /* Bridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bridge.m; sourceTree = "<group>"; };
 		68F855FC1BC0CC7100580996 /* UIEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIEffects.swift; path = UIEffects/UIEffects.swift; sourceTree = "<group>"; };
 		68F855FF1BC0CC8600580996 /* AuthHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AuthHeader.png; path = Images/AuthHeader.png; sourceTree = "<group>"; };
 		68F856021BC0CCBF00580996 /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIConstants.swift; path = UIEffects/UIConstants.swift; sourceTree = "<group>"; };
@@ -116,11 +119,13 @@
 			isa = PBXGroup;
 			children = (
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
+				684F8CA11BC4962D0046345C /* Bridge.m */,
 				81BA814C1A49DA1800E65899 /* ViewController.swift */,
 				814C3AC61B69877600E307BB /* Main.storyboard */,
 				68226EB31BC089560069D627 /* RequestViewController.swift */,
 				68226EB11BC085F40069D627 /* MessageViewController.swift */,
 				68F856041BC1744400580996 /* SignUpViewController.swift */,
+				684F8CA01BC4962C0046345C /* ParseStarterProject-Swift-Bridging-Header.h */,
 			);
 			path = ParseStarterProject;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				684F8CA21BC4962D0046345C /* Bridge.m in Sources */,
 				81BA814D1A49DA1800E65899 /* ViewController.swift in Sources */,
 				68F856051BC1744400580996 /* SignUpViewController.swift in Sources */,
 				68226EB21BC085F40069D627 /* MessageViewController.swift in Sources */,
@@ -348,6 +354,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -357,6 +364,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Swift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -365,6 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -374,6 +384,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.parse.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "ParseStarterProject-Swift";
+				SWIFT_OBJC_BRIDGING_HEADER = "ParseStarterProject/ParseStarterProject-Swift-Bridging-Header.h";
 			};
 			name = Release;
 		};

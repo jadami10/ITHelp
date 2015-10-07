@@ -1,0 +1,14 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '6.0'
+
+target 'ITHelpApp-iOS' do
+  pod 'Parse'
+end
+
+target 'ITHelpApp-iOSTests' do
+
+end
+
+target 'ITHelpApp-iOSUITests' do
+
+end
