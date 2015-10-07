@@ -4,9 +4,9 @@ branches:
  only:
  - master
 
-xcode_project: Swifternalization.xcodeproj
-xcode_scheme: SwifternalizationTests
-osx_image: beta-xcode7.0.1
+xcode_project: ITHelpApp-iOS.xcodeproj
+xcode_scheme: ITHelpApp-iOSTests
+osx_image: xcode7.0.1
 xcode_sdk: iphonesimulator9.0
 
 script:
