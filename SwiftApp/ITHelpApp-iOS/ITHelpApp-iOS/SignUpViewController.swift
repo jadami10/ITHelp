@@ -43,30 +43,34 @@ class SignUpViewController: UIViewController {
             user["last"] = lastNameTextField.text
             // other fields can be set just like with PFObject
             //user["phone"] = "415-392-0202"
+            LoginHandler.signUpUserWithBlock(user, completion: checkSignUp)
+
+        }
+    }
+    
+    func checkSignUp(result: NSError?) {
+        if let error = result {
+            let errorString = error.userInfo["error"] as? NSString
+            let errorCode = error.code
             
-            user.signUpInBackgroundWithBlock {
-                (succeeded: Bool, error: NSError?) -> Void in
-                if let error = error {
-                    let errorString = error.userInfo["error"] as? NSString
-                    let errorCode = error.code
-                    
-                    switch errorCode {
-                    case 100:
-                        self.presentAlert("No Connection", message: "Please check network connection")
-                        break
-                    case 202:
-                        self.presentAlert("Username Taken", message: "Please pick different username")
-                        break
-                    default:
-                        self.presentAlert("Error", message: "Please try again later")
-                        print(NSString(format: "Unhandled Error: %d", errorCode))
-                        break
-                    }
-                    print(errorString)
-                } else {
-                    print("YAY!!")
-                }
+            switch errorCode {
+            case 100:
+                self.presentAlert("No Connection", message: "Please check network connection")
+                break
+            case 125:
+                self.presentAlert("Bad Email", message: "Bad email format")
+                break
+            case 202:
+                self.presentAlert("Username Taken", message: "Please pick different username")
+                break
+            default:
+                self.presentAlert("Error", message: "Please try again later")
+                print(NSString(format: "Unhandled Error: %d", errorCode))
+                break
             }
+            print(errorString)
+        } else {
+            self.presentAlert("Success", message: "Signup Successful")
         }
     }
     
