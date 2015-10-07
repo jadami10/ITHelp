@@ -34,34 +34,34 @@ class ViewController: UIViewController {
         if (checkTextFields()) {
             let userName = userTextField.text!
             let pass = passTextField.text!
-            PFUser.logInWithUsernameInBackground(userName, password:pass) {
-                (user: PFUser?, error: NSError?) -> Void in
-                if user != nil {
-                    print("YAY Logged in!")
-                } else {
-                    if let error = error {
-                        let errorString = error.userInfo["error"] as? NSString
-                        let errorCode = error.code
-                        
-                        switch errorCode {
-                        case 100:
-                            self.presentAlert("No Connection", message: "Please check network connection")
-                            break
-                        case 101:
-                            self.presentAlert("Invalid Username", message: "Incorrect Username or Password")
-                            break
-                        default:
-                            self.presentAlert("Error", message: "Please try again later")
-                            print(NSString(format: "Unhandled Error: %d", errorCode))
-                            break
-                        }
-                        print(errorString)
-                    } else {
-                        print("YAY!!")
-                    }
-                }
-            }
+            LoginHandler.loginUserWithBlock(userName, pass: pass, completion: checkLogin)
         }
+    }
+    
+    func checkLogin(result: NSError?) -> Void {
+        if let error = result {
+            
+            let errorString = error.userInfo["error"] as? NSString
+            let errorCode = error.code
+            
+            switch errorCode {
+            case 100:
+                self.presentAlert("No Connection", message: "Please check network connection")
+                break
+            case 101:
+                self.presentAlert("Invalid Username", message: "Incorrect Username or Password")
+                break
+            default:
+                self.presentAlert("Error", message: "Please try again later")
+                print(NSString(format: "Unhandled Error: %d", errorCode))
+                break
+            }
+            print(errorString)
+            
+        } else {
+            print("YAY!!")
+        }
+
     }
     
     func checkTextFields() -> Bool {
