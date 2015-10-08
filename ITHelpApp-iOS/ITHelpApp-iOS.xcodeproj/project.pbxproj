@@ -11,7 +11,6 @@
 		684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7A1BC5A886008460C6 /* MainTabController.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA801BC5B150008460C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA7E1BC5B150008460C6 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		684CEA841BC5B92A008460C6 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA831BC5B92A008460C6 /* TicketTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA861BC5BC62008460C6 /* TicketTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA871BC5CC2A008460C6 /* login.storyboard */; settings = {ASSET_TAGS = (); }; };
 		684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA891BC5CC9C008460C6 /* home.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -29,6 +28,16 @@
 		684F8CB11BC499C10046345C /* AuthHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 684F8CB01BC499C10046345C /* AuthHeader.png */; settings = {ASSET_TAGS = (); }; };
 		684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB31BC49A0D0046345C /* UIConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB41BC49A0D0046345C /* UIEffects.swift */; settings = {ASSET_TAGS = (); }; };
+		6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81A1BC6A13A00EDC4F0 /* Profile.png */; settings = {ASSET_TAGS = (); }; };
+		6892F8201BC6A4F500EDC4F0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81E1BC6A4F500EDC4F0 /* info.png */; settings = {ASSET_TAGS = (); }; };
+		6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81F1BC6A4F500EDC4F0 /* ticket.png */; settings = {ASSET_TAGS = (); }; };
+		6892F8231BC6A53C00EDC4F0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8221BC6A53C00EDC4F0 /* AboutViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8241BC6A73400EDC4F0 /* workstation.png */; settings = {ASSET_TAGS = (); }; };
+		6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8291BC6A8F800EDC4F0 /* plus.png */; settings = {ASSET_TAGS = (); }; };
+		6892F82E1BC6B57B00EDC4F0 /* request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6892F82D1BC6B57B00EDC4F0 /* request.storyboard */; settings = {ASSET_TAGS = (); }; };
+		6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8321BC6C29000EDC4F0 /* tickets.storyboard */; settings = {ASSET_TAGS = (); }; };
+		6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */; settings = {ASSET_TAGS = (); }; };
 		6896F5451BC4A19E00ACA509 /* LoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896F5441BC4A19E00ACA509 /* LoginHandler.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -55,7 +64,6 @@
 		684CEA7A1BC5A886008460C6 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		684CEA7F1BC5B150008460C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		684CEA831BC5B92A008460C6 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
 		684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		684CEA871BC5CC2A008460C6 /* login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = login.storyboard; sourceTree = "<group>"; };
 		684CEA891BC5CC9C008460C6 /* home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = home.storyboard; sourceTree = "<group>"; };
@@ -82,6 +90,16 @@
 		684F8CB01BC499C10046345C /* AuthHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AuthHeader.png; path = "ITHelpApp-iOS/Resources/Images/AuthHeader.png"; sourceTree = "<group>"; };
 		684F8CB31BC49A0D0046345C /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIConstants.swift; path = "ITHelpApp-iOS/Resources/UIEffects/UIConstants.swift"; sourceTree = "<group>"; };
 		684F8CB41BC49A0D0046345C /* UIEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIEffects.swift; path = "ITHelpApp-iOS/Resources/UIEffects/UIEffects.swift"; sourceTree = "<group>"; };
+		6892F81A1BC6A13A00EDC4F0 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profile.png; path = "ITHelpApp-iOS/Resources/Images/Profile.png"; sourceTree = "<group>"; };
+		6892F81E1BC6A4F500EDC4F0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = "ITHelpApp-iOS/Resources/Images/info.png"; sourceTree = "<group>"; };
+		6892F81F1BC6A4F500EDC4F0 /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ticket.png; path = "ITHelpApp-iOS/Resources/Images/ticket.png"; sourceTree = "<group>"; };
+		6892F8221BC6A53C00EDC4F0 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		6892F8241BC6A73400EDC4F0 /* workstation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = workstation.png; path = "ITHelpApp-iOS/Resources/Images/workstation.png"; sourceTree = "<group>"; };
+		6892F8291BC6A8F800EDC4F0 /* plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = plus.png; path = "ITHelpApp-iOS/Resources/Images/plus.png"; sourceTree = "<group>"; };
+		6892F82D1BC6B57B00EDC4F0 /* request.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = request.storyboard; path = "ITHelpApp-iOS/RequestPage/request.storyboard"; sourceTree = SOURCE_ROOT; };
+		6892F8321BC6C29000EDC4F0 /* tickets.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = tickets.storyboard; sourceTree = "<group>"; };
+		6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketTableViewController.swift; sourceTree = "<group>"; };
+		6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question_mark_filled.png; path = "ITHelpApp-iOS/Resources/Images/question_mark_filled.png"; sourceTree = "<group>"; };
 		6896F5441BC4A19E00ACA509 /* LoginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHandler.swift; sourceTree = "<group>"; };
 		9D3DE95869BC1D53A703A47C /* Pods-ITHelpApp-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,16 +139,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		684CEA791BC5A84F008460C6 /* MainView */ = {
+		684CEA791BC5A84F008460C6 /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				6892F8311BC6C27300EDC4F0 /* Tickets */,
 				684CEA7A1BC5A886008460C6 /* MainTabController.swift */,
 				684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */,
-				684CEA831BC5B92A008460C6 /* TicketTableViewController.swift */,
-				684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */,
 				684CEA891BC5CC9C008460C6 /* home.storyboard */,
+				6892F8321BC6C29000EDC4F0 /* tickets.storyboard */,
+				6892F8221BC6A53C00EDC4F0 /* AboutViewController.swift */,
 			);
-			name = MainView;
+			name = HomeView;
 			path = HomePage;
 			sourceTree = "<group>";
 		};
@@ -160,10 +179,10 @@
 		684F8C6D1BC4943A0046345C /* ITHelpApp-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				684CEA791BC5A84F008460C6 /* MainView */,
+				6892F8261BC6A7A800EDC4F0 /* Request */,
+				684CEA791BC5A84F008460C6 /* HomeView */,
 				6896F5431BC4A18200ACA509 /* Login */,
 				684F8CA31BC496CF0046345C /* MessageViewController.swift */,
-				684F8CA41BC496CF0046345C /* RequestViewController.swift */,
 				684F8C6E1BC4943A0046345C /* AppDelegate.swift */,
 				684CEA7E1BC5B150008460C6 /* Main.storyboard */,
 				684F8C751BC4943A0046345C /* Assets.xcassets */,
@@ -206,6 +225,12 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */,
+				6892F8291BC6A8F800EDC4F0 /* plus.png */,
+				6892F8241BC6A73400EDC4F0 /* workstation.png */,
+				6892F81E1BC6A4F500EDC4F0 /* info.png */,
+				6892F81F1BC6A4F500EDC4F0 /* ticket.png */,
+				6892F81A1BC6A13A00EDC4F0 /* Profile.png */,
 				684F8CB01BC499C10046345C /* AuthHeader.png */,
 			);
 			name = Images;
@@ -218,6 +243,24 @@
 				684F8CB41BC49A0D0046345C /* UIEffects.swift */,
 			);
 			name = Effects;
+			sourceTree = "<group>";
+		};
+		6892F8261BC6A7A800EDC4F0 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				684F8CA41BC496CF0046345C /* RequestViewController.swift */,
+				6892F82D1BC6B57B00EDC4F0 /* request.storyboard */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		6892F8311BC6C27300EDC4F0 /* Tickets */ = {
+			isa = PBXGroup;
+			children = (
+				684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */,
+				6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */,
+			);
+			name = Tickets;
 			sourceTree = "<group>";
 		};
 		6896F5431BC4A18200ACA509 /* Login */ = {
@@ -349,10 +392,18 @@
 			files = (
 				684F8CB11BC499C10046345C /* AuthHeader.png in Resources */,
 				684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */,
+				6892F82E1BC6B57B00EDC4F0 /* request.storyboard in Resources */,
 				684F8C791BC4943A0046345C /* LaunchScreen.storyboard in Resources */,
+				6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */,
+				6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */,
+				6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */,
+				6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */,
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
 				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
 				684CEA801BC5B150008460C6 /* Main.storyboard in Resources */,
+				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
+				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
+				6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +464,7 @@
 				684CEA861BC5BC62008460C6 /* TicketTableCellTableViewCell.swift in Sources */,
 				6896F5451BC4A19E00ACA509 /* LoginHandler.swift in Sources */,
 				684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */,
+				6892F8231BC6A53C00EDC4F0 /* AboutViewController.swift in Sources */,
 				684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */,
 				684F8C711BC4943A0046345C /* LoginViewController.swift in Sources */,
 				684F8CA61BC496CF0046345C /* MessageViewController.swift in Sources */,
@@ -421,7 +473,7 @@
 				684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */,
 				684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */,
 				684F8C6F1BC4943A0046345C /* AppDelegate.swift in Sources */,
-				684CEA841BC5B92A008460C6 /* TicketTableViewController.swift in Sources */,
+				6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */,
 				684F8CAB1BC496DE0046345C /* Bridge.m in Sources */,
 				684F8CA81BC496CF0046345C /* SignUpViewController.swift in Sources */,
 			);

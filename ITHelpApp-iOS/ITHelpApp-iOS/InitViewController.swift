@@ -17,12 +17,14 @@ class InitViewController: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        let loggedIn = false
-        if !loggedIn {
-            goToLoginPage()
-        } else {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let loggedIn = defaults.boolForKey("stayLoggedIn")
+        if loggedIn {
             goToHomePage()
+        } else {
+            goToLoginPage()
         }
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +41,7 @@ class InitViewController: UIViewController {
     
     func goToHomePage() {
         let storyboard = UIStoryboard(name: "home", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("LoginNavController") as UIViewController
+        let controller = storyboard.instantiateViewControllerWithIdentifier("MainTabController") as UIViewController
         
         self.presentViewController(controller, animated: false, completion: nil)
     }
