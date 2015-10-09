@@ -151,4 +151,12 @@ class SignUpViewController: UIViewController {
         
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if (identifier == "MainTabController") {
+            return true
+        } else {
+            return true
+        }
+    }
 }

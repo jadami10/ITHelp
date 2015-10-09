@@ -9,7 +9,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
             print(errorString)
             
         } else {
-            print("YAY!!")
+            goToMainPage()
         }
 
     }
@@ -84,5 +84,12 @@ class ViewController: UIViewController {
         alertController.addAction(defaultAction)
         
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func goToMainPage() {
+        
+        let storyboard = UIStoryboard(name: "home", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MainTabController") as! UITabBarController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
 }
