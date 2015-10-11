@@ -1,0 +1,2 @@
+var user = {};
+var flg = {};

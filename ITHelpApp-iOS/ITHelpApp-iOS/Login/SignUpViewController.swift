@@ -63,6 +63,9 @@ class SignUpViewController: UIViewController {
             case 202:
                 self.presentAlert("Username Taken", message: "Please pick different username")
                 break
+            case 203:
+                self.presentAlert("Email Taken", message: "Please pick different email")
+                break
             default:
                 self.presentAlert("Error", message: "Please try again later")
                 print(NSString(format: "Unhandled Error: %d", errorCode))
