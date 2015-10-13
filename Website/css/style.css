@@ -28,7 +28,7 @@
     margin-bottom: 1px;
 }
 
-#signup,#name,#pass,#first,#last,#email,#signupb {
+#signup,#name,#pass,#first,#last,#email,#signupb,#requestb {
     transition: all 0.3s ease 0s;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
@@ -213,6 +213,29 @@
     color: #fff;
     position: absolute;
     right: 9px;
+    bottom: 9px;
+    font-size: 17px;
+    width: 103px;
+    height: 35px;
+    outline: none;
+    cursor: pointer;
+}
+
+#requestb {
+    background: #f8f8f8;
+    border: 1px solid #c6c6c6;
+    display: inline-block;
+    line-height: 23px;
+    padding: 5px 18px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #f37676;
+    border-color: #E78282;
+    font-weight: normal;
+    margin: 10px 0 0 0;
+    color: #fff;
+    position: absolute;
+    right: 250px;
     bottom: 9px;
     font-size: 17px;
     width: 103px;

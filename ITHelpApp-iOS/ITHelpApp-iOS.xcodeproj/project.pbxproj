@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D04DF31224AB635B4C37CE1 /* libPods-ITHelpApp-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3843646DE630606F820B9B54 /* libPods-ITHelpApp-iOS.a */; };
+		68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68140B771BCDB70600B73AE7 /* RequestHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7A1BC5A886008460C6 /* MainTabController.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		684CEA801BC5B150008460C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA7E1BC5B150008460C6 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		3843646DE630606F820B9B54 /* libPods-ITHelpApp-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ITHelpApp-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		455D6243885F25C1DAE9F12E /* Pods-ITHelpApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		68140B771BCDB70600B73AE7 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestHandler.swift; path = RequestPage/RequestHandler.swift; sourceTree = "<group>"; };
 		684CEA7A1BC5A886008460C6 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		684CEA7F1BC5B150008460C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				684F8CA41BC496CF0046345C /* RequestViewController.swift */,
 				6892F82D1BC6B57B00EDC4F0 /* request.storyboard */,
+				68140B771BCDB70600B73AE7 /* RequestHandler.swift */,
 			);
 			name = Request;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				6892F8231BC6A53C00EDC4F0 /* AboutViewController.swift in Sources */,
 				684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */,
 				684F8C711BC4943A0046345C /* LoginViewController.swift in Sources */,
+				68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */,
 				684F8CA61BC496CF0046345C /* MessageViewController.swift in Sources */,
 				684F8CA71BC496CF0046345C /* RequestViewController.swift in Sources */,
 				684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */,

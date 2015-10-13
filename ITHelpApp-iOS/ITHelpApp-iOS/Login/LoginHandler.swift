@@ -22,24 +22,6 @@ class LoginHandler {
                 if let error = error {
                     print("Error!")
                     completion(result: error)
-                    /*
-                    let errorString = error.userInfo["error"] as? NSString
-                    let errorCode = error.code
-                    
-                    switch errorCode {
-                    case 100:
-                    //self.presentAlert("No Connection", message: "Please check network connection")
-                    break
-                    case 101:
-                    //self.presentAlert("Invalid Username", message: "Incorrect Username or Password")
-                    break
-                    default:
-                    //self.presentAlert("Error", message: "Please try again later")
-                    print(NSString(format: "Unhandled Error: %d", errorCode))
-                    break
-                    }
-                    print(errorString)
-                    */
                 } else {
                     print("Login good")
                     completion(result: err)
