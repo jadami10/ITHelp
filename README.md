@@ -1,15 +1,12 @@
+# Travis CI
+<img src="https://travis-ci.org/jadami10/ITHelp.svg?branch=master">
+
 # BriskIT
 <img src="ITWebApp/assets/git_logo.png" style="width:300px;height:auto;">
 
-App for IT help
+BriskIT is an iOS app that allows you to get IT help whenever and wherever your tech breaks down. Just send us a quick message of your issue, take a photo of the error message, and one of our distributed IT professionals will help resolve your issue. Currently, we're supporting IT help for Mac OS and Windows.
 
-There's a small setup process for this project
-1) I would setup a virtualenv. This [link](http://stackoverflow.com/questions/12410113/migrating-virtualenv-and-github-between-computers) shows it well.
-
-2) So basically: clone, create virtualenv, activate it, install everything, and you can run the project
-
-3) You can use [pluralsight](http://www.pluralsight.com/courses/django-fundamentals) to ramp up. You can start your free trial, or talk to me tomorrow about it.
- This is the [site](http://www.django-rest-framework.org/tutorial/1-serialization/) for the API tutorial
+Continuous Integration with Travis CI
 
 Project Management
 [trello](https://trello.com/b/Bb9gVAFI/ithelp-app)

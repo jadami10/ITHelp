@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3175F80BB9DDDF53955BBB5F0AAF1E686A9C1EED",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3175F80BB9DDDF53955BBB5F0AAF1E686A9C1EED" : 0,
+    "384004298EBEB0D5718F7303D08948AE575FD68D" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "8FB92806-6F16-4C27-A24D-6B18EFF65C50",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3175F80BB9DDDF53955BBB5F0AAF1E686A9C1EED" : "ITHelp\/",
+    "384004298EBEB0D5718F7303D08948AE575FD68D" : "..\/..\/.."
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ITHelpApp-iOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ITHelpApp-iOS\/ITHelpApp-iOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sfforeigner\/ITHelp.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3175F80BB9DDDF53955BBB5F0AAF1E686A9C1EED"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sfforeigner\/CornellTech.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "384004298EBEB0D5718F7303D08948AE575FD68D"
+    }
+  ]
+}
