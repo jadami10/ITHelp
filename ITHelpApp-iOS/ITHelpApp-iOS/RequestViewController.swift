@@ -8,10 +8,13 @@
 
 import UIKit
 
-class RequestViewController: UIViewController {
+class RequestViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
 
     @IBOutlet weak var requestTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var imagePicker: UIImageView!
+    
+    var imagePickerView: UIImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +26,16 @@ class RequestViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    //adding photo functionality - need to test with real device
+    @IBAction func takePhoto() {
+            imagePickerView =  UIImagePickerController()
+            imagePickerView.delegate = self
+            imagePickerView.sourceType = .Camera
+            
+            presentViewController(imagePickerView, animated: true, completion: nil)
+
+    }
 
     @IBAction func requestPressed(sender: AnyObject) {
         let currentUser = PFUser.currentUser()
