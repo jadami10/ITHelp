@@ -30,15 +30,41 @@ class RequestViewController: UIViewController {
         requestObject["requester"] = currentUser?.username
         requestObject["requestMessage"] = requestTextView.text
         requestObject["title"] = titleTextField.text
-        requestObject.saveInBackgroundWithBlock {
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("good!")
-            } else {
-                print(error?.description)
-            }
-        }
+        RequestHandler.postRequest(requestObject, completion: checkRequest)
     }
+
+    
+    func checkRequest(result: NSError?) -> Void {
+        if let error = result {
+            
+            let errorString = error.userInfo["error"] as? NSString
+            let errorCode = error.code
+            
+            switch errorCode {
+            case 100:
+                self.presentAlert("No Connection", message: "Please check network connection")
+                break
+            default:
+                self.presentAlert("Error", message: "Please try again later")
+                print(NSString(format: "Unhandled Error: %d", errorCode))
+                break
+            }
+            print(errorString)
+            
+        }
+        
+    }
+    
+    func presentAlert(title: NSString, message: NSString) {
+        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    
     /*
     // MARK: - Navigation
 
