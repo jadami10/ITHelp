@@ -1,0 +1,72 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width,initial-scale=1')
+
+    title Solve a problem - BriskIT
+
+    meta(name='description' content='Big Red Hackathon Project')
+
+    link(rel='stylesheet' href='//brick.a.ssl.fastly.net/Lato:300,300i,400,400i,700')
+    link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Roboto+Condensed:300')
+
+    link(rel='shortcut icon' href='/assets/favicon.png')
+
+    script(src='//code.jquery.com/jquery-2.1.4.min.js')
+    script(src='/solve.js')
+
+  body
+    .left-navi
+      a(href='/solve.html')
+        .navi.navi-current
+          span.fa.fa-user-md
+          span Solve a problem
+      a(href='/solving.html')
+        .navi
+          span.fa.fa-commenting
+          span Solving
+      .navi
+        span.fa.fa-clock-o
+        span Solved
+
+    //- .greetings
+    //-   span.fa.fa-user
+    //-   span Good morning, Hannah.
+
+    .right-probs
+      .probs
+        .prob
+          .wrapper
+            .title Cannot get Photoshop setting up
+            .desc
+              span.fa.fa-quote-left 
+              span I’m using Win 10 and I’m trying to set up Adobe Photoshop CC. Everytime I click ‘Next’ the installing process just exit. Please help!
+              span.fa.fa-quote-right
+            .tag.adobe
+            .tag.software
+            .request-bottom
+              .requester 
+                span.fa.fa-user
+                span Maria S
+              .request-time
+                span.fa.fa-clock-o
+                span 2 min ago
+          .btn-help
+
+        .prob
+          .wrapper
+            .title Mac getting too hot when watching YouTube
+            .desc
+              span.fa.fa-quote-left 
+              span I’m using Win 10 and I’m trying to set up Adobe Photoshop CC. Everytime I click ‘Next’ the installing process just exit. Please help!
+              span.fa.fa-quote-right
+            .tag.hardware
+            .request-bottom
+              .requester 
+                span.fa.fa-user
+                span Maria S
+              .request-time
+                span.fa.fa-clock-o
+                span 2015.5.20
+          .btn-help
