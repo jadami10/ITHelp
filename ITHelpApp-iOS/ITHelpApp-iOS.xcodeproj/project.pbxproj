@@ -29,6 +29,7 @@
 		684F8CB11BC499C10046345C /* AuthHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 684F8CB01BC499C10046345C /* AuthHeader.png */; settings = {ASSET_TAGS = (); }; };
 		684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB31BC49A0D0046345C /* UIConstants.swift */; settings = {ASSET_TAGS = (); }; };
 		684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB41BC49A0D0046345C /* UIEffects.swift */; settings = {ASSET_TAGS = (); }; };
+		6882CC301BCEE9B4002D9877 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 6882CC2F1BCEE9B4002D9877 /* message.png */; settings = {ASSET_TAGS = (); }; };
 		6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81A1BC6A13A00EDC4F0 /* Profile.png */; settings = {ASSET_TAGS = (); }; };
 		6892F8201BC6A4F500EDC4F0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81E1BC6A4F500EDC4F0 /* info.png */; settings = {ASSET_TAGS = (); }; };
 		6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81F1BC6A4F500EDC4F0 /* ticket.png */; settings = {ASSET_TAGS = (); }; };
@@ -97,6 +98,7 @@
 		684F8CB01BC499C10046345C /* AuthHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = AuthHeader.png; path = "ITHelpApp-iOS/Resources/Images/AuthHeader.png"; sourceTree = "<group>"; };
 		684F8CB31BC49A0D0046345C /* UIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIConstants.swift; path = "ITHelpApp-iOS/Resources/UIEffects/UIConstants.swift"; sourceTree = "<group>"; };
 		684F8CB41BC49A0D0046345C /* UIEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIEffects.swift; path = "ITHelpApp-iOS/Resources/UIEffects/UIEffects.swift"; sourceTree = "<group>"; };
+		6882CC2F1BCEE9B4002D9877 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message.png; path = "ITHelpApp-iOS/Resources/Images/message.png"; sourceTree = "<group>"; };
 		6892F81A1BC6A13A00EDC4F0 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profile.png; path = "ITHelpApp-iOS/Resources/Images/Profile.png"; sourceTree = "<group>"; };
 		6892F81E1BC6A4F500EDC4F0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = "ITHelpApp-iOS/Resources/Images/info.png"; sourceTree = "<group>"; };
 		6892F81F1BC6A4F500EDC4F0 /* ticket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ticket.png; path = "ITHelpApp-iOS/Resources/Images/ticket.png"; sourceTree = "<group>"; };
@@ -108,9 +110,9 @@
 		6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question_mark_filled.png; path = "ITHelpApp-iOS/Resources/Images/question_mark_filled.png"; sourceTree = "<group>"; };
 		6896F5441BC4A19E00ACA509 /* LoginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHandler.swift; sourceTree = "<group>"; };
 		9D3DE95869BC1D53A703A47C /* Pods-ITHelpApp-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-slr-camera-256.png"; path = "../../../../Downloads/black-slr-camera-256.png"; sourceTree = "<group>"; };
+		E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-slr-camera-256.png"; path = "ITHelpApp-iOS/Resources/Images/black-slr-camera-256.png"; sourceTree = "<group>"; };
 		E1192B941BCDE13600DC284D /* message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = message.storyboard; sourceTree = "<group>"; };
-		E1192B961BCDE44D00DC284D /* request.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = request.storyboard; path = ../../../../../.Trash/request.storyboard; sourceTree = "<group>"; };
+		E1192B961BCDE44D00DC284D /* request.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = request.storyboard; path = RequestPage/request.storyboard; sourceTree = "<group>"; };
 		E1192B9A1BCDE6E200DC284D /* messaging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = messaging.swift; sourceTree = "<group>"; };
 		E1192B9C1BCE033B00DC284D /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		E1192BA01BCE246D00DC284D /* textTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textTableViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6882CC2F1BCEE9B4002D9877 /* message.png */,
 				E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */,
 				6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */,
 				6892F8291BC6A8F800EDC4F0 /* plus.png */,
@@ -429,6 +432,7 @@
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
 				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
 				684CEA801BC5B150008460C6 /* Main.storyboard in Resources */,
+				6882CC301BCEE9B4002D9877 /* message.png in Resources */,
 				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
 				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
 				E1192B951BCDE13600DC284D /* message.storyboard in Resources */,
