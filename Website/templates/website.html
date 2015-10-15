@@ -41,13 +41,23 @@
   <script type="text/javascript">
   $(document).ready(function()
   {
-    Parse.initialize("Dxf9sHTC4H9iQoYP7FUPmkX8o99KTTJ01O1tBhjK", "oXnaI5OgVYPggkBhyOkxhhI81eb4p9kvSU4a7fRr");
-    ParseUser.enableRevocableSessionInBackground()
-    Parse.User._currentUser = new Parse.User();
-    pb = PUBNUB.init({
-      publish_key: 'pub-c-0239b592-0603-4849-9889-ce70e8d18cb7',
-      subscribe_key: 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f'
-    });
+    try {
+      Parse.initialize("Dxf9sHTC4H9iQoYP7FUPmkX8o99KTTJ01O1tBhjK", "oXnaI5OgVYPggkBhyOkxhhI81eb4p9kvSU4a7fRr");
+    } catch(err) {
+      alert("TODO: parse not initizlized");
+    }
+
+    //ParseUser.enableRevocableSessionInBackground()
+    //Parse.User._currentUser = new Parse.User();
+    try {
+      pb = PUBNUB({
+        subscribe_key: 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f'
+      });
+    } catch (err) {
+      alert("TODO: not subscribed to request channel")
+    }
+
+    //alert(pb)
   });
 
   </script>
