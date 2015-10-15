@@ -43,7 +43,8 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         requestObject["requester"] = currentUser?.username
         requestObject["requestMessage"] = requestTextView.text
         requestObject["title"] = titleTextField.text
-        RequestHandler.postRequest(requestObject, completion: checkRequest)
+        requestObject["ticket"] = 0
+        RequestHandler.postRequest(requestObject, completion: checkRequest, successfullySavedRequest: saveRequest)
     }
 
     
@@ -65,7 +66,10 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             print(errorString)
             
         }
-        
+    }
+    
+    func saveRequest(request: PFObject) -> Void{
+        var requestID = request.objectId! as String
     }
     
     func presentAlert(title: NSString, message: NSString) {

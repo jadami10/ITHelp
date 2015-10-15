@@ -9,10 +9,10 @@
 import UIKit
 
 class TicketTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,7 +51,11 @@ class TicketTableViewController: UITableViewController {
         return cell
     }
     
-
+    func addTickets(object: PFObject) -> Void{
+        var tickets = [PFObject]()
+        tickets.append(object)
+        print(tickets)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

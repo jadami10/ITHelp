@@ -22,16 +22,18 @@ class messaging: UIViewController, UITableViewDelegate, UITableViewDataSource {
         messageObject["sender"] = currentUser?.username
         messageObject["message"] = messageTextField.text
         MessageHandler.postMessage(messageObject, completion: checkMessage)
-        
+        refreshMessage()
+        messageTextField.text = ""
     }
     
     var petitions: [PFObject] = []
 
     
-    @IBAction func refreshMessage(sender: UIButton) {
+    @IBAction func refreshMessage() {
         queryMessage((PFUser.currentUser()?.username)!)
-        print(allMessages)
         textTable.reloadData()
+        print(petitions)
+
 
     }
     
@@ -40,8 +42,6 @@ class messaging: UIViewController, UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         textTable.delegate = self
         textTable.dataSource = self
-        print(allMessages)
-
 
     }
 
@@ -98,6 +98,7 @@ class messaging: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 print("Successfully retrieved \(objects!.count)")
                 // Do something with the found objects
                 if let objects = objects as [PFObject]! {
+                    self.petitions = []
                     for object in objects {
                             self.petitions.append(object)
                     }
@@ -107,6 +108,7 @@ class messaging: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 print("Error: \(error!))")
             }
         }
+        allMessages = []
         for objects in petitions{
             allMessages.append(objects.valueForKey("message") as! String)
         }
