@@ -24,6 +24,7 @@ $(function () {
               alert("Bad ID and/or Pass");
               break;
           default:
+              Parse.User.logOut()
               alert("Error: " + error.code + " " + error.message);
         }
       }
