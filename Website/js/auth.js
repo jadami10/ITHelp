@@ -12,7 +12,6 @@ function login() {
   Parse.User.logIn(id, pass, {
     success: function(user) {
       alert("Good login")
-      window.location.href = "website.html";
     },
     error: function(user, error) {
       switch(error.code) {
@@ -30,7 +29,6 @@ function login() {
   });
 }
 
-<<<<<<< HEAD
 function signup() {
   var user = new Parse.User();
   var first = $('#first').val()
@@ -43,46 +41,6 @@ function signup() {
   user.set("email", email);
   user.set("first", first);
   user.set("last", last);
-=======
-  function login() {
-    var id = $('#name').val();
-    var pass = $('#pass').val();
-    Parse.User.logIn(id, pass, {
-      success: function(user) {
-        alert("Good login")
-      },
-      error: function(user, error) {
-        switch(error.code) {
-          case 100:
-              alert("No Network Connection");
-              break;
-          case 101:
-              alert("Bad ID and/or Pass");
-              break;
-          default:
-              Parse.User.logOut()
-              alert("Error: " + error.code + " " + error.message);
-        }
-      }
-    });
-  }
-
-  function signup() {
-    var user = new Parse.User();
-    var first = $('#first').val()
-    var last = $('#last').val()
-    var email = $('#email').val()
-    var id = $('#name').val()
-    var pass = $('#pass').val()
-    user.set("username", id);
-    user.set("password", pass);
-    user.set("email", email);
-    user.set("first", first);
-    user.set("last", last);
->>>>>>> master
-
-  // other fields can be set just like with Parse.Object
-  // user.set("phone", "415-392-0202");
 
   user.signUp(null, {
     success: function(user) {
