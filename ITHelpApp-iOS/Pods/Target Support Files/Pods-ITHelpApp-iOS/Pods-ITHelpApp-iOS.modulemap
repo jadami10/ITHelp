@@ -1,0 +1,6 @@
+framework module Pods_ITHelpApp_iOS {
+  umbrella header "Pods-ITHelpApp-iOS-umbrella.h"
+
+  export *
+  module * { export * }
+}

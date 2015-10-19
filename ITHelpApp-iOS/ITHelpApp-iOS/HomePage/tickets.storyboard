@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="60T-PF-OJ0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B38b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="60T-PF-OJ0">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
@@ -9,20 +9,20 @@
             <objects>
                 <tableViewController storyboardIdentifier="TicketTableView" id="60T-PF-OJ0" customClass="TicketTableViewController" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ov5-5c-YER">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTitleCell" rowHeight="50" id="tQu-P2-Hjx">
-                                <rect key="frame" x="0.0" y="28" width="320" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTitleCell" rowHeight="40" id="tQu-P2-Hjx">
+                                <rect key="frame" x="0.0" y="28" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tQu-P2-Hjx" id="cpG-fc-2kD">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All Tickets" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xhz-X5-bcY">
-                                            <rect key="frame" x="8" y="11" width="304" height="27"/>
+                                            <rect key="frame" x="8" y="11" width="304" height="17"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="17"/>
@@ -35,7 +35,7 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTableCell" rowHeight="125" id="cMd-4u-4Et" customClass="TicketTableCellTableViewCell" customModule="ITHelpApp_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="78" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="68" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMd-4u-4Et" id="FoX-df-LcB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="124.5"/>
@@ -46,13 +46,6 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Test description" textAlignment="natural" selectable="NO" id="oUE-Ib-Iht">
-                                            <rect key="frame" x="76" y="50" width="236" height="63"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uHZ-IW-81x">
                                             <rect key="frame" x="76" y="21" width="236" height="21"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -61,6 +54,13 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" text="Test description" textAlignment="natural" selectable="NO" id="oUE-Ib-Iht">
+                                            <rect key="frame" x="76" y="50" width="236" height="66.5"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -77,6 +77,7 @@
                             <outlet property="delegate" destination="60T-PF-OJ0" id="aD6-bI-IhY"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Tickets" image="ticket.png" id="h2W-9A-4YK"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
