@@ -15,10 +15,12 @@ class TicketTableViewController: UITableViewController, PNObjectEventListener {
     var tickets = [PFObject]()
     var reqHandler: PubnubHandler?
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(animated: Bool) {
         tickets = []
         TicketHandler.getTickets(addTickets)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if (reqHandler == nil) {

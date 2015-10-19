@@ -38,6 +38,9 @@ class messaging: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     }
     
+    override func viewWillAppear(animated: Bool) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
     override func viewDidLoad() {
         queryMessage((PFUser.currentUser()?.username)!)
         super.viewDidLoad()
