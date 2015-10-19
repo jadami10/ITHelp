@@ -19,7 +19,7 @@ a {
   color: #3c3c3c;
 }
 .left-navi {
-  position: absolute;
+  position: fixed;
   width: 18%;
   min-height: 100%;
   background: linear-gradient(#3f5655, #4a4a4a);
@@ -71,21 +71,24 @@ a {
   position: absolute;
   margin-left: 20%;
   margin-top: 1%;
-  width: 30%;
+  width: 80%;
   font-weight: 300;
   color: #666;
+  overflow: scroll;
 }
 .right-probs .probs .title {
   font-size: 16px;
   font-weight: 400;
 }
 .right-probs .prob {
+  float: left;
   background: #fff;
-  width: 100%;
+  width: 23%;
   min-height: 140px;
   padding: 0;
   transition: all 0.2s ease;
   margin-bottom: 10px;
+  margin-right: 10px;
   background-repeat: no-repeat;
   background-position: 100%;
   box-shadow: 0 2px 0 rgba(0,0,0,0.15);

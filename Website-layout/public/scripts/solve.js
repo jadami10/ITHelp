@@ -4,6 +4,7 @@ var Ticket = React.createClass({
     $(this.refs.btnHelp).toggle('fast');
   },
   submitHelp: function() {
+    takeRequest(this.props.obj);
     // Submit help request here
   },
   render: function() {
@@ -13,7 +14,7 @@ var Ticket = React.createClass({
           <div className="title"> {this.props.title} </div>
           <div className="desc" ref="desc">
             <span className="fa fa-quote-left"> </span>
-            <span> {this.props.children} </span>
+            <span> {this.props.desc} </span>
             <span className="fa fa-quote-right"></span>
           </div>
           <div className="tag adobe"></div>
@@ -36,48 +37,22 @@ var Ticket = React.createClass({
 });
 
 var TicketsBox = React.createClass({
-  loadDataFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+  mixins: [ParseReact.Mixin], // Enable query subscriptions
+
+  observe: function() {
+    return {
+      tickets: new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0)
+    };
   },
-  handleTicketSubmit: function(newTicket) {
-    var data = this.state.data;
-    var newData = data.concat([newTicket]);
-    this.setState({data: newData});
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'POST',
-      data: newTicket,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
+
   getInitialState: function() {
-    return {data: []};
+    return {tickets: []};
   },
-  componentDidMount: function() {
-    this.loadDataFromServer();
-    setInterval(this.loadDataFromServer, this.props.pollInterval);
-  },
+
   render: function() {
     return (
       <div className="probs">
-        <TicketList data={this.state.data} />
-        <TicketForm onTicketSubmit={this.handleTicketSubmit} />
+        <TicketList data={this.data.tickets} />
       </div>
     );
   }
@@ -87,8 +62,13 @@ var TicketList = React.createClass({
   render: function() {
     var ticketNodes = this.props.data.map(function(ticket, index) {
       return (
-        <Ticket author={ticket.author} title={ticket.title} time={ticket.time}  key={index}>
-          {ticket.desc}
+        <Ticket 
+          author={ticket.requester} 
+          title={ticket.title} 
+          time={ticket.createdAt.toString().substring(0, 10)} 
+          desc={ticket.requestMessage} 
+          obj={ticket.objectId}
+          key={index}>
         </Ticket>
       );
     });
@@ -129,8 +109,11 @@ var TicketForm = React.createClass({
   }
 });
 
-ReactDOM.render(
-  <TicketsBox url="/api/tickets" pollInterval={2000} />,
-  document.getElementsByClassName('right-probs')[0]
-);
+window.render = function() {
+  ReactDOM.render(
+    <TicketsBox />,
+    document.getElementsByClassName('right-probs')[0]
+  );
+}
 
+render();

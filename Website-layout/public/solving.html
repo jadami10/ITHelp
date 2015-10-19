@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Condensed:300" />
     <link rel="stylesheet" href="css/solving.css" />
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="https://www.parsecdn.com/js/parse-react.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js"></script>
   </head>
   <body>
@@ -26,6 +29,37 @@
     <div class="right-probs">
     </div>
 
+    <script type="text/javascript">
+    $(document).ready(function() {
+      try {
+        Parse.initialize("Dxf9sHTC4H9iQoYP7FUPmkX8o99KTTJ01O1tBhjK", "oXnaI5OgVYPggkBhyOkxhhI81eb4p9kvSU4a7fRr");
+
+        getAvailableRequests();
+        subscribeToRequests();
+      } catch(err) {
+        alert("TODO: parse not initizlized");
+      }
+
+      // ParseUser.enableRevocableSessionInBackground()
+      // Parse.User._currentUser = new Parse.User();
+      try {
+        pb = PUBNUB({
+          subscribe_key: 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f'
+        });
+      } catch (err) {
+        alert("TODO: not subscribed to request channel")
+      }
+
+      // alert(pb)
+    });
+    </script>
+
     <script type="text/babel" src="scripts/solving.js"></script> 
+
+    <script src="scripts/app.js"></script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/request.js"></script>
+    <script src="scripts/messaging.js"></script>
   </body>
 </html>
