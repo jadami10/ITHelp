@@ -16,19 +16,7 @@ function getSubChannel() {
       // Do something with the returned Parse.Object values
       reqChannel = results[0].get('val');
       console.log("subscribing");
-      try {
-        pb.subscribe({
-          channel: reqChannel,
-          message: function(m){onNewRequest(m)},
-          error: function (error) {
-            // Handle error here
-            alert(JSON.stringify(error));
-          }
-        });
-        console.log("should be subscribed");
-      } catch (err) {
-        alert("TODO: not subscribed to req channel")
-      }
+      subscribeToChannel(reqChannel, onNewRequest);
     },
     error: function(error) {
       alert("Error: " + error.code + " " + error.message);
@@ -43,7 +31,8 @@ function subscribeToRequests() {
 
 // TODO: add code to handle new requests
 function onNewRequest(m) {
-  alert(m)
+  alert("new request");
+  console.log(m);
   // call Hannah's function to add to webpage
 }
 
@@ -54,11 +43,10 @@ function getAvailableRequests() {
   query.equalTo("taken", 0);
   query.find({
     success: function(results) {
-      alert("Successfully retrieved " + results.length + " requests.");
+      console.log("Successfully retrieved " + results.length + " requests.");
       // Do something with the returned Parse.Object values
-      if (results.length > 0) {
-        testObject = results[0];
-      }
+      availableRequests = results;
+      // TODO: return all available requests
     },
     error: function(error) {
       alert("Error: " + error.code + " " + error.message);
@@ -67,16 +55,24 @@ function getAvailableRequests() {
 }
 
 // returns all of your requests
-function getMyRequests() {
+function getMyRequests(doSubscribe) {
   var openRequests = Parse.Object.extend("Request");
   var currentUser = Parse.User.current();
   var query = new Parse.Query(openRequests);
-  query.equalTo("taken", 0);
   query.matchesKeyInQuery("helper", "objectId", currentUser);
   query.find({
     success: function(results) {
+      myRequests = results;
+      if (results.length > 0) {
+        for (var i = 0; i < results.length; i++) {
+          var result = results[i];
+          if (doSubscribe) {
+            subscribeToChat(result);
+          }
+        }
+      }
       console.log("Successfully retrieved " + results.length + " scores.");
-      // Do something with the returned Parse.Object values
+      // TODO: return my requests
     },
     error: function(error) {
       alert("Error: " + error.code + " " + error.message);
@@ -84,30 +80,62 @@ function getMyRequests() {
   });
 }
 
+// check if request is yours
+function checkMyRequest(reqObject, doSubscribe) {
+  var openRequests = Parse.Object.extend("Request");
+  var currentUser = Parse.User.current();
+  var query = new Parse.Query(openRequests);
+  query.matchesKeyInQuery("helper", "objectId", currentUser);
+  query.equalTo("objectId", reqObject.id);
+  query.find({
+    success: function(results) {
+      if (results.length > 0) {
+        console.log(reqObject + " was mine");
+        if (doSubscribe) {
+          subscribeToChat(results[0]);
+          myRequests.push(results[0]);
+        }
+      } else {
+        console.log("someone else grabbed the request");
+        return false;
+      }
+    },
+    error: function(error) {
+      alert("Error: " + error.code + " " + error.message);
+      return false;
+    }
+  });
+}
+
 // take a request
 function takeRequest(requestObject) {
-  requestObject = testObject;
   var currentUser = Parse.User.current();
   if (currentUser) {
       var objectID = requestObject.id;
       requestObject.increment("taken");
       requestObject.save(null, {
         success: function(reqObject) {
-          // Execute any logic that should take place after the object is saved.
-          var takenNum = reqObject.get("taken");
-          if (takenNum == 1) {
-            console.log("grabbed request!");
-          } else {
-            console.log("someone else grabbed the request");
-          }
+          // check that it's actually assigned to you
+          // TODO: set security so not just anybody can hijack here
+          checkMyRequest(reqObject, true);
         },
         error: function(reqObject, error) {
-          // Execute any logic that should take place if the save fails.
-          // error is a Parse.Error with an error code and message.
-          alert('Failed to create new object, with error code: ' + error.message);
+          alert("Failed to create new object with error: " + error.code + " " + error.message);
         }
       });
   } else {
       alert("TODO: handle not being logged in");
   }
+}
+
+// handle creation of new chat
+function subscribeToChat(requestObject) {
+  try {
+    //var channel = requestObject.get("comChannel");
+    var channel = requestObject.id;
+    subscribeToChannel(channel, onMessage);
+  } catch(err) {
+    console.log("Could not subscribe: " + err);
+  }
+
 }
