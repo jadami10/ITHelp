@@ -166,7 +166,6 @@
 				684CEA7A1BC5A886008460C6 /* MainTabController.swift */,
 				684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */,
 				684CEA891BC5CC9C008460C6 /* home.storyboard */,
-				6892F8321BC6C29000EDC4F0 /* tickets.storyboard */,
 				6892F8221BC6A53C00EDC4F0 /* AboutViewController.swift */,
 			);
 			name = HomeView;
@@ -286,6 +285,7 @@
 				684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */,
 				6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */,
 				E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */,
+				6892F8321BC6C29000EDC4F0 /* tickets.storyboard */,
 			);
 			name = Tickets;
 			sourceTree = "<group>";

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE077BD03345C232ED11F39976D405DD"
-               BuildableName = "Bolts.framework"
-               BlueprintName = "Bolts"
+               BlueprintIdentifier = "4B23C7D6472ECBB05E10EB515117A479"
+               BuildableName = "CocoaLumberjack.framework"
+               BlueprintName = "CocoaLumberjack"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE077BD03345C232ED11F39976D405DD"
-            BuildableName = "Bolts.framework"
-            BlueprintName = "Bolts"
+            BlueprintIdentifier = "4B23C7D6472ECBB05E10EB515117A479"
+            BuildableName = "CocoaLumberjack.framework"
+            BlueprintName = "CocoaLumberjack"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -60,6 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4B23C7D6472ECBB05E10EB515117A479"
+            BuildableName = "CocoaLumberjack.framework"
+            BlueprintName = "CocoaLumberjack"
+            ReferencedContainer = "container:Pods.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

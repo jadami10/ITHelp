@@ -26,6 +26,10 @@ class TicketHandler{
                 if let objects = objects as [PFObject]! {
                     petitions = []
                     for object in objects {
+                        petitions.append(object)
+                        //add(object)
+                    }
+                    for object in petitions{
                         add(object)
                     }
                 }
