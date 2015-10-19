@@ -9,6 +9,7 @@ body {
   font-family: Lato, sans-serif;
   min-width: 1000px;
   color: #4a4a4a;
+  overflow: hidden;
 }
 .fa {
   margin-right: 10px;
@@ -67,71 +68,79 @@ a {
   font-size: 14px;
   font-style: italic;
 }
-.right-probs {
+.right-chat {
   position: absolute;
   margin-left: 20%;
   margin-top: 5%;
   width: 78%;
   font-weight: 300;
   color: #666;
+  height: 100%;
 }
-.right-probs .probs .title {
-  font-size: 16px;
-  font-weight: 400;
+.chat-box {
+  height: 100%;
 }
-.right-probs .prob {
+.right-chat .chat-content {
   background: #fff;
   width: 100%;
-  min-height: 100px;
-  padding: 0;
+  height: 70%;
   transition: all 0.2s ease;
   margin-bottom: 10px;
   background-repeat: no-repeat;
   background-position: 100%;
   box-shadow: 0 2px 0 rgba(0,0,0,0.15);
   border-radius: 3px;
-  cursor: pointer;
-}
-.right-probs .prob:hover {
-  box-shadow: 0 3px 0 rgba(0,0,0,0.1);
-  transform: translateY(-1px);
-}
-.right-probs .prob .wrapper {
   padding: 25px 20px;
+  overflow: scroll;
 }
-.right-probs .prob .title {
+.right-chat .chat-content .msg-block {
+  overflow: hidden;
   margin-bottom: 15px;
 }
-.right-probs .prob .tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 400;
+.right-chat .chat-content .msg-block .msg {
   color: #fff;
-  text-align: center;
-  border-radius: 3px;
-  padding: 7px 7px;
-  transition: all 0.3s ease;
-  margin-right: 5px;
+  padding: 14px 14px;
+  border-radius: 4px;
+  letter-spacing: .5px;
+  font-size: 16px;
 }
-.right-probs .prob .adobe {
-  background-color: #e77b7b;
+.right-chat .chat-content .msg-block .received {
+  background-color: #60c8d1;
+  float: left;
 }
-.right-probs .prob .adobe:after {
-  content: 'Adobe';
-}
-.right-probs .prob .software {
-  background-color: #9de7ee;
-}
-.right-probs .prob .software:after {
-  content: 'Software';
-}
-.right-probs .prob .hardware {
-  background-color: #9dcaee;
-}
-.right-probs .prob .hardware:after {
-  content: 'Hardware';
-}
-.right-probs .prob .requester {
+.right-chat .chat-content .msg-block .sent {
+  background-color: #aaa;
   float: right;
-  font-size: 14px;
+}
+.right-chat .chat-form {
+  background: #fff;
+  width: 100%;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-position: 100%;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+  border-radius: 3px;
+  font-size: 20px;
+}
+.right-chat .chat-form .input-text {
+  width: 90%;
+  height: 100%;
+  border: none;
+  font-size: 20px;
+  padding-left: 20px;
+}
+.right-chat .chat-form .send-text {
+  width: 10%;
+  height: 100%;
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-align: center;
+  background-color: #60c8d1;
+  float: right;
+  line-height: 50px;
+  transition: all 0.2s ease;
+}
+.right-chat .chat-form .send-text:hover {
+  background-color: #7ddbe4;
 }

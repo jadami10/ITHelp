@@ -1,6 +1,7 @@
 var Ticket = React.createClass({
   handleClick: function() {
     // goto chatting session
+    window.location="../chatting.html";
   },
   render: function() {
     return (
@@ -76,7 +77,7 @@ var TicketList = React.createClass({
       );
     });
     return (
-      <div className="ticketList">
+      <div className="ticket-list">
         {ticketNodes}
       </div>
     );
@@ -97,7 +98,7 @@ var TicketForm = React.createClass({
   },
   render: function() {
     return (
-      <form className="ticketForm" onSubmit={this.handleSubmit}>
+      <form className="ticket-form" onSubmit={this.handleSubmit}>
         <input type="text" placeholder="name" ref="author" />
         <input type="text" placeholder="title" ref="title" />
         <input type="submit" value="Post" />
