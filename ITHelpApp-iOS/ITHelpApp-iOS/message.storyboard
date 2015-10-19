@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Messages-->
+        <!--Messaging-->
         <scene sceneID="Kgf-f8-krk">
             <objects>
                 <viewController storyboardIdentifier="textTable" id="Bcm-kV-6QM" customClass="messaging" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -81,7 +81,6 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Messages" image="message.png" id="QOe-Vs-Ule"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="messageTextField" destination="aZq-hB-M3G" id="P6j-sP-rrZ"/>
@@ -93,7 +92,4 @@
             <point key="canvasLocation" x="210" y="116"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="message.png" width="25" height="25"/>
-    </resources>
 </document>

@@ -45,6 +45,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         requestObject["requestMessage"] = requestTextView.text
         requestObject["title"] = titleTextField.text
         requestObject["ticket"] = 0
+        requestObject["taken"] = 0
         RequestHandler.postRequest(requestObject, completion: checkRequest, successfullySavedRequest: saveRequest)
     }
 
