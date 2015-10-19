@@ -21,8 +21,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view, typically from a nib.
-        let image = UIImage(named: "AuthHeader.png");
-        headerImage.image = image;
+        //let image = UIImage(named: "AuthHeader.png");
+        //headerImage.image = image;
     }
 
     override func didReceiveMemoryWarning() {
