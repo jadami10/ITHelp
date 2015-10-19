@@ -8,49 +8,80 @@ Parse.Cloud.define("hello", function(request, response) {
   response.success("Hello world!");
 });
 
-var message = {
-  "text" : "new request!"
-};
-
 var req_channel = "RequestChannel";
 
+// publish request to pubnub after it's added
 Parse.Cloud.afterSave("Request", function(request) {
-  /*
-  // Get the movie id for the Review
-  var movieId = request.object.get("movie").id;
-  // Query the Movie represented by this review
-  var Movie = Parse.Object.extend("Movie");
-  var query = new Parse.Query(Movie);
-  query.get(movieId).then(function(movie) {
-    // Increment the reviews field on the Movie object
-    movie.increment("reviews");
-    movie.save();
-  }, function(error) {
-    throw "Got an error " + error.code + " : " + error.message;
-  });
-  */
 
   // send to pubnub
-  sendToRequestChannel();
+  var taker = request.user;
+  var taken = request.object.get("taken");
+  var helper = request.object.get("helper");
+  var reqID = request.object.id;
+  if (taken == 0) {
+    console.log("publishing new request");
+    publishRequest(reqID);
+  } else if (taken == 1 && taker != null && helper == null) {
+    console.log("someone taking request");
+    request.object.set("helper", taker);
+    request.object.save();
+  } else {
+    console.log("did nothing -_-");
+  }
+
 });
 
-function sendToRequestChannel() {
+Parse.Cloud.afterSave("Message", function(message) {
+
+  // send to pubnub
+  var channel = message.get("channel");
+  sendMessage(channel, message);
+
+});
+
+// send a message to a channel
+function sendMessage(channel, message) {
   Parse.Cloud.httpRequest({
-      url: 'http://pubsub.pubnub.com/publish/' +
-           pubnub.publish_key   +   '/' +
-           pubnub.subscribe_key + '/0/' +
-           req_channel          + '/0/' +
-           encodeURIComponent(JSON.stringify(message)),
+    url: 'http://pubsub.pubnub.com/publish/' +
+    pubnub.publish_key   +   '/' +
+    pubnub.subscribe_key + '/0/' +
+    channel          + '/0/' +
+    encodeURIComponent(JSON.stringify(message)),
 
-      // SUCCESS CALLBACK
-      success: function(httpResponse) {
-          console.log(httpResponse.text);
-          // httpResponse.text -> [1,"Sent","14090206970886734"]
-      },
+    // SUCCESS CALLBACK
+    success: function(httpResponse) {
+      console.log("Message sent succefully");
+      console.log(httpResponse.text);
+      // httpResponse.text -> [1,"Sent","14090206970886734"]
+    },
 
-      // You should consider retrying here when things misfire
-      error: function(httpResponse) {
-          console.error('Request failed ' + httpResponse.status);
-      }
+    // You should consider retrying here when things misfire
+    error: function(httpResponse) {
+      console.error('Request failed ' + httpResponse.status);
+    }
+  });
+}
+
+// publishes request to IT helpers
+function publishRequest(requestID) {
+  var myUrl = 'https://pubsub.pubnub.com/publish/' +
+  pubnub.publish_key   +   '/' +
+  pubnub.subscribe_key + '/0/' +
+  req_channel          + '/0/' +
+  '"' + requestID + '"';
+  console.log(myUrl);
+  Parse.Cloud.httpRequest({
+    url: myUrl,
+
+    // SUCCESS CALLBACK
+    success: function(httpResponse) {
+      console.log("success: " + httpResponse.text);
+      // httpResponse.text -> [1,"Sent","14090206970886734"]
+    },
+
+    // You should consider retrying here when things misfire
+    error: function(httpResponse) {
+      console.error('Request failed ' + httpResponse.status);
+    }
   });
 }

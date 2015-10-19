@@ -93,7 +93,7 @@ $(function () {
     });
 
     function init() {
-        flg.logt = 0
+        flg.logt = 0;
     }
 
     function initub() {
