@@ -7,17 +7,30 @@
 //
 
 import UIKit
+import Parse
+import PubNub
 
-class TicketTableViewController: UITableViewController {
+class TicketTableViewController: UITableViewController, PNObjectEventListener {
+    
+    var tickets = [PFObject]()
+    var reqHandler: PubnubHandler?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (reqHandler == nil) {
+            reqHandler = PubnubHandler(pubKey: AppConstants.pubnubPubKey, subKey: AppConstants.pubnubSubKey, comChannel: TicketHandler.getReqChannel())
+            reqHandler?.addHandler(self)
+        }
         TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
+        print(message)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,28 +46,34 @@ class TicketTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 2
+        return tickets.count + 1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell: UITableViewCell!
         if indexPath.row == 0 {
-            cell = tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
+            return tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
         } else {
-            cell = tableView.dequeueReusableCellWithIdentifier("TicketTableCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableCell", forIndexPath: indexPath) as! TicketTableCellTableViewCell
+            let ticketObject = tickets[indexPath.row - 1]
+            cell.ticketTitleField.text = ticketObject["title"] as! String
+            cell.ticketTextArea.text = ticketObject["requestMessage"] as! String
+            return cell
         }
-        
-
-        // Configure the cell...
-
-        return cell
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (indexPath.row == 0) {
+            return 40
+        } else {
+            return 125
+        }
     }
     
     func addTickets(object: PFObject) -> Void{
-        var tickets = [PFObject]()
         tickets.append(object)
-        print(tickets)
+        //print(object)
+        self.tableView.reloadData()
     }
     /*
     // Override to support conditional editing of the table view.
