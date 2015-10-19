@@ -15,13 +15,17 @@ class TicketTableViewController: UITableViewController, PNObjectEventListener {
     var tickets = [PFObject]()
     var reqHandler: PubnubHandler?
     
+    override func viewDidAppear(animated: Bool) {
+        tickets = []
+        TicketHandler.getTickets(addTickets)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         if (reqHandler == nil) {
             reqHandler = PubnubHandler(pubKey: AppConstants.pubnubPubKey, subKey: AppConstants.pubnubSubKey, comChannel: TicketHandler.getReqChannel())
             reqHandler?.addHandler(self)
         }
-        TicketHandler.getTickets(addTickets)
+        //TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
