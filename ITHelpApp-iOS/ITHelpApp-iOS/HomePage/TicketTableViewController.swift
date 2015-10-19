@@ -8,12 +8,10 @@
 
 import UIKit
 import Parse
-import PubNub
 
-class TicketTableViewController: UITableViewController, PNObjectEventListener {
+class TicketTableViewController: UITableViewController {
     
     var tickets = [PFObject]()
-    var reqHandler: PubnubHandler?
     
     override func viewWillAppear(animated: Bool) {
         tickets = []
@@ -23,20 +21,12 @@ class TicketTableViewController: UITableViewController, PNObjectEventListener {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (reqHandler == nil) {
-            reqHandler = PubnubHandler(pubKey: AppConstants.pubnubPubKey, subKey: AppConstants.pubnubSubKey, comChannel: TicketHandler.getReqChannel())
-            reqHandler?.addHandler(self)
-        }
         //TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
-        print(message)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +71,26 @@ class TicketTableViewController: UITableViewController, PNObjectEventListener {
         //print(object)
         self.tableView.reloadData()
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("showing messages")
+        if let cellIndex = tableView.indexPathForSelectedRow?.row {
+            print("Index: %d", cellIndex)
+            let curTicket = tickets[cellIndex - 1]
+            if let ticketId = curTicket.objectId {
+                let msgViewController = segue.destinationViewController as! MessageViewController
+                msgViewController.ticketID = ticketId;
+            } else {
+                print("Could not get ticketID")
+            }
+            
+            //destination.blogName = swiftBlogs[blogIndex]
+        } else {
+            print("could not get ticket index")
+        }
+        //msgViewController.ticketID =
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
