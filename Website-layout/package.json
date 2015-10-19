@@ -1,0 +1,27 @@
+{
+  "name": "BriskIT",
+  "version": "0.0.0",
+  "description": "briskit web",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.4.3",
+    "express": "^4.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jadami10/ITHelp.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "hanax",
+  "homepage": "https://github.com/jadami10/ITHelp",
+  "engines" : {
+    "node" : "0.12.x"
+  }
+}
