@@ -76,10 +76,10 @@ class TicketTableViewController: UITableViewController {
         print("showing messages")
         if let cellIndex = tableView.indexPathForSelectedRow?.row {
             print("Index: %d", cellIndex)
-            let curTicket = tickets[cellIndex - 1]
-            if let ticketId = curTicket.objectId {
+            if tickets.count > (cellIndex - 1) {
+                let ticketId = tickets[cellIndex - 1]
                 let msgViewController = segue.destinationViewController as! MessageViewController
-                msgViewController.ticketID = ticketId;
+                msgViewController.ticket = ticketId;
             } else {
                 print("Could not get ticketID")
             }

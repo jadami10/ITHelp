@@ -18,7 +18,7 @@ class MessageHandler {
             // afterSave will send to pubnub
             (success: Bool, error: NSError?) -> Void in
             if (success) {
-                print("good request!")
+                print("message sent!")
             } else {
                 completion(result: error)
             }

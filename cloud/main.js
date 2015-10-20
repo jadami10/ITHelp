@@ -34,19 +34,32 @@ Parse.Cloud.afterSave("Request", function(request) {
 Parse.Cloud.afterSave("Message", function(message) {
 
   // send to pubnub
-  var channel = message.get("channel");
-  sendMessage(channel, message);
+  var channel = message.object.get("request").id;
+  sendMessage(channel, message.object);
 
 });
 
+//https://pubsub.pubnub.com/publish/pub-c-0239b592-0603-4849-9889-ce70e8d18cb7/sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f/0/RK7csydM2l/0/%7B%22sender%22%3A%22jadami10%22%2C%22message%22%3A%22test3%22%7D
 // send a message to a channel
 function sendMessage(channel, message) {
+
+  var messageObject = {
+    "sender":message.get("sender"),
+    "message":message.get("message")
+  };
+
+  var toSend = encodeURIComponent(JSON.stringify(messageObject));
+
+  var myUrl = 'https://pubsub.pubnub.com/publish/' +
+  pubnub.publish_key   +   '/' +
+  pubnub.subscribe_key + '/0/' +
+  channel          + '/0/' +
+  toSend;
+
+  console.log(myUrl);
+
   Parse.Cloud.httpRequest({
-    url: 'http://pubsub.pubnub.com/publish/' +
-    pubnub.publish_key   +   '/' +
-    pubnub.subscribe_key + '/0/' +
-    channel          + '/0/' +
-    encodeURIComponent(JSON.stringify(message)),
+    url: myUrl,
 
     // SUCCESS CALLBACK
     success: function(httpResponse) {
