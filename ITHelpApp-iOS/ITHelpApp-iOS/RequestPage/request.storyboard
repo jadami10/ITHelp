@@ -50,7 +50,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="middleTruncation" id="JcI-nh-eIm">
-                                <rect key="frame" x="-2" y="600" width="325" height="71"/>
+                                <rect key="frame" x="-2" y="449" width="325" height="71"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <state key="normal" title="Request!" image="requestbutton.png"/>
                                 <connections>
