@@ -17,20 +17,22 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var textTable: UITableView!
+    @IBOutlet weak var sendButton: UIButton!
     
     var messages: [Message] = []
 
     
     @IBAction func refreshMessage() {
         queryMessage((PFUser.currentUser()?.username)!)
-        textTable.reloadData()
-        print(messages)
+        //textTable.reloadData()
+        //print(messages)
 
 
     }
     
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
+        changeSendButtonState(false)
     }
     
     override func viewDidLoad() {
@@ -60,6 +62,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         MessageHandler.postMessage(messageObject, completion: checkMessage)
         //refreshMessage()
         messageTextField.text = ""
+        changeSendButtonState(false)
     }
     
 
@@ -109,6 +112,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func queryMessage(username:String){
         let query = PFQuery(className:"Message")
         query.whereKey("sender", equalTo:username)
+        query.whereKey("request", equalTo: ticket!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
@@ -123,6 +127,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                         self.messages.append(newMessage)
                     }
                 }
+                self.textTable.reloadData()
             } else {
                 // Log details of the failure
                 print("Error: \(error!))")
@@ -132,7 +137,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
         print("new message!")
-        print(message.data.message)
         if let sender = message.data.message["sender"] as? String, msg = message.data.message["message"] as? String {
             let newMessage = Message(sender: sender, message: msg)
             messages.append(newMessage)
@@ -141,5 +145,24 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             print("bad message")
         }
     }
+    
+    @IBAction func messageEditingFinished(sender: AnyObject) {
+        if let msg = messageTextField.text {
+            if !msg.isEmpty {
+                changeSendButtonState(true)
+                return
+            }
+        }
+        changeSendButtonState(false)
+    }
+    
+    func changeSendButtonState(active: Bool) {
+        if (active) {
+            sendButton.enabled = true
+        } else {
+            sendButton.enabled = false
+        }
+    }
+    
 
 }

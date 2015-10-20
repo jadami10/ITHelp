@@ -13,15 +13,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="aZq-hB-M3G">
-                                <rect key="frame" x="20" y="487" width="211" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
+                                <rect key="frame" x="11" y="477" width="211" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="valueChanged" id="UCV-iS-8ed"/>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingDidEnd" id="c0Q-1D-jyb"/>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingChanged" id="ms8-sG-ruB"/>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingDidBegin" id="s8f-Jz-d5U"/>
+                                </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="31f-n9-iaF">
                                 <rect key="frame" x="0.0" y="20" width="320" height="449"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -60,8 +66,8 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="mCR-Sf-GyT">
-                                <rect key="frame" x="271" y="487" width="49" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="271" y="477" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <state key="normal" title="refresh"/>
                                 <connections>
@@ -69,8 +75,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y64-nP-kVt">
-                                <rect key="frame" x="195" y="487" width="36" height="30"/>
-                                <autoresizingMask key="autoresizingMask"/>
+                                <rect key="frame" x="230" y="477" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <animations/>
                                 <state key="normal" title="Send"/>
                                 <connections>
@@ -84,6 +90,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="messageTextField" destination="aZq-hB-M3G" id="P6j-sP-rrZ"/>
+                        <outlet property="sendButton" destination="y64-nP-kVt" id="6ln-NG-Fzb"/>
                         <outlet property="textTable" destination="31f-n9-iaF" id="fxl-iP-pt1"/>
                     </connections>
                 </viewController>

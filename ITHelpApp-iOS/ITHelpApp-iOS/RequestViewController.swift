@@ -39,14 +39,30 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     }
 
     @IBAction func requestPressed(sender: AnyObject) {
-        let currentUser = PFUser.currentUser()
-        let requestObject = PFObject(className:"Request")
-        requestObject["requester"] = currentUser?.username
-        requestObject["requestMessage"] = requestTextView.text
-        requestObject["title"] = titleTextField.text
-        requestObject["ticket"] = 0
-        requestObject["taken"] = 0
-        RequestHandler.postRequest(requestObject, completion: checkRequest, successfullySavedRequest: saveRequest)
+        
+        var goodRequest = true
+        let ticketTitle = titleTextField.text
+        let ticketMsg = requestTextView.text
+        
+        if (ticketTitle == nil || ticketTitle!.isEmpty) {
+            goodRequest = false
+            titleTextField.shakeTextField()
+        }
+        if (ticketMsg == nil || ticketMsg!.isEmpty) {
+            goodRequest = false
+            requestTextView.shakeTextView()
+        }
+        
+        if (goodRequest) {
+            let currentUser = PFUser.currentUser()
+            let requestObject = PFObject(className:"Request")
+            requestObject["requester"] = currentUser?.username
+            requestObject["requestMessage"] = ticketMsg
+            requestObject["title"] = ticketTitle
+            requestObject["ticket"] = 0
+            requestObject["taken"] = 0
+            RequestHandler.postRequest(requestObject, completion: checkRequest, successfullySavedRequest: saveRequest)
+        }
     }
 
     
@@ -71,7 +87,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     func saveRequest(request: PFObject) -> Void{
-        var requestID = request.objectId! as String
+        //let requestID = request.objectId! as String
     }
     
     func presentAlert(title: NSString, message: NSString) {
