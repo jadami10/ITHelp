@@ -41,6 +41,7 @@
 		6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */; settings = {ASSET_TAGS = (); }; };
 		6896F5451BC4A19E00ACA509 /* LoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896F5441BC4A19E00ACA509 /* LoginHandler.swift */; settings = {ASSET_TAGS = (); }; };
+		E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3D1BD5DC10002B33A9 /* Message-50.png */; settings = {ASSET_TAGS = (); }; };
 		E1192B921BCDDC4600DC284D /* black-slr-camera-256.png in Resources */ = {isa = PBXBuildFile; fileRef = E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */; settings = {ASSET_TAGS = (); }; };
 		E1192B951BCDE13600DC284D /* message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1192B941BCDE13600DC284D /* message.storyboard */; settings = {ASSET_TAGS = (); }; };
 		E1192B971BCDE44D00DC284D /* request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1192B961BCDE44D00DC284D /* request.storyboard */; settings = {ASSET_TAGS = (); }; };
@@ -116,6 +117,7 @@
 		6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = question_mark_filled.png; path = "ITHelpApp-iOS/Resources/Images/question_mark_filled.png"; sourceTree = "<group>"; };
 		6896F5441BC4A19E00ACA509 /* LoginHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginHandler.swift; sourceTree = "<group>"; };
 		9D3DE95869BC1D53A703A47C /* Pods-ITHelpApp-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		E1084B3D1BD5DC10002B33A9 /* Message-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Message-50.png"; path = "ITHelpApp-iOS/Resources/Images/Message-50.png"; sourceTree = "<group>"; };
 		E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "black-slr-camera-256.png"; path = "ITHelpApp-iOS/Resources/Images/black-slr-camera-256.png"; sourceTree = "<group>"; };
 		E1192B941BCDE13600DC284D /* message.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = message.storyboard; sourceTree = "<group>"; };
 		E1192B961BCDE44D00DC284D /* request.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = request.storyboard; path = RequestPage/request.storyboard; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E1084B3D1BD5DC10002B33A9 /* Message-50.png */,
 				E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */,
 				E1F5AC011BD5A551000A0F36 /* requestbutton.png */,
 				6882CC2F1BCEE9B4002D9877 /* message.png */,
@@ -452,6 +455,7 @@
 				6882CC301BCEE9B4002D9877 /* message.png in Resources */,
 				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
 				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
+				E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */,
 				E1192B951BCDE13600DC284D /* message.storyboard in Resources */,
 				6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */,
 				E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */,
