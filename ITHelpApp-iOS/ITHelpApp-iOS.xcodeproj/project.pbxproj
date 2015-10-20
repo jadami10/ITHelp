@@ -50,6 +50,7 @@
 		E177DF4B1BCF2E4900D7A481 /* TicketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC011BD5A551000A0F36 /* requestbutton.png */; settings = {ASSET_TAGS = (); }; };
 		E1F5AC041BD5A9B2000A0F36 /* briskITlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */; settings = {ASSET_TAGS = (); }; };
+		E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +125,7 @@
 		E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketHandler.swift; sourceTree = "<group>"; };
 		E1F5AC011BD5A551000A0F36 /* requestbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = requestbutton.png; path = "ITHelpApp-iOS/Resources/Images/requestbutton.png"; sourceTree = "<group>"; };
 		E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = briskITlogo.png; path = "ITHelpApp-iOS/Resources/Images/briskITlogo.png"; sourceTree = SOURCE_ROOT; };
+		E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginbutton.png; path = "ITHelpApp-iOS/Resources/Images/loginbutton.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +249,7 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */,
 				E1F5AC011BD5A551000A0F36 /* requestbutton.png */,
 				6882CC2F1BCEE9B4002D9877 /* message.png */,
 				E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */,
@@ -451,6 +454,7 @@
 				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
 				E1192B951BCDE13600DC284D /* message.storyboard in Resources */,
 				6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */,
+				E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
