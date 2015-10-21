@@ -5,12 +5,13 @@ var Ticket = React.createClass({
   },
   submitHelp: function() {
     takeRequest(this.props.ticketObj);
-    ticketsBox.getTickets();
+    //ticketsBox.getTickets();
+    $(this.refs.curTicket).fadeOut();
     updateMyRequestNumber();
   },
   render: function() {
     return (
-      <div className="prob" onClick={this.handleClick} ref="ticket">
+      <div className="prob" onClick={this.handleClick} ref="curTicket">
         <div className="wrapper">
           <div className="title"> {this.props.title} </div>
           <div className="desc" ref="desc">
@@ -73,6 +74,7 @@ var TicketsBox = React.createClass({
   },
 
   getTickets: function() {
+    console.log("regetting.....");
     var openRequests = Parse.Object.extend("Request");
     var query = new Parse.Query(openRequests);
     var _this = this;
