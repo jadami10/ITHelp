@@ -24,8 +24,6 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = true
         // Do any additional setup after loading the view, typically from a nib.
-        let image = UIImage(named: "AuthHeader.png");
-        headerImage.image = image;
         
         checkTextFieldsList.append(firstNameTextField)
         checkTextFieldsList.append(lastNameTextField)
