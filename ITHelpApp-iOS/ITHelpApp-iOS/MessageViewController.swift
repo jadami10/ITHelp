@@ -101,6 +101,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(textTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = textTable.dequeueReusableCellWithIdentifier("cell")
         cell?.textLabel?.text = messages[indexPath.row].message
+        cell?.textLabel?.numberOfLines = 10
+        cell?.textLabel?.lineBreakMode =  NSLineBreakMode.ByWordWrapping
         //cell?.detailTextLabel?.text = messages[indexPath.row].sender
         
         //change text color based on sender - need to be written into a method or custom cell later

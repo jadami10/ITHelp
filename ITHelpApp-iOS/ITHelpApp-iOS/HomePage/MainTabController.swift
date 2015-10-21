@@ -22,7 +22,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
         print("request notification!")
         print(message.data.message)
-        self.presentAlert("Request Taken!", message: "Go to your tickets to being chatting!")
+        self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!")
         /*
         if let curController = self.selectedViewController {
             if curController is TicketTableViewController
