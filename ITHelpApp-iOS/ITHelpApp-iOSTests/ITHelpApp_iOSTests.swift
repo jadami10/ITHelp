@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Parse
 @testable import ITHelpApp_iOS
 
 class ITHelpApp_iOSTests: XCTestCase {

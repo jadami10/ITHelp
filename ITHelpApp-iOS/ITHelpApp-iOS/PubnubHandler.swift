@@ -16,6 +16,7 @@ class PubnubHandler {
     var channel: String
     
     init(pubKey: String, subKey: String, comChannel: String) {
+        print("Connecting to: " + comChannel)
         config = PNConfiguration(
             publishKey: pubKey,
             subscribeKey: subKey)

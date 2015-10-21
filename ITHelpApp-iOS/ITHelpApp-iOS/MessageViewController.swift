@@ -111,7 +111,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func queryMessage(username:String){
         let query = PFQuery(className:"Message")
-        query.whereKey("sender", equalTo:username)
+        //query.whereKey("sender", equalTo:username)
         query.whereKey("request", equalTo: ticket!)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in

@@ -18,15 +18,17 @@ Parse.Cloud.afterSave("Request", function(request) {
   var taken = request.object.get("taken");
   var helper = request.object.get("helper");
   var reqID = request.object.id;
+  var requester = request.object.get("requester");
   if (taken == 0) {
     console.log("publishing new request");
-    publishRequest(reqID);
+    publishRequest(req_channel, reqID);
   } else if (taken == 1 && taker != null && helper == null) {
     console.log("someone taking request");
     request.object.set("helper", taker);
     request.object.save();
   } else {
-    console.log("did nothing -_-");
+    console.log("notify app!");
+    publishRequest(requester, reqID);
   }
 
 });
@@ -76,7 +78,7 @@ function sendMessage(channel, message) {
 }
 
 // publishes request to IT helpers
-function publishRequest(requestID) {
+function publishRequest(req_channel, requestID) {
   var myUrl = 'https://pubsub.pubnub.com/publish/' +
   pubnub.publish_key   +   '/' +
   pubnub.subscribe_key + '/0/' +
