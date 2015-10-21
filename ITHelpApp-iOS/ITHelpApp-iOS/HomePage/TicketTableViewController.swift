@@ -13,6 +13,7 @@ class TicketTableViewController: UITableViewController {
     
     var tickets = [PFObject]()
     
+
     override func viewWillAppear(animated: Bool) {
         tickets = []
         TicketHandler.getTickets(addTickets)
