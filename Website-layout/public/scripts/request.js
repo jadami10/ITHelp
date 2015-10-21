@@ -110,10 +110,6 @@ function checkMyRequest(reqObject, doSubscribe) {
 
 // take a request
 function takeRequest(requestObject) {
-  Parse.User.logIn("hannah", "hannah", {
-    success: function(user) { console.log("logged in") },
-    error: function(user, err) {}
-  });
 
   var currentUser = Parse.User.current();
 
