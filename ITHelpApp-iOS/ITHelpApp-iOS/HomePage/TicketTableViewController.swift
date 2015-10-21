@@ -54,11 +54,11 @@ class TicketTableViewController: UITableViewController {
             let ticketObject = tickets[indexPath.row - 1]
             cell.ticketTitleField.text = ticketObject["title"] as! String
             cell.ticketTextArea.text = ticketObject["requestMessage"] as! String
-            if ticketObject["helper"] != nil {
-                cell.portaitImageView.image = UIImage(named: "Profile.png")
-            } else {
-                cell.portaitImageView.image = UIImage(named: "question_mark_filled.png")
-            }
+            //if ticketObject["helper"] != nil {
+                //cell.portaitImageView.image = UIImage(named: "Profile.png")
+            //} else {
+                //cell.portaitImageView.image = UIImage(named: "question_mark_filled.png")
+            //}
             return cell
         }
     }

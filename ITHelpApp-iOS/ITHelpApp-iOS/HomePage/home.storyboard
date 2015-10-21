@@ -21,7 +21,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="ydn-6i-tpd">
@@ -41,10 +41,10 @@
                                 <animations/>
                                 <gestureRecognizers/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="0.62352941179999999" green="0.84705882349999995" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuthHeader.png" id="hkD-k9-ozX">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="briskit_title.png" id="hkD-k9-ozX">
                                 <rect key="frame" x="40" y="20" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <animations/>
@@ -63,7 +63,7 @@
                             </label>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.34901960780000002" green="0.75686274509999996" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile.png" id="ooZ-0m-bOV"/>
                     <connections>
@@ -164,8 +164,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AuthHeader.png" width="265" height="53"/>
         <image name="Profile.png" width="25" height="25"/>
+        <image name="briskit_title.png" width="600" height="279"/>
         <image name="info.png" width="25" height="25"/>
     </resources>
 </document>
