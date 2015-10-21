@@ -56,6 +56,7 @@ var MsgList = React.createClass({
     });
 
     if (this.props.additionalData) {
+      console.log("addtionalData!!");
       var additionalMsgNodes = this.props.additionalData.map(function(msg, index) {
         return (
           <Msg source={msg.sender} key={index}>
@@ -88,7 +89,9 @@ var ChatBox = React.createClass({
 
   addMsg: function(message) {
     var data = this.state.additionalData;
-    var newData = data.concat([message]);    
+    var newData = data.concat([message]);
+    
+    console.log(this.setState({additionalData: newData}));
   },
 
   getMsg: function() {
@@ -99,6 +102,9 @@ var ChatBox = React.createClass({
     reQuery.equalTo("objectId", $.urlParam("id"));
     reQuery.find({
       success: function(data) {
+        console.log("receive request query");
+        console.log(data);
+
         _this.setState({requestObj: data[0]});
 
         var myMsgs = Parse.Object.extend("Message");
@@ -211,3 +217,4 @@ var updateMsg = function(message) {
 }
 
 window.updateMsg = updateMsg;
+

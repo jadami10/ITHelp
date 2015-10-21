@@ -11,11 +11,7 @@ var NaviBox = React.createClass({
   },
 
   getMyTicketsNumber: function() {
-    Parse.User.logIn("hannah", "hannah", {
-      success: function(user) { console.log("logged in") },
-      error: function(user, err) {}
-    });
-  
+
     var openRequests = Parse.Object.extend("Request");
     var currentUser = Parse.User.current();
     var query = new Parse.Query(openRequests);
