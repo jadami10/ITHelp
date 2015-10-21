@@ -1,7 +1,8 @@
 var Ticket = React.createClass({
   handleClick: function() {
     // goto chatting session
-    window.location="../chatting.html";
+    
+    window.location="../chatting.html?id=" + this.props.id;
   },
   render: function() {
     return (
@@ -19,41 +20,69 @@ var Ticket = React.createClass({
   }
 });
 
-var TicketsBox = React.createClass({
-  mixins: [ParseReact.Mixin], // Enable query subscriptions
-
-  observe: function() {
-    return {
-      tickets: new Parse.Query(Parse.Object.extend("Request")).matchesKeyInQuery("helper", "objectId", Parse.User.current())
-    };
-  },
-
-  getInitialState: function() {
-    return {tickets: []};
-  },
-  componentDidMount: function() {
-  },
-  render: function() {
-    return (
-      <div className="probs">
-        <TicketList data={this.data.tickets} />
-      </div>
-    );
-  }
-});
-
 var TicketList = React.createClass({
   render: function() {
-    var ticketNodes = this.props.data.map(function(ticket, index) {
+    var ticketNodes = this.props.tickets.map(function(ticket, index) {
       return (
-        <Ticket author={ticket.author} title={ticket.title} time={ticket.time}  key={index}>
-          {ticket.desc}
+        <Ticket 
+          author={ticket.get("requester")} 
+          title={ticket.get("title")} 
+          time={ticket.get("createdAt").toString().substring(0, 10)} 
+          id={ticket.id}
+          key={index}>
+          {ticket.get("requestMessage")}
         </Ticket>
       );
     });
     return (
       <div className="ticket-list">
         {ticketNodes}
+      </div>
+    );
+  }
+});
+
+var TicketsBox = React.createClass({
+
+  getInitialState: function() {
+    return {data: []};
+  },
+
+  getTickets: function() {
+    var openRequests = Parse.Object.extend("Request");
+    var currentUser = Parse.User.current();
+    var query = new Parse.Query(openRequests);
+    var _this = this;
+
+    query.matchesKeyInQuery("helper", "objectId", currentUser);
+    query.find({
+      success: function(data) {
+        myRequests = data;
+        if (data.length > 0) {
+          for (var i = 0; i < data.length; i++) {
+            subscribeToChat(data[i]);
+            // if (doSubscribe) {
+            //   subscribeToChat(result);
+            // }
+          }
+        }
+        console.log("Successfully retrieved " + data.length + " scores.");
+        _this.setState({data: data});
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+  },
+
+  componentDidMount: function() {
+    this.getTickets();
+  },
+
+  render: function() {
+    return (
+      <div className="probs">
+        <TicketList tickets={this.state.data} />
       </div>
     );
   }
