@@ -99,10 +99,23 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(textTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //
         let cell = textTable.dequeueReusableCellWithIdentifier("cell")
         cell?.textLabel?.text = messages[indexPath.row].message
-        cell?.detailTextLabel?.text = messages[indexPath.row].sender
+        //cell?.detailTextLabel?.text = messages[indexPath.row].sender
+        
+        //change text color based on sender - need to be written into a method or custom cell later
+        if messages[indexPath.row].sender == PFUser.currentUser()?.username{
+            cell?.detailTextLabel?.textColor = UIColor.grayColor()
+            cell?.textLabel?.textColor = UIColor.grayColor()
+            cell?.textLabel?.textAlignment = .Right
+            //cell?.detailTextLabel?.textAlignment = .Right
+        }
+        else{
+            cell?.detailTextLabel?.textColor = UIColor.blackColor()
+            cell?.textLabel?.textColor = UIColor.blackColor()
+            cell?.textLabel?.textAlignment = .Left
+            //cell?.detailTextLabel?.textAlignment = .Left
+        }
         return cell!
         
     }
@@ -110,6 +123,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func numberOfSectionsInTableView(textTable: UITableView) -> Int {
         return 1
     }
+    
     
     
     func queryMessage(username:String){
@@ -144,6 +158,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             let newMessage = Message(sender: sender, message: msg)
             messages.append(newMessage)
             textTable.reloadData()
+            self.tableViewScrollToBottom(true)
         } else {
             print("bad message")
         }
@@ -184,6 +199,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         })
     }
+    
     
 
 }
