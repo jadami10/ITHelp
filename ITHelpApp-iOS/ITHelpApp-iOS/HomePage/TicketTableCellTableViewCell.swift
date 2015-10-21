@@ -17,8 +17,8 @@ class TicketTableCellTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.portaitImageView.layer.borderColor = UIConstants.mainGreenColor.CGColor
-        self.portaitImageView.layer.borderWidth = 1.0
+        //self.portaitImageView.layer.borderColor = UIConstants.mainGreenColor.CGColor
+        //self.portaitImageView.layer.borderWidth = 1.0
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
