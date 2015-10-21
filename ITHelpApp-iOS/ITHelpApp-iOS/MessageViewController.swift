@@ -33,6 +33,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewWillAppear(animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
         changeSendButtonState(false)
+        
     }
     
     override func viewDidLoad() {
@@ -50,6 +51,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             print("TODO: handle no ticketID")
         }
+        self.tableViewScrollToBottom(true)
 
     }
     
@@ -63,6 +65,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         //refreshMessage()
         messageTextField.text = ""
         changeSendButtonState(false)
+        self.tableViewScrollToBottom(true)
     }
     
 
@@ -162,6 +165,24 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
             sendButton.enabled = false
         }
+    }
+    
+    func tableViewScrollToBottom(animated: Bool) {
+        
+        let delay = 0.2 * Double(NSEC_PER_SEC)
+        let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(time, dispatch_get_main_queue(), {
+            
+            let numberOfSections = self.textTable.numberOfSections
+            let numberOfRows = self.textTable.numberOfRowsInSection(numberOfSections-1)
+            
+            if numberOfRows > 0 {
+                let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
+                self.textTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+            }
+            
+        })
     }
     
 
