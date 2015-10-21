@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		68075ED71BD6A4EB00975B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68075ED61BD6A4EB00975B5C /* Message.swift */; settings = {ASSET_TAGS = (); }; };
+		68075ED91BD80C6A00975B5C /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 68075ED81BD80C6A00975B5C /* forward.png */; settings = {ASSET_TAGS = (); }; };
 		68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68140B771BCDB70600B73AE7 /* RequestHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187BE1BD48F1B001A58BF /* PubnubHandler.swift */; settings = {ASSET_TAGS = (); }; };
 		682187C11BD4A1D3001A58BF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187C01BD4A1D3001A58BF /* AppConstants.swift */; settings = {ASSET_TAGS = (); }; };
@@ -78,6 +79,7 @@
 		455D6243885F25C1DAE9F12E /* Pods-ITHelpApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITHelpApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68075ED61BD6A4EB00975B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Messaging/Message.swift; sourceTree = "<group>"; };
+		68075ED81BD80C6A00975B5C /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = "ITHelpApp-iOS/Resources/Images/forward.png"; sourceTree = "<group>"; };
 		68140B771BCDB70600B73AE7 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestHandler.swift; path = RequestPage/RequestHandler.swift; sourceTree = "<group>"; };
 		682187BE1BD48F1B001A58BF /* PubnubHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubnubHandler.swift; sourceTree = "<group>"; };
 		682187C01BD4A1D3001A58BF /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = "ITHelpApp-iOS/Resources/AppConstants.swift"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				68075ED81BD80C6A00975B5C /* forward.png */,
 				E1084B3F1BD7594B002B33A9 /* briskit_title.png */,
 				E1084B3D1BD5DC10002B33A9 /* Message-50.png */,
 				E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */,
@@ -466,6 +469,7 @@
 				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
 				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
 				E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */,
+				68075ED91BD80C6A00975B5C /* forward.png in Resources */,
 				E1192B951BCDE13600DC284D /* message.storyboard in Resources */,
 				6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */,
 				E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */,
