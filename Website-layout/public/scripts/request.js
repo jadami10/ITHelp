@@ -32,8 +32,8 @@ function subscribeToRequests() {
 // TODO: add code to handle new requests
 function onNewRequest(m) {
   // alert("new request");
-  console.log(m);
-  render();
+  console.log("new request!!", m);
+  updateTicket();
 }
 
 // returns all available requets
@@ -109,24 +109,16 @@ function checkMyRequest(reqObject, doSubscribe) {
 }
 
 // take a request
-function takeRequest(objId) {
+function takeRequest(requestObject) {
   Parse.User.logIn("hannah", "hannah", {
     success: function(user) { console.log("logged in") },
     error: function(user, err) {}
   });
 
   var currentUser = Parse.User.current();
-  var requestObject;
-
-  console.log(objId);
 
   if (currentUser) {
-      for (var i = 0; i < availableRequests.length; i ++) {
-        if (availableRequests[i].id === objId) {
-          requestObject = availableRequests[i];
-        }
-      }
-      console.log(requestObject);
+      console.log("Get ticket:", requestObject);
 
       var objectID = requestObject.id;
       requestObject.increment("taken");

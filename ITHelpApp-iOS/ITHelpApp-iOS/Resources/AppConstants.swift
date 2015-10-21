@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import Parse
 
 struct AppConstants {
     static let pubnubSubKey = "sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f"
     static let pubnubPubKey = "pub-c-0239b592-0603-4849-9889-ce70e8d18cb7"
+    static var requestHandler: PubnubHandler?
 }

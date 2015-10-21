@@ -1,8 +1,38 @@
+//var requestObj;
+
+$.urlParam = function(name){
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results==null){
+       return null;
+    }
+    else{
+       return results[1] || 0;
+    }
+}
+
 var Msg = React.createClass({
+  getInitialState: function() {
+    return {source: "sent"};
+  },
+  
+  getMsgSource: function() {
+    console.log(Parse.User.current().get("username"));
+
+    if (this.props.source === Parse.User.current().get("username")) {
+      this.state.source = "sent";
+    } else {
+      this.state.source = "received";
+    }
+  },
+
+  componentWillMount: function() {
+    this.getMsgSource();
+  },
+
   render: function() {
     return (
       <div className="msg-block">
-        <div className={this.props.source + " msg"}>
+        <div className={this.state.source + " msg"}>
           {this.props.children}
         </div>
       </div>
@@ -10,67 +40,148 @@ var Msg = React.createClass({
   }
 });
 
-var ChatBox = React.createClass({
-  loadDataFromServer: function() {
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      cache: false,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
+var MsgList = React.createClass({
+  componentDidUpdate: function(p, s) {
+    var chatContentDiv = this.refs.chatContent;
+    chatContentDiv.scrollTop = chatContentDiv.scrollHeight;
   },
-  handleMsgSubmit: function(newMsg) {
-    var data = this.state.data;
-    var newData = data.concat([newMsg]);
-    this.setState({data: newData});
-    $.ajax({
-      url: this.props.url,
-      dataType: 'json',
-      type: 'POST',
-      data: newMsg,
-      success: function(data) {
-        this.setState({data: data});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.error(this.props.url, status, err.toString());
-      }.bind(this)
-    });
-  },
-  getInitialState: function() {
-    return {data: []};
-  },
-  componentDidMount: function() {
-    this.loadDataFromServer();
-    setInterval(this.loadDataFromServer, this.props.pollInterval);
-  },
+
   render: function() {
-    return (
-      <div className="chat-box">
-        <MsgList data={this.state.data} />
-        <ChatForm onMsgSubmit={this.handleMsgSubmit} />
-        <ChatFormTest onMsgSubmit={this.handleMsgSubmit} />
+    var msgNodes = this.props.data.map(function(msg, index) {
+      return (
+        <Msg source={msg.get("sender")} key={index}>
+          {msg.get("message")}
+        </Msg>
+      );
+    });
+
+    if (this.props.additionalData) {
+      console.log("addtionalData!!");
+      var additionalMsgNodes = this.props.additionalData.map(function(msg, index) {
+        return (
+          <Msg source={msg.sender} key={index}>
+            {msg.message}
+          </Msg>
+        );
+      });
+      return (
+        <div className="chat-content" ref="chatContent">
+          {msgNodes}
+          {additionalMsgNodes}
+        </div>
+      );
+    } else return (
+      <div className="chat-content" ref="chatContent">
+        {msgNodes}
       </div>
     );
   }
 });
 
-var MsgList = React.createClass({
-  render: function() {
-    var msgNodes = this.props.data.map(function(msg, index) {
-      return (
-        <Msg source={msg.source} key={index}>
-          {msg.content}
-        </Msg>
-      );
+var ChatBox = React.createClass({
+  getInitialState: function() {
+    return {
+      requestObj: [],
+      additionalData: [],
+      data: []
+    };
+  },
+
+  addMsg: function(message) {
+    var data = this.state.additionalData;
+    var newData = data.concat([message]);
+    
+    console.log(this.setState({additionalData: newData}));
+  },
+
+  getMsg: function() {
+    var _this = this;
+
+    var curRequest = Parse.Object.extend("Request");
+    var reQuery = new Parse.Query(curRequest);
+    reQuery.equalTo("objectId", $.urlParam("id"));
+    reQuery.find({
+      success: function(data) {
+        console.log("receive request query");
+        console.log(data);
+
+        _this.setState({requestObj: data[0]});
+
+        var myMsgs = Parse.Object.extend("Message");
+        var query = new Parse.Query(myMsgs);
+        query.equalTo("request", data[0]);
+
+        query.find({
+          success: function(dataMsg) {
+            console.log("Successfully retrieved msg: " + dataMsg);
+            console.log(dataMsg);
+
+            _this.setState({data: dataMsg});
+
+            try {
+              //var channel = requestObject.get("comChannel");
+              var channel = data[0].id;
+
+              subscribeToChannel(channel, onMessage);
+            } catch(err) {
+              console.log("Could not subscribe: " + err);
+            }
+          },
+          error: function(error) {
+            alert("Error: " + error.code + " " + error.message);
+          }
+        });
+
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
     });
+
+  },
+
+  componentDidMount: function() {
+    this.getMsg();
+  },
+
+  handleMsgSubmit: function(newMsg) {
+    // var data = this.state.data;
+    // var newData = data.concat([newMsg]);
+    // this.setState({data: newData});
+    // $.ajax({
+    //   url: this.props.url,
+    //   dataType: 'json',
+    //   type: 'POST',
+    //   data: newMsg,
+    //   success: function(data) {
+    //     this.setState({data: data});
+    //   }.bind(this),
+    //   error: function(xhr, status, err) {
+    //     console.error(this.props.url, status, err.toString());
+    //   }.bind(this)
+    // });
+    var Message = Parse.Object.extend("Message");
+    var newMessage = new Message();
+    newMessage.set("message", newMsg);
+    newMessage.set("sender", Parse.User.current().get("username"));
+    newMessage.set("request", this.state.requestObj);
+
+    newMessage.save(null, {
+      success: function(results) {
+        console.log("Successfully saved message");
+      },
+      error: function(obj, error) {
+        // alert("Error saving message: " + error.code + " " + error.message);
+        console.log(error);
+      }
+    });
+  },
+
+  render: function() {
     return (
-      <div className="chat-content">
-        {msgNodes}
+      <div className="chat-box">
+        <MsgList data={this.state.data} additionalData={this.state.additionalData} />
+        <ChatForm onMsgSubmit={this.handleMsgSubmit} />
       </div>
     );
   }
@@ -83,40 +194,27 @@ var ChatForm = React.createClass({
     if (!content) {
       return;
     }
-    this.props.onMsgSubmit({source: "sent", content: content});
+    this.props.onMsgSubmit(content);
     this.refs.content.value = '';
   },
   render: function() {
     return (
       <form className="chat-form" onSubmit={this.handleSubmit}>
         <input className="input-text" type="text" placeholder="say something..." ref="content" />
-        <div className="send-text" type="submit"> Send </div>
+        <input className="send-text" type="submit"/>
       </form>
     );
   }
 });
 
-var ChatFormTest = React.createClass({
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var content = this.refs.content.value.trim();
-    if (!content) {
-      return;
-    }
-    this.props.onMsgSubmit({source: "received", content: content});
-    this.refs.content.value = '';
-  },
-  render: function() {
-    return (
-      <form className="chat-form" onSubmit={this.handleSubmit}>
-        <input className="input-text" type="text" placeholder="say something..." ref="content" />
-        <div className="send-text" type="submit"> Receive </div>
-      </form>
-    );
-  }
-});
-
-ReactDOM.render(
-  <ChatBox url="/api/msgs" pollInterval={2000} />,
+var chatBox = ReactDOM.render(
+  <ChatBox />,
   document.getElementsByClassName('right-chat')[0]
 );
+
+var updateMsg = function(message) {
+  chatBox.addMsg(message);
+}
+
+window.updateMsg = updateMsg;
+

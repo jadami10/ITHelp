@@ -54,6 +54,11 @@ class TicketTableViewController: UITableViewController {
             let ticketObject = tickets[indexPath.row - 1]
             cell.ticketTitleField.text = ticketObject["title"] as! String
             cell.ticketTextArea.text = ticketObject["requestMessage"] as! String
+            if ticketObject["helper"] != nil {
+                cell.portaitImageView.image = UIImage(named: "Profile.png")
+            } else {
+                cell.portaitImageView.image = UIImage(named: "question_mark_filled.png")
+            }
             return cell
         }
     }
@@ -76,10 +81,10 @@ class TicketTableViewController: UITableViewController {
         print("showing messages")
         if let cellIndex = tableView.indexPathForSelectedRow?.row {
             print("Index: %d", cellIndex)
-            let curTicket = tickets[cellIndex - 1]
-            if let ticketId = curTicket.objectId {
+            if tickets.count > (cellIndex - 1) {
+                let ticketId = tickets[cellIndex - 1]
                 let msgViewController = segue.destinationViewController as! MessageViewController
-                msgViewController.ticketID = ticketId;
+                msgViewController.ticket = ticketId;
             } else {
                 print("Could not get ticketID")
             }

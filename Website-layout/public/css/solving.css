@@ -19,7 +19,7 @@ a {
   color: #3c3c3c;
 }
 .left-navi {
-  position: absolute;
+  position: fixed;
   width: 18%;
   min-height: 100%;
   background: linear-gradient(#3f5655, #4a4a4a);

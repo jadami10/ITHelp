@@ -26,13 +26,13 @@
             <objects>
                 <tableViewController id="60T-PF-OJ0" customClass="TicketTableViewController" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ov5-5c-YER">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTitleCell" rowHeight="40" id="tQu-P2-Hjx">
-                                <rect key="frame" x="0.0" y="28" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="92" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tQu-P2-Hjx" id="cpG-fc-2kD">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="39.5"/>
@@ -52,7 +52,7 @@
                                 <animations/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TicketTableCell" rowHeight="125" id="cMd-4u-4Et" customClass="TicketTableCellTableViewCell" customModule="ITHelpApp_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="132" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMd-4u-4Et" id="FoX-df-LcB">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="124.5"/>
@@ -95,7 +95,6 @@
                             <outlet property="delegate" destination="60T-PF-OJ0" id="aD6-bI-IhY"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <tabBarItem key="tabBarItem" title="Tickets" image="ticket.png" id="h2W-9A-4YK"/>
                     <navigationItem key="navigationItem" id="MT5-8C-xkU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

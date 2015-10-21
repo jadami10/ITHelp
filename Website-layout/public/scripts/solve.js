@@ -4,7 +4,8 @@ var Ticket = React.createClass({
     $(this.refs.btnHelp).toggle('fast');
   },
   submitHelp: function() {
-    takeRequest(this.props.obj);
+    takeRequest(this.props.ticketObj);
+    ticketsBox.getTickets();
     // Submit help request here
   },
   render: function() {
@@ -36,38 +37,16 @@ var Ticket = React.createClass({
   }
 });
 
-var TicketsBox = React.createClass({
-  mixins: [ParseReact.Mixin], // Enable query subscriptions
-
-  observe: function() {
-    return {
-      tickets: new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0)
-    };
-  },
-
-  getInitialState: function() {
-    return {tickets: []};
-  },
-
-  render: function() {
-    return (
-      <div className="probs">
-        <TicketList data={this.data.tickets} />
-      </div>
-    );
-  }
-});
-
 var TicketList = React.createClass({
   render: function() {
-    var ticketNodes = this.props.data.map(function(ticket, index) {
+    var ticketNodes = this.props.tickets.map(function(ticket, index) {
       return (
         <Ticket 
-          author={ticket.requester} 
-          title={ticket.title} 
-          time={ticket.createdAt.toString().substring(0, 10)} 
-          desc={ticket.requestMessage} 
-          obj={ticket.objectId}
+          author={ticket.get("requester")} 
+          title={ticket.get("title")} 
+          time={ticket.get("createdAt").toString().substring(0, 10)} 
+          desc={ticket.get("requestMessage")} 
+          ticketObj={ticket}
           key={index}>
         </Ticket>
       );
@@ -80,40 +59,56 @@ var TicketList = React.createClass({
   }
 });
 
-var TicketForm = React.createClass({
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var author = this.refs.author.value.trim();
-    var title = this.refs.title.value.trim();
-    var desc = this.refs.desc.value.trim();
-    var time = this.refs.time.value.trim();
-    if (!title || !author || !desc || !time) {
-      return;
-    }
-    this.props.onTicketSubmit({author: author, title: title, desc: desc, time: time});
-    this.refs.author.value = '';
-    this.refs.title.value = '';
-    this.refs.desc.value = '';
-    this.refs.time.value = '';
+var TicketsBox = React.createClass({
+  // mixins: [ParseReact.Mixin], // Enable query subscriptions
+
+  // observe: function() {
+  //   return {
+  //     tickets: new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0)
+  //   };
+  // },
+
+  getInitialState: function() {
+    return {data: []};
   },
+
+  getTickets: function() {
+    var openRequests = Parse.Object.extend("Request");
+    var query = new Parse.Query(openRequests);
+    var _this = this;
+
+    query.equalTo("taken", 0);
+    query.find({
+      success: function(data) {
+        console.log("Successfully retrieved " + data.length + " requests.");
+        _this.setState({data: data});
+      },
+      error: function(error) {
+        alert("Error: " + error.code + " " + error.message);
+      }
+    });
+  },
+
+  componentDidMount: function() {
+    this.getTickets();
+  },
+
   render: function() {
     return (
-      <form className="ticket-form" onSubmit={this.handleSubmit}>
-        <input type="text" placeholder="name" ref="author" />
-        <input type="text" placeholder="title" ref="title" />
-        <input type="text" placeholder="brief description" ref="desc" />
-        <input type="text" placeholder="time" ref="time" />
-        <input type="submit" value="Post" />
-      </form>
+      <div className="probs">
+        <TicketList tickets={this.state.data} />
+      </div>
     );
   }
 });
 
-window.render = function() {
-  ReactDOM.render(
-    <TicketsBox />,
-    document.getElementsByClassName('right-probs')[0]
-  );
+var ticketsBox = ReactDOM.render(
+  <TicketsBox />,
+  document.getElementsByClassName('right-probs')[0]
+);
+
+var updateTicket = function() {
+  ticketsBox.getTickets();
 }
 
-render();
+window.updateTicket = updateTicket;
