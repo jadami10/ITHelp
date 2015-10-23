@@ -8,12 +8,15 @@
 */
 
 import UIKit
+import Parse
 
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
     @IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
     var goodToSegue = false
     
     
@@ -34,9 +37,30 @@ class LoginViewController: UIViewController {
         if (checkTextFields()) {
             let userName = userTextField.text!
             let pass = passTextField.text!
-            LoginHandler.loginUserWithBlock(userName, pass: pass, completion: checkLogin)
+            self.view.userInteractionEnabled = false;
+            let messageFrame = self.progressBarDisplayer("Logging In", indicator: true)
+            dispatch_async(dispatch_get_main_queue()) {
+                LoginHandler.loginUserWithBlock(userName, pass: pass, completion: self.checkLogin)
+                dispatch_async(dispatch_get_main_queue()) {
+                    messageFrame.removeFromSuperview()
+                }
+            }
+
+            //LoginHandler.loginUserWithBlock(userName, pass: pass, completion: checkLogin)
         }
     }
+    
+    /*
+    saveButton.enabled = false
+    progressBarDisplayer("Saving Image", true)
+    dispatch_async(dispatch_get_main_queue()) {
+    self.saveImage()
+    dispatch_async(dispatch_get_main_queue()) {
+    self.messageFrame.removeFromSuperview()
+    self.saveButton.enabled = true
+    }
+    }
+*/
     
     func checkLogin(result: NSError?) -> Void {
         if let error = result {
@@ -45,23 +69,34 @@ class LoginViewController: UIViewController {
             let errorCode = error.code
             
             switch errorCode {
-            case 100:
-                self.presentAlert("No Connection", message: "Please check network connection")
+            case PFErrorCode.ErrorConnectionFailed.rawValue:
+                self.presentAlert("No Connection", message: "Please check network connection", completion: nil)
                 break
-            case 101:
-                self.presentAlert("Invalid Username", message: "Incorrect Username or Password")
+            case PFErrorCode.ErrorObjectNotFound.rawValue:
+                self.presentAlert("Invalid Username", message: "Incorrect Username or Password", completion: nil)
                 break
             default:
-                self.presentAlert("Error", message: "Please try again later")
+                self.presentAlert("Error", message: "Please try again later", completion: nil)
                 print(NSString(format: "Unhandled Error: %d", errorCode))
+                print (PFErrorCode.init(rawValue: errorCode).debugDescription)
                 break
             }
             print(errorString)
-            
+            self.view.userInteractionEnabled = true
         } else {
             goToMainPage()
         }
 
+    }
+    
+    func enableButtons() {
+        self.loginButton.enabled = true
+        self.signupButton.enabled = true
+    }
+    
+    func disableButtons() {
+        self.loginButton.enabled = false
+        self.signupButton.enabled = false
     }
     
     func checkTextFields() -> Bool {
@@ -77,13 +112,13 @@ class LoginViewController: UIViewController {
         return good
     }
     
-    func presentAlert(title: NSString, message: NSString) {
+    func presentAlert(title: NSString, message: NSString, completion: (() -> Void)?) {
         let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
         
         let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertController.addAction(defaultAction)
         
-        presentViewController(alertController, animated: true, completion: nil)
+        presentViewController(alertController, animated: true, completion: completion)
     }
     
     func goToMainPage() {

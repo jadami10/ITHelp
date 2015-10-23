@@ -32,6 +32,18 @@
                                             <action selector="stayLoggedInToggled:" destination="Fem-3V-oHV" eventType="valueChanged" id="fAv-9m-6Aj"/>
                                         </connections>
                                     </switch>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cdK-sm-Ez6">
+                                        <rect key="frame" x="116" y="246" width="89" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="logoutButtonPressed:" destination="Fem-3V-oHV" eventType="touchUpInside" id="jjs-Ce-ffw"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                             </scrollView>
@@ -68,6 +80,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="Profile.png" id="ooZ-0m-bOV"/>
                     <connections>
                         <outlet property="logInToggle" destination="ydn-6i-tpd" id="xvE-ej-6Xy"/>
+                        <outlet property="logoutButton" destination="cdK-sm-Ez6" id="i2E-fg-080"/>
                         <outlet property="nameLabel" destination="jpb-Pa-5n5" id="c8X-K0-ivC"/>
                         <outlet property="portraitImageView" destination="hkD-k9-ozX" id="qzu-vi-GsO"/>
                     </connections>

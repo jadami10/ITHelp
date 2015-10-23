@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class InitViewController: UIViewController {
 
@@ -19,10 +20,11 @@ class InitViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         let defaults = NSUserDefaults.standardUserDefaults()
         let loggedIn = defaults.boolForKey("stayLoggedIn")
-        if loggedIn {
+        let curUser = PFUser.currentUser()
+        if loggedIn && curUser != nil && curUser?.username != nil {
             goToHomePage()
         } else {
-            goToLoginPage()
+            self.goToLoginPage()
         }
     
     }

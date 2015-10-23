@@ -1,6 +1,12 @@
-var pubnub = {
+var pubnub_web = {
   'publish_key': 'pub-c-0239b592-0603-4849-9889-ce70e8d18cb7',
-  'subscribe_key': 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f'
+  'subscribe_key': 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f',
+  'secret_key': 'sec-c-OTQyNjQzZDEtMGUzZC00OGU1LTk3OGQtMmRlNTQyY2Y2ZGNh'
+};
+
+var pubnub_ios = {
+  'publish_key': 'pub-c-23a2994a-72c2-43a3-a8e7-d63f3e382009',
+  'subscribe_key': 'sub-c-bdfa77b2-793f-11e5-a643-02ee2ddab7fe'
 };
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
@@ -21,14 +27,14 @@ Parse.Cloud.afterSave("Request", function(request) {
   var requester = request.object.get("requester");
   if (taken == 0) {
     console.log("publishing new request");
-    publishRequest(req_channel, reqID);
+    publishRequest(req_channel, reqID, pubnub_web);
   } else if (taken == 1 && taker != null && helper == null) {
     console.log("someone taking request");
     request.object.set("helper", taker);
     request.object.save();
   } else {
     console.log("notify app!");
-    publishRequest(requester, reqID);
+    publishRequest(requester, reqID, pubnub_ios);
   }
 
 });
@@ -53,8 +59,32 @@ function sendMessage(channel, message) {
   var toSend = encodeURIComponent(JSON.stringify(messageObject));
 
   var myUrl = 'https://pubsub.pubnub.com/publish/' +
-  pubnub.publish_key   +   '/' +
-  pubnub.subscribe_key + '/0/' +
+  pubnub_web.publish_key   +   '/' +
+  pubnub_web.subscribe_key + '/0/' +
+  channel          + '/0/' +
+  toSend;
+
+  console.log(myUrl);
+
+  Parse.Cloud.httpRequest({
+    url: myUrl,
+
+    // SUCCESS CALLBACK
+    success: function(httpResponse) {
+      console.log("Message sent succefully");
+      console.log(httpResponse.text);
+      // httpResponse.text -> [1,"Sent","14090206970886734"]
+    },
+
+    // You should consider retrying here when things misfire
+    error: function(httpResponse) {
+      console.error('Request failed ' + httpResponse.status);
+    }
+  });
+
+  var myUrl = 'https://pubsub.pubnub.com/publish/' +
+  pubnub_ios.publish_key   +   '/' +
+  pubnub_ios.subscribe_key + '/0/' +
   channel          + '/0/' +
   toSend;
 
@@ -78,7 +108,7 @@ function sendMessage(channel, message) {
 }
 
 // publishes request to IT helpers
-function publishRequest(req_channel, requestID) {
+function publishRequest(req_channel, requestID, pubnub) {
   var myUrl = 'https://pubsub.pubnub.com/publish/' +
   pubnub.publish_key   +   '/' +
   pubnub.subscribe_key + '/0/' +

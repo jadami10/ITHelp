@@ -31,20 +31,29 @@ class SignUpViewController: UIViewController {
         checkTextFieldsList.append(userTextField)
         checkTextFieldsList.append(passTextField)
     }
-
+    
     @IBAction func signUpPressed(sender: AnyObject) {
-        if (checkTextFields()) {
-            let user = PFUser()
-            user.username = userTextField.text
-            user.password = passTextField.text
-            user.email = emailTextField.text
-            user["first"] = firstNameTextField.text
-            user["last"] = lastNameTextField.text
-            // other fields can be set just like with PFObject
-            //user["phone"] = "415-392-0202"
-            LoginHandler.signUpUserWithBlock(user, completion: checkSignUp)
-
+        self.view.userInteractionEnabled = false;
+        let messageFrame = self.progressBarDisplayer("Signing Up", indicator: true)
+        //LoginHandler.signUpUserWithBlock(user, completion: checkSignUp)
+        dispatch_async(dispatch_get_main_queue()) {
+            if (self.checkTextFields()) {
+                let user = PFUser()
+                user.username = self.userTextField.text
+                user.password = self.passTextField.text
+                user.email = self.emailTextField.text
+                user["first"] = self.firstNameTextField.text
+                user["last"] = self.lastNameTextField.text
+                // other fields can be set just like with PFObject
+                //user["phone"] = "415-392-0202"
+                LoginHandler.signUpUserWithBlock(user, completion: self.checkSignUp)
+            }
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                messageFrame.removeFromSuperview()
+            }
         }
+        
     }
     
     func checkSignUp(result: NSError?) {
@@ -71,8 +80,10 @@ class SignUpViewController: UIViewController {
                 break
             }
             print(errorString)
+            self.view.userInteractionEnabled = true
         } else {
             self.presentAlert("Success", message: "Signup Successful")
+            goToMainPage()
         }
     }
     
@@ -82,14 +93,16 @@ class SignUpViewController: UIViewController {
             sender.backgroundColor = UIColor.whiteColor()
         } else if (sender == passTextField) {
             if text.characters.count < 6 {
-                sender.backgroundColor = UIColor.redColor()
+                sender.backgroundColor = UIConstants.errorRedColor
+            } else {
+                sender.backgroundColor = UIColor.whiteColor()
             }
         } else if (sender == userTextField) {
             /*if !checkAvailableUsernames(text) {
-                sender.backgroundColor = UIColor.redColor()
+            sender.backgroundColor = UIColor.redColor()
             }*/
         }else {
-            sender.backgroundColor = UIConstants.mainGreenColor
+            sender.backgroundColor = UIColor.whiteColor()
         }
     }
     
@@ -127,6 +140,7 @@ class SignUpViewController: UIViewController {
                 }
             }
         }
+        self.view.userInteractionEnabled = true
         return good
     }
     
@@ -154,11 +168,18 @@ class SignUpViewController: UIViewController {
         presentViewController(alertController, animated: true, completion: nil)
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if (identifier == "MainTabController") {
-            return true
-        } else {
-            return true
-        }
+    func goToMainPage() {
+        let storyboard = UIStoryboard(name: "home", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("MainTabController") as! UITabBarController
+        self.presentViewController(vc, animated: true, completion: nil)
     }
+    /*
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    if (identifier == "MainTabController") {
+    return true
+    } else {
+    return true
+    }
+    }
+    */
 }

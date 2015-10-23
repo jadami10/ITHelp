@@ -13,7 +13,7 @@ class LoginHandler {
     
     static func loginUserWithBlock(userName: String, pass:String, completion: (result: NSError?) -> Void){
         let err: NSError? = nil
-        //NSThread.sleepForTimeInterval(NSTimeInterval(5))
+        NSThread.sleepForTimeInterval(NSTimeInterval(3))
         PFUser.logInWithUsernameInBackground(userName, password:pass) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
