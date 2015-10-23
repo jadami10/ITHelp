@@ -8,5 +8,9 @@ BriskIT is an iOS app that allows you to get IT help whenever and wherever your 
 
 Continuous Integration with Travis CI
 
-Project Management
+## Project Management
 [trello](https://trello.com/b/Bb9gVAFI/ithelp-app)
+
+## Deployment
+* [Supporter side (web app)](https://frozen-ocean-8538.herokuapp.com/solve.html)
+* [Requester side (iOS native app)](some link)
