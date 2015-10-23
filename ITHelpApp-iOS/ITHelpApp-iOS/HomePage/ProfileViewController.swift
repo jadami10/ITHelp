@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var logInToggle: UISwitch!
     @IBOutlet weak var portraitImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var logoutButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,5 +55,27 @@ class ProfileViewController: UIViewController {
             defaults.setBool(false, forKey: "stayLoggedIn")
         }
     }
+    
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        PFUser.logOutInBackgroundWithBlock { (err: NSError?) -> Void in
+            if let error = err {
+                if let alert = ParseErrorHandlingController.handleParseError(error) {
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    print(error.description)
+                }
+            } else {
+                self.goToLoginPage()
+            }
+        }
+    }
+    
+    func goToLoginPage() {
+        let storyboard = UIStoryboard(name: "login", bundle: nil)
+        let vc = storyboard.instantiateViewControllerWithIdentifier("LoginNavController")
+        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+    
 
 }

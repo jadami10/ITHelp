@@ -19,7 +19,8 @@ class PubnubHandler {
         print("Connecting to: " + comChannel)
         config = PNConfiguration(
             publishKey: pubKey,
-            subscribeKey: subKey)
+            subscribeKey: subKey
+        )
         
         client = PubNub.clientWithConfiguration(config)
         channel = comChannel
