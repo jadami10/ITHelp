@@ -12,12 +12,17 @@ import Parse
 class TicketTableViewController: UITableViewController {
     
     var tickets = [PFObject]()
+    var busyFrame: UIView?
     
 
     override func viewWillAppear(animated: Bool) {
-        tickets = []
-        TicketHandler.getTickets(addTickets)
+        // FIXME: store tickets so you don't reload every time. Causes issues with bad network conditions
+        
+        self.asyncBlockingAction("Fetching Tickets", taskToRun: fetchTickets)
+        
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
     override func viewDidLoad() {
@@ -34,6 +39,29 @@ class TicketTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        self.fetchTickets(nil)
+        // TODO: Handle swipe down to refresh
+        refreshControl.endRefreshing()
+    }
+    
+    func fetchTickets(activityFrame: UIView?) {
+        print("disabled")
+        self.tableView.userInteractionEnabled = false
+        tickets = []
+        TicketHandler.getTickets(addTickets)
+        print("coming back")
+        activityFrame?.removeFromSuperview()
+        self.tableView.userInteractionEnabled = true
+        self.view.userInteractionEnabled = true
+    }
+    
+    func addTickets(object: PFObject) -> Void{
+        tickets.append(object)
+        //print(object)
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
 
@@ -49,7 +77,15 @@ class TicketTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            return tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
+            let cell = tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
+            if tickets.count == 1 {
+            cell.textLabel?.text = "1 Ticket"
+            } else {
+            cell.textLabel?.text = String(format: "%d Tickets", arguments: [tickets.count])
+            }
+            cell.textLabel?.textAlignment = NSTextAlignment.Center
+            cell.userInteractionEnabled = false
+            return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableCell", forIndexPath: indexPath) as! TicketTableCellTableViewCell
             let ticketObject = tickets[indexPath.row - 1]
@@ -70,12 +106,6 @@ class TicketTableViewController: UITableViewController {
         } else {
             return 125
         }
-    }
-    
-    func addTickets(object: PFObject) -> Void{
-        tickets.append(object)
-        //print(object)
-        self.tableView.reloadData()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

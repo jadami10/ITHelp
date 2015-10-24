@@ -65,9 +65,8 @@ extension UIViewController {
     // Magic function that blocks UI and displays busy message
     // Don't forget to renable UI when completed!
     func asyncBlockingAction(message: String, taskToRun: ((UIView) -> Void)) {
-        let messageFrame = self.progressBarDisplayer(message, indicator: true)
-        
         self.view.userInteractionEnabled = false;
+        let messageFrame = self.progressBarDisplayer(message, indicator: true)
         dispatch_async(dispatch_get_main_queue()) {
             taskToRun(messageFrame)
             //NSThread.sleepForTimeInterval(3)
