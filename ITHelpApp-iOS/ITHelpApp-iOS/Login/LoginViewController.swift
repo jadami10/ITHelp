@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     var goodToSegue = false
+    var busyFrame: UIView?
     
     
     override func viewDidLoad() {
@@ -35,32 +36,19 @@ class LoginViewController: UIViewController {
     
     @IBAction func logInPressed(sender: AnyObject) {
         if (checkTextFields()) {
-            let userName = userTextField.text!
-            let pass = passTextField.text!
-            self.view.userInteractionEnabled = false;
-            let messageFrame = self.progressBarDisplayer("Logging In", indicator: true)
-            dispatch_async(dispatch_get_main_queue()) {
-                LoginHandler.loginUserWithBlock(userName, pass: pass, completion: self.checkLogin)
-                dispatch_async(dispatch_get_main_queue()) {
-                    messageFrame.removeFromSuperview()
-                }
-            }
+            
+            self.asyncBlockingAction("Logging In", taskToRun:performLogin)
 
-            //LoginHandler.loginUserWithBlock(userName, pass: pass, completion: checkLogin)
         }
     }
     
-    /*
-    saveButton.enabled = false
-    progressBarDisplayer("Saving Image", true)
-    dispatch_async(dispatch_get_main_queue()) {
-    self.saveImage()
-    dispatch_async(dispatch_get_main_queue()) {
-    self.messageFrame.removeFromSuperview()
-    self.saveButton.enabled = true
+    func performLogin(activityFrame: UIView) -> Void {
+        self.busyFrame = activityFrame
+        let userName = userTextField.text!
+        let pass = passTextField.text!
+        LoginHandler.loginUserWithBlock(userName, pass: pass, completion: self.checkLogin)
+        return;
     }
-    }
-*/
     
     func checkLogin(result: NSError?) -> Void {
         if let error = result {
@@ -82,21 +70,17 @@ class LoginViewController: UIViewController {
                 break
             }
             print(errorString)
-            self.view.userInteractionEnabled = true
+            self.releaseUI()
         } else {
+            self.releaseUI()
             goToMainPage()
         }
 
     }
     
-    func enableButtons() {
-        self.loginButton.enabled = true
-        self.signupButton.enabled = true
-    }
-    
-    func disableButtons() {
-        self.loginButton.enabled = false
-        self.signupButton.enabled = false
+    func releaseUI() {
+        self.busyFrame?.removeFromSuperview()
+        self.view.userInteractionEnabled = true
     }
     
     func checkTextFields() -> Bool {

@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userTextField: UITextField!
     @IBOutlet weak var passTextField: UITextField!
+    var busyFrame: UIView?
     
     var checkTextFieldsList = [UITextField]()
     
@@ -33,27 +34,25 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
-        self.view.userInteractionEnabled = false;
-        let messageFrame = self.progressBarDisplayer("Signing Up", indicator: true)
+
         //LoginHandler.signUpUserWithBlock(user, completion: checkSignUp)
-        dispatch_async(dispatch_get_main_queue()) {
-            if (self.checkTextFields()) {
-                let user = PFUser()
-                user.username = self.userTextField.text
-                user.password = self.passTextField.text
-                user.email = self.emailTextField.text
-                user["first"] = self.firstNameTextField.text
-                user["last"] = self.lastNameTextField.text
-                // other fields can be set just like with PFObject
-                //user["phone"] = "415-392-0202"
-                LoginHandler.signUpUserWithBlock(user, completion: self.checkSignUp)
-            }
+        if (checkTextFields()) {
             
-            dispatch_async(dispatch_get_main_queue()) {
-                messageFrame.removeFromSuperview()
-            }
+            
+            self.asyncBlockingAction("Signing Up", taskToRun: performSignUp)
         }
         
+    }
+    
+    func performSignUp(activityFrame: UIView) -> Void {
+        self.busyFrame = activityFrame
+        let user = PFUser()
+        user.username = self.userTextField.text
+        user.password = self.passTextField.text
+        user.email = self.emailTextField.text
+        user["first"] = self.firstNameTextField.text
+        user["last"] = self.lastNameTextField.text
+        LoginHandler.signUpUserWithBlock(user, completion: self.checkSignUp)
     }
     
     func checkSignUp(result: NSError?) {
@@ -80,11 +79,17 @@ class SignUpViewController: UIViewController {
                 break
             }
             print(errorString)
-            self.view.userInteractionEnabled = true
+            self.releaseUI()
         } else {
             self.presentAlert("Success", message: "Signup Successful")
+            self.releaseUI()
             goToMainPage()
         }
+    }
+    
+    func releaseUI() {
+        self.busyFrame?.removeFromSuperview()
+        self.view.userInteractionEnabled = true
     }
     
     @IBAction func textFieldDoneEditing(sender: UITextField) {
