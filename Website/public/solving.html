@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="css/solving.css" />
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="http://www.parsecdn.com/js/parse-latest.js"></script>
-    <script src="https://cdn.pubnub.com/pubnub-dev.js"></script>
+    <script src="https://www.parsecdn.com/js/parse-latest.js"></script>
+    <script src="https://cdn.pubnub.com/pubnub-3.7.15.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
@@ -40,7 +40,9 @@
       // Parse.User._currentUser = new Parse.User();
       try {
         pb = PUBNUB({
-          subscribe_key: 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f'
+          subscribe_key: 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f',
+          secret_key: 'sec-c-OTQyNjQzZDEtMGUzZC00OGU1LTk3OGQtMmRlNTQyY2Y2ZGNh',
+          ssl: true
         });
       } catch (err) {
         alert("TODO: not subscribed to request channel")

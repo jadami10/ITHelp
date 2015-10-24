@@ -21,7 +21,7 @@ function subscribeToChannel(reqChannel, onMessage) {
     },
     error: function (error) {
       // Handle error here
-      alert(JSON.stringify(error));
+      console.log(JSON.stringify(error));
     }
   });
 
