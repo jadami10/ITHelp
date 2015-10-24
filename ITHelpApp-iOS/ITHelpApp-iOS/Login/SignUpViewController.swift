@@ -31,6 +31,9 @@ class SignUpViewController: UIViewController {
         checkTextFieldsList.append(emailTextField)
         checkTextFieldsList.append(userTextField)
         checkTextFieldsList.append(passTextField)
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func signUpPressed(sender: AnyObject) {
