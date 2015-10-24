@@ -8,55 +8,55 @@
 
 /* Begin PBXBuildFile section */
 		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		68075ED71BD6A4EB00975B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68075ED61BD6A4EB00975B5C /* Message.swift */; settings = {ASSET_TAGS = (); }; };
-		68075ED91BD80C6A00975B5C /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 68075ED81BD80C6A00975B5C /* forward.png */; settings = {ASSET_TAGS = (); }; };
-		68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68140B771BCDB70600B73AE7 /* RequestHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187BE1BD48F1B001A58BF /* PubnubHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		682187C11BD4A1D3001A58BF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187C01BD4A1D3001A58BF /* AppConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7A1BC5A886008460C6 /* MainTabController.swift */; settings = {ASSET_TAGS = (); }; };
-		684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		684CEA801BC5B150008460C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA7E1BC5B150008460C6 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
-		684CEA861BC5BC62008460C6 /* TicketTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA871BC5CC2A008460C6 /* login.storyboard */; settings = {ASSET_TAGS = (); }; };
-		684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA891BC5CC9C008460C6 /* home.storyboard */; settings = {ASSET_TAGS = (); }; };
-		684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA8B1BC5CD43008460C6 /* InitViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		68075ED71BD6A4EB00975B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68075ED61BD6A4EB00975B5C /* Message.swift */; };
+		68075ED91BD80C6A00975B5C /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 68075ED81BD80C6A00975B5C /* forward.png */; };
+		68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68140B771BCDB70600B73AE7 /* RequestHandler.swift */; };
+		682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187BE1BD48F1B001A58BF /* PubnubHandler.swift */; };
+		682187C11BD4A1D3001A58BF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187C01BD4A1D3001A58BF /* AppConstants.swift */; };
+		684CEA7B1BC5A886008460C6 /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7A1BC5A886008460C6 /* MainTabController.swift */; };
+		684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA7C1BC5AC2A008460C6 /* ProfileViewController.swift */; };
+		684CEA801BC5B150008460C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA7E1BC5B150008460C6 /* Main.storyboard */; };
+		684CEA861BC5BC62008460C6 /* TicketTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */; };
+		684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA871BC5CC2A008460C6 /* login.storyboard */; };
+		684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684CEA891BC5CC9C008460C6 /* home.storyboard */; };
+		684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684CEA8B1BC5CD43008460C6 /* InitViewController.swift */; };
 		684F8C6F1BC4943A0046345C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C6E1BC4943A0046345C /* AppDelegate.swift */; };
 		684F8C711BC4943A0046345C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C701BC4943A0046345C /* LoginViewController.swift */; };
 		684F8C761BC4943A0046345C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 684F8C751BC4943A0046345C /* Assets.xcassets */; };
 		684F8C791BC4943A0046345C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 684F8C771BC4943A0046345C /* LaunchScreen.storyboard */; };
 		684F8C841BC4943A0046345C /* ITHelpApp_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C831BC4943A0046345C /* ITHelpApp_iOSTests.swift */; };
 		684F8C8F1BC4943A0046345C /* ITHelpApp_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8C8E1BC4943A0046345C /* ITHelpApp_iOSUITests.swift */; };
-		684F8CA71BC496CF0046345C /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CA41BC496CF0046345C /* RequestViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		684F8CA81BC496CF0046345C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CA51BC496CF0046345C /* SignUpViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		684F8CAB1BC496DE0046345C /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CAA1BC496DE0046345C /* Bridge.m */; settings = {ASSET_TAGS = (); }; };
-		684F8CB11BC499C10046345C /* AuthHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 684F8CB01BC499C10046345C /* AuthHeader.png */; settings = {ASSET_TAGS = (); }; };
-		684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB31BC49A0D0046345C /* UIConstants.swift */; settings = {ASSET_TAGS = (); }; };
-		684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB41BC49A0D0046345C /* UIEffects.swift */; settings = {ASSET_TAGS = (); }; };
-		6882CC301BCEE9B4002D9877 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 6882CC2F1BCEE9B4002D9877 /* message.png */; settings = {ASSET_TAGS = (); }; };
-		6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81A1BC6A13A00EDC4F0 /* Profile.png */; settings = {ASSET_TAGS = (); }; };
-		6892F8201BC6A4F500EDC4F0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81E1BC6A4F500EDC4F0 /* info.png */; settings = {ASSET_TAGS = (); }; };
-		6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81F1BC6A4F500EDC4F0 /* ticket.png */; settings = {ASSET_TAGS = (); }; };
-		6892F8231BC6A53C00EDC4F0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8221BC6A53C00EDC4F0 /* AboutViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8241BC6A73400EDC4F0 /* workstation.png */; settings = {ASSET_TAGS = (); }; };
-		6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8291BC6A8F800EDC4F0 /* plus.png */; settings = {ASSET_TAGS = (); }; };
-		6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8321BC6C29000EDC4F0 /* tickets.storyboard */; settings = {ASSET_TAGS = (); }; };
-		6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */; settings = {ASSET_TAGS = (); }; };
-		6896F5451BC4A19E00ACA509 /* LoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896F5441BC4A19E00ACA509 /* LoginHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		68DA2AD91BD945E500EFB077 /* ParseErrorHandlingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DA2AD81BD945E500EFB077 /* ParseErrorHandlingController.swift */; settings = {ASSET_TAGS = (); }; };
-		E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3D1BD5DC10002B33A9 /* Message-50.png */; settings = {ASSET_TAGS = (); }; };
-		E1084B401BD7594B002B33A9 /* briskit_title.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3F1BD7594B002B33A9 /* briskit_title.png */; settings = {ASSET_TAGS = (); }; };
-		E1084B421BD7E99A002B33A9 /* MessageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1084B411BD7E99A002B33A9 /* MessageCellTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E1192B921BCDDC4600DC284D /* black-slr-camera-256.png in Resources */ = {isa = PBXBuildFile; fileRef = E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */; settings = {ASSET_TAGS = (); }; };
-		E1192B951BCDE13600DC284D /* message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1192B941BCDE13600DC284D /* message.storyboard */; settings = {ASSET_TAGS = (); }; };
-		E1192B971BCDE44D00DC284D /* request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1192B961BCDE44D00DC284D /* request.storyboard */; settings = {ASSET_TAGS = (); }; };
-		E1192B9B1BCDE6E200DC284D /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192B9A1BCDE6E200DC284D /* MessageViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E1192B9D1BCE033B00DC284D /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192B9C1BCE033B00DC284D /* MessageHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		E1192BA11BCE246D00DC284D /* textTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192BA01BCE246D00DC284D /* textTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E177DF4B1BCF2E4900D7A481 /* TicketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */; settings = {ASSET_TAGS = (); }; };
-		E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC011BD5A551000A0F36 /* requestbutton.png */; settings = {ASSET_TAGS = (); }; };
-		E1F5AC041BD5A9B2000A0F36 /* briskITlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */; settings = {ASSET_TAGS = (); }; };
-		E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */; settings = {ASSET_TAGS = (); }; };
+		684F8CA71BC496CF0046345C /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CA41BC496CF0046345C /* RequestViewController.swift */; };
+		684F8CA81BC496CF0046345C /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CA51BC496CF0046345C /* SignUpViewController.swift */; };
+		684F8CAB1BC496DE0046345C /* Bridge.m in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CAA1BC496DE0046345C /* Bridge.m */; };
+		684F8CB11BC499C10046345C /* AuthHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 684F8CB01BC499C10046345C /* AuthHeader.png */; };
+		684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB31BC49A0D0046345C /* UIConstants.swift */; };
+		684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB41BC49A0D0046345C /* UIEffects.swift */; };
+		6882CC301BCEE9B4002D9877 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 6882CC2F1BCEE9B4002D9877 /* message.png */; };
+		6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81A1BC6A13A00EDC4F0 /* Profile.png */; };
+		6892F8201BC6A4F500EDC4F0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81E1BC6A4F500EDC4F0 /* info.png */; };
+		6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81F1BC6A4F500EDC4F0 /* ticket.png */; };
+		6892F8231BC6A53C00EDC4F0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8221BC6A53C00EDC4F0 /* AboutViewController.swift */; };
+		6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8241BC6A73400EDC4F0 /* workstation.png */; };
+		6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8291BC6A8F800EDC4F0 /* plus.png */; };
+		6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8321BC6C29000EDC4F0 /* tickets.storyboard */; };
+		6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */; };
+		6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F8381BC70D6000EDC4F0 /* question_mark_filled.png */; };
+		6896F5451BC4A19E00ACA509 /* LoginHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896F5441BC4A19E00ACA509 /* LoginHandler.swift */; };
+		68DA2AD91BD945E500EFB077 /* ParseErrorHandlingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DA2AD81BD945E500EFB077 /* ParseErrorHandlingController.swift */; };
+		E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3D1BD5DC10002B33A9 /* Message-50.png */; };
+		E1084B401BD7594B002B33A9 /* briskit_title.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3F1BD7594B002B33A9 /* briskit_title.png */; };
+		E1084B421BD7E99A002B33A9 /* MessageCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1084B411BD7E99A002B33A9 /* MessageCellTableViewCell.swift */; };
+		E1192B921BCDDC4600DC284D /* black-slr-camera-256.png in Resources */ = {isa = PBXBuildFile; fileRef = E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */; };
+		E1192B951BCDE13600DC284D /* message.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1192B941BCDE13600DC284D /* message.storyboard */; };
+		E1192B971BCDE44D00DC284D /* request.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1192B961BCDE44D00DC284D /* request.storyboard */; };
+		E1192B9B1BCDE6E200DC284D /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192B9A1BCDE6E200DC284D /* MessageViewController.swift */; };
+		E1192B9D1BCE033B00DC284D /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192B9C1BCE033B00DC284D /* MessageHandler.swift */; };
+		E1192BA11BCE246D00DC284D /* textTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192BA01BCE246D00DC284D /* textTableViewController.swift */; };
+		E177DF4B1BCF2E4900D7A481 /* TicketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */; };
+		E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC011BD5A551000A0F36 /* requestbutton.png */; };
+		E1F5AC041BD5A9B2000A0F36 /* briskITlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */; };
+		E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -427,6 +427,7 @@
 				TargetAttributes = {
 					684F8C6A1BC4943A0046345C = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 27FWHD6E4U;
 					};
 					684F8C7E1BC4943A0046345C = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -723,6 +724,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ITHelpApp-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -731,6 +734,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ITHelp.ITHelpApp-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ITHelpApp-iOS/ITHelpApp-iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -742,6 +746,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "ITHelpApp-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -750,6 +756,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ITHelp.ITHelpApp-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ITHelpApp-iOS/ITHelpApp-iOS-Bridging-Header.h";
 			};
 			name = Release;

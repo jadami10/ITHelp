@@ -27,6 +27,8 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         //let image = UIImage(named: "AuthHeader.png");
         //headerImage.image = image;
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
     }
 
     override func didReceiveMemoryWarning() {
