@@ -15,6 +15,8 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imagePicker: UIImageView!
     
+    var busyFrame: UIView?
+    
     var imagePickerView: UIImagePickerController!
     
     override func viewDidLoad() {
@@ -54,15 +56,25 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         }
         
         if (goodRequest) {
-            let currentUser = PFUser.currentUser()
-            let requestObject = PFObject(className:"Request")
-            requestObject["requester"] = currentUser?.username
-            requestObject["requestMessage"] = ticketMsg
-            requestObject["title"] = ticketTitle
-            requestObject["ticket"] = 0
-            requestObject["taken"] = 0
-            RequestHandler.postRequest(requestObject, completion: checkRequest, successfullySavedRequest: saveRequest)
+
+            self.asyncBlockingAction("Sending Request", taskToRun: sendRequest)
+
         }
+    }
+    
+    func sendRequest(activityFrame:UIView) -> Void {
+        self.busyFrame = activityFrame
+        let ticketTitle = titleTextField.text
+        let ticketMsg = requestTextView.text
+        let currentUser = PFUser.currentUser()
+        let requestObject = PFObject(className:"Request")
+        requestObject["requester"] = currentUser?.username
+        requestObject["requestMessage"] = ticketMsg
+        requestObject["title"] = ticketTitle
+        requestObject["ticket"] = 0
+        requestObject["taken"] = 0
+        
+        RequestHandler.postRequest(requestObject, completion: self.checkRequest)
     }
 
     
@@ -84,10 +96,18 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             print(errorString)
             
         }
+        self.clearUI()
+        self.releaseUI()
     }
     
-    func saveRequest(request: PFObject) -> Void{
-        //let requestID = request.objectId! as String
+    func clearUI() {
+        requestTextView.text = ""
+        titleTextField.text = ""
+    }
+    
+    func releaseUI() {
+        self.view.userInteractionEnabled = true
+        self.busyFrame?.removeFromSuperview()
     }
     
     func presentAlert(title: NSString, message: NSString) {
