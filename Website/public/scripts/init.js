@@ -1,12 +1,6 @@
 $(document).ready(function() {
   try {
     Parse.initialize("Dxf9sHTC4H9iQoYP7FUPmkX8o99KTTJ01O1tBhjK", "oXnaI5OgVYPggkBhyOkxhhI81eb4p9kvSU4a7fRr");
-    if (Parse.User.current() == null) {
-      Parse.User.logIn("hannah", "hannah", {
-        success: function(user) { console.log("logged in"); location.reload(); },
-        error: function(user, err) {}
-      });
-    }
     getAvailableRequests();
     subscribeToRequests();
   } catch(err) {
