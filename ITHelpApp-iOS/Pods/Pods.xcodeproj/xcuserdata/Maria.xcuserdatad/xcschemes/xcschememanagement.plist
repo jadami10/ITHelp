@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Bolts.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+		<key>Parse.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Pods-ITHelpApp-iOS.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>PubNub.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>310AE5712D3270C3ECA1EF0BFAA7BA11</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4531E4B9638F76113561AF7194D5C23B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4B23C7D6472ECBB05E10EB515117A479</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53D3287ED245BA8747901A287485473A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE077BD03345C232ED11F39976D405DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
