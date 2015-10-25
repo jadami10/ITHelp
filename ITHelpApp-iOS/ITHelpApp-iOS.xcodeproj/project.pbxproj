@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C1CDF351BDCFB7C00621C28 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF321BDCFB7C00621C28 /* AppIcon.appiconset */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF411BDCFB8600621C28 /* IconLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF3C1BDCFB8600621C28 /* IconLarge.png */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF471BDCFBA700621C28 /* Icon-40.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF461BDCFBA700621C28 /* Icon-40.png */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF491BDCFBB400621C28 /* Icon-40@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF481BDCFBB400621C28 /* Icon-40@2x.png */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF4B1BDCFBC200621C28 /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF4A1BDCFBC200621C28 /* Icon-60@2x.png */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF4D1BDCFBCD00621C28 /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF4C1BDCFBCD00621C28 /* Icon-60@3x.png */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF4F1BDCFBDA00621C28 /* icon120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF4E1BDCFBDA00621C28 /* icon120x120.png */; settings = {ASSET_TAGS = (); }; };
+		4C1CDF511BDCFBF300621C28 /* Icon-40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF501BDCFBF300621C28 /* Icon-40@3x.png */; settings = {ASSET_TAGS = (); }; };
+		4C5713331BDCEBAC006646CC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5713311BDCEB45006646CC /* Parse.framework */; };
 		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		68075ED71BD6A4EB00975B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68075ED61BD6A4EB00975B5C /* Message.swift */; };
 		68075ED91BD80C6A00975B5C /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 68075ED81BD80C6A00975B5C /* forward.png */; };
@@ -78,6 +87,15 @@
 
 /* Begin PBXFileReference section */
 		455D6243885F25C1DAE9F12E /* Pods-ITHelpApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		4C1CDF321BDCFB7C00621C28 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = "ITHelpApp-iOS/Assets.xcassets/AppIcon.appiconset"; sourceTree = "<group>"; };
+		4C1CDF3C1BDCFB8600621C28 /* IconLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IconLarge.png; path = "ITHelpApp-iOS/Assets.xcassets/IconLarge.png"; sourceTree = "<group>"; };
+		4C1CDF461BDCFBA700621C28 /* Icon-40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40.png"; path = "ITHelpApp-iOS/Assets.xcassets/Icon-40.imageset/Icon-40.png"; sourceTree = "<group>"; };
+		4C1CDF481BDCFBB400621C28 /* Icon-40@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@2x.png"; path = "ITHelpApp-iOS/Assets.xcassets/Icon-41.imageset/Icon-40@2x.png"; sourceTree = "<group>"; };
+		4C1CDF4A1BDCFBC200621C28 /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@2x.png"; path = "ITHelpApp-iOS/Assets.xcassets/Icon-60.imageset/Icon-60@2x.png"; sourceTree = "<group>"; };
+		4C1CDF4C1BDCFBCD00621C28 /* Icon-60@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-60@3x.png"; path = "ITHelpApp-iOS/Assets.xcassets/Icon-61.imageset/Icon-60@3x.png"; sourceTree = "<group>"; };
+		4C1CDF4E1BDCFBDA00621C28 /* icon120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon120x120.png; path = "ITHelpApp-iOS/Assets.xcassets/icon120x120.imageset/icon120x120.png"; sourceTree = "<group>"; };
+		4C1CDF501BDCFBF300621C28 /* Icon-40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-40@3x.png"; path = "ITHelpApp-iOS/Assets.xcassets/Icon-42.imageset/Icon-40@3x.png"; sourceTree = "<group>"; };
+		4C5713311BDCEB45006646CC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../Downloads/parse-library-1.9.0/Parse.framework"; sourceTree = "<group>"; };
 		57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITHelpApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68075ED61BD6A4EB00975B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Messaging/Message.swift; sourceTree = "<group>"; };
 		68075ED81BD80C6A00975B5C /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = "ITHelpApp-iOS/Resources/Images/forward.png"; sourceTree = "<group>"; };
@@ -145,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C5713331BDCEBAC006646CC /* Parse.framework in Frameworks */,
 				5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +280,14 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C1CDF461BDCFBA700621C28 /* Icon-40.png */,
+				4C1CDF481BDCFBB400621C28 /* Icon-40@2x.png */,
+				4C1CDF4A1BDCFBC200621C28 /* Icon-60@2x.png */,
+				4C1CDF4C1BDCFBCD00621C28 /* Icon-60@3x.png */,
+				4C1CDF4E1BDCFBDA00621C28 /* icon120x120.png */,
+				4C1CDF501BDCFBF300621C28 /* Icon-40@3x.png */,
+				4C1CDF3C1BDCFB8600621C28 /* IconLarge.png */,
+				4C1CDF321BDCFB7C00621C28 /* AppIcon.appiconset */,
 				68075ED81BD80C6A00975B5C /* forward.png */,
 				E1084B3F1BD7594B002B33A9 /* briskit_title.png */,
 				E1084B3D1BD5DC10002B33A9 /* Message-50.png */,
@@ -335,6 +362,7 @@
 		993A2D5ECC85F5A35D241A4A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4C5713311BDCEB45006646CC /* Parse.framework */,
 				684F8C9E1BC495740046345C /* libBolts.a */,
 				684F8C9C1BC495670046345C /* libParse.a */,
 				57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */,
@@ -464,12 +492,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1CDF4F1BDCFBDA00621C28 /* icon120x120.png in Resources */,
 				684F8CB11BC499C10046345C /* AuthHeader.png in Resources */,
 				684CEA8A1BC5CC9C008460C6 /* home.storyboard in Resources */,
 				E1192B971BCDE44D00DC284D /* request.storyboard in Resources */,
 				E1192B921BCDDC4600DC284D /* black-slr-camera-256.png in Resources */,
 				684F8C791BC4943A0046345C /* LaunchScreen.storyboard in Resources */,
 				E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */,
+				4C1CDF411BDCFB8600621C28 /* IconLarge.png in Resources */,
+				4C1CDF4B1BDCFBC200621C28 /* Icon-60@2x.png in Resources */,
+				4C1CDF511BDCFBF300621C28 /* Icon-40@3x.png in Resources */,
 				6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */,
 				6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */,
 				6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */,
@@ -477,9 +509,12 @@
 				6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */,
 				E1084B401BD7594B002B33A9 /* briskit_title.png in Resources */,
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
+				4C1CDF491BDCFBB400621C28 /* Icon-40@2x.png in Resources */,
+				4C1CDF471BDCFBA700621C28 /* Icon-40.png in Resources */,
 				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
 				684CEA801BC5B150008460C6 /* Main.storyboard in Resources */,
 				6882CC301BCEE9B4002D9877 /* message.png in Resources */,
+				4C1CDF351BDCFB7C00621C28 /* AppIcon.appiconset in Resources */,
 				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
 				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
 				E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */,
@@ -487,6 +522,7 @@
 				E1192B951BCDE13600DC284D /* message.storyboard in Resources */,
 				6892F82A1BC6A8F800EDC4F0 /* plus.png in Resources */,
 				E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */,
+				4C1CDF4D1BDCFBCD00621C28 /* Icon-60@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,7 +770,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "distribute.ITHelp.ITHelpApp-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ddfde37e-1d1a-4a8a-930d-3c2b772dbe89";
 				SWIFT_OBJC_BRIDGING_HEADER = "ITHelpApp-iOS/ITHelpApp-iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -756,7 +792,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "distribute.ITHelp.ITHelpApp-iOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ddfde37e-1d1a-4a8a-930d-3c2b772dbe89";
 				SWIFT_OBJC_BRIDGING_HEADER = "ITHelpApp-iOS/ITHelpApp-iOS-Bridging-Header.h";
 			};
 			name = Release;

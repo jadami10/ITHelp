@@ -2472,11 +2472,20 @@
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
+					310AE5712D3270C3ECA1EF0BFAA7BA11 = {
+						DevelopmentTeam = B3YRXH585G;
+					};
+					4531E4B9638F76113561AF7194D5C23B = {
+						DevelopmentTeam = B3YRXH585G;
+					};
 					4B23C7D6472ECBB05E10EB515117A479 = {
-						DevelopmentTeam = 27FWHD6E4U;
+						DevelopmentTeam = B3YRXH585G;
+					};
+					53D3287ED245BA8747901A287485473A = {
+						DevelopmentTeam = B3YRXH585G;
 					};
 					FE077BD03345C232ED11F39976D405DD = {
-						DevelopmentTeam = 27FWHD6E4U;
+						DevelopmentTeam = B3YRXH585G;
 					};
 				};
 			};
@@ -2859,6 +2868,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 437A05BF913DCCA00B9D71009B84AAAC /* Pods-ITHelpApp-iOS.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2990,6 +3000,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CFF721F19CEB032FE3CBCB3AAB9E848 /* Parse-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.8.5;
 				DEFINES_MODULE = YES;
@@ -3046,6 +3057,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3CFF721F19CEB032FE3CBCB3AAB9E848 /* Parse-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1.8.5;
 				DEFINES_MODULE = YES;
@@ -3073,6 +3085,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDC87B83ABF9C22E41B5FD6F8AC3A7F2 /* PubNub-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 4.1.0;
 				DEFINES_MODULE = YES;
@@ -3100,6 +3113,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E47BAA3B5EE02D858E8B1A1D18F9862 /* Pods-ITHelpApp-iOS.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -3158,6 +3172,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CDC87B83ABF9C22E41B5FD6F8AC3A7F2 /* PubNub-Private.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 4.1.0;
 				DEFINES_MODULE = YES;
