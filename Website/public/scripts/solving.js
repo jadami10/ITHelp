@@ -2,7 +2,7 @@ var Ticket = React.createClass({
   handleClick: function() {
     // goto chatting session
     
-    window.location="../chatting.html?id=" + this.props.id;
+    window.location="/chatting/" + this.props.id;
   },
   render: function() {
     return (

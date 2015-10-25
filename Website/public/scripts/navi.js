@@ -31,7 +31,7 @@ var NaviBox = React.createClass({
   componentDidMount: function() {
     var curPath = window.location.pathname;
     console.log("curPath", curPath);
-    if (curPath.indexOf("solve") > -1) {
+    if (curPath.indexOf("solve") > -1 || curPath === '/') {
       $(this.refs.solve).addClass("navi-current");
     } else if (curPath.indexOf("solving") > -1 || curPath.indexOf("chatting") > -1) {
       $(this.refs.solving).addClass("navi-current");
@@ -42,10 +42,10 @@ var NaviBox = React.createClass({
   render: function() {
     return (
       <div className="navis">
-        <a href="solve.html">
+        <a href="/solve">
           <div className="navi" ref="solve"><span className="fa fa-user-md"></span><span>Solve a problem</span></div>
         </a>
-        <a href="solving.html">
+        <a href="/solving">
           <div className="navi" ref="solving">
             <span className="fa fa-commenting"></span>
             <span>Solving</span>
