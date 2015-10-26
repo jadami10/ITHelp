@@ -61,20 +61,12 @@ var TicketList = React.createClass({
 });
 
 var TicketsBox = React.createClass({
-  // mixins: [ParseReact.Mixin], // Enable query subscriptions
-
-  // observe: function() {
-  //   return {
-  //     tickets: new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0)
-  //   };
-  // },
 
   getInitialState: function() {
     return {data: []};
   },
 
   getTickets: function() {
-    console.log("regetting.....");
     var openRequests = Parse.Object.extend("Request");
     var query = new Parse.Query(openRequests);
     var _this = this;
