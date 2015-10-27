@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Message View Controller-->
@@ -12,19 +12,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="aZq-hB-M3G">
-                                <rect key="frame" x="11" y="477" width="265" height="30"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
-                                <connections>
-                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="valueChanged" id="UCV-iS-8ed"/>
-                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingDidEnd" id="c0Q-1D-jyb"/>
-                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingChanged" id="ms8-sG-ruB"/>
-                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingDidBegin" id="s8f-Jz-d5U"/>
-                                </connections>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="y64-nP-kVt">
                                 <rect key="frame" x="279" y="477" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
@@ -69,6 +56,19 @@
                                     <outlet property="delegate" destination="Bcm-kV-6QM" id="Tnf-Fo-2se"/>
                                 </connections>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" id="aZq-hB-M3G">
+                                <rect key="frame" x="11" y="477" width="265" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardAppearance="light" returnKeyType="send" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="valueChanged" id="UCV-iS-8ed"/>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingDidEnd" id="c0Q-1D-jyb"/>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingChanged" id="ms8-sG-ruB"/>
+                                    <action selector="messageEditingFinished:" destination="Bcm-kV-6QM" eventType="editingDidBegin" id="s8f-Jz-d5U"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
