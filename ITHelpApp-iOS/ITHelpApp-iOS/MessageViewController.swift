@@ -142,7 +142,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                 if let objects = objects as [PFObject]! {
                     self.messages = []
                     for object in objects {
-                        let newMessage = Message(sender: object["sender"] as! String, message: object["message"] as! String)
+                        let newMessage = Message(sender: object["sender"] as! String, message: object["message"] as! String, time: object.createdAt!)
                         self.messages.append(newMessage)
                     }
                 }
@@ -156,8 +156,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
         print("new message!")
-        if let sender = message.data.message["sender"] as? String, msg = message.data.message["message"] as? String {
-            let newMessage = Message(sender: sender, message: msg)
+        if let sender = message.data.message["sender"] as? String, msg = message.data.message["message"] as? String, when = message.data.message.createdAt {
+            let newMessage = Message(sender: sender, message: msg, time: when!)
             messages.append(newMessage)
             textTable.reloadData()
             self.tableViewScrollToBottom(true)
