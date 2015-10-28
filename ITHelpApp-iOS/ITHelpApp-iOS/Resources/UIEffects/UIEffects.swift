@@ -42,6 +42,15 @@ extension UITextView {
 
 extension UIViewController {
     
+    func presentAlert(title: NSString, message: NSString, completion: (() -> Void)?) {
+        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: completion)
+    }
+    
     // Source: http://stackoverflow.com/questions/28785715/how-to-display-an-activity-indicator-with-text-on-ios-8-with-swift
     func progressBarDisplayer(msg:String, indicator:Bool ) -> UIView {
         print(msg)
@@ -49,6 +58,7 @@ extension UIViewController {
         strLabel.text = msg
         strLabel.textColor = UIColor.whiteColor()
         let messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+        messageFrame.userInteractionEnabled = false
         messageFrame.layer.cornerRadius = 15
         messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
         if indicator {

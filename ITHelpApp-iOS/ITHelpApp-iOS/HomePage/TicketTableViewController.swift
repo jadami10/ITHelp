@@ -17,8 +17,14 @@ class TicketTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         // FIXME: store tickets so you don't reload every time. Causes issues with bad network conditions
-        
-        self.asyncBlockingAction("Fetching Tickets", taskToRun: fetchTickets)
+        if tickets.count == 0 {
+            //self.asyncBlockingAction("Fetching Tickets", taskToRun: fetchTickets)
+            self.fetchTickets()
+        } else {
+            if let path = self.tableView.indexPathForSelectedRow {
+                self.tableView.deselectRowAtIndexPath(path, animated: true)
+            }
+        }
         
         navigationController?.setNavigationBarHidden(true, animated: true)
         
@@ -29,7 +35,7 @@ class TicketTableViewController: UITableViewController {
         super.viewDidLoad()
         //TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.clearsSelectionOnViewWillAppear = true
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -41,26 +47,31 @@ class TicketTableViewController: UITableViewController {
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        self.fetchTickets(nil)
-        // TODO: Handle swipe down to refresh
+        self.fetchTickets()
         refreshControl.endRefreshing()
     }
     
-    func fetchTickets(activityFrame: UIView?) {
+    func fetchTickets() {
         print("disabled")
+        //self.view.userInteractionEnabled = false
         self.tableView.userInteractionEnabled = false
+        self.busyFrame = self.progressBarDisplayer("Getting Tickets", indicator: true)
         tickets = []
-        TicketHandler.getTickets(addTickets)
+        TicketHandler.getTickets(addTickets, completion: gotTickets)
+
+    }
+    
+    func gotTickets() -> Void {
         print("coming back")
-        activityFrame?.removeFromSuperview()
+        self.tableView.reloadData()
+        self.busyFrame?.removeFromSuperview()
         self.tableView.userInteractionEnabled = true
-        self.view.userInteractionEnabled = true
+        //self.view.userInteractionEnabled = true
     }
     
     func addTickets(object: PFObject) -> Void{
         tickets.append(object)
         //print(object)
-        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -88,14 +99,26 @@ class TicketTableViewController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTableCell", forIndexPath: indexPath) as! TicketTableCellTableViewCell
-            let ticketObject = tickets[indexPath.row - 1]
-            cell.ticketTitleField.text = ticketObject["title"] as! String
-            cell.ticketTextArea.text = ticketObject["requestMessage"] as! String
-            if ticketObject["helper"] != nil {
-                cell.takenImageView.image = UIImage(named: "forward.png")
+            if (tickets.count > indexPath.row - 1) {
+                let ticketObject = tickets[indexPath.row - 1]
+                
+                cell.ticketTitleField.text = (ticketObject["title"] as! String)
+                
+                if ticketObject["helper"] != nil && (ticketObject["helper"] as! PFUser).objectId != nil {
+                    cell.ticketStatusLabel.text = "Taken by " + (ticketObject["helper"] as! PFUser).objectId!
+                } else {
+                    cell.ticketStatusLabel.text = "Searching for help"
+                }
+                if let date = ticketObject.createdAt {
+                    let dateFormatter = NSDateFormatter()
+                    dateFormatter.dateFormat = "MM.dd.yy"
+                    let dateString = dateFormatter.stringFromDate(date)
+                    cell.ticketDateLabel.text = dateString
+                }
             } else {
-                cell.takenImageView.image = nil
+                print(String(format: "Index: %d, Tickets: %d", indexPath.row-1, tickets.count))
             }
+            
             return cell
         }
     }

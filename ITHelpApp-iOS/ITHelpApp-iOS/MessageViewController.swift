@@ -14,6 +14,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
    
     var reqHandler: PubnubHandler?
     var ticket: PFObject?
+    var busyFrame: UIView?
 
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var textTable: UITableView!
@@ -22,25 +23,35 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     var messages: [Message] = []
 
     
-    @IBAction func refreshMessage() {
+    func refreshMessage(activityFrame: UIView?) {
+        self.view.userInteractionEnabled = false
+        self.busyFrame = self.progressBarDisplayer("Getting Messages", indicator: true)
         queryMessage((PFUser.currentUser()?.username)!)
+        activityFrame?.removeFromSuperview()
+        self.view.userInteractionEnabled = true
         //textTable.reloadData()
         //print(messages)
 
-
+    }
+    
+    func gotMessages() {
+        
     }
     
     override func viewWillAppear(animated: Bool) {
-        navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.tintColor = UIConstants.mainUIDarkerColor
+        self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
         changeSendButtonState(false)
-        
+        textTable.delegate = self
+        textTable.dataSource = self
+        self.asyncBlockingAction("Loading Messages", taskToRun: refreshMessage)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textTable.delegate = self
-        textTable.dataSource = self
-        refreshMessage()
+
+        //refreshMessage()
         
         if let ticket = ticket {
             if (reqHandler == nil) {
@@ -99,10 +110,24 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(textTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = textTable.dequeueReusableCellWithIdentifier("cell")
-        cell?.textLabel?.text = messages[indexPath.row].message
-        cell?.textLabel?.numberOfLines = 10
-        cell?.textLabel?.lineBreakMode =  NSLineBreakMode.ByWordWrapping
+        // self goes to right
+        let cell = textTable.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageTableViewCell
+        
+        let message = messages[indexPath.row].message
+        let isMe = messages[indexPath.row].sender == PFUser.currentUser()?.username
+        
+        cell.setMessageText(message, isSelf: isMe)
+        
+        let count = messages.count
+        let row = indexPath.row
+        if (count == 1 && row == 0) {
+            
+        }
+        
+        /*
+        //cell?.textLabel?.text = messages[indexPath.row].message
+        //cell?.textLabel?.numberOfLines = 10
+        //cell?.textLabel?.lineBreakMode =  NSLineBreakMode.ByWordWrapping
         //cell?.detailTextLabel?.text = messages[indexPath.row].sender
         
         //change text color based on sender - need to be written into a method or custom cell later
@@ -118,7 +143,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell?.textLabel?.textAlignment = .Left
             //cell?.detailTextLabel?.textAlignment = .Left
         }
-        return cell!
+        */
+        return cell
         
     }
     
@@ -127,42 +153,16 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     
-    
-    func queryMessage(username:String){
-        let query = PFQuery(className:"Message")
-        //query.whereKey("sender", equalTo:username)
-        query.whereKey("request", equalTo: ticket!)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            
-            if error == nil {
-                // The find succeeded.
-                print("Successfully retrieved \(objects!.count)")
-                // Do something with the found objects
-                if let objects = objects as [PFObject]! {
-                    self.messages = []
-                    for object in objects {
-                        let newMessage = Message(sender: object["sender"] as! String, message: object["message"] as! String, time: object.createdAt!)
-                        self.messages.append(newMessage)
-                    }
-                }
-                self.textTable.reloadData()
-            } else {
-                // Log details of the failure
-                print("Error: \(error!))")
-            }
-        }
-    }
-    
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
         print("new message!")
-        if let sender = message.data.message["sender"] as? String, msg = message.data.message["message"] as? String, when = message.data.message.createdAt {
-            let newMessage = Message(sender: sender, message: msg, time: when!)
+        if let sender = message.data.message["sender"] as? String, msg = message.data.message["message"] as? String {
+            let newMessage = Message(sender: sender, message: msg, time: NSDate())
             messages.append(newMessage)
             textTable.reloadData()
             self.tableViewScrollToBottom(true)
         } else {
             print("bad message")
+            print(message.data.message)
         }
     }
     
@@ -202,6 +202,10 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         })
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        let message = messages[indexPath.row].message
+        return MessageHandler.getMessageHeight(message, width: self.view.frame.width)
+    }
     
 
 }

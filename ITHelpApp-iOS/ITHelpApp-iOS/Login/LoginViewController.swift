@@ -98,15 +98,6 @@ class LoginViewController: UIViewController {
         return good
     }
     
-    func presentAlert(title: NSString, message: NSString, completion: (() -> Void)?) {
-        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: completion)
-    }
-    
     func goToMainPage() {
         
         let storyboard = UIStoryboard(name: "home", bundle: nil)

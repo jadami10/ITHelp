@@ -88,10 +88,10 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             
             switch errorCode {
             case 100:
-                self.presentAlert("No Connection", message: "Please check network connection")
+                self.presentAlert("No Connection", message: "Please check network connection", completion: nil)
                 break
             default:
-                self.presentAlert("Error", message: "Please try again later")
+                self.presentAlert("Error", message: "Please try again later", completion: nil)
                 print(NSString(format: "Unhandled Error: %d", errorCode))
                 break
             }
@@ -110,15 +110,6 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     func releaseUI() {
         self.view.userInteractionEnabled = true
         self.busyFrame?.removeFromSuperview()
-    }
-    
-    func presentAlert(title: NSString, message: NSString) {
-        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
     }
     
     
