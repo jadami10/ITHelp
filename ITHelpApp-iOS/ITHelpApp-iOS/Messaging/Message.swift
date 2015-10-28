@@ -11,9 +11,11 @@ import Foundation
 class Message {
     var sender: String
     var message: String
+    var time: NSDate
     
-    init(sender: String, message: String) {
+    init(sender: String, message: String, time: NSDate) {
         self.sender = sender
         self.message = message
+        self.time = time
     }
 }

@@ -25,9 +25,11 @@ class AboutViewController: UIViewController {
     }
     
     @IBAction func iconButtonPressed(sender: AnyObject) {
-        let url = NSURL (string: "https://icons8.com/");
-        let requestObj = NSURLRequest(URL: url!);
-        iconWebView.loadRequest(requestObj);
+        //let requestObj = NSURLRequest(URL: url!);
+        //iconWebView.loadRequest(requestObj);
+        if let url = NSURL (string: "https://icons8.com/") {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
 
     /*
