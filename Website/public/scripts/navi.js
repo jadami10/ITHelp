@@ -11,7 +11,6 @@ var NaviBox = React.createClass({
   },
 
   getMyTicketsNumber: function() {
-
     var openRequests = Parse.Object.extend("Request");
     var currentUser = Parse.User.current();
     var query = new Parse.Query(openRequests);
@@ -30,13 +29,16 @@ var NaviBox = React.createClass({
 
   componentDidMount: function() {
     var curPath = window.location.pathname;
-    console.log("curPath", curPath);
     if (curPath.indexOf("solve") > -1 || curPath === '/') {
       $(this.refs.solve).addClass("navi-current");
     } else if (curPath.indexOf("solving") > -1 || curPath.indexOf("chatting") > -1) {
       $(this.refs.solving).addClass("navi-current");
     }
     this.getMyTicketsNumber();
+    $(this.refs.logOut).on("click", function(){
+      Parse.User.logOut();
+      window.location.href = "/";
+    });
   },
 
   render: function() {
@@ -55,6 +57,7 @@ var NaviBox = React.createClass({
           </div>
         </a>
         <div className="navi" ref="solved"><span className="fa fa-clock-o"></span><span>Solved</span></div>
+        <div className="navi log-out" ref="logOut"><span className="fa fa-sign-out"></span><span>Log Out</span></div>
       </div>
     );
   }
