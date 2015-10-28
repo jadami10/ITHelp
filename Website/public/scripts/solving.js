@@ -54,11 +54,13 @@ var TicketsBox = React.createClass({
     var query = new Parse.Query(openRequests);
     var _this = this;
 
-    query.matchesKeyInQuery("helper", "objectId", currentUser);
+    query.equalTo("helper", currentUser);
+
     query.find({
       success: function(data) {
         if (data.length > 0) {
           for (var i = 0; i < data.length; i++) {
+            console.log(data[i].get("helper"));
             subscribeToChat(data[i]);
             // if (doSubscribe) {
             //   subscribeToChat(result);

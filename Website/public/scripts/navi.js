@@ -17,7 +17,7 @@ var NaviBox = React.createClass({
     var query = new Parse.Query(openRequests);
     var _this = this;
 
-    query.matchesKeyInQuery("helper", "objectId", currentUser);
+    query.equalTo("helper", currentUser);
     query.find({
       success: function(data) {
         _this.setState({num: data.length});
