@@ -42,8 +42,6 @@ a {
   transition: all 0.3s ease;
   display: -webkit-box;
   -webkit-box-align: center;
-}
-.left-navi .navi {
   color: #f3f3f3;
   border-left: 4px solid rgba(0,0,0,0);
 }
@@ -57,6 +55,18 @@ a {
   color: #4a4a4a;
   border-left: 4px solid #60c8d1;
 }
+.left-navi .log-out {
+  position: fixed;
+  background-color: #555;
+  width: 18%;
+  bottom: 0;
+}
+.left-navi .log-out:hover {
+  cursor: pointer;
+  background: #999;
+  border-left: 4px solid #999;
+}
+
 .greetings {
   position: absolute;
   text-align: left;
