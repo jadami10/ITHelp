@@ -29,6 +29,9 @@ class LoginViewController: UIViewController {
         //headerImage.image = image;
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        self.userTextField.textColor = UIConstants.mainUIColor
+        self.passTextField.textColor = UIConstants.mainUIColor
     }
 
     override func didReceiveMemoryWarning() {

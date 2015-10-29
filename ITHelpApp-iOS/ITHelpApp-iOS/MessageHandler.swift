@@ -14,10 +14,10 @@ class MessageHandler {
     
     static let labelSpacing: CGFloat = 6
     
-    func queryMessage(username:String){
+    static func queryMessages(ticket: PFObject, addMessage: (Message) -> Void, completion: () -> Void){
         let query = PFQuery(className:"Message")
         //query.whereKey("sender", equalTo:username)
-        query.whereKey("request", equalTo: ticket!)
+        query.whereKey("request", equalTo: ticket)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
@@ -26,17 +26,16 @@ class MessageHandler {
                 print("Messages retrieved \(objects!.count)")
                 // Do something with the found objects
                 if let objects = objects as [PFObject]! {
-                    self.messages = []
                     for object in objects {
                         let newMessage = Message(sender: object["sender"] as! String, message: object["message"] as! String, time: object.createdAt!)
-                        self.messages.append(newMessage)
+                        addMessage(newMessage)
                     }
                 }
-                self.textTable.reloadData()
             } else {
                 // Log details of the failure
                 print("Error: \(error!))")
             }
+            completion()
         }
     }
     

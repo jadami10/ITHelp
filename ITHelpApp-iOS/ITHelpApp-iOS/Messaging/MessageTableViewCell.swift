@@ -50,9 +50,9 @@ class MessageTableViewCell: UITableViewCell {
     
     func setPortrait(isMe: Bool) {
         if (isMe) {
-            self.rightPortrait.image = UIImage(named: "user_male_circle_filled.png")
+            self.rightPortrait.image = UIImage(named: "person_blue.png")
         } else {
-            self.leftPortrait.image = UIImage(named: "user_male_circle_filled.png")
+            self.leftPortrait.image = UIImage(named: "person_gray.png")
         }
 
     }

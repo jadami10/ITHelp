@@ -20,22 +20,25 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var textTable: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     
-    var messages: [Message] = []
+    var lastHelperIndex = -1
+    var lastUserIndex = -1
+    
+    var messages: [Message?] = []
 
     
-    func refreshMessage(activityFrame: UIView?) {
+    func refreshMessage() {
         self.view.userInteractionEnabled = false
         self.busyFrame = self.progressBarDisplayer("Getting Messages", indicator: true)
-        queryMessage((PFUser.currentUser()?.username)!)
-        activityFrame?.removeFromSuperview()
+        if ticket != nil {
+            MessageHandler.queryMessages(ticket!, addMessage: addMessage, completion: gotMessages)
+        }
         self.view.userInteractionEnabled = true
-        //textTable.reloadData()
-        //print(messages)
-
     }
     
     func gotMessages() {
-        
+        self.textTable.reloadData()
+        self.busyFrame?.removeFromSuperview()
+        self.view.userInteractionEnabled = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -45,13 +48,15 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         changeSendButtonState(false)
         textTable.delegate = self
         textTable.dataSource = self
-        self.asyncBlockingAction("Loading Messages", taskToRun: refreshMessage)
+        if (messages.count) == 0 {
+            messages = []
+            self.refreshMessage()
+        }
+        //self.asyncBlockingAction("Loading Messages", taskToRun: refreshMessage)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //refreshMessage()
         
         if let ticket = ticket {
             if (reqHandler == nil) {
@@ -73,7 +78,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         messageObject["message"] = messageTextField.text
         messageObject["request"] = ticket
         MessageHandler.postMessage(messageObject, completion: checkMessage)
-        //refreshMessage()
         messageTextField.text = ""
         changeSendButtonState(false)
         self.tableViewScrollToBottom(true)
@@ -109,20 +113,56 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
+    func addMessage(message: Message) {
+        if (messages.count == 0) {
+            messages.append(nil)
+            messages.append(message)
+        } else {
+            if let prevMessage = messages[messages.count - 1] {
+                if prevMessage.sender == message.sender {
+                    messages.append(message)
+                } else {
+                    messages.append(nil)
+                    messages.append(message)
+                }
+            } else {
+                messages.append(message)
+            }
+        }
+        
+        if (message.sender == PFUser.currentUser()?.username) {
+            lastUserIndex = messages.count - 1
+        } else {
+            lastHelperIndex = messages.count - 1
+        }
+    }
+    
     func tableView(textTable: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // self goes to right
-        let cell = textTable.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageTableViewCell
         
-        let message = messages[indexPath.row].message
-        let isMe = messages[indexPath.row].sender == PFUser.currentUser()?.username
-        
-        cell.setMessageText(message, isSelf: isMe)
-        
-        let count = messages.count
-        let row = indexPath.row
-        if (count == 1 && row == 0) {
+        if let message = messages[indexPath.row]?.message {
+            let cell = textTable.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageTableViewCell
+            let isMe = messages[indexPath.row]!.sender == PFUser.currentUser()?.username
             
+            cell.setMessageText(message, isSelf: isMe)
+            
+            //let count = messages.count
+            let row = indexPath.row
+            if (row == lastUserIndex) {
+                cell.setPortrait(true)
+            } else if (row == lastHelperIndex) {
+                cell.setPortrait(false)
+            } else {
+                cell.removePortrait()
+            }
+            
+            return cell
+
+        } else {
+           let cell = textTable.dequeueReusableCellWithIdentifier("LargeSpacer", forIndexPath: indexPath)
+            return cell
         }
+
         
         /*
         //cell?.textLabel?.text = messages[indexPath.row].message
@@ -144,7 +184,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             //cell?.detailTextLabel?.textAlignment = .Left
         }
         */
-        return cell
         
     }
     
@@ -157,7 +196,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         print("new message!")
         if let sender = message.data.message["sender"] as? String, msg = message.data.message["message"] as? String {
             let newMessage = Message(sender: sender, message: msg, time: NSDate())
-            messages.append(newMessage)
+            addMessage(newMessage)
             textTable.reloadData()
             self.tableViewScrollToBottom(true)
         } else {
@@ -203,8 +242,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let message = messages[indexPath.row].message
+        if let message = messages[indexPath.row]?.message {
         return MessageHandler.getMessageHeight(message, width: self.view.frame.width)
+        } else {
+            return 5
+        }
+
     }
     
 

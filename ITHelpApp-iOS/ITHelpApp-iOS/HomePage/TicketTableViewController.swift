@@ -52,7 +52,6 @@ class TicketTableViewController: UITableViewController {
     }
     
     func fetchTickets() {
-        print("disabled")
         //self.view.userInteractionEnabled = false
         self.tableView.userInteractionEnabled = false
         self.busyFrame = self.progressBarDisplayer("Getting Tickets", indicator: true)
@@ -62,7 +61,6 @@ class TicketTableViewController: UITableViewController {
     }
     
     func gotTickets() -> Void {
-        print("coming back")
         self.tableView.reloadData()
         self.busyFrame?.removeFromSuperview()
         self.tableView.userInteractionEnabled = true

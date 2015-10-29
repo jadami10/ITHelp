@@ -43,7 +43,10 @@
 		684F8CB61BC49A0D0046345C /* UIEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684F8CB41BC49A0D0046345C /* UIEffects.swift */; };
 		686D0CB21BE0519E0041A954 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CB11BE0519E0041A954 /* MessageTableViewCell.swift */; };
 		686D0CB71BE166470041A954 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CB61BE166470041A954 /* InsetLabel.swift */; };
-		686D0CB91BE1745E0041A954 /* user_male_circle_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 686D0CB81BE1745E0041A954 /* user_male_circle_filled.png */; };
+		686D0CB91BE1745E0041A954 /* person_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 686D0CB81BE1745E0041A954 /* person_gray.png */; };
+		686D0CBB1BE190CA0041A954 /* LargeSpacerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CBA1BE190CA0041A954 /* LargeSpacerCell.swift */; };
+		686D0CBF1BE19BD70041A954 /* person_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 686D0CBE1BE19BD70041A954 /* person_blue.png */; };
+		686D0CC11BE19D820041A954 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CC01BE19D820041A954 /* InsetTextField.swift */; };
 		6882CC301BCEE9B4002D9877 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 6882CC2F1BCEE9B4002D9877 /* message.png */; };
 		6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81A1BC6A13A00EDC4F0 /* Profile.png */; };
 		6892F8201BC6A4F500EDC4F0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81E1BC6A4F500EDC4F0 /* info.png */; };
@@ -133,7 +136,10 @@
 		684F8CB41BC49A0D0046345C /* UIEffects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIEffects.swift; path = "ITHelpApp-iOS/Resources/UIEffects/UIEffects.swift"; sourceTree = "<group>"; };
 		686D0CB11BE0519E0041A954 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewCell.swift; path = Messaging/MessageTableViewCell.swift; sourceTree = "<group>"; };
 		686D0CB61BE166470041A954 /* InsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InsetLabel.swift; path = "ITHelpApp-iOS/Resources/UIElements/InsetLabel.swift"; sourceTree = "<group>"; };
-		686D0CB81BE1745E0041A954 /* user_male_circle_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_male_circle_filled.png; path = "ITHelpApp-iOS/Resources/Images/user_male_circle_filled.png"; sourceTree = "<group>"; };
+		686D0CB81BE1745E0041A954 /* person_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = person_gray.png; path = "ITHelpApp-iOS/Resources/Images/person_gray.png"; sourceTree = "<group>"; };
+		686D0CBA1BE190CA0041A954 /* LargeSpacerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LargeSpacerCell.swift; path = Messaging/LargeSpacerCell.swift; sourceTree = "<group>"; };
+		686D0CBE1BE19BD70041A954 /* person_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = person_blue.png; path = "ITHelpApp-iOS/Resources/Images/person_blue.png"; sourceTree = "<group>"; };
+		686D0CC01BE19D820041A954 /* InsetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InsetTextField.swift; path = "ITHelpApp-iOS/Resources/UIElements/InsetTextField.swift"; sourceTree = "<group>"; };
 		6882CC2F1BCEE9B4002D9877 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message.png; path = "ITHelpApp-iOS/Resources/Images/message.png"; sourceTree = "<group>"; };
 		6892F81A1BC6A13A00EDC4F0 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profile.png; path = "ITHelpApp-iOS/Resources/Images/Profile.png"; sourceTree = "<group>"; };
 		6892F81E1BC6A4F500EDC4F0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = "ITHelpApp-iOS/Resources/Images/info.png"; sourceTree = "<group>"; };
@@ -283,7 +289,8 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				686D0CB81BE1745E0041A954 /* user_male_circle_filled.png */,
+				686D0CBE1BE19BD70041A954 /* person_blue.png */,
+				686D0CB81BE1745E0041A954 /* person_gray.png */,
 				E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */,
 				4C1CDF461BDCFBA700621C28 /* Icon-40.png */,
 				4C1CDF481BDCFBB400621C28 /* Icon-40@2x.png */,
@@ -325,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				686D0CB61BE166470041A954 /* InsetLabel.swift */,
+				686D0CC01BE19D820041A954 /* InsetTextField.swift */,
 			);
 			name = UIElements;
 			sourceTree = "<group>";
@@ -390,6 +398,7 @@
 				E1192B9C1BCE033B00DC284D /* MessageHandler.swift */,
 				68075ED61BD6A4EB00975B5C /* Message.swift */,
 				686D0CB11BE0519E0041A954 /* MessageTableViewCell.swift */,
+				686D0CBA1BE190CA0041A954 /* LargeSpacerCell.swift */,
 			);
 			name = Message;
 			path = ..;
@@ -514,7 +523,7 @@
 				4C1CDF4B1BDCFBC200621C28 /* Icon-60@2x.png in Resources */,
 				4C1CDF511BDCFBF300621C28 /* Icon-40@3x.png in Resources */,
 				6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */,
-				686D0CB91BE1745E0041A954 /* user_male_circle_filled.png in Resources */,
+				686D0CB91BE1745E0041A954 /* person_gray.png in Resources */,
 				6892F8211BC6A4F500EDC4F0 /* ticket.png in Resources */,
 				6892F8391BC70D6000EDC4F0 /* question_mark_filled.png in Resources */,
 				E1F5AC041BD5A9B2000A0F36 /* briskITlogo.png in Resources */,
@@ -528,6 +537,7 @@
 				6882CC301BCEE9B4002D9877 /* message.png in Resources */,
 				4C1CDF351BDCFB7C00621C28 /* AppIcon.appiconset in Resources */,
 				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
+				686D0CBF1BE19BD70041A954 /* person_blue.png in Resources */,
 				6892F8201BC6A4F500EDC4F0 /* info.png in Resources */,
 				E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */,
 				68075ED91BD80C6A00975B5C /* forward.png in Resources */,
@@ -621,10 +631,12 @@
 				E1192B9D1BCE033B00DC284D /* MessageHandler.swift in Sources */,
 				686D0CB71BE166470041A954 /* InsetLabel.swift in Sources */,
 				684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */,
+				686D0CBB1BE190CA0041A954 /* LargeSpacerCell.swift in Sources */,
 				682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */,
 				684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */,
 				684F8C6F1BC4943A0046345C /* AppDelegate.swift in Sources */,
 				E1192B9B1BCDE6E200DC284D /* MessageViewController.swift in Sources */,
+				686D0CC11BE19D820041A954 /* InsetTextField.swift in Sources */,
 				68075ED71BD6A4EB00975B5C /* Message.swift in Sources */,
 				E177DF4B1BCF2E4900D7A481 /* TicketHandler.swift in Sources */,
 				6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */,
