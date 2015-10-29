@@ -54,7 +54,7 @@ extension UIViewController {
     // Source: http://stackoverflow.com/questions/28785715/how-to-display-an-activity-indicator-with-text-on-ios-8-with-swift
     func progressBarDisplayer(msg:String, indicator:Bool ) -> UIView {
         print(msg)
-        let strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 200, height: 50))
+        let strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 300, height: 50))
         strLabel.text = msg
         strLabel.textColor = UIColor.whiteColor()
         let messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
