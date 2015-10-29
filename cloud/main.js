@@ -16,6 +16,31 @@ Parse.Cloud.define("hello", function(request, response) {
 
 var req_channel = "RequestChannel";
 
+// limit number of requests
+Parse.Cloud.beforeSave("Request", function(request, response) {
+  var openRequests = Parse.Object.extend("Request");
+  var query = new Parse.Query(openRequests);
+  var username = Parse.User.current().getUsername();
+  if (username == null) {
+    response.error("Not logged in");
+  }
+  query.equalTo("requester", username);
+  //query.equalTo("taken", 0);
+  query.count({
+    success: function(count) {
+      // The count request succeeded. Show the count
+      if (count < 5) {
+        response.success();
+      } else {
+        response.error("Too many open requests")
+      }
+    },
+    error: function(error) {
+      response.error(error)
+    }
+  });
+});
+
 // publish request to pubnub after it's added
 Parse.Cloud.afterSave("Request", function(request) {
 

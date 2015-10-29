@@ -10,10 +10,10 @@ import UIKit
 
 class TicketTableCellTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var portaitImageView: UIImageView!
-    @IBOutlet weak var takenImageView: UIImageView!
-    @IBOutlet weak var ticketTitleField: UILabel!
-    @IBOutlet weak var ticketTextArea: UITextView!
+    @IBOutlet weak var ticketTitleField: UITextView!
+    @IBOutlet weak var ticketStatusLabel: UILabel!
+    @IBOutlet weak var ticketDateLabel: UILabel!
+    @IBOutlet weak var ticketTriangleImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
