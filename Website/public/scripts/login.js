@@ -8,7 +8,17 @@ var FormBox = React.createClass({
     this.setState({signingUp: true});
     $(".login-button").fadeToggle("fast");
     $(".signup-switch-button").fadeToggle("fast");
-    $(".reminder").fadeToggle("fast");
+    $(".reminder-1").fadeToggle("fast");
+    $(".reminder-2").fadeToggle("fast");
+    $(".signup-input").fadeToggle("fast");
+  },
+
+  onLoggingIn: function() {
+    this.setState({signingUp: false});
+    $(".login-button").fadeToggle("fast");
+    $(".signup-switch-button").fadeToggle("fast");
+    $(".reminder-1").fadeToggle("fast");
+    $(".reminder-2").fadeToggle("fast");
     $(".signup-input").fadeToggle("fast");
   },
 
@@ -88,7 +98,7 @@ var FormBox = React.createClass({
 
           <div className="input-set login-input">
             <span className="fa fa-user"></span>
-            <input type="text" placeholder="Your name" ref="username" />
+            <input type="text" placeholder="Username" ref="username" />
           </div>
           <div className="input-set login-input">
             <span className="fa fa-lock"></span>
@@ -110,8 +120,11 @@ var FormBox = React.createClass({
 
           <input type="submit" className="button login-button" value="Log In" />
           <input type="submit" className="button signup-button signup-input" value="Sign Up & Log In" />
-          <div className="reminder">
+          <div className="reminder reminder-1">
             Don&apos;t have an account yet?
+          </div>
+          <div className="reminder reminder-2" onClick={this.onLoggingIn} >
+            <span className="fa fa-arrow-left"></span>Going back to log in
           </div>
         </form>
 

@@ -88,6 +88,15 @@ input {
   color: rgba(255,255,255,.7);
 }
 
+.reminder-2 {
+  cursor: pointer;
+  display: none;
+}
+
+.reminder-2:hover {
+  color: rgba(255,255,255,1);
+}
+
 .signup-button {
   background-color: #FFB143;
 }
