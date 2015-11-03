@@ -1,7 +1,7 @@
 var Ticket = React.createClass({
   handleClick: function() {
-    $(this.refs.desc).toggle('fast');
-    $(this.refs.btnHelp).toggle('fast');
+    $(this.refs.desc).slideToggle('fast');
+    $(this.refs.btnHelp).fadeToggle('fast');
   },
   submitHelp: function() {
     takeRequest(this.props.ticketObj);

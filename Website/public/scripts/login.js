@@ -6,20 +6,25 @@ var FormBox = React.createClass({
 
   onSigningUp: function() {
     this.setState({signingUp: true});
-    $(".login-button").fadeToggle("fast");
-    $(".signup-switch-button").fadeToggle("fast");
-    $(".reminder-1").fadeToggle("fast");
-    $(".reminder-2").fadeToggle("fast");
-    $(".signup-input").fadeToggle("fast");
+
+    $(".login-button").slideToggle("fast", function(){
+      $(".signup-input").slideToggle("fast");
+    });
+    $(".signup-switch-button").slideToggle("fast");
+
+    $(".reminder-1").slideToggle("fast");
+    $(".reminder-2").slideToggle("fast");
   },
 
   onLoggingIn: function() {
     this.setState({signingUp: false});
-    $(".login-button").fadeToggle("fast");
-    $(".signup-switch-button").fadeToggle("fast");
-    $(".reminder-1").fadeToggle("fast");
-    $(".reminder-2").fadeToggle("fast");
-    $(".signup-input").fadeToggle("fast");
+
+    $(".signup-input").slideToggle("fast");
+    $(".login-button").slideToggle("fast");
+    $(".signup-switch-button").slideToggle("fast");
+
+    $(".reminder-1").slideToggle("fast");
+    $(".reminder-2").slideToggle("fast");
   },
 
   handleSubmit: function(e) {
@@ -96,30 +101,32 @@ var FormBox = React.createClass({
       <div className="formBox">
         <form className="inputForm" onSubmit={this.handleSubmit} ref="inputForm">
 
-          <div className="input-set login-input">
+          <div className="input-set">
             <span className="fa fa-user"></span>
             <input type="text" placeholder="Username" ref="username" />
           </div>
-          <div className="input-set login-input">
+          <div className="input-set">
             <span className="fa fa-lock"></span>
             <input type="password" placeholder="Password" ref="pswd" />
           </div>
-
-          <div className="input-set signup-input">
-            <span className="fa fa-caret-right"></span>
-            <input type="text" placeholder="First Name" ref="fname" />
-          </div>
-          <div className="input-set signup-input">
-            <span className="fa fa-caret-right"></span>
-            <input type="text" placeholder="Last Name" ref="lname" />
-          </div>
-          <div className="input-set signup-input">
-            <span className="fa fa-envelope"></span>
-            <input type="text" placeholder="E-mail" ref="email" />
-          </div>
-
           <input type="submit" className="button login-button" value="Log In" />
-          <input type="submit" className="button signup-button signup-input" value="Sign Up & Log In" />
+
+          <div className="signup-input">
+            <div className="input-set">
+              <span className="fa fa-caret-right"></span>
+              <input type="text" placeholder="First Name" ref="fname" />
+            </div>
+            <div className="input-set">
+              <span className="fa fa-caret-right"></span>
+              <input type="text" placeholder="Last Name" ref="lname" />
+            </div>
+            <div className="input-set">
+              <span className="fa fa-envelope"></span>
+              <input type="text" placeholder="E-mail" ref="email" />
+            </div>
+            <input type="submit" className="button signup-button" value="Sign Up & Log In" />
+          </div>
+
           <div className="reminder reminder-1">
             Don&apos;t have an account yet?
           </div>
