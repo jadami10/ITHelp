@@ -63,6 +63,7 @@
 		E1192B9D1BCE033B00DC284D /* MessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192B9C1BCE033B00DC284D /* MessageHandler.swift */; };
 		E1192BA11BCE246D00DC284D /* textTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1192BA01BCE246D00DC284D /* textTableViewController.swift */; };
 		E177DF4B1BCF2E4900D7A481 /* TicketHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */; };
+		E1D9ECB41BE050A400EFBE1D /* camera.svg in Resources */ = {isa = PBXBuildFile; fileRef = E1D9ECB31BE050A400EFBE1D /* camera.svg */; settings = {ASSET_TAGS = (); }; };
 		E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC011BD5A551000A0F36 /* requestbutton.png */; };
 		E1F5AC041BD5A9B2000A0F36 /* briskITlogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */; };
 		E1F5AC061BD5D6E2000A0F36 /* loginbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */; };
@@ -153,6 +154,7 @@
 		E1192B9C1BCE033B00DC284D /* MessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageHandler.swift; sourceTree = "<group>"; };
 		E1192BA01BCE246D00DC284D /* textTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = textTableViewController.swift; sourceTree = "<group>"; };
 		E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TicketHandler.swift; sourceTree = "<group>"; };
+		E1D9ECB31BE050A400EFBE1D /* camera.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = camera.svg; path = "ITHelpApp-iOS/Resources/Images/camera.svg"; sourceTree = "<group>"; };
 		E1F5AC011BD5A551000A0F36 /* requestbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = requestbutton.png; path = "ITHelpApp-iOS/Resources/Images/requestbutton.png"; sourceTree = "<group>"; };
 		E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = briskITlogo.png; path = "ITHelpApp-iOS/Resources/Images/briskITlogo.png"; sourceTree = SOURCE_ROOT; };
 		E1F5AC051BD5D6E2000A0F36 /* loginbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loginbutton.png; path = "ITHelpApp-iOS/Resources/Images/loginbutton.png"; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				6892F81E1BC6A4F500EDC4F0 /* info.png */,
 				6892F81F1BC6A4F500EDC4F0 /* ticket.png */,
 				6892F81A1BC6A13A00EDC4F0 /* Profile.png */,
+				E1D9ECB31BE050A400EFBE1D /* camera.svg */,
 				684F8CB01BC499C10046345C /* AuthHeader.png */,
 			);
 			name = Images;
@@ -509,6 +512,7 @@
 				6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */,
 				E1084B401BD7594B002B33A9 /* briskit_title.png in Resources */,
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
+				E1D9ECB41BE050A400EFBE1D /* camera.svg in Resources */,
 				4C1CDF491BDCFBB400621C28 /* Icon-40@2x.png in Resources */,
 				4C1CDF471BDCFBA700621C28 /* Icon-40.png in Resources */,
 				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
