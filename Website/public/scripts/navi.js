@@ -22,7 +22,7 @@ var NaviBox = React.createClass({
         _this.setState({num: data.length});
       },
       error: function(error) {
-        alert("Error: " + error.code + " " + error.message);
+        console.log("Error: " + error.code + " " + error.message);
       }
     });
   },

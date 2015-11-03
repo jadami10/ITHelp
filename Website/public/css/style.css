@@ -3,6 +3,7 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
   background-color: #f3f3f3;
@@ -11,18 +12,26 @@ body {
   min-width: 1000px;
   color: #4a4a4a;
 }
+
+textarea, input { outline: none; }
+
 .fa {
   margin-right: 10px;
 }
+
 a {
   text-decoration: none;
   outline: 0;
   color: #3c3c3c;
 }
+
 .left-navi {
   position: fixed;
   width: 18%;
   min-height: 100%;
+  background: -webkit-linear-gradient(#3f5655, #4a4a4a);
+  background: -o-linear-gradient(#3f5655, #4a4a4a);
+  background: -moz-linear-gradient(#3f5655, #4a4a4a);
   background: linear-gradient(#3f5655, #4a4a4a);
   font-size: 14px;
   letter-spacing: 2px;
