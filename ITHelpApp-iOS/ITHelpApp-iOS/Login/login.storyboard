@@ -29,16 +29,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 👤Username" minimumFontSize="17" clearButtonMode="whileEditing" id="utw-fG-CMM">
-                                <rect key="frame" x="0.0" y="215" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="UoP-ss-pgV">
                                 <rect key="frame" x="0.0" y="503" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -69,7 +59,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="🔒Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="Epe-aZ-iX6">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="🔒Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="Epe-aZ-iX6" customClass="InsetTextField" customModule="ITHelpApp_iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="280" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <animations/>
@@ -79,6 +69,16 @@
                                 <connections>
                                     <action selector="logInPressed:" destination="TNW-uB-Vjy" eventType="primaryActionTriggered" id="lyh-ri-pie"/>
                                 </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder=" 👤Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="utw-fG-CMM" customClass="InsetTextField" customModule="ITHelpApp_iOS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="215" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
                             </textField>
                         </subviews>
                         <animations/>
@@ -112,7 +112,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <animations/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="bcP-6M-hah">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Email" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="bcP-6M-hah">
                                 <rect key="frame" x="0.0" y="280" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <animations/>
@@ -123,18 +123,7 @@
                                     <action selector="textFieldDoneEditing:" destination="YyL-X3-hm4" eventType="editingDidEnd" id="7Xn-XD-kWs"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="Zfr-hT-Ndk">
-                                <rect key="frame" x="0.0" y="345" width="320" height="45"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                <animations/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="textFieldDoneEditing:" destination="YyL-X3-hm4" eventType="editingDidEnd" id="Nv0-jZ-iPC"/>
-                                </connections>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="aM2-Zn-pdc">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Password" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="aM2-Zn-pdc">
                                 <rect key="frame" x="0.0" y="410" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <animations/>
@@ -158,7 +147,7 @@
                                     <action selector="signUpPressed:" destination="YyL-X3-hm4" eventType="touchUpInside" id="6mL-LK-IAh"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" First" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="BPS-HL-WoW">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" First" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="BPS-HL-WoW">
                                 <rect key="frame" x="0.0" y="215" width="150" height="45"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES"/>
                                 <animations/>
@@ -169,7 +158,7 @@
                                     <action selector="textFieldDoneEditing:" destination="YyL-X3-hm4" eventType="editingDidEnd" id="nOF-sk-JIi"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Last" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" id="L2M-fd-MNa">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Last" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="L2M-fd-MNa">
                                 <rect key="frame" x="170" y="215" width="150" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES"/>
                                 <animations/>
@@ -192,6 +181,17 @@
                                     <action selector="alreadyUserPressed:" destination="YyL-X3-hm4" eventType="touchUpInside" id="8hM-t9-Pq2"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Username" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="Zfr-hT-Ndk">
+                                <rect key="frame" x="0.0" y="345" width="320" height="45"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <animations/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldDoneEditing:" destination="YyL-X3-hm4" eventType="editingDidEnd" id="Nv0-jZ-iPC"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.34901960780000002" green="0.75686274509999996" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>

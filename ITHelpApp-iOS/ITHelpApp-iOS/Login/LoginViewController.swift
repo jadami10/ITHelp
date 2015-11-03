@@ -29,6 +29,9 @@ class LoginViewController: UIViewController {
         //headerImage.image = image;
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        
+        self.userTextField.textColor = UIConstants.mainUIColor
+        self.passTextField.textColor = UIConstants.mainUIColor
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,15 +99,6 @@ class LoginViewController: UIViewController {
             good = false
         }
         return good
-    }
-    
-    func presentAlert(title: NSString, message: NSString, completion: (() -> Void)?) {
-        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: completion)
     }
     
     func goToMainPage() {

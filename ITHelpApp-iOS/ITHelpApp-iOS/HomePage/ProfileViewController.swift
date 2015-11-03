@@ -34,16 +34,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func tapGesturePressed(sender: AnyObject) {
-        presentAlert("Hardware issue", message: "Camera not available")
-    }
-    
-    func presentAlert(title: NSString, message: NSString) {
-        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
+        presentAlert("Hardware issue", message: "Camera not available", completion: nil)
     }
     
     @IBAction func stayLoggedInToggled(sender: AnyObject) {

@@ -65,26 +65,26 @@ class SignUpViewController: UIViewController {
             
             switch errorCode {
             case 100:
-                self.presentAlert("No Connection", message: "Please check network connection")
+                self.presentAlert("No Connection", message: "Please check network connection", completion: nil)
                 break
             case 125:
-                self.presentAlert("Bad Email", message: "Bad email format")
+                self.presentAlert("Bad Email", message: "Bad email format", completion: nil)
                 break
             case 202:
-                self.presentAlert("Username Taken", message: "Please pick different username")
+                self.presentAlert("Username Taken", message: "Please pick different username", completion: nil)
                 break
             case 203:
-                self.presentAlert("Email Taken", message: "Please pick different email")
+                self.presentAlert("Email Taken", message: "Please pick different email", completion: nil)
                 break
             default:
-                self.presentAlert("Error", message: "Please try again later")
+                self.presentAlert("Error", message: "Please try again later", completion: nil)
                 print(NSString(format: "Unhandled Error: %d", errorCode))
                 break
             }
             print(errorString)
             self.releaseUI()
         } else {
-            self.presentAlert("Success", message: "Signup Successful")
+            self.presentAlert("Success", message: "Signup Successful", completion: nil)
             self.releaseUI()
             goToMainPage()
         }
@@ -165,15 +165,6 @@ class SignUpViewController: UIViewController {
         }
         
         return true
-    }
-    
-    func presentAlert(title: NSString, message: NSString) {
-        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
     }
     
     func goToMainPage() {

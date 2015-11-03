@@ -22,21 +22,12 @@ class MainTabController: UITabBarController, PNObjectEventListener {
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
         print("request notification!")
         print(message.data.message)
-        self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!")
+        self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!", completion: nil)
         /*
         if let curController = self.selectedViewController {
             if curController is TicketTableViewController
         }
         */
-    }
-    
-    func presentAlert(title: NSString, message: NSString) {
-        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
-        
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertController.addAction(defaultAction)
-        
-        presentViewController(alertController, animated: true, completion: nil)
     }
     
 }

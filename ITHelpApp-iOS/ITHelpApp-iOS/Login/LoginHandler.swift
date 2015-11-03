@@ -74,24 +74,6 @@ class LoginHandler {
             (succeeded: Bool, error: NSError?) -> Void in
             if let error = error {
                 completion(result: error)
-                /*
-                let errorString = error.userInfo["error"] as? NSString
-                let errorCode = error.code
-                
-                switch errorCode {
-                case 100:
-                self.presentAlert("No Connection", message: "Please check network connection")
-                break
-                case 202:
-                self.presentAlert("Username Taken", message: "Please pick different username")
-                break
-                default:
-                self.presentAlert("Error", message: "Please try again later")
-                print(NSString(format: "Unhandled Error: %d", errorCode))
-                break
-                }
-                print(errorString)
-                */
             } else {
                 print("Signup good")
                 completion(result: err)

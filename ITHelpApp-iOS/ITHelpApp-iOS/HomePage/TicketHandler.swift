@@ -13,7 +13,7 @@ import Parse
 var petitions = [PFObject]()
 
 class TicketHandler{
-    static func getTickets(add: (PFObject -> Void)) -> Void{
+    static func getTickets(add: (PFObject -> Void), completion: () -> Void) -> Void{
         let query = PFQuery(className:"Request")
         query.whereKey("requester", equalTo:(PFUser.currentUser()?.username)!)
         query.findObjectsInBackgroundWithBlock {
@@ -37,6 +37,7 @@ class TicketHandler{
                 // Log details of the failure
                 print("Error: \(error!))")
             }
+            completion()
         }
     }
     
