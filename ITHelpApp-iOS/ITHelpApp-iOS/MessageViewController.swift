@@ -52,7 +52,11 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             messages = []
             self.refreshMessage()
         }
-        //self.asyncBlockingAction("Loading Messages", taskToRun: refreshMessage)
+        
+        let detailButton = UIBarButtonItem(title: "Details", style: .Plain, target: self, action: "goToClosedPage")
+        self.navigationItem.rightBarButtonItem = detailButton
+        
+        self.tabBarController?.tabBar.hidden = false
     }
     
     override func viewDidLoad() {
@@ -250,5 +254,35 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     }
     
+    /*
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        print("showing messages")
+        if let cellIndex = tableView.indexPathForSelectedRow?.row {
+            print("Index: %d", cellIndex)
+            if tickets.count > (cellIndex - 1) {
+                let ticketId = tickets[cellIndex - 1]
+                let msgViewController = segue.destinationViewController as! MessageViewController
+                msgViewController.ticket = ticketId;
+            } else {
+                print("Could not get ticketID")
+            }
+            
+            //destination.blogName = swiftBlogs[blogIndex]
+        } else {
+            print("could not get ticket index")
+        }
+        //msgViewController.ticketID =
+    }
+    */
+    
+    func goToClosedPage() {
+        
+        //let cc = CloseTicketViewController()
+        let storyboard = UIStoryboard(name: "message", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("ClosedTicket") as! CloseTicketViewController
+        let image = self.screenShotMethod()
+        controller.image = image
+        navigationController?.pushViewController(controller, animated: false)
+    }
 
 }

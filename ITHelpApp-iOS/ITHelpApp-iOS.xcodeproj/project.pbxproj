@@ -47,6 +47,7 @@
 		686D0CBB1BE190CA0041A954 /* LargeSpacerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CBA1BE190CA0041A954 /* LargeSpacerCell.swift */; };
 		686D0CBF1BE19BD70041A954 /* person_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 686D0CBE1BE19BD70041A954 /* person_blue.png */; };
 		686D0CC11BE19D820041A954 /* InsetTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CC01BE19D820041A954 /* InsetTextField.swift */; };
+		686D0CC31BE6C05B0041A954 /* CloseTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D0CC21BE6C05B0041A954 /* CloseTicketViewController.swift */; };
 		6882CC301BCEE9B4002D9877 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 6882CC2F1BCEE9B4002D9877 /* message.png */; };
 		6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81A1BC6A13A00EDC4F0 /* Profile.png */; };
 		6892F8201BC6A4F500EDC4F0 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 6892F81E1BC6A4F500EDC4F0 /* info.png */; };
@@ -140,6 +141,7 @@
 		686D0CBA1BE190CA0041A954 /* LargeSpacerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LargeSpacerCell.swift; path = Messaging/LargeSpacerCell.swift; sourceTree = "<group>"; };
 		686D0CBE1BE19BD70041A954 /* person_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = person_blue.png; path = "ITHelpApp-iOS/Resources/Images/person_blue.png"; sourceTree = "<group>"; };
 		686D0CC01BE19D820041A954 /* InsetTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InsetTextField.swift; path = "ITHelpApp-iOS/Resources/UIElements/InsetTextField.swift"; sourceTree = "<group>"; };
+		686D0CC21BE6C05B0041A954 /* CloseTicketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CloseTicketViewController.swift; path = Messaging/CloseTicketViewController.swift; sourceTree = "<group>"; };
 		6882CC2F1BCEE9B4002D9877 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = message.png; path = "ITHelpApp-iOS/Resources/Images/message.png"; sourceTree = "<group>"; };
 		6892F81A1BC6A13A00EDC4F0 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Profile.png; path = "ITHelpApp-iOS/Resources/Images/Profile.png"; sourceTree = "<group>"; };
 		6892F81E1BC6A4F500EDC4F0 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = info.png; path = "ITHelpApp-iOS/Resources/Images/info.png"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 				68075ED61BD6A4EB00975B5C /* Message.swift */,
 				686D0CB11BE0519E0041A954 /* MessageTableViewCell.swift */,
 				686D0CBA1BE190CA0041A954 /* LargeSpacerCell.swift */,
+				686D0CC21BE6C05B0041A954 /* CloseTicketViewController.swift */,
 			);
 			name = Message;
 			path = ..;
@@ -633,6 +636,7 @@
 				684CEA8C1BC5CD43008460C6 /* InitViewController.swift in Sources */,
 				686D0CBB1BE190CA0041A954 /* LargeSpacerCell.swift in Sources */,
 				682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */,
+				686D0CC31BE6C05B0041A954 /* CloseTicketViewController.swift in Sources */,
 				684F8CB51BC49A0D0046345C /* UIConstants.swift in Sources */,
 				684F8C6F1BC4943A0046345C /* AppDelegate.swift in Sources */,
 				E1192B9B1BCDE6E200DC284D /* MessageViewController.swift in Sources */,
