@@ -41,14 +41,15 @@
 }
 .right-probs .prob .title {
   margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 .right-probs .prob .tag {
   display: inline-block;
   font-size: 10px;
-  font-weight: 400;
   color: #fff;
   text-align: center;
   border-radius: 3px;
+  border: 1px solid rgba(255,255,255,.7);
   padding: 7px 7px;
   transition: all 0.3s ease;
   margin-right: 5px;
@@ -66,7 +67,7 @@
   content: 'Software';
 }
 .right-probs .prob .hardware {
-  background-color: #9dcaee;
+  /*background-color: #9dcaee;*/
 }
 .right-probs .prob .hardware:after {
   content: 'Hardware';
