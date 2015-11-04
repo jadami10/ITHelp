@@ -3,6 +3,7 @@
 body {
   background: #5DBACA;
   font-size: 18px;
+  color: #777;
 }
 
 .wrapper {
@@ -14,6 +15,14 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
+  transition: all 0.6s ease;
+}
+
+.wrapper-signup {
+  background: -webkit-linear-gradient(#6DDBC0, #5DC3CA);
+  background: -o-linear-gradient(#6DDBC0, #5DC3CA);
+  background: -moz-linear-gradient(#6DDBC0, #5DC3CA);
+  background: linear-gradient(#6DDBC0, #5DC3CA);
 }
 
 .login {
@@ -62,6 +71,11 @@ input {
   height: 40px;
   width: 300px;
   font-size: 18px;
+  color: #333;
+}
+
+input:focus {
+  color: #333;
 }
 
 .button {
@@ -70,7 +84,13 @@ input {
   width: 100%;
   margin-top: 10px;
   color: #fff;
+  border-bottom: 3px solid rgba(0,0,0,.1);
   transition: all 0.2s ease;
+}
+
+.button:focus {
+  border-bottom: 0px solid rgba(0,0,0,.1);
+  color: #fff;
 }
 
 .login-button {
@@ -78,7 +98,8 @@ input {
 }
 
 .login-button:hover {
-  background-color: #91E6ED;
+  background-color: #7FE1E9;
+  cursor: pointer;
 }
 
 .reminder {
@@ -91,6 +112,7 @@ input {
 .reminder-2 {
   cursor: pointer;
   display: none;
+  transition: color 0.3s ease;
 }
 
 .reminder-2:hover {
@@ -98,9 +120,10 @@ input {
 }
 
 .signup-button {
-  background-color: #FFB143;
+  background-color: #FFC565;
 }
 
 .signup-button:hover {
   background-color: #FFD583;
+  cursor: pointer;
 }

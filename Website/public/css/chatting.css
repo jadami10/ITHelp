@@ -1,5 +1,11 @@
 @import './style.css';
 
+input {
+  color: #333;
+}
+input:focus {
+  color: #333;
+}
 .right-chat {
   position: absolute;
   margin-left: 20%;

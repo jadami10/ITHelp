@@ -127,6 +127,7 @@ a {
 
 .setting-form {
   display: none;
+  opacity: .9;
   position: absolute;
   top: 65px;
   right: 2%;
@@ -140,6 +141,10 @@ a {
   line-height: 70px;
   box-shadow: 0 3px 15px rgba(0,0,0,.15);
   cursor: pointer;
+}
+
+.setting-form:hover {
+  opacity: 1;
 }
 
 .num-badge {

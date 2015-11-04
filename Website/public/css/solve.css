@@ -87,22 +87,23 @@
   margin-left: 10px;
 }
 .right-probs .prob .btn-help {
-  display: none;
+  display: block;
   padding-bottom: -25px;
   height: 50px;
   width: 100%;
-  background-color: #60c8d1;
+  background-image: url("/bg.png");
   text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 50px;
   color: #fff;
-  transition: all 0.3s ease;
+  transition: -webkit-filter 0.3s ease;
+  -webkit-filter: brightness(1);
   cursor: pointer;
 }
 .right-probs .prob .btn-help:after {
   content: 'I want to help!';
 }
 .right-probs .prob .btn-help:hover {
-  background-color: #7ddbe4;
+  -webkit-filter: brightness(1.05);
 }

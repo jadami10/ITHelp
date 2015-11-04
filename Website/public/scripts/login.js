@@ -4,8 +4,17 @@ var FormBox = React.createClass({
     return {signingUp: false};
   },
 
+  clearInput: function() {
+    this.refs.username.value = '';
+    this.refs.pswd.value = '';
+    this.refs.fname.value = '';
+    this.refs.lname.value = '';
+    this.refs.email.value = '';
+  },
+
   onSigningUp: function() {
     this.setState({signingUp: true});
+    $(".wrapper").addClass("wrapper-signup");
 
     $(".login-button").slideToggle("fast", function(){
       $(".signup-input").slideToggle("fast");
@@ -14,10 +23,13 @@ var FormBox = React.createClass({
 
     $(".reminder-1").slideToggle("fast");
     $(".reminder-2").slideToggle("fast");
+
+    this.clearInput();
   },
 
   onLoggingIn: function() {
     this.setState({signingUp: false});
+    $(".wrapper").removeClass("wrapper-signup");
 
     $(".signup-input").slideToggle("fast");
     $(".login-button").slideToggle("fast");
@@ -25,6 +37,8 @@ var FormBox = React.createClass({
 
     $(".reminder-1").slideToggle("fast");
     $(".reminder-2").slideToggle("fast");
+
+    this.clearInput();
   },
 
   handleSubmit: function(e) {
@@ -46,8 +60,7 @@ var FormBox = React.createClass({
           },
           error: function(user, err) {
             window.alert("Wrong username/password. (For testing, please use hannah/hannah)");
-            this.refs.username.value = '';
-            this.refs.pswd.value = '';
+            this.clearInput();
           }
       });
     } else {
