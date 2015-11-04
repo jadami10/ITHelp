@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="L8s-Ba-I5k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="L8s-Ba-I5k">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
         <!--Request-->
@@ -62,10 +62,17 @@
                                     <action selector="requestPressed:" destination="L8s-Ba-I5k" eventType="touchUpInside" id="mGK-Pw-hYQ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zb8-8f-hNB">
+                                <rect key="frame" x="20" y="313" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nyw-Wh-4S6">
-                                <rect key="frame" x="26" y="265" width="23" height="23"/>
+                                <rect key="frame" x="20" y="289" width="23" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="black-slr-camera-256.png"/>
+                                <connections>
+                                    <action selector="takePhoto" destination="L8s-Ba-I5k" eventType="touchUpInside" id="vVD-RI-Qi7"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -75,6 +82,7 @@
                     <navigationItem key="navigationItem" id="X1d-s4-UgO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="imagePicker" destination="Zb8-8f-hNB" id="bD7-fQ-86I"/>
                         <outlet property="requestTextView" destination="Dn1-Vu-ly5" id="RsE-aJ-wrR"/>
                         <outlet property="titleTextField" destination="X89-0N-txi" id="WGh-jZ-jUQ"/>
                     </connections>
