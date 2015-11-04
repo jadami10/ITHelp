@@ -71,7 +71,7 @@ var TicketsBox = React.createClass({
         _this.setState({data: data});
       },
       error: function(error) {
-        alert("Error: " + error.code + " " + error.message);
+        console.log("Error: " + error.code + " " + error.message);
       }
     });
   },

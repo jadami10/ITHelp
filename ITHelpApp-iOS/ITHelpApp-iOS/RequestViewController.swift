@@ -14,10 +14,11 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var requestTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imagePicker: UIImageView!
-    
+    var imagePickerView: UIImagePickerController!
+
     var busyFrame: UIView?
     
-    var imagePickerView: UIImagePickerController!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,17 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             presentViewController(imagePickerView, animated: true, completion: nil)
 
     }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        imagePickerView.dismissViewControllerAnimated(true, completion: nil)
+        imagePicker.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+    }
+//    
+//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+//        imagePickerView.dismissViewControllerAnimated(true, completion: nil)
+//        //imagePicker.image = editingInfo![UIImagePickerControllerOriginalImage] as? UIImage
+//    }
+
 
     @IBAction func requestPressed(sender: AnyObject) {
         

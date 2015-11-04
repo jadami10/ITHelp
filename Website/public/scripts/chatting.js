@@ -117,13 +117,13 @@ var ChatBox = React.createClass({
             }
           },
           error: function(error) {
-            alert("Error: " + error.code + " " + error.message);
+            console.log("Error: " + error.code + " " + error.message);
           }
         });
 
       },
       error: function(error) {
-        alert("Error: " + error.code + " " + error.message);
+        console.log("Error: " + error.code + " " + error.message);
       }
     });
 
@@ -174,7 +174,9 @@ var ChatForm = React.createClass({
     return (
       <form className="chat-form" onSubmit={this.handleSubmit}>
         <input className="input-text" type="text" placeholder="say something..." ref="content" />
-        <input className="send-text" type="submit"/>
+        <button className="send-text" type="submit" onClick={this.handleSubmit}>
+          <span className="fa fa-send-o"> </span>
+        </button>
       </form>
     );
   }

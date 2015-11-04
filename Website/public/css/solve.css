@@ -3,15 +3,11 @@
 .right-probs {
   position: absolute;
   margin-left: 20%;
-  margin-top: 1%;
+  margin-top: 90px;
   width: 80%;
   font-weight: 300;
-  color: #666;
+  color: #777;
   overflow: scroll;
-}
-.right-probs .probs .title {
-  font-size: 16px;
-  font-weight: 400;
 }
 .right-probs .prob {
   float: left;
@@ -32,10 +28,15 @@
   transform: translateY(-1px);
 }
 .right-probs .prob .wrapper {
-  padding: 25px 20px;
+  padding: 20px 20px;
+}
+.right-probs .prob .wrapper-title {
+  padding: 20px 20px;
+  border-bottom: 1px solid #EAF0F0;
 }
 .right-probs .prob .title {
-  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 400;
 }
 .right-probs .prob .desc {
   display: none;
@@ -97,6 +98,7 @@
   line-height: 50px;
   color: #fff;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 .right-probs .prob .btn-help:after {
   content: 'I want to help!';
