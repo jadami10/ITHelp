@@ -117,13 +117,13 @@ var ChatBox = React.createClass({
             }
           },
           error: function(error) {
-            alert("Error: " + error.code + " " + error.message);
+            console.log("Error: " + error.code + " " + error.message);
           }
         });
 
       },
       error: function(error) {
-        alert("Error: " + error.code + " " + error.message);
+        console.log("Error: " + error.code + " " + error.message);
       }
     });
 

@@ -62,7 +62,6 @@ $.urlParam = function(name){
 }
 
 $('#requestb').click(function () {
-  //alert("clicked")
   subscribeToRequests()
 });
 
@@ -80,7 +79,7 @@ function getSubChannel() {
       subscribeToChannel(reqChannel, onNewRequest);
     },
     error: function(error) {
-      alert("Error: " + error.code + " " + error.message);
+      console.log("Error: " + error.code + " " + error.message);
     }
   });
 }
@@ -92,7 +91,6 @@ function subscribeToRequests() {
 
 // TODO: add code to handle new requests
 function onNewRequest(m) {
-  // alert("new request");
   console.log("new request: ", m);
   updateTicket();
 }
@@ -111,7 +109,7 @@ function getAvailableRequests() {
       // TODO: return all available requests
     },
     error: function(error) {
-      alert("Error: " + error.code + " " + error.message);
+      console.log("Error: " + error.code + " " + error.message);
     }
   });
 }
@@ -137,7 +135,7 @@ function getMyRequests(doSubscribe) {
       // TODO: return my requests
     },
     error: function(error) {
-      alert("Error: " + error.code + " " + error.message);
+      console.log("Error: " + error.code + " " + error.message);
     }
   });
 }
@@ -163,7 +161,7 @@ function checkMyRequest(reqObject, doSubscribe) {
       }
     },
     error: function(error) {
-      alert("Error: " + error.code + " " + error.message);
+      console.log("Error: " + error.code + " " + error.message);
       return false;
     }
   });
@@ -186,11 +184,11 @@ function takeRequest(requestObject) {
           checkMyRequest(reqObject, true);
         },
         error: function(reqObject, error) {
-          alert("Failed to create new object with error: " + error.code + " " + error.message);
+          console.log("Failed to create new object with error: " + error.code + " " + error.message);
         }
       });
   } else {
-      alert("TODO: handle not being logged in");
+      console.log("TODO: handle not being logged in");
   }
 }
 
