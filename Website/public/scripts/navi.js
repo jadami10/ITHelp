@@ -96,11 +96,13 @@ var GreetingBox = React.createClass({
   render: function() {
     var curPath = window.location.pathname;
     if (curPath.indexOf("solve") > -1 || curPath === '/') {
-      $(this.refs.greetingText).text("Hi, " + this.state.username + ".");
+      $(this.refs.greetingText).html(
+        "<span class='fa fa-sun-o'></span>" + "Hi, " + this.state.username + "."
+      );
     } else if (curPath.indexOf("solving") > -1) {
-      $(this.refs.greetingText).text("Current sessions");
+      $(this.refs.greetingText).html("<span class='fa fa-commenting'></span>" + "Current sessions");
     } else if (curPath.indexOf("chatting") > -1) {
-      $(this.refs.greetingText).text("Chatting...");
+      $(this.refs.greetingText).html("<a href='/solving'><span class='fa fa-arrow-left'></span> Session list</a>");
     }
 
     return (

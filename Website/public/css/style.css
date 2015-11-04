@@ -22,7 +22,12 @@ textarea, input { outline: none; }
 a {
   text-decoration: none;
   outline: 0;
-  color: #3c3c3c;
+  color: #777;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #4a4a4a;
 }
 
 .left-navi {
@@ -82,7 +87,7 @@ a {
 }
 
 .top-greeting-bar {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   height: 70px;
@@ -90,6 +95,7 @@ a {
   border-bottom: 1px solid #E2E2E2;
   background-color: #fff;
   padding: 0 2%;
+  z-index: 100;
 }
 
 .top-left-greetings {
