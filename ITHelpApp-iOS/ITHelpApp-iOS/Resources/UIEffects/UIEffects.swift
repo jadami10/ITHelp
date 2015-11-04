@@ -68,6 +68,7 @@ extension UIViewController {
             messageFrame.addSubview(activityIndicator)
         }
         messageFrame.addSubview(strLabel)
+        messageFrame.sizeToFit()
         self.view.addSubview(messageFrame)
         return messageFrame
     }
@@ -92,5 +93,16 @@ extension UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    func screenShotMethod() -> UIImage {
+        //Create the UIImage
+        //UIGraphicsBeginImageContext(view.frame.size)
+        let scale = UIScreen.mainScreen().scale
+        UIGraphicsBeginImageContextWithOptions(view.frame.size, false, scale);
+        view.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }

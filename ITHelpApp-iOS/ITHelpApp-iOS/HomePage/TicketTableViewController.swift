@@ -17,8 +17,9 @@ class TicketTableViewController: UITableViewController {
 
     override func viewWillAppear(animated: Bool) {
         // FIXME: store tickets so you don't reload every time. Causes issues with bad network conditions
-        if tickets.count == 0 {
+        if tickets.count == 0 || AppConstants.shouldRefreshTickets {
             //self.asyncBlockingAction("Fetching Tickets", taskToRun: fetchTickets)
+            AppConstants.shouldRefreshTickets = false
             self.fetchTickets()
         } else {
             if let path = self.tableView.indexPathForSelectedRow {
@@ -102,7 +103,9 @@ class TicketTableViewController: UITableViewController {
                 
                 cell.ticketTitleField.text = (ticketObject["title"] as! String)
                 
-                if ticketObject["helper"] != nil && (ticketObject["helper"] as! PFUser).objectId != nil {
+                if let curTicket = ticketObject["helper"] as? PFUser, let curHelper = curTicket.username {
+                    cell.ticketStatusLabel.text = "Taken by " + curHelper
+                } else if ticketObject["helper"] != nil && (ticketObject["helper"] as! PFUser).objectId != nil {
                     cell.ticketStatusLabel.text = "Taken by " + (ticketObject["helper"] as! PFUser).objectId!
                 } else {
                     cell.ticketStatusLabel.text = "Searching for help"

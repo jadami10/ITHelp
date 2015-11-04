@@ -133,7 +133,7 @@
         <!--textTable-->
         <scene sceneID="7Ya-VB-N9S">
             <objects>
-                <viewControllerPlaceholder storyboardName="message" referencedIdentifier="textTable" id="aJf-Mk-uyx" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardIdentifier="textTable" storyboardName="message" referencedIdentifier="textTable" id="aJf-Mk-uyx" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="sfy-D4-ydv"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CUL-iI-SD8" userLabel="First Responder" sceneMemberID="firstResponder"/>

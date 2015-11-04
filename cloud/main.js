@@ -30,6 +30,10 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
     success: function(count) {
       // The count request succeeded. Show the count
       if (count < 5) {
+        var req = request.object;
+        req.set("helperSolved", -1);
+        req.set("requesterSolved", -1);
+        req.set("allHelpers", []);
         response.success();
       } else {
         response.error("Too many open requests")
@@ -50,12 +54,29 @@ Parse.Cloud.afterSave("Request", function(request) {
   var helper = request.object.get("helper");
   var reqID = request.object.id;
   var requester = request.object.get("requester");
-  if (taken == 0) {
+  var requesterSolved = request.object.get("requesterSolved");
+  var helperSolved = request.object.get("helperSolved");
+  if (taken == 0 && helper == null) {
     console.log("publishing new request");
     publishRequest(req_channel, reqID, pubnub_web);
+  } else if (taken == 1 && taker != null && helper != null) {
+    if (requesterSolved == 1 && helperSolved == 1) {
+      console.log("Request is solved!")
+      // TODO: Handle notifying app and web
+    } else if (helperSolved == 1 && requesterSolved == -1) {
+      console.log("Helper marked as solved. Notify user.");
+      // TODO: Handle notifying app
+    } else if (helperSolved == -1 && requesterSolved == -1) {
+      console.log("notify app!");
+      publishRequest(requester, reqID, pubnub_ios);
+    } else if (helperSolved == 1 && requesterSolved == 0) {
+      console.log("Requester denied solution.");
+      // TODO: handle notifying web
+    }
   } else if (taken == 1 && taker != null && helper == null) {
     console.log("someone taking request");
     request.object.set("helper", taker);
+    request.object.addUnique("allHelpers", taker);
     request.object.save();
   } else {
     console.log("notify app!");
