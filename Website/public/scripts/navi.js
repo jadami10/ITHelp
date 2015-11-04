@@ -44,8 +44,11 @@ var NaviBox = React.createClass({
   render: function() {
     return (
       <div className="navis">
+        <div className="navi-logo">
+          <img src="/logo.png" />
+        </div>
         <a href="/solve">
-          <div className="navi" ref="solve"><span className="fa fa-user-md"></span><span>Solve a problem</span></div>
+          <div className="navi" ref="solve"><span className="fa fa-user-md"></span><span>Solve</span></div>
         </a>
         <a href="/solving">
           <div className="navi" ref="solving">
@@ -67,6 +70,61 @@ var naviBox = ReactDOM.render(
   <NaviBox />,
   document.getElementsByClassName('left-navi')[0]
 );
+
+var GreetingBox = React.createClass({
+  getInitialState: function() {
+    return {username: ""};
+  },
+
+  getMyUsername: function() {
+    var currentUser = Parse.User.current();
+    this.setState({username: currentUser.get("username")});
+  },
+
+  componentDidMount: function() {
+    this.getMyUsername();
+    var _this = this;
+    $(this.refs.greetingAvatar).on("click", function(){
+      $(_this.refs.logOut).fadeToggle("fast");
+    });
+    $(this.refs.logOut).on("click", function(){
+      Parse.User.logOut();
+      window.location.href = "/";
+    });
+  },
+
+  render: function() {
+    var curPath = window.location.pathname;
+    if (curPath.indexOf("solve") > -1 || curPath === '/') {
+      $(this.refs.greetingText).text("Hi, " + this.state.username + ".");
+    } else if (curPath.indexOf("solving") > -1) {
+      $(this.refs.greetingText).text("Current sessions");
+    } else if (curPath.indexOf("chatting") > -1) {
+      $(this.refs.greetingText).text("Chatting...");
+    }
+
+    return (
+      <div className="top-greeting-bar">
+        <div className="setting-form" ref="logOut">
+          <span className="fa fa-sign-out"></span>
+          Log Out
+        </div>
+        <div className="top-left-greetings" ref="greetingText"></div>
+        <div className="top-right-avatar" ref="greetingAvatar">
+          <span className="top-right-avatar-initial">
+            {this.state.username.charAt(0).toUpperCase()}
+          </span>
+        </div>
+      </div>
+    );
+  }
+});
+
+var greetingBox = ReactDOM.render(
+  <GreetingBox />,
+  document.getElementsByClassName('top-greeting')[0]
+);
+
 
 var updateMyRequestNumber = function() {
   naviBox.incMyRequestNum();

@@ -1,7 +1,7 @@
 var Ticket = React.createClass({
   handleClick: function() {
+    $(this.refs.btnHelp).slideToggle('fast');
     $(this.refs.desc).slideToggle('fast');
-    $(this.refs.btnHelp).fadeToggle('fast');
   },
   submitHelp: function() {
     takeRequest(this.props.ticketObj);
@@ -12,8 +12,10 @@ var Ticket = React.createClass({
   render: function() {
     return (
       <div className="prob" onClick={this.handleClick} ref="curTicket">
-        <div className="wrapper">
+        <div className="wrapper-title">
           <div className="title"> {this.props.title} </div>
+        </div>
+        <div className="wrapper">
           <div className="desc" ref="desc">
             <span className="fa fa-quote-left"> </span>
             <span> {this.props.desc} </span>
