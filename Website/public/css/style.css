@@ -87,6 +87,7 @@ a:hover {
 }
 
 .top-greeting-bar {
+  opacity: .95;
   position: fixed;
   top: 0;
   right: 0;
@@ -176,6 +177,8 @@ a:hover {
     transform: rotate(0);
   }
   50% {
+    -webkit-filter: brightness(1.5);
+    filter: brightness(1.5);
     -ms-transform: rotate(20deg); /* IE 9 */
     -webkit-transform: rotate(20deg); /* Safari */
     transform: rotate(20deg);

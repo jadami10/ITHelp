@@ -20,7 +20,7 @@
   background: -o-linear-gradient(left , #48A3B6, #55BAC5);
   background: -moz-linear-gradient(left , #48A3B6, #55BAC5);
   background: linear-gradient(left , #48A3B6, #55BAC5);
-  opacity: .85;
+  opacity: .9;
   color: #fff;
   width: 100%;
   min-height: 100px;
@@ -32,9 +32,9 @@
   border-bottom: 1px solid #71CDE0;
 }
 .right-probs .prob:hover {
-  box-shadow: 0 3px 10px rgba(0,0,0,.5);
-  opacity: .95;
-  transform: translateX(1px);
+  /*box-shadow: 0 3px 10px rgba(0,0,0,.5);*/
+  opacity: .85;
+  /*transform: translateY(-1px);*/
 }
 .right-probs .prob .wrapper {
   padding: 25px 20px;

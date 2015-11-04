@@ -1,16 +1,22 @@
 var Ticket = React.createClass({
   componentDidMount: function() {
     $(this.refs.btnHelp).hide();
+    if (this.props.photo != null) {
+      this.refs.descImage.src = this.props.photo["_url"];
+      $(this.refs.descImage).show();
+    }
   },
   handleClick: function(e) {
-    if (e.target.classList[0] != "btn-help") {
+    if (e.target.classList[0] == "desc-image") {
+      TicketList.showFullscreenImage(this.props.photo["_url"]);
+      // window.open(e.target.src, '_blank');
+    } else if (e.target.classList[0] != "btn-help") {
       $(this.refs.btnHelp).slideToggle('fast');
       $(this.refs.desc).slideToggle('fast');
     }
   },
   submitHelp: function() {
     takeRequest(this.props.ticketObj);
-    //ticketsBox.getTickets();
     $(this.refs.curTicket).fadeOut();
     updateMyRequestNumber();
   },
@@ -25,6 +31,7 @@ var Ticket = React.createClass({
             <span className="fa fa-quote-left"> </span>
             <span> {this.props.desc} </span>
             <span className="fa fa-quote-right"></span>
+            <img className="desc-image" ref="descImage" />
           </div>
           <div className="tag adobe"></div>
           <div className="tag software"></div>
@@ -46,7 +53,17 @@ var Ticket = React.createClass({
 });
 
 var TicketList = React.createClass({
+  statics: {
+    showFullscreenImage: function(s) {
+      $(".desc-image-fullscreen").attr("src", s);
+      $(".desc-image-fullscreen-div").fadeIn("fast")
+    }
+  },
   render: function() {
+    $(".desc-image-fullscreen-div").on("click", function(){
+      $(".desc-image-fullscreen-div").fadeOut("fast")}
+    );
+
     var ticketNodes = this.props.tickets.map(function(ticket, index) {
       return (
         <Ticket 
@@ -54,6 +71,7 @@ var TicketList = React.createClass({
           title={ticket.get("title")} 
           time={ticket.get("createdAt").toString().substring(0, 10)} 
           desc={ticket.get("requestMessage")} 
+          photo={ticket.get("photoFile")}
           ticketObj={ticket}
           key={index}>
         </Ticket>
@@ -62,6 +80,9 @@ var TicketList = React.createClass({
     return (
       <div className="ticket-list">
         {ticketNodes}
+        <div className="desc-image-fullscreen-div">
+          <img className="desc-image-fullscreen" />              
+        </div>
       </div>
     );
   }
