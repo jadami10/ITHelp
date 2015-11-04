@@ -18,12 +18,12 @@ var req_channel = "RequestChannel";
 
 // limit number of requests
 Parse.Cloud.beforeSave("Request", function(request, response) {
+  if (initalCheckFailed(request, response)) {
+    return;
+  }
   var openRequests = Parse.Object.extend("Request");
   var query = new Parse.Query(openRequests);
-  var username = Parse.User.current().getUsername();
-  if (username == null) {
-    response.error("Not logged in");
-  }
+
   query.equalTo("requester", username);
   //query.equalTo("taken", 0);
   query.count({
@@ -47,7 +47,9 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
 
 // publish request to pubnub after it's added
 Parse.Cloud.afterSave("Request", function(request) {
-
+  if (initalCheckFailed(request, null)) {
+    return;
+  }
   // send to pubnub
   var taker = request.user;
   var taken = request.object.get("taken");
@@ -175,4 +177,28 @@ function publishRequest(req_channel, requestID, pubnub) {
       console.error('Request failed ' + httpResponse.status);
     }
   });
+}
+
+function initalCheckFailed(request, response) {
+  if (request.master) {
+    console.log("Master making changes. No action taken.");
+    if (response) {
+        response.success();
+    }
+    return true;
+  }
+  if (Parse.User.current() == null) {
+    if (response) {
+        response.error("Not logged in user");
+    }
+    return true;
+  }
+  var username = Parse.User.current().getUsername();
+  if (username == null) {
+    if (response) {
+        response.error("Not logged in username");
+    }
+    return true;
+  }
+  return false;
 }
