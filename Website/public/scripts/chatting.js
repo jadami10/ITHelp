@@ -173,7 +173,9 @@ var ChatForm = React.createClass({
   render: function() {
     return (
       <form className="chat-form" onSubmit={this.handleSubmit}>
-        <input className="input-text" type="text" placeholder="say something..." ref="content" />
+        <div className="input-text">
+          <textarea type="text" placeholder="say something..." rol="3" ref="content"></textarea>
+        </div>
         <button className="send-text" type="submit" onClick={this.handleSubmit}>
           <span className="fa fa-send-o"> </span>
         </button>

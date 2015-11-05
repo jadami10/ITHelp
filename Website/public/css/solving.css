@@ -16,11 +16,11 @@
   font-weight: 400;
 }
 .right-probs .prob {
-  background: -webkit-linear-gradient(left , #48A3B6, #55BAC5);
-  background: -o-linear-gradient(left , #48A3B6, #55BAC5);
-  background: -moz-linear-gradient(left , #48A3B6, #55BAC5);
-  background: linear-gradient(left , #48A3B6, #55BAC5);
-  opacity: .9;
+  background: -webkit-linear-gradient(left, #71CFDA, #64C9DE);
+  background: -o-linear-gradient(left, #71CFDA, #64C9DE);
+  background: -moz-linear-gradient(left, #71CFDA, #64C9DE);
+  background: linear-gradient(left, #71CFDA, #64C9DE);
+  opacity: 1;
   color: #fff;
   width: 100%;
   min-height: 100px;
@@ -29,7 +29,7 @@
   background-repeat: no-repeat;
   background-position: 100%;
   cursor: pointer;
-  border-bottom: 1px solid #71CDE0;
+  border-bottom: 1px solid #4DB5CB;
 }
 .right-probs .prob:hover {
   /*box-shadow: 0 3px 10px rgba(0,0,0,.5);*/
@@ -42,6 +42,7 @@
 .right-probs .prob .title {
   margin-bottom: 15px;
   letter-spacing: 1px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
 }
 .right-probs .prob .tag {
   display: inline-block;
@@ -75,4 +76,5 @@
 .right-probs .prob .requester {
   float: right;
   font-size: 14px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
 }

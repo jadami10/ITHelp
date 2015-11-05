@@ -48,18 +48,18 @@ var NaviBox = React.createClass({
           <img src="/logo.png" />
         </div>
         <a href="/solve">
-          <div className="navi" ref="solve"><span className="fa fa-user-md"></span><span>Solve</span></div>
+          <div className="navi" ref="solve"><span className="fa fa-user-md"></span><span>SOLVE</span></div>
         </a>
         <a href="/solving">
           <div className="navi" ref="solving">
             <span className="fa fa-commenting"></span>
-            <span>Solving</span>
+            <span>SOLVING</span>
             <div className="num-badge" ref="numBadge">
               {this.state.num}
             </div>
           </div>
         </a>
-        <div className="navi" ref="solved"><span className="fa fa-clock-o"></span><span>Solved</span></div>
+        <div className="navi" ref="solved"><span className="fa fa-clock-o"></span><span>SOLVED</span></div>
         <div className="navi log-out" ref="logOut"><span className="fa fa-sign-out"></span><span>Log Out</span></div>
       </div>
     );
