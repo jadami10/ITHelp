@@ -15,6 +15,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imagePicker: UIImageView!
     var imagePickerView: UIImagePickerController!
+    var photoFile: NSData!
 
     var busyFrame: UIView?
     
@@ -47,11 +48,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         imagePickerView.dismissViewControllerAnimated(true, completion: nil)
         imagePicker.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
-//    
-//    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-//        imagePickerView.dismissViewControllerAnimated(true, completion: nil)
-//        //imagePicker.image = editingInfo![UIImagePickerControllerOriginalImage] as? UIImage
-//    }
+
 
 
     @IBAction func requestPressed(sender: AnyObject) {
@@ -82,6 +79,10 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         let ticketMsg = requestTextView.text
         let currentUser = PFUser.currentUser()
         let requestObject = PFObject(className:"Request")
+        if (imagePicker.image != nil){
+            var file = PFFile(name: "image", data: UIImageJPEGRepresentation(imagePicker.image!, 0.5)!)
+            requestObject["photoFile"] = file
+        }
         requestObject["requester"] = currentUser?.username
         requestObject["requestMessage"] = ticketMsg
         requestObject["title"] = ticketTitle
@@ -117,6 +118,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     func clearUI() {
         requestTextView.text = ""
         titleTextField.text = ""
+        imagePicker.image = nil
     }
     
     func releaseUI() {

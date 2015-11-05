@@ -64,11 +64,12 @@
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zb8-8f-hNB">
                                 <rect key="frame" x="20" y="313" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <inset key="insetFor6xAndEarlier" minX="-10" minY="-10" maxX="30" maxY="20"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nyw-Wh-4S6">
-                                <rect key="frame" x="20" y="289" width="23" height="23"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="20" y="290" width="23" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
                                 <state key="normal" title="Button" image="black-slr-camera-256.png"/>
                                 <connections>
                                     <action selector="takePhoto" destination="L8s-Ba-I5k" eventType="touchUpInside" id="vVD-RI-Qi7"/>
