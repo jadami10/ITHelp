@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class RequestViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+class RequestViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate , UITextFieldDelegate, UITextViewDelegate{
 
     @IBOutlet weak var requestTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
@@ -19,6 +19,10 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
 
     var busyFrame: UIView?
     
+    @IBOutlet weak var titleTextFieldCount: UILabel!
+    @IBOutlet weak var requestTextViewCount: UILabel!
+    let maxTitleLength = 100
+    let maxRequestLength = 500
     
     
     override func viewDidLoad() {
@@ -26,6 +30,8 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        titleTextField.delegate = self
+        requestTextView.delegate = self
         self.getMaxTickets()
     }
 
@@ -123,6 +129,31 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             self.clearUI()
         }
         self.releaseUI()
+    }
+    
+    @IBAction func titleTextFieldChanged(sender: AnyObject) {
+        if (sender as! NSObject == titleTextField) {
+            titleTextFieldCount.text = String(format: "%d/%d", (titleTextField.text?.characters.count)!, maxTitleLength)
+        }
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        let currentString: NSString = textField.text!
+        let newString: NSString =
+        currentString.stringByReplacingCharactersInRange(range, withString: string)
+        return newString.length <= maxTitleLength
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+
+        let curLength = textView.text.characters.count + text.characters.count - range.length
+        if (curLength <= maxRequestLength) {
+            requestTextViewCount.text = String(format: "%d/%d", curLength, maxRequestLength)
+            return true
+        } else {
+            return false
+        }
+
     }
     
     func getMaxTickets() {

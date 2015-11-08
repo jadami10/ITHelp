@@ -30,9 +30,10 @@ class TicketTableViewController: UITableViewController {
                 self.tableView.deselectRowAtIndexPath(path, animated: true)
             }
         }
-        
+
         navigationController?.setNavigationBarHidden(true, animated: true)
-        
+        self.tabBarController?.tabBar.hidden = false
+        self.hidesBottomBarWhenPushed = true
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
@@ -41,6 +42,7 @@ class TicketTableViewController: UITableViewController {
         //TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = true
+
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
@@ -194,7 +196,7 @@ class TicketTableViewController: UITableViewController {
             return 125
         }
     }
-    
+    /*
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("showing messages")
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -204,8 +206,14 @@ class TicketTableViewController: UITableViewController {
             
             if tickets.count > (indexPath.row - 1) {
                 let ticketId = tickets[indexPath.row - 1]
-                let msgViewController = segue.destinationViewController as! MessageViewController
-                msgViewController.ticket = ticketId;
+                if ticketId["taken"] as! Int != 0 {
+                    let msgViewController = segue.destinationViewController as! MessageViewController
+                    msgViewController.ticket = ticketId;
+                } else {
+                    let controller = TicketOptionViewController()
+                    segue.destinationViewController = controller
+                    controller.ticket = ticketId
+                }
             } else {
                 print("Could not get ticketID")
             }
@@ -216,6 +224,32 @@ class TicketTableViewController: UITableViewController {
         }
         //msgViewController.ticketID =
     }
+    */
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let tickets = getTicketQueue(indexPath.section)
+        let ticketId = tickets[indexPath.row - 1]
+        self.tabBarController?.tabBar.hidden = true
+        if ticketId["taken"] as! Int != 0 {
+            goToMessagePage(ticketId)
+        } else {
+            goToOptionPage(ticketId)
+        }
+    }
+    
+    func goToMessagePage(ticket: PFObject) {
+        let storyboard = UIStoryboard(name: "message", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("textTable") as! MessageViewController
+        controller.ticket = ticket
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func goToOptionPage(ticket: PFObject) {
+        let storyboard = UIStoryboard(name: "message", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("TicketOptions") as! TicketOptionViewController
+        controller.ticket = ticket
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+
     /*
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.min

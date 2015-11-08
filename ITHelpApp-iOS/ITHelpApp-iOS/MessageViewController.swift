@@ -10,13 +10,14 @@ import UIKit
 import Parse
 import PubNub
 
-class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, PNObjectEventListener {
+class MessageViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, PNObjectEventListener {
    
     var reqHandler: PubnubHandler?
     var ticket: PFObject?
     var busyFrame: UIView?
 
-    @IBOutlet weak var messageTextField: UITextField!
+    @IBOutlet weak var messageView: UIView!
+    @IBOutlet weak var messageTextField: UITextView!
     @IBOutlet weak var textTable: UITableView!
     @IBOutlet weak var sendButton: UIButton!
     
@@ -42,9 +43,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
         changeSendButtonState(false)
         textTable.delegate = self
         textTable.dataSource = self
@@ -52,15 +50,18 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             messages = []
             self.refreshMessage()
         }
-        
-        let optionButton = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: "goToOptionPage")
-        self.navigationItem.rightBarButtonItem = optionButton
-        
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.hidden = true
+        //self.tabBarController?.tabBar.hidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hidesBottomBarWhenPushed = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
+        let optionButton = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: "goToOptionPage")
+        self.navigationItem.rightBarButtonItem = optionButton
         
         if let ticket = ticket {
             if (reqHandler == nil) {
@@ -72,7 +73,35 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.presentAlert("No Ticket", message: "Can't find ticket", completion: self.goToTicketPage)
         }
         self.tableViewScrollToBottom(true)
-
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
+        self.setupMessageView()
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+    }
+    
+//    override func viewWillDisappear(animated: Bool) {
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
+//        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
+//    }
+    
+    func setupMessageView() {
+        
+        messageView.sizeToFit()
+        //messageTextField.sizeToFit()
+        messageTextField.layer.cornerRadius = 8
+        messageTextField.layer.borderWidth = 1
+        messageTextField.layer.borderColor = UIConstants.mainUIColor.CGColor
+        //messageTextField.scrollEnabled = false
+        
+        let border = CALayer()
+        border.frame = CGRectMake(0, 0, CGRectGetWidth(messageView.frame), 1.0)
+        border.backgroundColor = UIConstants.mainUIColor.CGColor
+        messageView.layer.addSublayer(border)
+        messageTextField.delegate = self
     }
     
     @IBAction func sendPressed(sender: AnyObject) {
@@ -87,7 +116,26 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableViewScrollToBottom(true)
     }
     
-
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        let curLength = textView.text.characters.count + text.characters.count - range.length
+        if curLength == 0 {
+            print("false")
+            changeSendButtonState(false)
+        } else {
+            print("true")
+            changeSendButtonState(true)
+        }
+        return true
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        let text = textView.text
+        if text == "" {
+            changeSendButtonState(false)
+        } else {
+            changeSendButtonState(true)
+        }
+    }
 
     func checkMessage(result: NSError?) -> Void {
         if let error = result {
@@ -109,8 +157,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
     }
-    
-
     
     func tableView(textTable: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -220,7 +266,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func changeSendButtonState(active: Bool) {
-        if (active) {
+        if (active && ticket!["taken"] as! Int != 0) {
             sendButton.enabled = true
         } else {
             sendButton.enabled = false
