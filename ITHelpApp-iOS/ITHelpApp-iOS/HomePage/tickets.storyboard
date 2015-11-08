@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TZh-Ce-R3G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15C31f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TZh-Ce-R3G">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
@@ -101,7 +101,6 @@
                                     <outlet property="ticketStatusLabel" destination="06E-fJ-Bw7" id="Tw0-8r-vKp"/>
                                     <outlet property="ticketTitleField" destination="Fff-bU-Ft5" id="9bc-AY-9G7"/>
                                     <outlet property="ticketTriangleImage" destination="uMt-TN-tx8" id="yMg-5z-Ra5"/>
-                                    <segue destination="aJf-Mk-uyx" kind="push" id="WpB-AE-aiF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -129,16 +128,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oPb-vv-3qP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-27" y="2215"/>
-        </scene>
-        <!--textTable-->
-        <scene sceneID="7Ya-VB-N9S">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="textTable" storyboardName="message" referencedIdentifier="textTable" id="aJf-Mk-uyx" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="sfy-D4-ydv"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CUL-iI-SD8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="349" y="2119"/>
         </scene>
     </scenes>
     <resources>

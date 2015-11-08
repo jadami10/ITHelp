@@ -22,7 +22,6 @@ class CloseTicketViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIConstants.mainUIDarkerColor
         self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
         self.view.backgroundColor = UIConstants.mainUIColor
-        self.tabBarController?.tabBar.hidden = true
         
         self.backgroundImage.image = image
         yesButton.backgroundColor = UIConstants.mainUIColor

@@ -34,7 +34,7 @@ class TicketHandler{
                     for object in petitions{
                         if object["taken"] as! Int == 0 {
                             add(object, 0)
-                        } else if (object["helperSolved"] as! Int == 0) {
+                        } else if (object["helperSolved"] as! Int != 1) {
                             add(object, 1)
                         } else {
                             add(object, 2)

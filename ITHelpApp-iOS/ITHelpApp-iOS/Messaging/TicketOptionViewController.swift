@@ -19,13 +19,17 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
         detailTableView.dataSource = self
         if ticket!["taken"] as! Int == 0 {
             self.ticketActionButton.setTitle("Cancel Ticket", forState: .Normal)
         } else {
             self.ticketActionButton.setTitle("Mark as Solved", forState: .Normal)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.navigationBarHidden = false
     }
     
     func tableView(textTable: UITableView, numberOfRowsInSection section: Int) -> Int {
