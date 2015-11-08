@@ -16,6 +16,7 @@ class TicketHandler{
     static func getTickets(add: ((PFObject, Int) -> Void), completion: () -> Void) -> Void{
         let query = PFQuery(className:"Request")
         query.whereKey("requester", equalTo:(PFUser.currentUser()?.username)!)
+        query.whereKey("requesterSolved", notEqualTo: 1)
         query.includeKey("helper")
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
@@ -33,8 +34,10 @@ class TicketHandler{
                     for object in petitions{
                         if object["taken"] as! Int == 0 {
                             add(object, 0)
-                        } else {
+                        } else if (object["helperSolved"] as! Int == 0) {
                             add(object, 1)
+                        } else {
+                            add(object, 2)
                         }
                     }
                 }

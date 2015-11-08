@@ -42,13 +42,13 @@ extension UITextView {
 
 extension UIViewController {
     
-    func presentAlert(title: NSString, message: NSString, completion: (() -> Void)?) {
+    func presentAlert(title: NSString, message: NSString, completion: ((UIAlertAction) -> Void)?) {
         let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
         
-        let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let defaultAction = UIAlertAction(title: "Ok", style: .Default, handler: completion)
         alertController.addAction(defaultAction)
         
-        presentViewController(alertController, animated: true, completion: completion)
+        presentViewController(alertController, animated: true, completion: nil)
     }
     
     // Source: http://stackoverflow.com/questions/28785715/how-to-display-an-activity-indicator-with-text-on-ios-8-with-swift

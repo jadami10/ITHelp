@@ -97,14 +97,12 @@ class TicketTableViewController: UITableViewController {
         if solvedTickets.count > 0 {
             numSections++
         }
-        print(String(format: "Num sections: %d", numSections))
         return numSections
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         let ticketQueue = getTicketQueue(section)
-        print (String(format: "Section: %d rows: %d", section, ticketQueue.count))
         return ticketQueue.count + 1
     }
     
@@ -202,14 +200,7 @@ class TicketTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             print("Section: %d Row: %d", indexPath.section, indexPath.row)
             
-            var tickets: [PFObject]
-            if (indexPath.section == 0) {
-                tickets = pendingTickets
-            } else if (indexPath.section == 1) {
-                tickets = openTickets
-            } else {
-                tickets = solvedTickets
-            }
+            var tickets = self.getTicketQueue(indexPath.section)
             
             if tickets.count > (indexPath.row - 1) {
                 let ticketId = tickets[indexPath.row - 1]
