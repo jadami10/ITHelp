@@ -102,6 +102,8 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
             } else {
                 print("Failed to delete with no error code")
             }
+            self.busyFrame?.removeFromSuperview()
+            self.view.userInteractionEnabled = true
         } else {
             print("failed with no error")
             self.presentAlert("BriskIT Error", message: "Unable to delete ticket", completion: nil)
@@ -117,10 +119,12 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     }
     
     func returnToTicketViewController() {
-        let storyboard = UIStoryboard(name: "home", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("TicketTableViewController") as UIViewController
-        
-        self.presentViewController(controller, animated: false, completion: nil)
+        print("go back to tickets")
+        self.navigationController?.popToRootViewControllerAnimated(true)
+//        let storyboard = UIStoryboard(name: "home", bundle: nil)
+//        let controller = storyboard.instantiateViewControllerWithIdentifier("TicketTableViewController") as UIViewController
+//        
+//        self.presentViewController(controller, animated: false, completion: nil)
     }
     
 }

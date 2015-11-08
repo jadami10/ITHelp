@@ -108,6 +108,10 @@ publishRequest(requester, reqID, pubnub_ios);
 Parse.Cloud.afterSave("Message", function(message) {
 
   // send to pubnub
+  if (message.object.get("message") = "") {
+    console.log("Ignore blank message");
+    return;
+  }
   var channel = message.object.get("request").id;
   sendMessage(channel, message.object);
 

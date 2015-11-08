@@ -29,27 +29,26 @@
         <!--Tickets-->
         <scene sceneID="5Ir-R3-UGu">
             <objects>
-                <tableViewController storyboardIdentifier="tickets" automaticallyAdjustsScrollViewInsets="NO" id="60T-PF-OJ0" customClass="TicketTableViewController" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="125" sectionHeaderHeight="18" sectionFooterHeight="18" id="Ov5-5c-YER">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
+                <tableViewController id="60T-PF-OJ0" customClass="TicketTableViewController" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="125" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ov5-5c-YER">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="separatorColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTitleCell" rowHeight="5" id="6nU-bp-9dH">
-                                <rect key="frame" x="0.0" y="49.5" width="320" height="5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTitleCell" rowHeight="9" id="6nU-bp-9dH">
+                                <rect key="frame" x="0.0" y="92" width="320" height="9"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6nU-bp-9dH" id="Eqd-iF-CuC">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="9"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="TicketCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTableCell" rowHeight="125" id="cMd-4u-4Et" customClass="TicketTableCellTableViewCell" customModule="ITHelpApp_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="54.5" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="101" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMd-4u-4Et" id="FoX-df-LcB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -111,7 +110,6 @@
                             <outlet property="delegate" destination="60T-PF-OJ0" id="aD6-bI-IhY"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="Tickets" image="ticket.png" id="h2W-9A-4YK"/>
                     <navigationItem key="navigationItem" id="MT5-8C-xkU"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
