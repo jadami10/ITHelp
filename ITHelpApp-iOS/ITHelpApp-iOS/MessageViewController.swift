@@ -69,7 +69,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
                 reqHandler?.addHandler(self)
             }
         } else {
-            print("TODO: handle no ticketID")
+            self.presentAlert("No Ticket", message: "Can't find ticket", completion: self.goToTicketPage)
         }
         self.tableViewScrollToBottom(true)
 
@@ -274,6 +274,11 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         //msgViewController.ticketID =
     }
     */
+    
+    func goToTicketPage(alert: UIAlertAction) {
+        print("go back to ticket page")
+        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
     
     func goToClosedPage() {
         

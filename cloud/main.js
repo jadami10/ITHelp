@@ -30,34 +30,51 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
     return;
   }
 
+  var isNew = request.object.isNew();
+  var dirtyKey = request.object.dirtyKeys();
   var username = Parse.User.current().getUsername();
   var requester = request.object.get("requester");
+
   if (username != requester) {
+    // check if someone else is trying to update ticket. return success cause it's probably the helper
     console.log(username + " trying to update a request for " + requester);
     response.success();
     return;
-  }
-  var openRequests = Parse.Object.extend("Request");
-  var query = new Parse.Query(openRequests);
-  query.equalTo("requester", username);
-  //query.equalTo("taken", 0);
-  query.count({
-    success: function(count) {
-      // The count request succeeded. Show the count
-      if (count < 5) {
-        var req = request.object;
-        req.set("helperSolved", -1);
-        req.set("requesterSolved", -1);
-        req.set("allHelpers", []);
-        response.success();
-      } else {
-        response.error("Too many open requests");
+  } else if (!isNew) {
+    // Same person trying to update ticket. Make sure it's not a helper taking their own ticket
+    // Otherwise it's the user editing the ticket somehow. Probably marking it solved
+    for (dk in dirtyKey) {
+      if (dk == "taken") {
+        response.error("Cannot take your own ticket");
+        return;
       }
-    },
-    error: function(error) {
-      response.error(error);
     }
-  });
+    response.success();
+    return;
+  } else {
+    // It's a new ticket coming in. Let's make sure they haven't passed their limit
+    var openRequests = Parse.Object.extend("Request");
+    var query = new Parse.Query(openRequests);
+    query.equalTo("requester", username);
+    query.notEqualTo("requesterSolved", 1);
+    query.count({
+      success: function(count) {
+        // The count request succeeded. Show the count
+        if (count < 5) {
+          var req = request.object;
+          req.set("helperSolved", -1);
+          req.set("requesterSolved", -1);
+          req.set("allHelpers", []);
+          response.success();
+        } else {
+          response.error("Too many open requests");
+        }
+      },
+      error: function(error) {
+        response.error(error);
+      }
+    });
+  }
 });
 
 // publish request to pubnub after it"s added
@@ -108,6 +125,10 @@ publishRequest(requester, reqID, pubnub_ios);
 Parse.Cloud.afterSave("Message", function(message) {
 
   // send to pubnub
+  if (message.object.get("message") = "") {
+    console.log("Ignore blank message");
+    return;
+  }
   var channel = message.object.get("request").id;
   sendMessage(channel, message.object);
 

@@ -16,6 +16,8 @@ class TicketTableViewController: UITableViewController {
     var solvedTickets = [PFObject]()
     var busyFrame: UIView?
     
+    var shouldDelete = NSIndexPath?()
+    
 
     override func viewWillAppear(animated: Bool) {
         // FIXME: store tickets so you don't reload every time. Causes issues with bad network conditions
@@ -84,18 +86,24 @@ class TicketTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        var numSections = 0
+        if pendingTickets.count > 0 {
+            numSections++
+        }
+        if openTickets.count > 0 {
+            numSections++
+        }
+
+        if solvedTickets.count > 0 {
+            numSections++
+        }
+        return numSections
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if section == 0 {
-            return pendingTickets.count + 1
-        } else if (section == 1) {
-            return openTickets.count + 1
-        } else {
-            return solvedTickets.count + 1
-        }
+        let ticketQueue = getTicketQueue(section)
+        return ticketQueue.count + 1
     }
     
     func totalTicket() -> Int {
@@ -108,19 +116,35 @@ class TicketTableViewController: UITableViewController {
         solvedTickets = []
     }
 
+    func getTicketQueue(section: Int) -> [PFObject] {
+        if (section == 0) {
+            if pendingTickets.count > 0 {
+                return pendingTickets
+            } else if (openTickets.count > 0) {
+                return openTickets
+            } else {
+                return solvedTickets
+            }
+        } else if (section == 1) {
+            if (openTickets.count > 0) {
+                return openTickets
+            } else {
+                return solvedTickets
+            }
+        } else {
+            return solvedTickets
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var tickets: [PFObject]
+        var tickets = getTicketQueue(indexPath.section)
         var qualifier: String
-        if (indexPath.section == 0) {
-            tickets = pendingTickets
+        if (tickets == pendingTickets) {
             qualifier = "Pending"
-        } else if (indexPath.section == 1) {
-            tickets = openTickets
+        } else if (tickets == openTickets) {
             qualifier = "Open"
         } else {
-            tickets = solvedTickets
             qualifier = "Solved"
         }
         
@@ -176,14 +200,7 @@ class TicketTableViewController: UITableViewController {
         if let indexPath = tableView.indexPathForSelectedRow {
             print("Section: %d Row: %d", indexPath.section, indexPath.row)
             
-            var tickets: [PFObject]
-            if (indexPath.section == 0) {
-                tickets = pendingTickets
-            } else if (indexPath.section == 1) {
-                tickets = openTickets
-            } else {
-                tickets = solvedTickets
-            }
+            var tickets = self.getTicketQueue(indexPath.section)
             
             if tickets.count > (indexPath.row - 1) {
                 let ticketId = tickets[indexPath.row - 1]
@@ -199,30 +216,86 @@ class TicketTableViewController: UITableViewController {
         }
         //msgViewController.ticketID =
     }
-    
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    /*
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat.min
     }
     
-    /*
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.0
+    }
+    */
+    
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        return getTicketQueue(indexPath.section) == pendingTickets
     }
-    */
-
-    /*
+    
+    
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
+            let index = indexPath.row - 1
+            switch (indexPath.section) {
+            case 0:
+                self.tableView.beginUpdates()
+                handleTicketDeletion(pendingTickets[index], indexPath: indexPath)
+                self.tableView.endUpdates()
+                break
+            default:
+                break
+            }
+        } /*else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }   */
     }
-    */
+    
+    func handleTicketDeletion(ticket: PFObject, indexPath: NSIndexPath) {
+        // TODO: try to delete ticket, and handle any errors, otherwise go back to ticket view
+        self.view.userInteractionEnabled = false
+        self.busyFrame = self.progressBarDisplayer("Deleting", indicator: true)
+        shouldDelete = indexPath
+        TicketHandler.deleteTicket(ticket, completion: self.checkDeletion)
+    }
+    
+    func checkDeletion(isDeleted: Bool, error: NSError?) -> Void {
+        if (isDeleted) {
+            // go back to ticket view controller
+            print("Succesfully deleted ticket")
+            if let index = shouldDelete?.row {
+                pendingTickets.removeAtIndex(index - 1)
+                if pendingTickets.count == 0 {
+                    tableView.deleteSections(NSIndexSet(index: shouldDelete!.section), withRowAnimation: .Fade)
+                } else {
+                    tableView.deleteRowsAtIndexPaths([shouldDelete!], withRowAnimation: .Fade)
+                    self.tableView.reloadData()
+                }
+            }
+            self.busyFrame?.removeFromSuperview()
+            self.view.userInteractionEnabled = true
+        } else if (error != nil) {
+            if let err = error?.code {
+                switch(err) {
+                case 100:
+                    self.presentAlert("Could Not Delete", message:  "No Network Connection", completion: nil)
+                    break
+                default:
+                    self.presentAlert("Could Not Delete", message: "Please try again later", completion: nil)
+                }
+            } else {
+                print("Failed to delete with no error code")
+            }
+            shouldDelete = nil
+            self.busyFrame?.removeFromSuperview()
+            self.view.userInteractionEnabled = true
+        } else {
+            shouldDelete = nil
+            print("failed with no error")
+            self.presentAlert("BriskIT Error", message: "Unable to delete ticket", completion: nil)
+        }
+    }
 
     /*
     // Override to support rearranging the table view.

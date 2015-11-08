@@ -72,11 +72,11 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
             
         } else {
             print("marking ticket as solved")
+            handleTicketSolved()
         }
     }
     
     func handleTicketDeletion() {
-        // TODO: try to delete ticket, and handle any errors, otherwise go back to ticket view
         self.view.userInteractionEnabled = false
         self.busyFrame = self.progressBarDisplayer("Deleting", indicator: true)
         TicketHandler.deleteTicket(ticket!, completion: self.checkDeletion)
@@ -100,8 +100,11 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
                         self.presentAlert("Could Not Delete", message: "Please try again later", completion: nil)
                 }
             } else {
+                self.presentAlert("Could Not Delete", message: "Please try again later", completion: nil)
                 print("Failed to delete with no error code")
             }
+            self.busyFrame?.removeFromSuperview()
+            self.view.userInteractionEnabled = true
         } else {
             print("failed with no error")
             self.presentAlert("BriskIT Error", message: "Unable to delete ticket", completion: nil)
@@ -109,7 +112,39 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     }
     
     func handleTicketSolved() {
-        // TODO: try do mark ticket solved, handle any errors, otherwise go back to ticket view
+        self.view.userInteractionEnabled = false
+        self.busyFrame = self.progressBarDisplayer("Closing", indicator: true)
+        TicketHandler.markTicketSolved(ticket!, completion: self.checkSolved)
+    }
+    
+    func checkSolved(isSolved: Bool, error: NSError?) -> Void {
+        if (isSolved) {
+            // go back to ticket view controller
+            print("Succesfully closed ticket")
+            AppConstants.shouldRefreshTickets = true
+            self.busyFrame?.removeFromSuperview()
+            self.view.userInteractionEnabled = true
+            self.returnToTicketViewController()
+        } else if (error != nil) {
+            if let err = error?.code {
+                switch(err) {
+                case 100:
+                    self.presentAlert("Could Not Mark Solved", message:  "No Network Connection", completion: nil)
+                    break
+                default:
+                    self.presentAlert("Could Not Mark Solved", message: "Please try again later", completion: nil)
+                }
+            } else {
+                self.presentAlert("Could Not Mark Solved", message: "Please try again later", completion: nil)
+                print("Failed to delete with no error code")
+            }
+            self.busyFrame?.removeFromSuperview()
+            self.view.userInteractionEnabled = true
+        } else {
+            print("failed with no error")
+            self.presentAlert("BriskIT Error", message: "Unable to solve ticket", completion: nil)
+        }
+
     }
     
     func refreshTicket() {
@@ -117,10 +152,12 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     }
     
     func returnToTicketViewController() {
-        let storyboard = UIStoryboard(name: "home", bundle: nil)
-        let controller = storyboard.instantiateViewControllerWithIdentifier("TicketTableViewController") as UIViewController
-        
-        self.presentViewController(controller, animated: false, completion: nil)
+        print("go back to tickets")
+        self.navigationController?.popToRootViewControllerAnimated(true)
+//        let storyboard = UIStoryboard(name: "home", bundle: nil)
+//        let controller = storyboard.instantiateViewControllerWithIdentifier("TicketTableViewController") as UIViewController
+//        
+//        self.presentViewController(controller, animated: false, completion: nil)
     }
     
 }

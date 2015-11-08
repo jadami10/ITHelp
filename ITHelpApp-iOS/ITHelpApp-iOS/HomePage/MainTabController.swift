@@ -29,6 +29,8 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             } else {
                 (self.tabBar.items![1]).badgeValue = "1"
             }
+        } else {
+            
         }
         
         print("request notification!")
