@@ -18,6 +18,7 @@ class RequestHandler {
             (success: Bool, error: NSError?) -> Void in
             if (success) {
                 print("good request!")
+                AppConstants.shouldRefreshTickets = true
             }
             completion(result: error)
         }

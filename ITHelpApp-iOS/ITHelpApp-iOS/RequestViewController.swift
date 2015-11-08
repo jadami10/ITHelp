@@ -26,6 +26,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
+        self.getMaxTickets()
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,6 +104,14 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             case 100:
                 self.presentAlert("No Connection", message: "Please check network connection", completion: nil)
                 break
+            case 142:
+                if errorString != nil && errorString == "Too many open requests" {
+                    self.presentAlert("Too many requests", message: String(format: "At max requests: %d", AppConstants.maxTickets!), completion: nil)
+                } else {
+                    print(NSString(format: "Unhandled Error: %d", errorCode))
+                    self.presentAlert("Error", message: "Please try again later", completion: nil)
+                }
+                break
             default:
                 self.presentAlert("Error", message: "Please try again later", completion: nil)
                 print(NSString(format: "Unhandled Error: %d", errorCode))
@@ -110,9 +119,19 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             }
             print(errorString)
             
+        } else {
+            self.clearUI()
         }
-        self.clearUI()
         self.releaseUI()
+    }
+    
+    func getMaxTickets() {
+        if let maxTickets = PFUser.currentUser()?.valueForKey("MaxTickets") as? Int {
+            AppConstants.maxTickets = maxTickets
+        } else {
+            AppConstants.maxTickets = 5
+        }
+        print(String(format: "Max Tickets: %d", AppConstants.maxTickets!))
     }
     
     func clearUI() {

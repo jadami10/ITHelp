@@ -1,12 +1,12 @@
 var pubnub_web = {
-  'publish_key': 'pub-c-0239b592-0603-4849-9889-ce70e8d18cb7',
-  'subscribe_key': 'sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f',
-  'secret_key': 'sec-c-OTQyNjQzZDEtMGUzZC00OGU1LTk3OGQtMmRlNTQyY2Y2ZGNh'
+  "publish_key": "pub-c-0239b592-0603-4849-9889-ce70e8d18cb7",
+  "subscribe_key": "sub-c-8e935f6a-6eb4-11e5-95b8-0619f8945a4f",
+  "secret_key": "sec-c-OTQyNjQzZDEtMGUzZC00OGU1LTk3OGQtMmRlNTQyY2Y2ZGNh"
 };
 
 var pubnub_ios = {
-  'publish_key': 'pub-c-23a2994a-72c2-43a3-a8e7-d63f3e382009',
-  'subscribe_key': 'sub-c-bdfa77b2-793f-11e5-a643-02ee2ddab7fe'
+  "publish_key": "pub-c-23a2994a-72c2-43a3-a8e7-d63f3e382009",
+  "subscribe_key": "sub-c-bdfa77b2-793f-11e5-a643-02ee2ddab7fe"
 };
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
@@ -18,12 +18,27 @@ var req_channel = "RequestChannel";
 
 // limit number of requests
 Parse.Cloud.beforeSave("Request", function(request, response) {
-  if (initalCheckFailed(request, response)) {
+  if(request.master) {
+    console.log("Master making request changes");
+    response.success();
+    return;
+  }
+  error = initialCheckFailed(request);
+  console.log("Before_save_req_err: " + error);
+  if (error != null) {
+    response.error(error);
+    return;
+  }
+
+  var username = Parse.User.current().getUsername();
+  var requester = request.object.get("requester");
+  if (username != requester) {
+    console.log(username + " trying to update a request for " + requester);
+    response.success();
     return;
   }
   var openRequests = Parse.Object.extend("Request");
   var query = new Parse.Query(openRequests);
-
   query.equalTo("requester", username);
   //query.equalTo("taken", 0);
   query.count({
@@ -36,55 +51,58 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
         req.set("allHelpers", []);
         response.success();
       } else {
-        response.error("Too many open requests")
+        response.error("Too many open requests");
       }
     },
     error: function(error) {
-      response.error(error)
+      response.error(error);
     }
   });
 });
 
-// publish request to pubnub after it's added
+// publish request to pubnub after it"s added
 Parse.Cloud.afterSave("Request", function(request) {
-  if (initalCheckFailed(request, null)) {
+  error = initialCheckFailed(request);
+  console.log("After_save_req_err: " + error);
+  if (error != null) {
+    console.log(error);
     return;
   }
   // send to pubnub
-  var taker = request.user;
-  var taken = request.object.get("taken");
-  var helper = request.object.get("helper");
-  var reqID = request.object.id;
-  var requester = request.object.get("requester");
-  var requesterSolved = request.object.get("requesterSolved");
-  var helperSolved = request.object.get("helperSolved");
-  if (taken == 0 && helper == null) {
-    console.log("publishing new request");
-    publishRequest(req_channel, reqID, pubnub_web);
-  } else if (taken == 1 && taker != null && helper != null) {
-    if (requesterSolved == 1 && helperSolved == 1) {
-      console.log("Request is solved!")
-      // TODO: Handle notifying app and web
-    } else if (helperSolved == 1 && requesterSolved == -1) {
-      console.log("Helper marked as solved. Notify user.");
-      // TODO: Handle notifying app
-    } else if (helperSolved == -1 && requesterSolved == -1) {
-      console.log("notify app!");
-      publishRequest(requester, reqID, pubnub_ios);
-    } else if (helperSolved == 1 && requesterSolved == 0) {
-      console.log("Requester denied solution.");
-      // TODO: handle notifying web
-    }
-  } else if (taken == 1 && taker != null && helper == null) {
-    console.log("someone taking request");
-    request.object.set("helper", taker);
-    request.object.addUnique("allHelpers", taker);
-    request.object.save();
-  } else {
-    console.log("notify app!");
-    publishRequest(requester, reqID, pubnub_ios);
-  }
 
+  handleRequest(request);
+
+  /*
+  if (taken == 0 && helper == null && requesterSolved == -1 && helperSolved == -1) {
+  // brand new ticket
+  console.log("publishing new request");
+  publishRequest(req_channel, reqID, "toWeb", pubnub_web);
+} else if (taken == 1 && curUser != null && helper != null) {
+// actionable item on ticket
+if (requesterSolved == 1 && helperSolved == 1) {
+console.log("Request is solved!")
+// TODO: Handle notifying app and web
+} else if (helperSolved == 1 && requesterSolved == -1) {
+console.log("Helper marked as solved. Notify user.");
+// TODO: Handle notifying app
+} else if (helperSolved == -1 && requesterSolved == -1) {
+console.log("Request taken. notify app!");
+publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
+} else if (helperSolved == 1 && requesterSolved == 0) {
+console.log("Requester denied solution.");
+// TODO: handle notifying web
+}
+} else if (taken == 1 && taker != null && helper == null) {
+//
+console.log("someone taking request");
+request.object.set("helper", taker);
+request.object.addUnique("allHelpers", taker);
+request.object.save();
+} else {
+console.log("Something happened. notify app!");
+publishRequest(requester, reqID, pubnub_ios);
+}
+*/
 });
 
 Parse.Cloud.afterSave("Message", function(message) {
@@ -106,10 +124,10 @@ function sendMessage(channel, message) {
 
   var toSend = encodeURIComponent(JSON.stringify(messageObject));
 
-  var myUrl = 'https://pubsub.pubnub.com/publish/' +
-  pubnub_web.publish_key   +   '/' +
-  pubnub_web.subscribe_key + '/0/' +
-  channel          + '/0/' +
+  var myUrl = "https://pubsub.pubnub.com/publish/" +
+  pubnub_web.publish_key   +   "/" +
+  pubnub_web.subscribe_key + "/0/" +
+  channel          + "/0/" +
   toSend;
 
   console.log(myUrl);
@@ -126,14 +144,14 @@ function sendMessage(channel, message) {
 
     // You should consider retrying here when things misfire
     error: function(httpResponse) {
-      console.error('Request failed ' + httpResponse.status);
+      console.error("Request failed " + httpResponse.status);
     }
   });
 
-  var myUrl = 'https://pubsub.pubnub.com/publish/' +
-  pubnub_ios.publish_key   +   '/' +
-  pubnub_ios.subscribe_key + '/0/' +
-  channel          + '/0/' +
+  var myUrl = "https://pubsub.pubnub.com/publish/" +
+  pubnub_ios.publish_key   +   "/" +
+  pubnub_ios.subscribe_key + "/0/" +
+  channel          + "/0/" +
   toSend;
 
   console.log(myUrl);
@@ -150,18 +168,28 @@ function sendMessage(channel, message) {
 
     // You should consider retrying here when things misfire
     error: function(httpResponse) {
-      console.error('Request failed ' + httpResponse.status);
+      console.error("Request failed " + httpResponse.status);
     }
   });
 }
 
 // publishes request to IT helpers
-function publishRequest(req_channel, requestID, pubnub) {
-  var myUrl = 'https://pubsub.pubnub.com/publish/' +
-  pubnub.publish_key   +   '/' +
-  pubnub.subscribe_key + '/0/' +
-  req_channel          + '/0/' +
-  '"' + requestID + '"';
+function publishRequest(req_channel, requestID, requestType, pubnub) {
+
+  var messageObject = {
+    "requestID": requestID,
+    "requestType": requestType
+  };
+
+  var toSend = encodeURIComponent(JSON.stringify(messageObject));
+
+  var myUrl = "https://pubsub.pubnub.com/publish/" +
+  pubnub.publish_key   +   "/" +
+  pubnub.subscribe_key + "/0/" +
+  req_channel          + "/0/" +
+  //""" + requestID + """;
+  toSend;
+
   console.log(myUrl);
   Parse.Cloud.httpRequest({
     url: myUrl,
@@ -174,31 +202,81 @@ function publishRequest(req_channel, requestID, pubnub) {
 
     // You should consider retrying here when things misfire
     error: function(httpResponse) {
-      console.error('Request failed ' + httpResponse.status);
+      console.error("Request failed " + httpResponse.status);
     }
   });
 }
 
-function initalCheckFailed(request, response) {
+function initialCheckFailed(request) {
   if (request.master) {
-    console.log("Master making changes. No action taken.");
-    if (response) {
-        response.success();
-    }
-    return true;
+    return "Master making changes.";
   }
   if (Parse.User.current() == null) {
-    if (response) {
-        response.error("Not logged in user");
-    }
-    return true;
+    return "Not logged in user";
   }
   var username = Parse.User.current().getUsername();
   if (username == null) {
-    if (response) {
-        response.error("Not logged in username");
-    }
-    return true;
+    return "Not logged in username";
   }
-  return false;
+  return null;
+}
+
+function handleRequest(request) {
+
+  var curUser = request.user;
+  var reqID = request.object.id;
+  var taken = request.object.get("taken");
+  var taker = Parse.User.current();
+  var helper = request.object.get("helper");
+  var requester = request.object.get("requester");
+  var requesterSolved = request.object.get("requesterSolved");
+  var helperSolved = request.object.get("helperSolved");
+
+  if (taken == 0) {
+    // not taken
+    if (helper == null) {
+      // no current helper
+      if (requesterSolved == -1 && helperSolved == -1) {
+        // new ticket
+        console.log("publishing new request");
+        publishRequest(req_channel, reqID, "toWeb", pubnub_web);
+      } else {
+        unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+      }
+    } else {
+      // there is a helper
+      if (requesterSolved == -1 && helperSolved == -1) {
+        // someone just took ticket
+        console.log("Request taken. notify app!");
+        publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
+      } else {
+        unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+      }
+    }
+  } else if (taken == 1) {
+    // is taken or trying to be taken
+    if (helper == null) {
+      // there is not a current helper
+      if (requesterSolved == -1 && helperSolved == -1) {
+        // request being taken
+        console.log("someone taking request");
+        request.object.set("helper", taker);
+        request.object.addUnique("allHelpers", taker);
+        request.object.save();
+      } else {
+        unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+      }
+    } else {
+      // there is a current helper
+      unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+    }
+  } else {
+    unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+  }
+
+}
+
+function unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved) {
+  console.log("Unhandled request | curUser: " + curUser + " taken: " + taken +
+  " helper: " + helper + " reqSolved: " + requesterSolved + " helpSolved: " + helperSolved);
 }

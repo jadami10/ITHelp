@@ -13,7 +13,7 @@ import Parse
 var petitions = [PFObject]()
 
 class TicketHandler{
-    static func getTickets(add: (PFObject -> Void), completion: () -> Void) -> Void{
+    static func getTickets(add: ((PFObject, Int) -> Void), completion: () -> Void) -> Void{
         let query = PFQuery(className:"Request")
         query.whereKey("requester", equalTo:(PFUser.currentUser()?.username)!)
         query.includeKey("helper")
@@ -31,7 +31,11 @@ class TicketHandler{
                         //add(object)
                     }
                     for object in petitions{
-                        add(object)
+                        if object["taken"] as! Int == 0 {
+                            add(object, 0)
+                        } else {
+                            add(object, 1)
+                        }
                     }
                 }
             } else {
@@ -44,6 +48,15 @@ class TicketHandler{
     
     static func ticketTaken() -> Void {
         
+    }
+    
+    static func deleteTicket(ticket: PFObject, completion: PFBooleanResultBlock) {
+        ticket.deleteInBackgroundWithBlock(completion)
+    }
+    
+    static func markTicketSolved(ticket: PFObject, completion: PFBooleanResultBlock) {
+        ticket.setValue(1, forKey: "requesterSolved")
+        ticket.saveInBackgroundWithBlock(completion)
     }
     
     static func getReqChannel() -> String {
