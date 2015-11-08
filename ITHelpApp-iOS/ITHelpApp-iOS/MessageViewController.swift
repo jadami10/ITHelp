@@ -43,7 +43,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.navigationBar.tintColor = UIConstants.mainUIDarkerColor
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
         changeSendButtonState(false)
         textTable.delegate = self
@@ -53,8 +53,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.refreshMessage()
         }
         
-        let detailButton = UIBarButtonItem(title: "Details", style: .Plain, target: self, action: "goToClosedPage")
-        self.navigationItem.rightBarButtonItem = detailButton
+        let optionButton = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: "goToOptionPage")
+        self.navigationItem.rightBarButtonItem = optionButton
         
         self.tabBarController?.tabBar.hidden = false
     }
@@ -283,6 +283,13 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         let image = self.screenShotMethod()
         controller.image = image
         navigationController?.pushViewController(controller, animated: false)
+    }
+    
+    func goToOptionPage() {
+        let storyboard = UIStoryboard(name: "message", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("TicketOptions") as! TicketOptionViewController
+        controller.ticket = ticket
+        navigationController?.pushViewController(controller, animated: true)
     }
 
 }

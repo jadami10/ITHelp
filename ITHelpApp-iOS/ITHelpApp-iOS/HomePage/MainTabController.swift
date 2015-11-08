@@ -32,13 +32,21 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         }
         
         print("request notification!")
-        print(message.data.message)
-        self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!", completion: nil)
+        
         /*
         if let curController = self.selectedViewController {
             if curController is TicketTableViewController
         }
         */
+
+        if let requestID = message.data.message["requestID"] as? String, requestType = message.data.message["requestType"] as? String {
+            print(message.data.message)
+            print(String(format: "ID: %s Type: %s", requestID, requestType))
+            self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!", completion: nil)
+        } else {
+            print("bad message")
+            print(message.data.message)
+        }
     }
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {

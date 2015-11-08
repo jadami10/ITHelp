@@ -11,13 +11,15 @@ import Parse
 
 class TicketTableViewController: UITableViewController {
     
-    var tickets = [PFObject]()
+    var pendingTickets = [PFObject]()
+    var openTickets = [PFObject]()
+    var solvedTickets = [PFObject]()
     var busyFrame: UIView?
     
 
     override func viewWillAppear(animated: Bool) {
         // FIXME: store tickets so you don't reload every time. Causes issues with bad network conditions
-        if tickets.count == 0 || AppConstants.shouldRefreshTickets {
+        if totalTicket() == 0 || AppConstants.shouldRefreshTickets {
             //self.asyncBlockingAction("Fetching Tickets", taskToRun: fetchTickets)
             AppConstants.shouldRefreshTickets = false
             self.fetchTickets()
@@ -56,7 +58,7 @@ class TicketTableViewController: UITableViewController {
         //self.view.userInteractionEnabled = false
         self.tableView.userInteractionEnabled = false
         self.busyFrame = self.progressBarDisplayer("Getting Tickets", indicator: true)
-        tickets = []
+        clearTickets()
         TicketHandler.getTickets(addTickets, completion: gotTickets)
 
     }
@@ -68,30 +70,67 @@ class TicketTableViewController: UITableViewController {
         //self.view.userInteractionEnabled = true
     }
     
-    func addTickets(object: PFObject) -> Void{
-        tickets.append(object)
+    func addTickets(object: PFObject, type: Int) -> Void{
+        if type == 0 {
+            pendingTickets.append(object)
+        } else if type == 1 {
+            openTickets.append(object)
+        } else {
+            solvedTickets.append(object)
+        }
         //print(object)
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 3
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return tickets.count + 1
+        if section == 0 {
+            return pendingTickets.count + 1
+        } else if (section == 1) {
+            return openTickets.count + 1
+        } else {
+            return solvedTickets.count + 1
+        }
+    }
+    
+    func totalTicket() -> Int {
+        return pendingTickets.count + openTickets.count + solvedTickets.count
+    }
+    
+    func clearTickets() {
+        pendingTickets = []
+        openTickets = []
+        solvedTickets = []
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var tickets: [PFObject]
+        var qualifier: String
+        if (indexPath.section == 0) {
+            tickets = pendingTickets
+            qualifier = "Pending"
+        } else if (indexPath.section == 1) {
+            tickets = openTickets
+            qualifier = "Open"
+        } else {
+            tickets = solvedTickets
+            qualifier = "Solved"
+        }
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
+            
             if tickets.count == 1 {
-            cell.textLabel?.text = "1 Ticket"
+            cell.textLabel?.text = String(format: "1 %@ Ticket", qualifier)
             } else {
-            cell.textLabel?.text = String(format: "%d Tickets", arguments: [tickets.count])
+            cell.textLabel?.text = String(format: "%d %@ Tickets", tickets.count, qualifier)
             }
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             cell.userInteractionEnabled = false
@@ -126,7 +165,7 @@ class TicketTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if (indexPath.row == 0) {
-            return 40
+            return 20
         } else {
             return 125
         }
@@ -134,10 +173,20 @@ class TicketTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         print("showing messages")
-        if let cellIndex = tableView.indexPathForSelectedRow?.row {
-            print("Index: %d", cellIndex)
-            if tickets.count > (cellIndex - 1) {
-                let ticketId = tickets[cellIndex - 1]
+        if let indexPath = tableView.indexPathForSelectedRow {
+            print("Section: %d Row: %d", indexPath.section, indexPath.row)
+            
+            var tickets: [PFObject]
+            if (indexPath.section == 0) {
+                tickets = pendingTickets
+            } else if (indexPath.section == 1) {
+                tickets = openTickets
+            } else {
+                tickets = solvedTickets
+            }
+            
+            if tickets.count > (indexPath.row - 1) {
+                let ticketId = tickets[indexPath.row - 1]
                 let msgViewController = segue.destinationViewController as! MessageViewController
                 msgViewController.ticket = ticketId;
             } else {
@@ -149,6 +198,10 @@ class TicketTableViewController: UITableViewController {
             print("could not get ticket index")
         }
         //msgViewController.ticketID =
+    }
+    
+    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.min
     }
     
     /*
