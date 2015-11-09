@@ -84,6 +84,28 @@ Parse.Cloud.afterSave("Request", function(request) {
   if (error != null) {
     console.log(error);
     return;
+
+  var helperName = request.object.get('helper');
+
+  if (request.object.get('helper') !== undefined) {
+	  var pushQuery = new Parse.Query(Parse.Installation);
+	  pushQuery.equalTo('deviceType', 'ios');
+	    
+	  Parse.Push.send({
+	    where: pushQuery, // Set our Installation query
+	    data: {
+	      alert: helperName + " is going to help you with your issue!"
+	    }
+	  }, {
+	    success: function() {
+	      // Push was successful
+	      console.log("succesful push")
+	    },
+	    error: function(error) {
+	      throw "Got an error " + error.code + " : " + error.message;
+	    }
+	  });
+  }
   }
   // send to pubnub
 
