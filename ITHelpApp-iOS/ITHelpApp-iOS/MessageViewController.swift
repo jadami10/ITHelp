@@ -124,6 +124,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"
+        {
+            textView.resignFirstResponder()
+            sendPressed(textView)
+            return false
+        }
         let curLength = textView.text.characters.count + text.characters.count - range.length
         if curLength == 0 {
             changeSendButtonState(false)

@@ -217,7 +217,7 @@ function notifyUsers(request){
   var requesterSolved = request.object.get('requesterSolved');
   var helperSolved = request.object.get('helperSolved');
 
-  
+
   if (taken == 0 && helper == undefined && requesterSolved == -1 && helperSolved == -1) {
   // brand new ticket
   console.log("publishing new request");
@@ -345,7 +345,7 @@ function handleRequest(request) {
           request.object.set("helper", taker);
           request.object.addUnique("allHelpers", taker);
           request.object.save();
-          
+          publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }
@@ -401,7 +401,7 @@ function getInstallationFromUser(user) {
       //   //find user id associated with requester
       //   var query = new Parse.Query(Parse.request);
       //   query.equalTo('requester', requester);
-        
+
       //   var pushQuery = new Parse.Query(Parse.Installation);
       //   // need to have users linked to installations
       //   pushQuery.matchesQuery('user', query);
@@ -435,7 +435,7 @@ function getInstallationFromUser(user) {
           throw "Got an error " + error.code + " : " + error.message;
         }
     });
-    
+
     }
   });
 }

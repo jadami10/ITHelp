@@ -93,7 +93,6 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         requestObject["requester"] = currentUser?.username
         requestObject["requestMessage"] = ticketMsg
         requestObject["title"] = ticketTitle
-        requestObject["ticket"] = 0
         requestObject["taken"] = 0
         
         RequestHandler.postRequest(requestObject, completion: self.checkRequest)
