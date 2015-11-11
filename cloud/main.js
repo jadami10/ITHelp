@@ -336,38 +336,23 @@ function handleRequest(request) {
     }
   } else if (taken == 1) {
     // is taken or trying to be taken
-    if (helper == null) {
-      // there is not a current helper
-      if (requesterSolved == -1 && helperSolved == -1) {
-        // request being taken
-        console.log("someone taking request");
-        request.object.set("helper", taker);
-        request.object.addUnique("allHelpers", taker);
-        request.object.save();
-        var pushQuery = new Parse.Query(Parse.Installation);
-        //TODO: add device type
-        pushQuery.equalTo('user', requester);
-        Parse.Push.send({
-        where: pushQuery, // Set our Installation query
-        data: {
-        alert: "Someone is here to help you with your issue!"
-      }
-    }, {
-      success: function() {
-        // Push was successful
-        console.log("succesful push")
-      },
-      error: function(error) {
-        throw "Got an error " + error.code + " : " + error.message;
-      }
-    });
+      if (helper == null) {
+        // there is not a current helper
+        if (requesterSolved == -1 && helperSolved == -1) {
+          // request being taken
+          //sendPush(requester);
+          console.log("someone taking request");
+          request.object.set("helper", taker);
+          request.object.addUnique("allHelpers", taker);
+          request.object.save();
+          
+        } else {
+          unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+        }
       } else {
-        unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+        // there is a current helper
+          unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
       }
-    } else {
-      // there is a current helper
-      unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
-    }
   } else {
     unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
   }
@@ -377,4 +362,80 @@ function handleRequest(request) {
 function unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved) {
   console.log("Unhandled request | curUser: " + curUser + " taken: " + taken +
   " helper: " + helper + " reqSolved: " + requesterSolved + " helpSolved: " + helperSolved);
+}
+
+function sendPush(username) {
+  getUserFromUsername(username);
+}
+
+function getUserFromUsername(username) {
+  var userQuery = new Parse.Query(Parse.User);
+  userQuery.equalTo("username", username)
+  userQuery.first({
+  success: function(object) {
+    // Successfully retrieved the object.
+    console.log("SUCCESSFULLY GOT OBJECT FROM USER" + object);
+    getInstallationFromUser(object)
+  },
+  error: function(error) {
+    console.log("Error: " + error.code + " " + error.message);
+  }
+});
+}
+
+function getInstallationFromUser(user) {
+  var installation = Parse.Object.extend("Installation");
+  var installQuery = new Parse.Query(installation);
+  installQuery.equalTo("user", user);
+  console.log("GET USER INSTALL ID" + user);
+  installQuery.first({
+    success: function(results) {
+      installId = results.get("installationId");
+      // var pushQuery = new Parse.Query(Parse.Installation);
+      //   //TODO: add device type
+      //   // var targetUser = new Parse.User();
+      //   // targetUser.id = requester;
+      //   // var pushQuery = new Parse.Query(Parse.Installation);
+      //   // pushQuery.equalTo('objectId', 'EZ7nRW5GrT');
+
+      //   //find user id associated with requester
+      //   var query = new Parse.Query(Parse.request);
+      //   query.equalTo('requester', requester);
+        
+      //   var pushQuery = new Parse.Query(Parse.Installation);
+      //   // need to have users linked to installations
+      //   pushQuery.matchesQuery('user', query);
+
+    //     Parse.Push.send({
+    //     where: installId, // Set our Installation query
+    //     data: {
+    //     alert: "Someone is here to help you with your issue, " + requester
+    // }, {
+    //   success: function() {
+    //     // Push was successful
+    //     console.log("push notification sent to: " + requester)
+    //   },
+    //   error: function(error) {
+    //     throw "Got an error " + error.code + " : " + error.message;
+      // }
+    // });
+
+
+    Parse.Push.send({
+      where: installId, // Set our Installation query
+      data: {
+        alert: "Someone is here to help you with your issue"
+      }
+    }, {
+        success: function() {
+          // Push was successful
+          console.log("push notification sent to: " + installId)
+        },
+        error: function(error) {
+          throw "Got an error " + error.code + " : " + error.message;
+        }
+    });
+    
+    }
+  });
 }
