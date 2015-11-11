@@ -32,8 +32,8 @@ class TicketTableViewController: UITableViewController {
         }
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.hidesBottomBarWhenPushed = true
         self.tabBarController?.tabBar.hidden = false
-        self.hidesBottomBarWhenPushed = true
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 
@@ -119,6 +119,7 @@ class TicketTableViewController: UITableViewController {
     }
 
     func getTicketQueue(section: Int) -> [PFObject] {
+        print(String(format: "P: %d O: %d S: %d", pendingTickets.count, openTickets.count, solvedTickets.count))
         if (section == 0) {
             if pendingTickets.count > 0 {
                 return pendingTickets
@@ -128,7 +129,7 @@ class TicketTableViewController: UITableViewController {
                 return solvedTickets
             }
         } else if (section == 1) {
-            if (openTickets.count > 0) {
+            if (pendingTickets.count == 0 && openTickets.count > 0 && solvedTickets.count == 0) {
                 return openTickets
             } else {
                 return solvedTickets
