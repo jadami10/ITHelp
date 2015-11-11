@@ -18,6 +18,10 @@ class LoginHandler {
             if user != nil {
                 print("YAY Logged in!")
                 completion(result: err)
+                // Associate the device with a user
+                let installation = PFInstallation.currentInstallation()
+                installation["user"] = PFUser.currentUser()
+                installation.saveInBackground()
             } else {
                 if let error = error {
                     print("Error!")

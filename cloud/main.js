@@ -81,45 +81,11 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
 Parse.Cloud.afterSave("Request", function(request) {
   error = initialCheckFailed(request);
   console.log("After_save_req_err: " + error);
+  handleRequest(request);
   if (error != null) {
     console.log(error);
     return;
   }
-  // send to pubnub
-
-  handleRequest(request);
-
-  /*
-  if (taken == 0 && helper == null && requesterSolved == -1 && helperSolved == -1) {
-  // brand new ticket
-  console.log("publishing new request");
-  publishRequest(req_channel, reqID, "toWeb", pubnub_web);
-} else if (taken == 1 && curUser != null && helper != null) {
-// actionable item on ticket
-if (requesterSolved == 1 && helperSolved == 1) {
-console.log("Request is solved!")
-// TODO: Handle notifying app and web
-} else if (helperSolved == 1 && requesterSolved == -1) {
-console.log("Helper marked as solved. Notify user.");
-// TODO: Handle notifying app
-} else if (helperSolved == -1 && requesterSolved == -1) {
-console.log("Request taken. notify app!");
-publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
-} else if (helperSolved == 1 && requesterSolved == 0) {
-console.log("Requester denied solution.");
-// TODO: handle notifying web
-}
-} else if (taken == 1 && taker != null && helper == null) {
-//
-console.log("someone taking request");
-request.object.set("helper", taker);
-request.object.addUnique("allHelpers", taker);
-request.object.save();
-} else {
-console.log("Something happened. notify app!");
-publishRequest(requester, reqID, pubnub_ios);
-}
-*/
 });
 
 Parse.Cloud.afterSave("Message", function(message) {
@@ -242,6 +208,99 @@ function initialCheckFailed(request) {
   return null;
 }
 
+function notifyUsers(request){
+  console.log("notifyUsers function accessed");
+
+  /*
+  var taken = request.object.get('taken');
+  var helper = request.object.get('helper');
+  var requesterSolved = request.object.get('requesterSolved');
+  var helperSolved = request.object.get('helperSolved');
+
+  
+  if (taken == 0 && helper == undefined && requesterSolved == -1 && helperSolved == -1) {
+  // brand new ticket
+  console.log("publishing new request");
+  publishRequest(req_channel, reqID, "toWeb", pubnub_web);
+} else if (taken == 1 && curUser != null && helper != null) {
+  // actionable item on ticket
+if (requesterSolved == 1 && helperSolved == 1) {
+  console.log("Request is solved!")
+  //Handle notifying app and web
+  var pushQuery = new Parse.Query(Parse.Installation);
+    //TODO: add device type
+    pushQuery.equalTo('user', requester);
+    Parse.Push.send({
+      where: pushQuery, // Set our Installation query
+      data: {
+        alert: "Your issue has been resolved!"
+      }
+    }, {
+      success: function() {
+        // Push was successful
+        console.log("succesful push")
+      },
+      error: function(error) {
+        throw "Got an error " + error.code + " : " + error.message;
+      }
+    });
+  }
+} else if (helperSolved == 1 && requesterSolved == -1) {
+console.log("Helper marked as solved. Notify user.");
+var pushQuery = new Parse.Query(Parse.Installation);
+    //TODO: add device type
+    pushQuery.equalTo('user', requester);
+    Parse.Push.send({
+      where: pushQuery, // Set our Installation query
+      data: {
+        alert: "Your issue has been resolved!"
+      }
+    }, {
+      success: function() {
+        // Push was successful
+        console.log("succesful push")
+      },
+      error: function(error) {
+        throw "Got an error " + error.code + " : " + error.message;
+      }
+    });
+// TODO: Handle notifying app
+} else if (helperSolved == -1 && requesterSolved == -1) {
+console.log("Request taken. notify app!");
+publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
+var pushQuery = new Parse.Query(Parse.Installation);
+    //TODO: add device type
+    pushQuery.equalTo('user', requester);
+    Parse.Push.send({
+      where: pushQuery, // Set our Installation query
+      data: {
+        alert: helperName + " is going to help you with your issue!"
+      }
+    }, {
+      success: function() {
+        // Push was successful
+        console.log("succesful push")
+      },
+      error: function(error) {
+        throw "Got an error " + error.code + " : " + error.message;
+      }
+    });
+} else if (helperSolved == 1 && requesterSolved == 0) {
+console.log("Requester denied solution.");
+// TODO: handle notifying web
+}
+} else if (taken == 1 && taker != null && helper == null) {
+console.log("someone taking request");
+request.object.set("helper", taker);
+request.object.addUnique("allHelpers", taker);
+request.object.save();
+} else {
+console.log("Something happened. notify app!");
+publishRequest(requester, reqID, pubnub_ios);
+}
+*/
+}
+
 function handleRequest(request) {
 
   var curUser = request.user;
@@ -269,6 +328,7 @@ function handleRequest(request) {
       if (requesterSolved == -1 && helperSolved == -1) {
         // someone just took ticket
         console.log("Request taken. notify app!");
+        notifyUsers(request);
         publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
       } else {
         unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
@@ -284,6 +344,23 @@ function handleRequest(request) {
         request.object.set("helper", taker);
         request.object.addUnique("allHelpers", taker);
         request.object.save();
+        var pushQuery = new Parse.Query(Parse.Installation);
+        //TODO: add device type
+        pushQuery.equalTo('user', requester);
+        Parse.Push.send({
+        where: pushQuery, // Set our Installation query
+        data: {
+        alert: "Someone is here to help you with your issue!"
+      }
+    }, {
+      success: function() {
+        // Push was successful
+        console.log("succesful push")
+      },
+      error: function(error) {
+        throw "Got an error " + error.code + " : " + error.message;
+      }
+    });
       } else {
         unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
       }
