@@ -17,6 +17,7 @@ var NaviBox = React.createClass({
     var _this = this;
 
     query.equalTo("helper", currentUser);
+    query.notEqualTo("helperSolved", 1);
     query.find({
       success: function(data) {
         _this.setState({num: data.length});
