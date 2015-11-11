@@ -32,8 +32,8 @@ class TicketTableViewController: UITableViewController {
         }
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.hidesBottomBarWhenPushed = true
         self.tabBarController?.tabBar.hidden = false
-        self.hidesBottomBarWhenPushed = true
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
     }
 

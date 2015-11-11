@@ -16,7 +16,6 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     var ticket: PFObject?
     var busyFrame: UIView?
 
-    @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageTextField: UITextView!
     @IBOutlet weak var textTable: UITableView!
     @IBOutlet weak var sendButton: UIButton!
@@ -90,18 +89,26 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func setupMessageView() {
         
-        messageView.sizeToFit()
-        //messageTextField.sizeToFit()
+//        messageView.sizeToFit()
+//        messageTextField.sizeToFit()
         messageTextField.layer.cornerRadius = 8
         messageTextField.layer.borderWidth = 1
         messageTextField.layer.borderColor = UIConstants.mainUIColor.CGColor
         //messageTextField.scrollEnabled = false
         
-        let border = CALayer()
-        border.frame = CGRectMake(0, 0, CGRectGetWidth(messageView.frame), 1.0)
-        border.backgroundColor = UIConstants.mainUIColor.CGColor
-        messageView.layer.addSublayer(border)
+//        let border = CALayer()
+//        border.frame = CGRectMake(0, 0, CGRectGetWidth(messageView.frame), 1.0)
+//        border.backgroundColor = UIConstants.mainUIColor.CGColor
+//        messageView.layer.addSublayer(border)
         messageTextField.delegate = self
+        
+        // size message field correctly
+        let fixedWidth : CGFloat = messageTextField.frame.size.width
+        let newSize : CGSize = messageTextField.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)))
+        var newFrame : CGRect = messageTextField.frame
+        newFrame.size = CGSizeMake(CGFloat(fmaxf((Float)(newSize.width), (Float)(fixedWidth))),newSize.height)
+        
+        messageTextField.frame = newFrame
     }
     
     @IBAction func sendPressed(sender: AnyObject) {
@@ -119,22 +126,22 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         let curLength = textView.text.characters.count + text.characters.count - range.length
         if curLength == 0 {
-            print("false")
             changeSendButtonState(false)
         } else {
-            print("true")
             changeSendButtonState(true)
         }
         return true
     }
     
     func textViewDidChange(textView: UITextView) {
-        let text = textView.text
-        if text == "" {
-            changeSendButtonState(false)
-        } else {
-            changeSendButtonState(true)
-        }
+        let fixedWidth : CGFloat = textView.frame.size.width
+        let newSize : CGSize = textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)))
+        var newFrame : CGRect = textView.frame
+        newFrame.size = CGSizeMake(CGFloat(fmaxf((Float)(newSize.width), (Float)(fixedWidth))),newSize.height)
+        
+        textView.frame = newFrame
+        print(newFrame.size)
+
     }
 
     func checkMessage(result: NSError?) -> Void {

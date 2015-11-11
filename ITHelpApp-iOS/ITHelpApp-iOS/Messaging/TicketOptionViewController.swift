@@ -30,6 +30,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBarHidden = false
+        self.hidesBottomBarWhenPushed = true
     }
     
     func tableView(textTable: UITableView, numberOfRowsInSection section: Int) -> Int {
