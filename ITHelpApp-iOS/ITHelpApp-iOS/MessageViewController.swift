@@ -50,6 +50,9 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.refreshMessage()
         }
         self.tabBarController?.tabBar.hidden = true
+        
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
         //self.tabBarController?.tabBar.hidden = false
     }
     
@@ -77,9 +80,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         view.addGestureRecognizer(tap)
         
         self.setupMessageView()
-        
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+    
     }
     
 //    override func viewWillDisappear(animated: Bool) {
