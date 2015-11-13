@@ -23,6 +23,7 @@
 		68088E671BF590BB00D7C6A4 /* helpOnWay.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E661BF590BB00D7C6A4 /* helpOnWay.png */; };
 		68088E691BF590DE00D7C6A4 /* Lock-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E681BF590DE00D7C6A4 /* Lock-50.png */; };
 		68088E6B1BF5913D00D7C6A4 /* HelpOnWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68088E6A1BF5913D00D7C6A4 /* HelpOnWayViewController.swift */; };
+		68088E6D1BF6527B00D7C6A4 /* mainLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E6C1BF6527B00D7C6A4 /* mainLogo.png */; };
 		68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68140B771BCDB70600B73AE7 /* RequestHandler.swift */; };
 		682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187BE1BD48F1B001A58BF /* PubnubHandler.swift */; };
 		682187C11BD4A1D3001A58BF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187C01BD4A1D3001A58BF /* AppConstants.swift */; };
@@ -114,6 +115,7 @@
 		68088E661BF590BB00D7C6A4 /* helpOnWay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helpOnWay.png; path = "ITHelpApp-iOS/Resources/Images/helpOnWay.png"; sourceTree = "<group>"; };
 		68088E681BF590DE00D7C6A4 /* Lock-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Lock-50.png"; path = "ITHelpApp-iOS/Resources/Images/Lock-50.png"; sourceTree = "<group>"; };
 		68088E6A1BF5913D00D7C6A4 /* HelpOnWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpOnWayViewController.swift; path = RequestPage/HelpOnWayViewController.swift; sourceTree = "<group>"; };
+		68088E6C1BF6527B00D7C6A4 /* mainLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainLogo.png; path = "ITHelpApp-iOS/Resources/Images/mainLogo.png"; sourceTree = "<group>"; };
 		68140B771BCDB70600B73AE7 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestHandler.swift; path = RequestPage/RequestHandler.swift; sourceTree = "<group>"; };
 		682187BE1BD48F1B001A58BF /* PubnubHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubnubHandler.swift; sourceTree = "<group>"; };
 		682187C01BD4A1D3001A58BF /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = "ITHelpApp-iOS/Resources/AppConstants.swift"; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				68088E6C1BF6527B00D7C6A4 /* mainLogo.png */,
 				68088E681BF590DE00D7C6A4 /* Lock-50.png */,
 				68088E661BF590BB00D7C6A4 /* helpOnWay.png */,
 				68088E641BF585B200D7C6A4 /* cancel.png */,
@@ -547,6 +550,7 @@
 				E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */,
 				4C1CDF411BDCFB8600621C28 /* IconLarge.png in Resources */,
 				4C1CDF4B1BDCFBC200621C28 /* Icon-60@2x.png in Resources */,
+				68088E6D1BF6527B00D7C6A4 /* mainLogo.png in Resources */,
 				4C1CDF511BDCFBF300621C28 /* Icon-40@3x.png in Resources */,
 				6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */,
 				686D0CB91BE1745E0041A954 /* person_gray.png in Resources */,

@@ -19,6 +19,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBarHidden = false
         detailTableView.dataSource = self
         if ticket!["taken"] as! Int == 0 {
             self.ticketActionButton.setTitle("Cancel Ticket", forState: .Normal)
@@ -29,7 +30,6 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false
         self.hidesBottomBarWhenPushed = true
     }
     
@@ -56,7 +56,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
 
                     cell.detailTextLabel?.text = curHelper
                 } else {
-                    cell.detailTextLabel?.text = "Noone"
+                    cell.detailTextLabel?.text = "No one"
             }
             default:
                 cell.textLabel?.text = "Something else"

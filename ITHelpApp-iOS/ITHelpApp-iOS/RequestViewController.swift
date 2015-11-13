@@ -153,7 +153,6 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         } else {
             self.clearUI()
             self.releaseUI()
-            print("go to bro")
             goBackToHelpView()
         }
         self.releaseUI()
@@ -207,12 +206,10 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     func goBackToHelpView() {
-        print("about to bro")
         let storyboard = UIStoryboard(name: "request", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("HelpView") as! HelpOnWayViewController
         controller.modalTransitionStyle = .CrossDissolve
         self.presentViewController(controller, animated: true, completion: nil)
-        print("brent")
     }
     
     
