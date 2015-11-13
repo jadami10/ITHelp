@@ -11,6 +11,8 @@ import Parse
 
 class RequestViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate , UITextFieldDelegate, UITextViewDelegate{
 
+    @IBOutlet weak var imagePickerButton: UIButton!
+    @IBOutlet weak var imageCancelButton: UIButton!
     @IBOutlet weak var requestTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var imagePicker: UIImageView!
@@ -34,10 +36,21 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         requestTextView.delegate = self
         self.getMaxTickets()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = false
+        checkImageButton()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func cancelImagePressed(sender: AnyObject) {
+        imagePicker.image = nil
+        checkImageButton()
     }
     
     
@@ -47,7 +60,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             imagePickerView.delegate = self
             imagePickerView.sourceType = .Camera
             
-            presentViewController(imagePickerView, animated: true, completion: nil)
+            presentViewController(imagePickerView, animated: true, completion: checkImageButton)
 
     }
     
@@ -56,6 +69,13 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         imagePicker.image = info[UIImagePickerControllerOriginalImage] as? UIImage
     }
 
+    func checkImageButton() {
+        if imagePicker.image != nil {
+            imageCancelButton.hidden = false
+        } else {
+            imageCancelButton.hidden = true
+        }
+    }
 
 
     @IBAction func requestPressed(sender: AnyObject) {
@@ -87,15 +107,21 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         let currentUser = PFUser.currentUser()
         let requestObject = PFObject(className:"Request")
         if (imagePicker.image != nil){
-            var file = PFFile(name: "image", data: UIImageJPEGRepresentation(imagePicker.image!, 0.5)!)
+            let file = PFFile(name: "image", data: UIImageJPEGRepresentation(imagePicker.image!, 0.5)!)
             requestObject["photoFile"] = file
         }
         requestObject["requester"] = currentUser?.username
+        requestObject["requesterPointer"] = currentUser
         requestObject["requestMessage"] = ticketMsg
         requestObject["title"] = ticketTitle
         requestObject["taken"] = 0
         
-        RequestHandler.postRequest(requestObject, completion: self.checkRequest)
+        if AppConstants.curTicketsNum < AppConstants.maxTickets {
+            RequestHandler.postRequest(requestObject, completion: self.checkRequest)
+        } else {
+            self.presentAlert("Too many requests", message: String(format: "At max requests: %d", AppConstants.maxTickets), completion: nil)
+            self.releaseUI()
+        }
     }
 
     
@@ -111,7 +137,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
                 break
             case 142:
                 if errorString != nil && errorString == "Too many open requests" {
-                    self.presentAlert("Too many requests", message: String(format: "At max requests: %d", AppConstants.maxTickets!), completion: nil)
+                    self.presentAlert("Too many requests", message: String(format: "At max requests: %d", AppConstants.maxTickets), completion: nil)
                 } else {
                     print(NSString(format: "Unhandled Error: %d", errorCode))
                     self.presentAlert("Error", message: "Please try again later", completion: nil)
@@ -126,6 +152,9 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             
         } else {
             self.clearUI()
+            self.releaseUI()
+            print("go to bro")
+            goBackToHelpView()
         }
         self.releaseUI()
     }
@@ -161,18 +190,29 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         } else {
             AppConstants.maxTickets = 5
         }
-        print(String(format: "Max Tickets: %d", AppConstants.maxTickets!))
+        print(String(format: "Max Tickets: %d", AppConstants.maxTickets))
     }
     
     func clearUI() {
         requestTextView.text = ""
         titleTextField.text = ""
         imagePicker.image = nil
+        requestTextViewCount.text = String(format: "%d/%d", 0, maxRequestLength)
+        titleTextFieldCount.text = String(format: "%d/%d", (titleTextField.text?.characters.count)!, maxTitleLength)
     }
     
     func releaseUI() {
         self.view.userInteractionEnabled = true
         self.busyFrame?.removeFromSuperview()
+    }
+    
+    func goBackToHelpView() {
+        print("about to bro")
+        let storyboard = UIStoryboard(name: "request", bundle: nil)
+        let controller = storyboard.instantiateViewControllerWithIdentifier("HelpView") as! HelpOnWayViewController
+        controller.modalTransitionStyle = .CrossDissolve
+        self.presentViewController(controller, animated: true, completion: nil)
+        print("brent")
     }
     
     

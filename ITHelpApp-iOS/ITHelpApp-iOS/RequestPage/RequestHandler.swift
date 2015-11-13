@@ -13,15 +13,16 @@ class RequestHandler {
     
     static func postRequest(request: PFObject, completion: (result: NSError?) -> Void){
         
-        request.saveInBackgroundWithBlock {
-            // afterSave will send to pubnub
-            (success: Bool, error: NSError?) -> Void in
-            if (success) {
-                print("good request!")
-                AppConstants.shouldRefreshTickets = true
+            request.saveInBackgroundWithBlock {
+                // afterSave will send to pubnub
+                (success: Bool, error: NSError?) -> Void in
+                if (success) {
+                    print("good request!")
+                    AppConstants.shouldRefreshTickets = true
+                }
+                completion(result: error)
             }
-            completion(result: error)
-        }
+        
     }
 
 }

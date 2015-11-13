@@ -57,7 +57,8 @@ extension UIViewController {
         let strLabel = UILabel(frame: CGRect(x: 50, y: 0, width: 300, height: 50))
         strLabel.text = msg
         strLabel.textColor = UIColor.whiteColor()
-        let messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 180, height: 50))
+        //let messageFrame = UIView(frame: CGRect(x: view.frame.midX - 90, y: view.frame.midY - 25 , width: 50, height: 50))
+        let messageFrame = UIView(frame: CGRect(x: view.frame.midX - 25, y: view.frame.midY - 25 , width: 50, height: 50))
         messageFrame.userInteractionEnabled = false
         messageFrame.layer.cornerRadius = 15
         messageFrame.backgroundColor = UIColor(white: 0, alpha: 0.7)
@@ -67,8 +68,8 @@ extension UIViewController {
             activityIndicator.startAnimating()
             messageFrame.addSubview(activityIndicator)
         }
-        messageFrame.addSubview(strLabel)
-        messageFrame.sizeToFit()
+        //messageFrame.addSubview(strLabel)
+        //messageFrame.sizeToFit()
         self.view.addSubview(messageFrame)
         return messageFrame
     }

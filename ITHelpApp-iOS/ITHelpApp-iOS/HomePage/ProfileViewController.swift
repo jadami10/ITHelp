@@ -67,6 +67,13 @@ class ProfileViewController: UIViewController {
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
+    @IBAction func iconButtonPressed(sender: AnyObject) {
+        //let requestObj = NSURLRequest(URL: url!);
+        //iconWebView.loadRequest(requestObj);
+        if let url = NSURL (string: "https://icons8.com/") {
+            UIApplication.sharedApplication().openURL(url)
+        }
+    }
     
 
 }
