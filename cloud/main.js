@@ -52,6 +52,12 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
     response.success();
     return;
   } else {
+    var req = request.object;
+    req.set("helperSolved", -1);
+    req.set("requesterSolved", -1);
+    req.set("allHelpers", []);
+    response.success();
+    /*
     // It's a new ticket coming in. Let's make sure they haven't passed their limit
     var openRequests = Parse.Object.extend("Request");
     var query = new Parse.Query(openRequests);
@@ -74,6 +80,7 @@ Parse.Cloud.beforeSave("Request", function(request, response) {
         response.error(error);
       }
     });
+    */
   }
 });
 

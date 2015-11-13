@@ -64,11 +64,12 @@ class TicketTableViewController: UITableViewController {
         self.busyFrame = self.progressBarDisplayer("Getting Tickets", indicator: true)
         clearTickets()
         TicketHandler.getTickets(addTickets, completion: gotTickets)
-
+        
     }
     
     func gotTickets() -> Void {
         self.tableView.reloadData()
+        AppConstants.curTicketsNum = pendingTickets.count + openTickets.count + solvedTickets.count
         self.busyFrame?.removeFromSuperview()
         self.tableView.userInteractionEnabled = true
         //self.view.userInteractionEnabled = true
@@ -119,7 +120,7 @@ class TicketTableViewController: UITableViewController {
     }
 
     func getTicketQueue(section: Int) -> [PFObject] {
-        print(String(format: "P: %d O: %d S: %d", pendingTickets.count, openTickets.count, solvedTickets.count))
+        //print(String(format: "P: %d O: %d S: %d", pendingTickets.count, openTickets.count, solvedTickets.count))
         if (section == 0) {
             if pendingTickets.count > 0 {
                 return pendingTickets
@@ -129,7 +130,7 @@ class TicketTableViewController: UITableViewController {
                 return solvedTickets
             }
         } else if (section == 1) {
-            if (pendingTickets.count == 0 && openTickets.count > 0 && solvedTickets.count == 0) {
+            if (pendingTickets.count > 0 && openTickets.count > 0) {
                 return openTickets
             } else {
                 return solvedTickets
@@ -299,6 +300,7 @@ class TicketTableViewController: UITableViewController {
         if (isDeleted) {
             // go back to ticket view controller
             print("Succesfully deleted ticket")
+            AppConstants.curTicketsNum--
             if let index = shouldDelete?.row {
                 pendingTickets.removeAtIndex(index - 1)
                 if pendingTickets.count == 0 {

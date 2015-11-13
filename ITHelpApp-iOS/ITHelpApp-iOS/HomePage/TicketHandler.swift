@@ -15,7 +15,7 @@ var petitions = [PFObject]()
 class TicketHandler{
     static func getTickets(add: ((PFObject, Int) -> Void), completion: () -> Void) -> Void{
         let query = PFQuery(className:"Request")
-        query.whereKey("requester", equalTo:(PFUser.currentUser()?.username)!)
+        query.whereKey("requesterPointer", equalTo:PFUser.currentUser()!)
         query.whereKey("requesterSolved", notEqualTo: 1)
         query.includeKey("helper")
         query.findObjectsInBackgroundWithBlock {

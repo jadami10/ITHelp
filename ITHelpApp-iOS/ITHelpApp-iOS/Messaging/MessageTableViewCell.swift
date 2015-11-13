@@ -22,7 +22,7 @@ class MessageTableViewCell: UITableViewCell {
             self.messageText.textColor = UIColor.whiteColor()
             self.messageText.textAlignment = NSTextAlignment.Right
         } else {
-            self.messageText.backgroundColor = UIColor.grayColor()
+            self.messageText.backgroundColor = UIColor.lightGrayColor()
             self.messageText.textColor = UIColor.blackColor()
             self.messageText.textAlignment = NSTextAlignment.Left
         }

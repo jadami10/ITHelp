@@ -20,18 +20,13 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
     func client(client: PubNub!, didReceiveMessage message: PNMessageResult!) {
 
-        if self.tabBar.selectedItem != self.tabBar.items![1] {
-            AppConstants.shouldRefreshTickets = true
-            if let badgeValue = (self.tabBar.items![1]).badgeValue, let badgeInt = Int(badgeValue) {
-                (self.tabBar.items![1]).badgeValue = (badgeInt + 1).description
-            } else {
-                (self.tabBar.items![1]).badgeValue = "1"
-            }
-        } else {
-            
-        }
         
         print("request notification!")
         
@@ -40,21 +35,52 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             if curController is TicketTableViewController
         }
         */
+        
+        // RequestTaken: someone just took your request
+        // RequestSolved: someone just solved your request
 
         if let requestID = message.data.message["requestID"] as? String, requestType = message.data.message["requestType"] as? String {
             print(message.data.message)
             print(String(format: "ID: %s Type: %s", requestID, requestType))
-            self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!", completion: nil)
+            if requestType == "RequestTaken" {
+                incrementRequestBadge()
+                self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!", completion: nil)
+            } else if requestType == "RequestSolved" {
+                
+            }
         } else {
             print("bad message")
             print(message.data.message)
         }
     }
     
+    func incrementRequestBadge() {
+        if self.tabBar.selectedItem != self.tabBar.items![AppConstants.ticketsTabIndex] {
+            AppConstants.shouldRefreshTickets = true
+            if let badgeValue = (self.tabBar.items![AppConstants.ticketsTabIndex]).badgeValue, let badgeInt = Int(badgeValue) {
+                (self.tabBar.items![AppConstants.ticketsTabIndex]).badgeValue = (badgeInt + 1).description
+            } else {
+                (self.tabBar.items![AppConstants.ticketsTabIndex]).badgeValue = "1"
+            }
+        } else {
+            if let controller = self.viewControllers?[AppConstants.ticketsTabIndex] as? UINavigationController {
+                print("refresh ticekts now")
+                if let ticketController = controller.viewControllers[0] as? TicketTableViewController {
+                    ticketController.fetchTickets()
+                } else {
+                    print(controller.viewControllers)
+                }
+            } else {
+                print(self.viewControllers)
+                print("could not find ticket view controller")
+            }
+        }
+    }
+    
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        if self.tabBar.selectedItem == self.tabBar.items![1] {
-            if let _ = self.tabBar.items?[1].badgeValue {
-                self.tabBar.items![1].badgeValue = nil
+        if self.tabBar.selectedItem == self.tabBar.items![AppConstants.ticketsTabIndex] {
+            if let _ = self.tabBar.items?[AppConstants.ticketsTabIndex].badgeValue {
+                self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
             }
         }
     }

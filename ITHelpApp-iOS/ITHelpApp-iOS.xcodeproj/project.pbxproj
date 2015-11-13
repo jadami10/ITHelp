@@ -19,6 +19,10 @@
 		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		68075ED71BD6A4EB00975B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68075ED61BD6A4EB00975B5C /* Message.swift */; };
 		68075ED91BD80C6A00975B5C /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 68075ED81BD80C6A00975B5C /* forward.png */; };
+		68088E651BF585B200D7C6A4 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E641BF585B200D7C6A4 /* cancel.png */; };
+		68088E671BF590BB00D7C6A4 /* helpOnWay.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E661BF590BB00D7C6A4 /* helpOnWay.png */; };
+		68088E691BF590DE00D7C6A4 /* Lock-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E681BF590DE00D7C6A4 /* Lock-50.png */; };
+		68088E6B1BF5913D00D7C6A4 /* HelpOnWayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68088E6A1BF5913D00D7C6A4 /* HelpOnWayViewController.swift */; };
 		68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68140B771BCDB70600B73AE7 /* RequestHandler.swift */; };
 		682187BF1BD48F1B001A58BF /* PubnubHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187BE1BD48F1B001A58BF /* PubnubHandler.swift */; };
 		682187C11BD4A1D3001A58BF /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682187C01BD4A1D3001A58BF /* AppConstants.swift */; };
@@ -106,6 +110,10 @@
 		57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITHelpApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		68075ED61BD6A4EB00975B5C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Messaging/Message.swift; sourceTree = "<group>"; };
 		68075ED81BD80C6A00975B5C /* forward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward.png; path = "ITHelpApp-iOS/Resources/Images/forward.png"; sourceTree = "<group>"; };
+		68088E641BF585B200D7C6A4 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cancel.png; path = "ITHelpApp-iOS/Resources/Images/cancel.png"; sourceTree = "<group>"; };
+		68088E661BF590BB00D7C6A4 /* helpOnWay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = helpOnWay.png; path = "ITHelpApp-iOS/Resources/Images/helpOnWay.png"; sourceTree = "<group>"; };
+		68088E681BF590DE00D7C6A4 /* Lock-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Lock-50.png"; path = "ITHelpApp-iOS/Resources/Images/Lock-50.png"; sourceTree = "<group>"; };
+		68088E6A1BF5913D00D7C6A4 /* HelpOnWayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpOnWayViewController.swift; path = RequestPage/HelpOnWayViewController.swift; sourceTree = "<group>"; };
 		68140B771BCDB70600B73AE7 /* RequestHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestHandler.swift; path = RequestPage/RequestHandler.swift; sourceTree = "<group>"; };
 		682187BE1BD48F1B001A58BF /* PubnubHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubnubHandler.swift; sourceTree = "<group>"; };
 		682187C01BD4A1D3001A58BF /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppConstants.swift; path = "ITHelpApp-iOS/Resources/AppConstants.swift"; sourceTree = "<group>"; };
@@ -295,6 +303,9 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				68088E681BF590DE00D7C6A4 /* Lock-50.png */,
+				68088E661BF590BB00D7C6A4 /* helpOnWay.png */,
+				68088E641BF585B200D7C6A4 /* cancel.png */,
 				686D0CBE1BE19BD70041A954 /* person_blue.png */,
 				686D0CB81BE1745E0041A954 /* person_gray.png */,
 				E1F5AC031BD5A9B2000A0F36 /* briskITlogo.png */,
@@ -350,6 +361,7 @@
 				684F8CA41BC496CF0046345C /* RequestViewController.swift */,
 				E1192B961BCDE44D00DC284D /* request.storyboard */,
 				68140B771BCDB70600B73AE7 /* RequestHandler.swift */,
+				68088E6A1BF5913D00D7C6A4 /* HelpOnWayViewController.swift */,
 			);
 			name = Request;
 			path = ..;
@@ -544,11 +556,14 @@
 				6892F8251BC6A73400EDC4F0 /* workstation.png in Resources */,
 				E1084B401BD7594B002B33A9 /* briskit_title.png in Resources */,
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
+				68088E691BF590DE00D7C6A4 /* Lock-50.png in Resources */,
 				E1D9ECB41BE050A400EFBE1D /* camera.svg in Resources */,
 				4C1CDF491BDCFBB400621C28 /* Icon-40@2x.png in Resources */,
 				4C1CDF471BDCFBA700621C28 /* Icon-40.png in Resources */,
 				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
 				684CEA801BC5B150008460C6 /* Main.storyboard in Resources */,
+				68088E671BF590BB00D7C6A4 /* helpOnWay.png in Resources */,
+				68088E651BF585B200D7C6A4 /* cancel.png in Resources */,
 				6882CC301BCEE9B4002D9877 /* message.png in Resources */,
 				4C1CDF351BDCFB7C00621C28 /* AppIcon.appiconset in Resources */,
 				6892F8331BC6C29000EDC4F0 /* tickets.storyboard in Resources */,
@@ -655,6 +670,7 @@
 				686D0CC11BE19D820041A954 /* InsetTextField.swift in Sources */,
 				68075ED71BD6A4EB00975B5C /* Message.swift in Sources */,
 				686D0CC51BEB133B0041A954 /* TicketOptionViewController.swift in Sources */,
+				68088E6B1BF5913D00D7C6A4 /* HelpOnWayViewController.swift in Sources */,
 				E177DF4B1BCF2E4900D7A481 /* TicketHandler.swift in Sources */,
 				6892F8371BC6EB7200EDC4F0 /* TicketTableViewController.swift in Sources */,
 				684F8CAB1BC496DE0046345C /* Bridge.m in Sources */,
