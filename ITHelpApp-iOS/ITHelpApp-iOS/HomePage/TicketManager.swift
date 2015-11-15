@@ -23,6 +23,7 @@ class TicketManager {
         pendingTickets = []
         openTickets = []
         solvedTickets = []
+        AppConstants.curTicketsNum = 0
     }
     
     func getTickets() {
