@@ -9,36 +9,31 @@
 import UIKit
 import Parse
 
-class TicketTableViewController: UITableViewController {
+class TicketTableViewController: UITableViewController, UIBlockableProtocol {
     
-    var pendingTickets = [PFObject]()
-    var openTickets = [PFObject]()
-    var solvedTickets = [PFObject]()
     var busyFrame: UIView?
     
     var shouldDelete = NSIndexPath?()
+    var manager = TicketManager.sharedInstance
     
 
     override func viewWillAppear(animated: Bool) {
-        // FIXME: store tickets so you don't reload every time. Causes issues with bad network conditions
-        if totalTicket() == 0 || AppConstants.shouldRefreshTickets {
-            //self.asyncBlockingAction("Fetching Tickets", taskToRun: fetchTickets)
-            AppConstants.shouldRefreshTickets = false
-            self.fetchTickets()
-        } else {
-            if let path = self.tableView.indexPathForSelectedRow {
-                self.tableView.deselectRowAtIndexPath(path, animated: true)
-            }
+        
+        if let path = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRowAtIndexPath(path, animated: true)
         }
 
         navigationController?.setNavigationBarHidden(true, animated: true)
 //        self.hidesBottomBarWhenPushed = true
         self.tabBarController?.tabBar.hidden = false
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        AppConstants.ticketNavController = self.navigationController
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        manager.registerListener(self)
+        manager.getTickets()
         //TicketHandler.getTickets(addTickets)
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = true
@@ -54,103 +49,44 @@ class TicketTableViewController: UITableViewController {
     }
     
     func handleRefresh(refreshControl: UIRefreshControl) {
-        self.fetchTickets()
+        manager.getTickets()
         refreshControl.endRefreshing()
     }
     
-    func fetchTickets() {
-        //self.view.userInteractionEnabled = false
+    func blockUI() {
         self.tableView.userInteractionEnabled = false
         self.busyFrame = self.progressBarDisplayer("Getting Tickets", indicator: true)
-        clearTickets()
-        TicketHandler.getTickets(addTickets, completion: gotTickets)
-        
     }
     
-    func gotTickets() -> Void {
-        self.tableView.reloadData()
-        AppConstants.curTicketsNum = pendingTickets.count + openTickets.count + solvedTickets.count
+    func releaseUI() {
         self.busyFrame?.removeFromSuperview()
         self.tableView.userInteractionEnabled = true
-        //self.view.userInteractionEnabled = true
     }
     
-    func addTickets(object: PFObject, type: Int) -> Void{
-        if type == 0 {
-            pendingTickets.append(object)
-        } else if type == 1 {
-            openTickets.append(object)
-        } else {
-            solvedTickets.append(object)
-        }
-        //print(object)
+    func reloadData() {
+        self.tableView.reloadData()
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        var numSections = 0
-        if pendingTickets.count > 0 {
-            numSections++
-        }
-        if openTickets.count > 0 {
-            numSections++
-        }
-
-        if solvedTickets.count > 0 {
-            numSections++
-        }
-        return numSections
+        return manager.getNumSections()
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        let ticketQueue = getTicketQueue(section)
+        let ticketQueue = manager.getTicketQueue(section)
         return ticketQueue.count + 1
     }
     
     func totalTicket() -> Int {
-        return pendingTickets.count + openTickets.count + solvedTickets.count
-    }
-    
-    func clearTickets() {
-        pendingTickets = []
-        openTickets = []
-        solvedTickets = []
-    }
-
-    func getTicketQueue(section: Int) -> [PFObject] {
-        //print(String(format: "P: %d O: %d S: %d", pendingTickets.count, openTickets.count, solvedTickets.count))
-        if (section == 0) {
-            if pendingTickets.count > 0 {
-                return pendingTickets
-            } else if (openTickets.count > 0) {
-                return openTickets
-            } else {
-                return solvedTickets
-            }
-        } else if (section == 1) {
-            if (pendingTickets.count > 0 && openTickets.count > 0) {
-                return openTickets
-            } else {
-                return solvedTickets
-            }
-        } else {
-            return solvedTickets
-        }
+        return manager.getNumTotalTickets()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var tickets = getTicketQueue(indexPath.section)
-        var qualifier: String
-        if (tickets == pendingTickets) {
-            qualifier = "Pending"
-        } else if (tickets == openTickets) {
-            qualifier = "Open"
-        } else {
-            qualifier = "Solved"
-        }
+        var tickets = manager.getTicketQueue(indexPath.section)
+        let qualifier = manager.getTicketType(indexPath.section, row: indexPath.row).rawValue
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
@@ -228,7 +164,7 @@ class TicketTableViewController: UITableViewController {
     }
     */
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let tickets = getTicketQueue(indexPath.section)
+        let tickets = manager.getTicketQueue(indexPath.section)
         let ticketId = tickets[indexPath.row - 1]
         self.tabBarController?.tabBar.hidden = true
         if ticketId["taken"] as! Int != 0 {
@@ -265,7 +201,7 @@ class TicketTableViewController: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return getTicketQueue(indexPath.section) == pendingTickets
+        return manager.getTicketType(indexPath.section, row: indexPath.row) == TicketType.Pending
     }
     
     
@@ -273,11 +209,14 @@ class TicketTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            let index = indexPath.row - 1
             switch (indexPath.section) {
             case 0:
                 self.tableView.beginUpdates()
-                handleTicketDeletion(pendingTickets[index], indexPath: indexPath)
+                self.view.userInteractionEnabled = false
+                self.busyFrame = self.progressBarDisplayer("Deleting", indicator: true)
+                shouldDelete = indexPath
+//                TicketHandler.deleteTicket(ticket, completion: self.checkDeletion)
+                manager.handleTicketDeletion(indexPath, checkDeletion: self.checkDeletion)
                 self.tableView.endUpdates()
                 break
             default:
@@ -288,22 +227,14 @@ class TicketTableViewController: UITableViewController {
         }   */
     }
     
-    func handleTicketDeletion(ticket: PFObject, indexPath: NSIndexPath) {
-        // TODO: try to delete ticket, and handle any errors, otherwise go back to ticket view
-        self.view.userInteractionEnabled = false
-        self.busyFrame = self.progressBarDisplayer("Deleting", indicator: true)
-        shouldDelete = indexPath
-        TicketHandler.deleteTicket(ticket, completion: self.checkDeletion)
-    }
-    
     func checkDeletion(isDeleted: Bool, error: NSError?) -> Void {
         if (isDeleted) {
             // go back to ticket view controller
             print("Succesfully deleted ticket")
             AppConstants.curTicketsNum--
             if let index = shouldDelete?.row {
-                pendingTickets.removeAtIndex(index - 1)
-                if pendingTickets.count == 0 {
+                let count = manager.ticketDeleted(index)
+                if count == 0 {
                     tableView.deleteSections(NSIndexSet(index: shouldDelete!.section), withRowAnimation: .Fade)
                 } else {
                     tableView.deleteRowsAtIndexPaths([shouldDelete!], withRowAnimation: .Fade)

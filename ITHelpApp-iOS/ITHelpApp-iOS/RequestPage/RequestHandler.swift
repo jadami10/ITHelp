@@ -18,7 +18,7 @@ class RequestHandler {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     print("good request!")
-                    AppConstants.shouldRefreshTickets = true
+                    TicketManager.sharedInstance.getTickets()
                 }
                 completion(result: error)
             }

@@ -91,7 +91,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
         if (isDeleted) {
             // go back to ticket view controller
             print("Succesfully deleted ticket")
-            AppConstants.shouldRefreshTickets = true
+            TicketManager.sharedInstance.getTickets()
             self.busyFrame?.removeFromSuperview()
             self.view.userInteractionEnabled = true
             self.returnToTicketViewController()
@@ -126,9 +126,9 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
         if (isSolved) {
             // go back to ticket view controller
             print("Succesfully closed ticket")
-            AppConstants.shouldRefreshTickets = true
             self.busyFrame?.removeFromSuperview()
             self.view.userInteractionEnabled = true
+            TicketManager.sharedInstance.getTickets()
             self.returnToTicketViewController()
         } else if (error != nil) {
             if let err = error?.code {

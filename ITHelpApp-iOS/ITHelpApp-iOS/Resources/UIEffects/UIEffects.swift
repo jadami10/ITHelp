@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 
 extension UITextField {
@@ -47,6 +48,16 @@ extension UIViewController {
         
         let defaultAction = UIAlertAction(title: "Ok", style: .Default, handler: completion)
         alertController.addAction(defaultAction)
+        
+        presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func presentYesNoAlert(title: String, message: String, completion: ((UIAlertAction) -> Void)?) {
+        let alertController = UIAlertController(title: title as String, message: message as String, preferredStyle: .Alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: completion)
+        let noAction = UIAlertAction(title: "No", style: .Default, handler: nil)
+        alertController.addAction(noAction)
+        alertController.addAction(yesAction)
         
         presentViewController(alertController, animated: true, completion: nil)
     }

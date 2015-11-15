@@ -10,6 +10,9 @@ import UIKit
 import PubNub
 import Parse
 
+var alertedTicketId: String?
+var alertedTicket: PFObject?
+
 class MainTabController: UITabBarController, PNObjectEventListener {
     
     override func viewDidLoad() {
@@ -43,10 +46,15 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             print(message.data.message)
             print(String(format: "ID: %s Type: %s", requestID, requestType))
             if requestType == "RequestTaken" {
-                incrementRequestBadge()
-                self.presentAlert("Request Processed!", message: "Go to your tickets to begin chatting!", completion: nil)
+                alertedTicketId = requestID
+                TicketManager.sharedInstance.getTicketsWithCallback(self.handleTicketTaken)
             } else if requestType == "RequestSolved" {
-                
+                TicketManager.sharedInstance.getTickets()
+                self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: nil)
+            } else if requestType == "RequestReleased" {
+                TicketManager.sharedInstance.getTickets()
+            } else {
+                print(String(format:"Unhandled request type: %s", requestType))
             }
         } else {
             print("bad message")
@@ -54,15 +62,41 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         }
     }
     
+    func handleTicketTaken() {
+        if alertedTicketId != nil {
+            alertedTicket = TicketManager.sharedInstance.getTicketById(alertedTicketId!)
+            incrementRequestBadge()
+            self.presentYesNoAlert("Someone is here to help!", message: "Go to your ticket?", completion: self.goToTicketTaken)
+        } else {
+            print("no ticket id")
+        }
+    }
+    
+    func goToTicketTaken(_: UIAlertAction) -> Void {
+        if alertedTicket == nil {
+            print("Could not redirect to ticket")
+        } else {
+            let storyboard = UIStoryboard(name: "message", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("textTable") as! MessageViewController
+            controller.ticket = alertedTicket
+            AppConstants.ticketNavController?.pushViewController(controller, animated: true)
+            if self.tabBarController != nil {
+                self.tabBarController?.selectedIndex = AppConstants.ticketsTabIndex
+            } else {
+                print("no tabbar controller to change")
+            }
+        }
+    }
+    
     func incrementRequestBadge() {
         if self.tabBar.selectedItem != self.tabBar.items![AppConstants.ticketsTabIndex] {
-            AppConstants.shouldRefreshTickets = true
+
             if let badgeValue = (self.tabBar.items![AppConstants.ticketsTabIndex]).badgeValue, let badgeInt = Int(badgeValue) {
                 (self.tabBar.items![AppConstants.ticketsTabIndex]).badgeValue = (badgeInt + 1).description
             } else {
                 (self.tabBar.items![AppConstants.ticketsTabIndex]).badgeValue = "1"
             }
-        } else {
+        } /*else {
             if let controller = self.viewControllers?[AppConstants.ticketsTabIndex] as? UINavigationController {
                 print("refresh ticekts now")
                 if let ticketController = controller.viewControllers[0] as? TicketTableViewController {
@@ -74,7 +108,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                 print(self.viewControllers)
                 print("could not find ticket view controller")
             }
-        }
+        }*/
     }
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
