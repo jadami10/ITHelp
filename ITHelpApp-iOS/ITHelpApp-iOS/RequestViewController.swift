@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class RequestViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate , UITextFieldDelegate, UITextViewDelegate{
+class RequestViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate , UITextFieldDelegate, UITextViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var imagePickerButton: UIButton!
     @IBOutlet weak var imageCancelButton: UIButton!
@@ -19,11 +19,12 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     var imagePickerView: UIImagePickerController!
     var photoFile: NSData!
 
+    @IBOutlet weak var tagCollectionView: UICollectionView!
     var busyFrame: UIView?
     
     @IBOutlet weak var titleTextFieldCount: UILabel!
     @IBOutlet weak var requestTextViewCount: UILabel!
-    let maxTitleLength = 100
+    let maxTitleLength = 50
     let maxRequestLength = 500
     
     
@@ -31,9 +32,13 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
         titleTextField.delegate = self
         requestTextView.delegate = self
+        tagCollectionView.allowsMultipleSelection = true
+        tagCollectionView.dataSource = self
+        tagCollectionView.delegate = self
         self.getMaxTickets()
     }
     
@@ -184,7 +189,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     func getMaxTickets() {
-        if let maxTickets = PFUser.currentUser()?.valueForKey("MaxTickets") as? Int {
+        if let maxTickets = PFUser.currentUser()?.objectForKey("MaxTickets") as? Int {
             AppConstants.maxTickets = maxTickets
         } else {
             AppConstants.maxTickets = 5
@@ -212,6 +217,52 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return TagManager.sharedInstance.getNumTags()
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TagCell", forIndexPath: indexPath) as! RequestTagCell
+        if indexPath.section == 0 {
+            let tag = TagManager.sharedInstance.getTag(indexPath)
+            cell.tagVal.text = tag.tagName
+            cell.backgroundColor = tag.tagColor
+//            cell.tagVal.sizeToFit()
+        } else {
+            cell.backgroundColor = UIColor.whiteColor()
+        }
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let myHeight : CGFloat = 30
+        var myWidth:CGFloat
+        
+        let tagNum = TagManager.sharedInstance.getNumTags()
+        if tagNum > 0 {
+            myWidth = collectionView.frame.width/CGFloat(tagNum) - 5
+        } else {
+            myWidth = 0
+        }
+
+        return CGSizeMake(myWidth, myHeight)
+    }
+    
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        cell?.layer.borderWidth = 2.0
+        cell?.layer.borderColor = UIConstants.mainUIColor.CGColor
+    }
+    
+    func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)
+        cell?.layer.borderWidth = 0
+        cell?.layer.borderColor = UIConstants.mainUIColor.CGColor
+    }
     
     /*
     // MARK: - Navigation

@@ -86,15 +86,15 @@ class TicketTableViewController: UITableViewController, UIBlockableProtocol {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var tickets = manager.getTicketQueue(indexPath.section)
-        let qualifier = manager.getTicketType(indexPath.section, row: indexPath.row).rawValue
+        let qualifier = manager.getTicketType(indexPath.section, row: indexPath.row)
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
             
             if tickets.count == 1 {
-            cell.textLabel?.text = String(format: "1 %@ Ticket", qualifier)
+            cell.textLabel?.text = String(format: "1 %@ Ticket", qualifier.rawValue)
             } else {
-            cell.textLabel?.text = String(format: "%d %@ Tickets", tickets.count, qualifier)
+            cell.textLabel?.text = String(format: "%d %@ Tickets", tickets.count, qualifier.rawValue)
             }
             cell.textLabel?.textAlignment = NSTextAlignment.Center
             cell.userInteractionEnabled = false
@@ -118,6 +118,20 @@ class TicketTableViewController: UITableViewController, UIBlockableProtocol {
                     dateFormatter.dateFormat = "MM.dd.yy"
                     let dateString = dateFormatter.stringFromDate(date)
                     cell.ticketDateLabel.text = dateString
+                }
+                switch(qualifier) {
+                case .Pending:
+                    cell.ticketTriangleImage.image = UIImage(named: "redTriangle")
+                    break
+                case .Open:
+                    cell.ticketTriangleImage.image = UIImage(named: "blueTriangle")
+                    break
+                case .Solved:
+                    cell.ticketTriangleImage.image = UIImage(named: "greenTriangle")
+                    break
+                default:
+                    cell.ticketTriangleImage.image = nil
+                    break
                 }
             } else {
                 print(String(format: "Index: %d, Tickets: %d", indexPath.row-1, tickets.count))

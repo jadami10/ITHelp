@@ -56,7 +56,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             } else if requestType == "RequestAdded" {
                 TicketManager.sharedInstance.getTickets()
             } else if requestType == "RequestDeleted" {
-                TicketManager.sharedInstance.getTickets()
+                //TicketManager.sharedInstance.getTickets()
             } else {
                 print(String(format:"Unhandled request type: %s", requestType))
             }

@@ -17,6 +17,9 @@ class TicketManager {
     var openTickets = [PFObject]()
     var solvedTickets = [PFObject]()
     
+    var lock = NSLock()
+    var updating = false
+    
     var listeners = [UIBlockableProtocol]()
     
     func clearTickets() {
@@ -27,26 +30,38 @@ class TicketManager {
     }
     
     func getTickets() {
-        for listener in listeners {
-            listener.blockUI()
+        if !updating {
+            lock.lock()
+            if !updating {
+                updating = true
+                for listener in listeners {
+                    listener.blockUI()
+                }
+                self.clearTickets()
+                var completions:[()->()] = []
+                completions.append(self.alertListeners)
+                TicketHandler.getTickets(addTickets, completions: completions)
+            }
         }
-        self.clearTickets()
-        var completions:[()->()] = []
-        completions.append(self.alertListeners)
-        TicketHandler.getTickets(addTickets, completions: completions)
     }
     
     func getTicketsWithCallback(gotTickets: (() -> Void)?) {
-        for listener in listeners {
-            listener.blockUI()
+        if !updating {
+            lock.lock()
+            if !updating {
+                updating = true
+                for listener in listeners {
+                    listener.blockUI()
+                }
+                self.clearTickets()
+                var completions:[()->()] = []
+                completions.append(self.alertListeners)
+                if (gotTickets != nil) {
+                    completions.append(gotTickets!)
+                }
+                TicketHandler.getTickets(addTickets, completions: completions)
+            }
         }
-        self.clearTickets()
-        var completions:[()->()] = []
-        completions.append(self.alertListeners)
-        if (gotTickets != nil) {
-            completions.append(gotTickets!)
-        }
-        TicketHandler.getTickets(addTickets, completions: completions)
     }
     
     func addTickets(object: PFObject, type: Int) -> Void{
@@ -151,6 +166,8 @@ class TicketManager {
             listener.reloadData()
             listener.releaseUI()
         }
+        updating = false
+        lock.unlock()
     }
     
 }

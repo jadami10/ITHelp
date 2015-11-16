@@ -13,7 +13,7 @@ class InitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        TagManager.sharedInstance.getAvailableTags()
         // Do any additional setup after loading the view.
     }
     
