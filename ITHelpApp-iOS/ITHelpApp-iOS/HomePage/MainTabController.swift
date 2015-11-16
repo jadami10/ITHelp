@@ -50,9 +50,13 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                 TicketManager.sharedInstance.getTicketsWithCallback(self.handleTicketTaken)
             } else if requestType == "RequestSolved" {
                 TicketManager.sharedInstance.getTickets()
-                self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: nil)
+                
             } else if requestType == "RequestReleased" {
+                TicketManager.sharedInstance.getTicketsWithCallback(self.handleTicketReleased)
+            } else if requestType == "RequestAdded" {
                 TicketManager.sharedInstance.getTickets()
+            } else if requestType == "RequestDeleted" {
+                //TicketManager.sharedInstance.getTickets()
             } else {
                 print(String(format:"Unhandled request type: %s", requestType))
             }
@@ -66,13 +70,21 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         if alertedTicketId != nil {
             alertedTicket = TicketManager.sharedInstance.getTicketById(alertedTicketId!)
             incrementRequestBadge()
-            self.presentYesNoAlert("Someone is here to help!", message: "Go to your ticket?", completion: self.goToTicketTaken)
+            self.presentYesNoAlert("Someone is here to help!", message: "Go to your ticket?", completion: self.goToTicket)
         } else {
             print("no ticket id")
         }
     }
     
-    func goToTicketTaken(_: UIAlertAction) -> Void {
+    func handleTicketSolved() {
+        self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: self.goToTicket)
+    }
+    
+    func handleTicketReleased() {
+        self.presentAlert("Your helper canceled", message: "A new helper will be on the way soon!", completion: nil)
+    }
+    
+    func goToTicket(_: UIAlertAction) -> Void {
         if alertedTicket == nil {
             print("Could not redirect to ticket")
         } else {
@@ -80,11 +92,8 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             let controller = storyboard.instantiateViewControllerWithIdentifier("textTable") as! MessageViewController
             controller.ticket = alertedTicket
             AppConstants.ticketNavController?.pushViewController(controller, animated: true)
-            if self.tabBarController != nil {
-                self.tabBarController?.selectedIndex = AppConstants.ticketsTabIndex
-            } else {
-                print("no tabbar controller to change")
-            }
+            self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
+            self.selectedIndex = AppConstants.ticketsTabIndex
         }
     }
     
@@ -113,9 +122,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         if self.tabBar.selectedItem == self.tabBar.items![AppConstants.ticketsTabIndex] {
-            if let _ = self.tabBar.items?[AppConstants.ticketsTabIndex].badgeValue {
-                self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
-            }
+            self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
         }
     }
     

@@ -57,15 +57,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YPL-Eu-Qj9">
-                                <rect key="frame" x="20" y="300" width="280" height="21"/>
+                                <rect key="frame" x="20" y="284" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Zb8-8f-hNB">
-                                <rect key="frame" x="45" y="329" width="230" height="112"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <rect key="frame" x="20" y="361" width="280" height="80"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <inset key="insetFor6xAndEarlier" minX="-10" minY="-10" maxX="30" maxY="20"/>
                             </imageView>
                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="e.g. Mac too hot" textAlignment="natural" minimumFontSize="17" id="X89-0N-txi" customClass="InsetTextField" customModule="ITHelpApp_iOS" customModuleProvider="target">
@@ -80,7 +80,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="pJj-6T-i6L">
-                                <rect key="frame" x="249" y="137" width="20" height="20"/>
+                                <rect key="frame" x="240" y="137" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
                                 <state key="normal" image="cancel.png" backgroundImage="cancel.png">
                                     <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -90,13 +90,51 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" id="Dn1-Vu-ly5">
-                                <rect key="frame" x="20" y="164" width="280" height="128"/>
+                                <rect key="frame" x="20" y="164" width="280" height="112"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" red="0.63636363636363635" green="0.63636363636363635" blue="0.63636363636363635" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" scrollEnabled="NO" dataMode="prototypes" id="vvW-8o-P4K">
+                                <rect key="frame" x="20" y="313" width="280" height="40"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentInset" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="scrollIndicatorInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rIc-FP-AXe">
+                                    <size key="itemSize" width="125" height="30"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="5" maxX="5" maxY="5"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCell" id="LQ6-kC-IdP" customClass="RequestTagCell" customModule="ITHelpApp_iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="5" width="125" height="30"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="iwn-3P-d5K">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.37647058820000001" green="0.7843137255" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <outlet property="tagVal" destination="iwn-3P-d5K" id="nbm-0n-3Wy"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -109,6 +147,7 @@
                         <outlet property="imagePickerButton" destination="nyw-Wh-4S6" id="bDb-pI-g2W"/>
                         <outlet property="requestTextView" destination="Dn1-Vu-ly5" id="RsE-aJ-wrR"/>
                         <outlet property="requestTextViewCount" destination="YPL-Eu-Qj9" id="B9a-WT-ilV"/>
+                        <outlet property="tagCollectionView" destination="vvW-8o-P4K" id="1rM-2m-XsZ"/>
                         <outlet property="titleTextField" destination="X89-0N-txi" id="WGh-jZ-jUQ"/>
                         <outlet property="titleTextFieldCount" destination="xkz-i6-WUS" id="kWe-ye-eIA"/>
                     </connections>

@@ -95,6 +95,13 @@ Parse.Cloud.afterSave("Request", function(request) {
   }
 });
 
+Parse.Cloud.afterDelete("Request", function(request) {
+  var reqID = request.object.id;
+  var requester = request.object.get("requester");
+  publishRequest(requester, reqID, "RequestDeleted", pubnub_ios);
+  publishRequest(req_channel, reqID, "TicketDeleted", pubnub_web);
+});
+
 Parse.Cloud.afterSave("Message", function(message) {
 
   // send to pubnub
@@ -318,15 +325,21 @@ function handleRequest(request) {
   var requester = request.object.get("requester");
   var requesterSolved = request.object.get("requesterSolved");
   var helperSolved = request.object.get("helperSolved");
+  var numHelpers = request.object.get("allHelpers").length;
 
   if (taken == 0) {
     // not taken
     if (helper == null) {
       // no current helper
-      if (requesterSolved == -1 && helperSolved == -1) {
+      if (numHelpers > 0) {
+        // ticket was given up on
+        publishRequest(requester, reqID, "RequestReleased", pubnub_ios);
+        publishRequest(req_channel, reqID, "TicketReadded", pubnub_web);
+      } else if (requesterSolved == -1 && helperSolved == -1) {
         // new ticket
         console.log("publishing new request");
-        publishRequest(req_channel, reqID, "toWeb", pubnub_web);
+        publishRequest(requester, reqID, "RequestAdded", pubnub_ios);
+        publishRequest(req_channel, reqID, "TicketAdded", pubnub_web);
       } else {
         unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
       }
@@ -337,6 +350,7 @@ function handleRequest(request) {
         console.log("Request taken. notify app!");
         notifyUsers(request);
         publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
+        publishRequest(req_channel, reqID, "TicketTaken", pubnub_web);
       } else {
         unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
       }
@@ -353,12 +367,19 @@ function handleRequest(request) {
           request.object.addUnique("allHelpers", taker);
           request.object.save();
           publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
+          publishRequest(req_channel, reqID, "TicketTaken", pubnub_web);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }
       } else {
         // there is a current helper
+        if (requesterSolved == 1) {
+          publishRequest(req_channel, reqID, "TicketSolved", pubnub_web);
+        } else if (helperSolved == 1 && requesterSolved != 1) {
+          publishRequest(requester, reqID, "RequestSolved", pubnub_ios);
+        } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
+        }
       }
   } else {
     unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
