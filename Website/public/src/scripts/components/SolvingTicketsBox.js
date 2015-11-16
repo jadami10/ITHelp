@@ -1,27 +1,28 @@
-var Ticket = React.createClass({
-  handleClick: function() {
-    // goto chatting session
-    
-    window.location="/chatting/" + this.props.id;
-  },
-  render: function() {
+import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router'
+import { subscribeToChat } from '../utils/utils';
+
+class Ticket extends React.Component {
+  render() {
     return (
-      <div className="prob" onClick={this.handleClick}>
-        <div className="wrapper">
-          <div className="title"> {this.props.title} </div>
-          <div className="tag hardware"></div>
-          <div className="requester"> 
-            <span className="fa fa-user"></span>
-            <span>{this.props.author}</span>
+      <div className="prob">
+        <Link to={`/app/chat/${this.props.id}`}>
+          <div className="wrapper">
+            <div className="title"> {this.props.title} </div>
+            <div className="tag hardware"></div>
+            <div className="requester"> 
+              <span className="fa fa-user"></span>
+              <span>{this.props.author}</span>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     );
   }
-});
+};
 
-var TicketList = React.createClass({
-  render: function() {
+class TicketList extends React.Component {
+  render() {
     var ticketNodes = this.props.tickets.map(function(ticket, index) {
       return (
         <Ticket 
@@ -40,15 +41,17 @@ var TicketList = React.createClass({
       </div>
     );
   }
-});
+};
 
-var TicketsBox = React.createClass({
+class SolvingTicketsBox extends React.Component {
 
-  getInitialState: function() {
-    return {data: []};
-  },
+  constructor(props) {
+    super(props);
+    this.state = {data: []};
+    this.getTickets = this.getTickets.bind(this);
+  }
 
-  getTickets: function() {
+  getTickets() {
     var openRequests = Parse.Object.extend("Request");
     var currentUser = Parse.User.current();
     var query = new Parse.Query(openRequests);
@@ -61,11 +64,8 @@ var TicketsBox = React.createClass({
       success: function(data) {
         if (data.length > 0) {
           for (var i = 0; i < data.length; i++) {
-            console.log(data[i].get("helper"));
-            subscribeToChat(data[i]);
-            // if (doSubscribe) {
-            //   subscribeToChat(result);
-            // }
+            // console.log(data[i].get("helper"));
+            // subscribeToChat(data[i]);
           }
         }
         console.log("Successfully retrieved " + data.length + " scores.");
@@ -75,23 +75,21 @@ var TicketsBox = React.createClass({
         console.log("Error: " + error.code + " " + error.message);
       }
     });
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.getTickets();
-  },
+  }
 
-  render: function() {
+  render() {
     return (
-      <div className="probs">
-        <TicketList tickets={this.state.data} />
+      <div id="solving">
+        <div className="probs">
+          <TicketList tickets={this.state.data} />
+        </div>
       </div>
     );
   }
-});
+};
 
-ReactDOM.render(
-  <TicketsBox />,
-  document.getElementsByClassName('right-probs')[0]
-);
-
+export default SolvingTicketsBox;

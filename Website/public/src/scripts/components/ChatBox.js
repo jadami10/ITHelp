@@ -1,21 +1,27 @@
-var Msg = React.createClass({
-  getInitialState: function() {
-    return {source: "sent"};
-  },
+import React, { Component, PropTypes } from 'react';
+import { subscribeToChannel } from '../utils/utils';
+import pb from '../utils/pubnub'
+
+class Msg extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {source: "sent"};
+    this.getMsgSource = this.getMsgSource.bind(this);
+  }
   
-  getMsgSource: function() {
+  getMsgSource() {
     if (this.props.source === Parse.User.current().get("username")) {
       this.state.source = "sent";
     } else {
       this.state.source = "received";
     }
-  },
+  }
 
-  componentWillMount: function() {
+  componentWillMount() {
     this.getMsgSource();
-  },
+  }
 
-  render: function() {
+  render() {
     return (
       <div className="msg-block">
         <div className={this.state.source + " msg"}>
@@ -24,15 +30,15 @@ var Msg = React.createClass({
       </div>
     );
   }
-});
+};
 
-var MsgList = React.createClass({
-  componentDidUpdate: function(p, s) {
+class MsgList extends React.Component {
+  componentDidUpdate(p, s) {
     var chatContentDiv = this.refs.chatContent;
     chatContentDiv.scrollTop = chatContentDiv.scrollHeight;
-  },
+  }
 
-  render: function() {
+  render() {
     var msgNodes = this.props.data.map(function(msg, index) {
       return (
         <Msg source={msg.get("sender")} key={index}>
@@ -42,7 +48,6 @@ var MsgList = React.createClass({
     });
 
     if (this.props.additionalData) {
-      console.log("addtionalData!!");
       var additionalMsgNodes = this.props.additionalData.map(function(msg, index) {
         return (
           <Msg source={msg.sender} key={index}>
@@ -62,32 +67,66 @@ var MsgList = React.createClass({
       </div>
     );
   }
-});
+};
 
-var ChatBox = React.createClass({
-  getInitialState: function() {
-    return {
+class ChatForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    var content = this.refs.content.value.trim();
+    if (!content) {
+      return;
+    }
+    this.props.onMsgSubmit(content);
+    this.refs.content.value = '';
+  }
+
+  render() {
+    return (
+      <form className="chat-form" onSubmit={this.handleSubmit}>
+        <div className="input-text">
+          <textarea type="text" placeholder="say something..." rol="3" ref="content"></textarea>
+        </div>
+        <button className="send-text" type="submit" onClick={this.handleSubmit}>
+          <span className="fa fa-send-o"> </span>
+        </button>
+      </form>
+    );
+  }
+};
+
+class ChatBox extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       requestObj: [],
       additionalData: [],
       data: []
     };
-  },
+    this.addMsg = this.addMsg.bind(this);
+    this.getMsg = this.getMsg.bind(this);
+    this.handleMsgSubmit = this.handleMsgSubmit.bind(this);
+  }
 
-  addMsg: function(message) {
+  addMsg(message) {
     var data = this.state.additionalData;
     var newData = data.concat([message]);
     
-    console.log(this.setState({additionalData: newData}));
-  },
+    this.setState({additionalData: newData});
+  }
 
-  getMsg: function() {
+  getMsg() {
     var _this = this;
 
     var curRequest = Parse.Object.extend("Request");
     var reQuery = new Parse.Query(curRequest);
     reQuery.equalTo(
       "objectId", 
-      window.location.pathname.substr(window.location.pathname.lastIndexOf('/')+1)
+      this.props.params.id
     );
     reQuery.find({
       success: function(data) {
@@ -107,14 +146,16 @@ var ChatBox = React.createClass({
 
             _this.setState({data: dataMsg});
 
-            try {
-              //var channel = requestObject.get("comChannel");
-              var channel = data[0].id;
-
-              subscribeToChannel(channel, onMessage);
-            } catch(err) {
-              console.log("Could not subscribe: " + err);
-            }
+            pb.subscribe({
+              channel: data[0].id,
+              message: function(m){_this.addMsg(m)},
+              connect: function() {
+                console.log("should be subscribed");
+              },
+              error: function (error) {
+                console.log(JSON.stringify(error));
+              }
+            });
           },
           error: function(error) {
             console.log("Error: " + error.code + " " + error.message);
@@ -127,13 +168,13 @@ var ChatBox = React.createClass({
       }
     });
 
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.getMsg();
-  },
+  }
 
-  handleMsgSubmit: function(newMsg) {
+  handleMsgSubmit(newMsg) {
     var Message = Parse.Object.extend("Message");
     var newMessage = new Message();
     newMessage.set("message", newMsg);
@@ -148,49 +189,18 @@ var ChatBox = React.createClass({
         console.log("Error saving message: ", error);
       }
     });
-  },
+  }
 
-  render: function() {
+  render() {
     return (
-      <div className="chat-box">
-        <MsgList data={this.state.data} additionalData={this.state.additionalData} />
-        <ChatForm onMsgSubmit={this.handleMsgSubmit} />
+      <div id="chat">
+        <div className="chat-box">
+          <MsgList data={this.state.data} additionalData={this.state.additionalData} />
+          <ChatForm onMsgSubmit={this.handleMsgSubmit} />
+        </div>
       </div>
     );
   }
-});
+};
 
-var ChatForm = React.createClass({
-  handleSubmit: function(e) {
-    e.preventDefault();
-    var content = this.refs.content.value.trim();
-    if (!content) {
-      return;
-    }
-    this.props.onMsgSubmit(content);
-    this.refs.content.value = '';
-  },
-  render: function() {
-    return (
-      <form className="chat-form" onSubmit={this.handleSubmit}>
-        <div className="input-text">
-          <textarea type="text" placeholder="say something..." rol="3" ref="content"></textarea>
-        </div>
-        <button className="send-text" type="submit" onClick={this.handleSubmit}>
-          <span className="fa fa-send-o"> </span>
-        </button>
-      </form>
-    );
-  }
-});
-
-var chatBox = ReactDOM.render(
-  <ChatBox />,
-  document.getElementsByClassName('right-chat')[0]
-);
-
-var updateMsg = function(message) {
-  chatBox.addMsg(message);
-}
-
-window.updateMsg = updateMsg;
+export default ChatBox;
