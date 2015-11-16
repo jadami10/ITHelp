@@ -10,24 +10,26 @@ class GreetingBox extends React.Component {
   }
 
   getMyUsername() {
-    var currentUser = Parse.User.current();
+    const currentUser = Parse.User.current();
     this.setState({username: currentUser.get("username")});
   }
 
   componentDidMount() {
     this.getMyUsername();
-    var _this = this;
-    $(this.refs.greetingAvatar).on("click", function(){
+    const _this = this;
+
+    $(this.refs.greetingAvatar).on("click", () => {
       $(_this.refs.logOut).fadeToggle("fast");
     });
-    $(this.refs.logOut).on("click", function(){
+    $(this.refs.logOut).on("click", () => {
       Parse.User.logOut();
       history.replaceState(null, '/login');
     });
   }
 
   render() {
-    var curPath = window.location.pathname;
+    const curPath = window.location.pathname;
+
     $(this.refs.gGreetings).hide();
     $(this.refs.gBack).hide();
     $(this.refs.gSessions).hide();

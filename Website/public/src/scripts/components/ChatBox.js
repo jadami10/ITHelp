@@ -34,12 +34,12 @@ class Msg extends React.Component {
 
 class MsgList extends React.Component {
   componentDidUpdate(p, s) {
-    var chatContentDiv = this.refs.chatContent;
+    const chatContentDiv = this.refs.chatContent;
     chatContentDiv.scrollTop = chatContentDiv.scrollHeight;
   }
 
   render() {
-    var msgNodes = this.props.data.map(function(msg, index) {
+    const msgNodes = this.props.data.map(function(msg, index) {
       return (
         <Msg source={msg.get("sender")} key={index}>
           {msg.get("message")}
@@ -48,7 +48,7 @@ class MsgList extends React.Component {
     });
 
     if (this.props.additionalData) {
-      var additionalMsgNodes = this.props.additionalData.map(function(msg, index) {
+      const additionalMsgNodes = this.props.additionalData.map(function(msg, index) {
         return (
           <Msg source={msg.sender} key={index}>
             {msg.message}
@@ -77,7 +77,7 @@ class ChatForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    var content = this.refs.content.value.trim();
+    const content = this.refs.content.value.trim();
     if (!content) {
       return;
     }
@@ -113,34 +113,33 @@ class ChatBox extends React.Component {
   }
 
   addMsg(message) {
-    var data = this.state.additionalData;
-    var newData = data.concat([message]);
+    let data = this.state.additionalData;
+    let newData = data.concat([message]);
     
     this.setState({additionalData: newData});
   }
 
   getMsg() {
-    var _this = this;
+    var reQuery = new Parse.Query(Parse.Object.extend("Request"))
+      .equalTo(
+        "objectId", 
+        this.props.params.id
+      );
 
-    var curRequest = Parse.Object.extend("Request");
-    var reQuery = new Parse.Query(curRequest);
-    reQuery.equalTo(
-      "objectId", 
-      this.props.params.id
-    );
+    const _this = this;
+
     reQuery.find({
-      success: function(data) {
+      success: (data) => {
         console.log("receive request query");
         console.log(data);
 
         _this.setState({requestObj: data[0]});
 
-        var myMsgs = Parse.Object.extend("Message");
-        var query = new Parse.Query(myMsgs);
-        query.equalTo("request", data[0]);
+        var query = new Parse.Query(Parse.Object.extend("Message"))
+          .equalTo("request", data[0]);
 
         query.find({
-          success: function(dataMsg) {
+          success: (dataMsg) => {
             console.log("Successfully retrieved msg: " + dataMsg);
             console.log(dataMsg);
 
@@ -148,22 +147,22 @@ class ChatBox extends React.Component {
 
             pb.subscribe({
               channel: data[0].id,
-              message: function(m){_this.addMsg(m)},
-              connect: function() {
+              message: (m) => {_this.addMsg(m)},
+              connect: () => {
                 console.log("should be subscribed");
               },
-              error: function (error) {
+              error: (error) => {
                 console.log(JSON.stringify(error));
               }
             });
           },
-          error: function(error) {
+          error: (error) => {
             console.log("Error: " + error.code + " " + error.message);
           }
         });
 
       },
-      error: function(error) {
+      error: (error) => {
         console.log("Error: " + error.code + " " + error.message);
       }
     });
@@ -175,17 +174,17 @@ class ChatBox extends React.Component {
   }
 
   handleMsgSubmit(newMsg) {
-    var Message = Parse.Object.extend("Message");
-    var newMessage = new Message();
-    newMessage.set("message", newMsg);
-    newMessage.set("sender", Parse.User.current().get("username"));
-    newMessage.set("request", this.state.requestObj);
+    const Message = Parse.Object.extend("Message");
+    const newMessage = new Message()
+      .set("message", newMsg)
+      .set("sender", Parse.User.current().get("username"))
+      .set("request", this.state.requestObj);
 
     newMessage.save(null, {
-      success: function(results) {
+      success: (results) => {
         console.log("Successfully saved message");
       },
-      error: function(obj, error) {
+      error: (obj, error) => {
         console.log("Error saving message: ", error);
       }
     });

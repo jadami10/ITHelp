@@ -52,11 +52,11 @@ class LoginForm extends React.Component {
 
   login(username, pswd) {
     Parse.User.logIn(username, pswd, {
-      success: function(user) {
+      success: (user) => {
         console.log("logged in"); 
         history.replaceState(null, '/app/solve');
       },
-      error: function(user, err) {
+      error: (user, err) => {
         window.alert("Oops something is wrong. Please try again.");
       }
     });
@@ -65,11 +65,11 @@ class LoginForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    var that = this;
+    const _this = this;
     if (this.state.signingUp == false) {
       // logging in
-      var username = this.refs.username.value.trim();
-      var pswd = this.refs.pswd.value.trim();
+      let username = this.refs.username.value.trim();
+      let pswd = this.refs.pswd.value.trim();
       if (!pswd || !username) {
         window.alert("Wrong username/password. (For testing, please use hannah/hannah)");
         return;
@@ -78,29 +78,29 @@ class LoginForm extends React.Component {
     } else {
       // signing up
 
-      var username = this.refs.username.value.trim();
-      var pswd = this.refs.pswd.value.trim();
-      var fname = this.refs.fname.value.trim();
-      var lname = this.refs.lname.value.trim();
-      var email = this.refs.email.value.trim();
+      let username = this.refs.username.value.trim();
+      let pswd = this.refs.pswd.value.trim();
+      let fname = this.refs.fname.value.trim();
+      let lname = this.refs.lname.value.trim();
+      let email = this.refs.email.value.trim();
       if (!pswd || !username || !fname || !lname || !email) {
         window.alert("Missing fields");
         return;
       }
 
-      var user = new Parse.User();
-      user.set("username", username);
-      user.set("password", pswd);
-      user.set("email", email);
-      user.set("first", fname);
-      user.set("last", lname);
+      const user = new Parse.User()
+        .set("username", username)
+        .set("password", pswd)
+        .set("email", email)
+        .set("first", fname)
+        .set("last", lname);
 
       user.signUp(null, {
-        success: function(user) {
+        success: (user) => {
           window.alert("Hooray! You are all set.")
-          that.login(username, pswd);
+          _this.login(username, pswd);
         },
-        error: function(user, error) {
+        error: (user, error) => {
           switch (error.code) {
             case 100: window.alert("Please check network connection."); break;
             case 125: window.alert("Bad email format."); break;

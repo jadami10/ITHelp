@@ -41,10 +41,10 @@ class App extends React.Component {
   }
 
   getMyTicketsNumber() {
-    var openRequests = Parse.Object.extend("Request");
-    var currentUser = Parse.User.current();
-    var query = new Parse.Query(openRequests);
-    var that = this;
+    let openRequests = Parse.Object.extend("Request");
+    let currentUser = Parse.User.current();
+    let query = new Parse.Query(openRequests);
+    let that = this;
 
     query.equalTo("helper", currentUser);
     query.notEqualTo("helperSolved", 1);
@@ -75,7 +75,7 @@ class App extends React.Component {
   }
 };
 
-var Routes = (
+const Routes = (
   <Router history={history}>
     <Route path="/" component={Entry}>
       <IndexRoute component={Auth} onEnter={checkAuth}/>

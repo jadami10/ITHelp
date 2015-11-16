@@ -23,7 +23,7 @@ class Ticket extends React.Component {
 
 class TicketList extends React.Component {
   render() {
-    var ticketNodes = this.props.tickets.map(function(ticket, index) {
+    const ticketNodes = this.props.tickets.map((ticket, index) => {
       return (
         <Ticket 
           author={ticket.get("requester")} 
@@ -52,23 +52,21 @@ class SolvingTicketsBox extends React.Component {
   }
 
   getTickets() {
-    var openRequests = Parse.Object.extend("Request");
-    var currentUser = Parse.User.current();
-    var query = new Parse.Query(openRequests);
-    var _this = this;
+    const query = new Parse.Query(Parse.Object.extend("Request"))
+      .equalTo("helper", Parse.User.current())
+      .notEqualTo("helperSolved", 1);
 
-    query.equalTo("helper", currentUser);
-    query.notEqualTo("helperSolved", 1);
+    const _this = this;
 
     query.find({
       success: function(data) {
-        if (data.length > 0) {
-          for (var i = 0; i < data.length; i++) {
-            // console.log(data[i].get("helper"));
-            // subscribeToChat(data[i]);
-          }
-        }
-        console.log("Successfully retrieved " + data.length + " scores.");
+        // if (data.length > 0) {
+        //   for (var i = 0; i < data.length; i++) {
+        //     console.log(data[i].get("helper"));
+        //     subscribeToChat(data[i]);
+        //   }
+        // }
+        // console.log("Successfully retrieved " + data.length + " scores.");
         _this.setState({data: data});
       },
       error: function(error) {

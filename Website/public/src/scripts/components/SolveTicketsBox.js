@@ -27,10 +27,8 @@ class Ticket extends React.Component {
   }
 
   submitHelp() {
-    // TODO: update navi
     this.props.update();
     takeRequest(this.props.ticketObj);
-
   }
 
   render() {
@@ -72,12 +70,12 @@ class TicketList extends React.Component {
   }
 
   render() {
-    $(".desc-image-fullscreen-div").on("click", function() {
+    $(".desc-image-fullscreen-div").on("click", () => {
       $(".desc-image-fullscreen-div").fadeOut("fast")}
     );
 
-    var that = this;
-    var ticketNodes = this.props.tickets.map(function(ticket, index) {
+    const _this = this;
+    const ticketNodes = this.props.tickets.map((ticket, index) => {
       return (
         <Ticket 
           author={ticket.get("requester")} 
@@ -87,7 +85,7 @@ class TicketList extends React.Component {
           photo={ticket.get("photoFile")}
           ticketObj={ticket}
           key={index}
-          update={that.props.update} >
+          update={_this.props.update} >
         </Ticket>
       );
     });
@@ -111,17 +109,17 @@ class SolveTicketsBox extends React.Component {
   }
 
   getTickets() {
-    var openRequests = Parse.Object.extend("Request");
-    var query = new Parse.Query(openRequests);
-    var _this = this;
+    const query = new Parse.Query(Parse.Object.extend("Request"))
+      .equalTo("taken", 0);
 
-    query.equalTo("taken", 0);
+    const _this = this;
+
     query.find({
-      success: function(data) {
+      success: (data) => {
         console.log("Successfully retrieved " + data.length + " requests.");
         _this.setState({data: data});
       },
-      error: function(error) {
+      error: (error) => {
         console.log("Error: " + error.code + " " + error.message);
       }
     });

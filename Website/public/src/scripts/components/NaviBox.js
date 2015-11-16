@@ -7,14 +7,14 @@ class NaviBox extends React.Component {
   componentWillReceiveProps(nextProps) {
     // Animate the badge
     if (!(nextProps.badgeNum == this.props.badgeNum)) {
-      var numBadge = this.refs.numBadge;
+      const numBadge = this.refs.numBadge;
       $(numBadge).removeClass("animated");
-      setTimeout(function(){$(numBadge).addClass("animated")}, 10);
+      setTimeout(() => {$(numBadge).addClass("animated")}, 10);
     }
   }
 
   componentWillUpdate() {
-    var curPath = window.location.pathname;
+    const curPath = window.location.pathname;
     $(this.refs.solve).removeClass("navi-current");
     $(this.refs.solving).removeClass("navi-current");
 
