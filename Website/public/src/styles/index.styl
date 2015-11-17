@@ -94,6 +94,17 @@ a
   font-size 16px
   font-style italic
   letter-spacing 1px
+  .top-left-greetings-animated
+    animation-duration .8s
+    animation-name slidein
+
+@keyframes slidein
+  from
+    transform translateX(-15px)
+    opacity 0
+  to
+    transform translateX(0px)
+    opacity 1
 
 .top-right-avatar
   float right
@@ -346,6 +357,8 @@ a
     background-position 100%
     box-shadow 0 2px 0 rgba(0,0,0,0.15)
     border-radius 3px
+    animation-duration 1s
+    animation-name slidein
     &:hover
       box-shadow 0 3px 0 rgba(0,0,0,0.1)
       transform translateY(-1px)
