@@ -424,7 +424,9 @@ function getInstallationFromUser(user) {
       Parse.Push.send({
         where: pushQuery, // Set our Installation query
         data: {
-          alert: "Someone is here to help you with your issue, " + user
+          alert: "Someone is here to help you with your issue, " + user,
+          viewIdentifier: "testidentifier",
+          ticketObjectId: "testobjectid"
         }
       }, {
         success: function() {
