@@ -1,26 +1,37 @@
-var Ticket = React.createClass({
-  componentDidMount: function() {
+import React, { Component, PropTypes } from 'react';
+import { takeRequest, subscribeToRequests } from '../utils/utils';
+
+class Ticket extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.submitHelp = this.submitHelp.bind(this);
+  }
+
+  componentDidMount() {
     $(this.refs.btnHelp).hide();
     if (this.props.photo != null) {
       this.refs.descImage.src = this.props.photo["_url"];
       $(this.refs.descImage).show();
     }
-  },
-  handleClick: function(e) {
+  }
+
+  handleClick(e) {
     if (e.target.classList[0] == "desc-image") {
       TicketList.showFullscreenImage(this.props.photo["_url"]);
-      // window.open(e.target.src, '_blank');
     } else if (e.target.classList[0] != "btn-help") {
       $(this.refs.btnHelp).slideToggle('fast');
       $(this.refs.desc).slideToggle('fast');
     }
-  },
-  submitHelp: function() {
+  }
+
+  submitHelp() {
+    this.props.update();
     takeRequest(this.props.ticketObj);
-    $(this.refs.curTicket).fadeOut();
-    updateMyRequestNumber();
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div className="prob" onClick={this.handleClick} ref="curTicket">
         <div className="wrapper-title">
@@ -50,30 +61,31 @@ var Ticket = React.createClass({
       </div>
     );
   }
-});
+};
 
-var TicketList = React.createClass({
-  statics: {
-    showFullscreenImage: function(s) {
-      $(".desc-image-fullscreen").attr("src", s);
-      $(".desc-image-fullscreen-div").fadeIn("fast")
-    }
-  },
-  render: function() {
-    $(".desc-image-fullscreen-div").on("click", function(){
+class TicketList extends React.Component {
+  static showFullscreenImage(s) {
+    $(".desc-image-fullscreen").attr("src", s);
+    $(".desc-image-fullscreen-div").fadeIn("fast")
+  }
+
+  render() {
+    $(".desc-image-fullscreen-div").on("click", () => {
       $(".desc-image-fullscreen-div").fadeOut("fast")}
     );
 
-    var ticketNodes = this.props.tickets.map(function(ticket, index) {
+    const _this = this;
+    const ticketNodes = this.props.tickets.map((ticket, index) => {
       return (
         <Ticket 
           author={ticket.get("requester")} 
           title={ticket.get("title")} 
-          time={ticket.get("createdAt").toString().substring(0, 10)} 
+          time={ticket.get("createdAt").toString().substring(4, 10)} 
           desc={ticket.get("requestMessage")} 
           photo={ticket.get("photoFile")}
           ticketObj={ticket}
-          key={index}>
+          key={index}
+          update={_this.props.update} >
         </Ticket>
       );
     });
@@ -86,51 +98,47 @@ var TicketList = React.createClass({
       </div>
     );
   }
-});
+};
 
-var TicketsBox = React.createClass({
+class SolveTicketsBox extends React.Component {
 
-  getInitialState: function() {
-    return {data: []};
-  },
+  constructor(props) {
+    super(props);
+    this.state = {data: []};
+    this.getTickets = this.getTickets.bind(this);
+  }
 
-  getTickets: function() {
-    var openRequests = Parse.Object.extend("Request");
-    var query = new Parse.Query(openRequests);
-    var _this = this;
+  getTickets() {
+    const query = new Parse.Query(Parse.Object.extend("Request"))
+      .equalTo("taken", 0);
 
-    query.equalTo("taken", 0);
+    const _this = this;
+
     query.find({
-      success: function(data) {
+      success: (data) => {
         console.log("Successfully retrieved " + data.length + " requests.");
         _this.setState({data: data});
       },
-      error: function(error) {
+      error: (error) => {
         console.log("Error: " + error.code + " " + error.message);
       }
     });
-  },
+  }
 
-  componentDidMount: function() {
+  componentDidMount() {
     this.getTickets();
-  },
+    subscribeToRequests(this.getTickets);
+  }
 
-  render: function() {
+  render() {
     return (
-      <div className="probs">
-        <TicketList tickets={this.state.data} />
+      <div id="solve">
+        <div className="probs">
+          <TicketList tickets={this.state.data} update={this.props.update} />
+        </div>
       </div>
     );
   }
-});
+};
 
-var ticketsBox = ReactDOM.render(
-  <TicketsBox />,
-  document.getElementsByClassName('right-probs')[0]
-);
-
-var updateTicket = function() {
-  ticketsBox.getTickets();
-}
-
-window.updateTicket = updateTicket;
+export default SolveTicketsBox;
