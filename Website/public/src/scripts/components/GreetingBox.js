@@ -33,7 +33,7 @@ class GreetingBox extends React.Component {
     $(this.refs.gGreetings).hide();
     $(this.refs.gBack).hide();
     $(this.refs.gSessions).hide();
-    if (curPath.indexOf("solve") > -1 || curPath === '/app') {
+    if (curPath.indexOf("solve") > -1 || curPath === "/app") {
       $(this.refs.gGreetings).show();
     } else if (curPath.indexOf("solving") > -1) {
       $(this.refs.gSessions).show();
@@ -48,13 +48,13 @@ class GreetingBox extends React.Component {
           Log Out
         </div>
         <div className="top-left-greetings" ref="greetingText">
-          <div ref="gGreetings">
+          <div ref="gGreetings" className="top-left-greetings-animated">
             <span className='fa fa-sun-o'></span> Hi, {this.state.username}.
           </div>
           <div ref="gSessions">
             <span className='fa fa-commenting'></span> Current sessions
           </div>
-          <div ref="gBack">
+          <div ref="gBack" className="top-left-greetings-animated">
             <Link to='/app/solving'>
               <span className='fa fa-arrow-left'></span> Session list
             </Link>
