@@ -333,6 +333,7 @@ function handleRequest(request) {
       // no current helper
       if (numHelpers > 0) {
         // ticket was given up on
+        console.log("republishing request");
         publishRequest(requester, reqID, "RequestReleased", pubnub_ios);
         publishRequest(req_channel, reqID, "TicketReadded", pubnub_web);
       } else if (requesterSolved == -1 && helperSolved == -1) {
@@ -368,14 +369,17 @@ function handleRequest(request) {
           request.object.save();
           publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
           publishRequest(req_channel, reqID, "TicketTaken", pubnub_web);
+          publishRequest(taker.id, reqID, "TicketGranted", pubnub_web);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }
       } else {
         // there is a current helper
         if (requesterSolved == 1) {
-          publishRequest(req_channel, reqID, "TicketSolved", pubnub_web);
+          // requester marked it as solved
+          publishRequest(helper.id, reqID, "TicketSolved", pubnub_web);
         } else if (helperSolved == 1 && requesterSolved != 1) {
+          // helper marked as solved
           publishRequest(requester, reqID, "RequestSolved", pubnub_ios);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
