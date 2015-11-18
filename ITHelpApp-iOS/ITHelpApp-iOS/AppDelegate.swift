@@ -138,8 +138,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if application.applicationState == UIApplicationState.Background || application.applicationState == UIApplicationState.Inactive {
             PFPush.handlePush(userInfo)
+            print("push notification info", userInfo)
         } else {
-            print(userInfo)
+            print("push notification info", userInfo)
         }
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
