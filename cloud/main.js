@@ -222,99 +222,6 @@ function initialCheckFailed(request) {
   return null;
 }
 
-function notifyUsers(request){
-  console.log("notifyUsers function accessed");
-
-  /*
-  var taken = request.object.get('taken');
-  var helper = request.object.get('helper');
-  var requesterSolved = request.object.get('requesterSolved');
-  var helperSolved = request.object.get('helperSolved');
-
-
-  if (taken == 0 && helper == undefined && requesterSolved == -1 && helperSolved == -1) {
-  // brand new ticket
-  console.log("publishing new request");
-  publishRequest(req_channel, reqID, "toWeb", pubnub_web);
-} else if (taken == 1 && curUser != null && helper != null) {
-  // actionable item on ticket
-if (requesterSolved == 1 && helperSolved == 1) {
-  console.log("Request is solved!")
-  //Handle notifying app and web
-  var pushQuery = new Parse.Query(Parse.Installation);
-    //TODO: add device type
-    pushQuery.equalTo('user', requester);
-    Parse.Push.send({
-      where: pushQuery, // Set our Installation query
-      data: {
-        alert: "Your issue has been resolved!"
-      }
-    }, {
-      success: function() {
-        // Push was successful
-        console.log("succesful push")
-      },
-      error: function(error) {
-        throw "Got an error " + error.code + " : " + error.message;
-      }
-    });
-  }
-} else if (helperSolved == 1 && requesterSolved == -1) {
-console.log("Helper marked as solved. Notify user.");
-var pushQuery = new Parse.Query(Parse.Installation);
-    //TODO: add device type
-    pushQuery.equalTo('user', requester);
-    Parse.Push.send({
-      where: pushQuery, // Set our Installation query
-      data: {
-        alert: "Your issue has been resolved!"
-      }
-    }, {
-      success: function() {
-        // Push was successful
-        console.log("succesful push")
-      },
-      error: function(error) {
-        throw "Got an error " + error.code + " : " + error.message;
-      }
-    });
-// TODO: Handle notifying app
-} else if (helperSolved == -1 && requesterSolved == -1) {
-console.log("Request taken. notify app!");
-publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
-var pushQuery = new Parse.Query(Parse.Installation);
-    //TODO: add device type
-    pushQuery.equalTo('user', requester);
-    Parse.Push.send({
-      where: pushQuery, // Set our Installation query
-      data: {
-        alert: helperName + " is going to help you with your issue!"
-      }
-    }, {
-      success: function() {
-        // Push was successful
-        console.log("succesful push")
-      },
-      error: function(error) {
-        throw "Got an error " + error.code + " : " + error.message;
-      }
-    });
-} else if (helperSolved == 1 && requesterSolved == 0) {
-console.log("Requester denied solution.");
-// TODO: handle notifying web
-}
-} else if (taken == 1 && taker != null && helper == null) {
-console.log("someone taking request");
-request.object.set("helper", taker);
-request.object.addUnique("allHelpers", taker);
-request.object.save();
-} else {
-console.log("Something happened. notify app!");
-publishRequest(requester, reqID, pubnub_ios);
-}
-*/
-}
-
 function handleRequest(request) {
 
   var curUser = request.user;
@@ -323,6 +230,7 @@ function handleRequest(request) {
   var taker = Parse.User.current();
   var helper = request.object.get("helper");
   var requester = request.object.get("requester");
+  var requesterPointer = request.object.get("requesterPointer");
   var requesterSolved = request.object.get("requesterSolved");
   var helperSolved = request.object.get("helperSolved");
   var numHelpers = request.object.get("allHelpers").length;
@@ -349,7 +257,6 @@ function handleRequest(request) {
       if (requesterSolved == -1 && helperSolved == -1) {
         // someone just took ticket
         console.log("Request taken. notify app!");
-        notifyUsers(request);
         publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
         publishRequest(req_channel, reqID, "TicketTaken", pubnub_web);
       } else {
@@ -362,7 +269,6 @@ function handleRequest(request) {
         // there is not a current helper
         if (requesterSolved == -1 && helperSolved == -1) {
           // request being taken
-          sendPush(requester);
           console.log("someone taking request");
           request.object.set("helper", taker);
           request.object.addUnique("allHelpers", taker);
@@ -370,6 +276,7 @@ function handleRequest(request) {
           publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
           publishRequest(req_channel, reqID, "TicketTaken", pubnub_web);
           publishRequest(taker.id, reqID, "TicketGranted", pubnub_web);
+          sendPush(requesterPointer);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }
@@ -396,8 +303,26 @@ function unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved)
   " helper: " + helper + " reqSolved: " + requesterSolved + " helpSolved: " + helperSolved);
 }
 
-function sendPush(username) {
-  getUserFromUsername(username);
+function sendPush(user) {
+  var installation = Parse.Object.extend("Installation");
+  var installQuery = new Parse.Query(installation);
+  installQuery.equalTo("user", user);
+  Parse.Push.send({
+    where: installQuery, // Set our Installation query
+    data: {
+      alert: "Someone is here to help you with your issue!",
+      viewIdentifier: "testidentifier",
+      ticketObjectId: "testobjectid"
+    }
+  }, {
+    success: function() {
+        // Push was successful
+        console.log("push notification sent to: " + user.id)
+      },
+      error: function(error) {
+        throw "Got an error " + error.code + " : " + error.message;
+      }
+  });
 }
 
 function getUserFromUsername(username) {
@@ -421,7 +346,7 @@ function getInstallationFromUser(user) {
   installQuery.equalTo("user", user);
   installQuery.first({
     success: function(results) {
-      installId = results.get("installationId");
+      installId = results.object.get("installationId");
       console.log("this is the INSTALL ID" + installId);
       var pushQuery = new Parse.Query(Parse.Installation);
       pushQuery.equalTo('installationId', installId);
