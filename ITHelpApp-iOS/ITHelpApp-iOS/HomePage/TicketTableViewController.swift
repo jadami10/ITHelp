@@ -90,7 +90,6 @@ class TicketTableViewController: UITableViewController, UIBlockableProtocol {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("TicketTitleCell", forIndexPath: indexPath)
-            
             if tickets.count == 1 {
             cell.textLabel?.text = String(format: "1 %@ Ticket", qualifier.rawValue)
             } else {
