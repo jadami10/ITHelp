@@ -19,7 +19,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBarHidden = false
+        //self.navigationController?.navigationBarHidden = false
         detailTableView.dataSource = self
         if ticket!["taken"] as! Int == 0 {
             self.ticketActionButton.setTitle("Cancel Ticket", forState: .Normal)
@@ -31,6 +31,10 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hidesBottomBarWhenPushed = true
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
     }
     
     func tableView(textTable: UITableView, numberOfRowsInSection section: Int) -> Int {

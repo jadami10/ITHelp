@@ -18,16 +18,21 @@ class TicketTableViewController: UITableViewController, UIBlockableProtocol {
     
 
     override func viewWillAppear(animated: Bool) {
-        
+        super.viewWillAppear(animated)
         if let path = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRowAtIndexPath(path, animated: true)
         }
 
         navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.tabBarController?.tabBar.hidden = false
 //        self.hidesBottomBarWhenPushed = true
-        self.tabBarController?.tabBar.hidden = false
         self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
         AppConstants.ticketNavController = self.navigationController
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        self.tabBarController?.tabBar.hidden = false
     }
 
     override func viewDidLoad() {
@@ -127,9 +132,6 @@ class TicketTableViewController: UITableViewController, UIBlockableProtocol {
                     break
                 case .Solved:
                     cell.ticketTriangleImage.image = UIImage(named: "greenTriangle")
-                    break
-                default:
-                    cell.ticketTriangleImage.image = nil
                     break
                 }
             } else {

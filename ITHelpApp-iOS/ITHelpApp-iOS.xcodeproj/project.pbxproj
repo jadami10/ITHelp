@@ -66,6 +66,7 @@
 		689E888B1BF980A1005163B5 /* greenTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 689E88881BF980A1005163B5 /* greenTriangle.png */; };
 		689E888C1BF980A1005163B5 /* redTriangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 689E88891BF980A1005163B5 /* redTriangle.png */; };
 		68DA2AD91BD945E500EFB077 /* ParseErrorHandlingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DA2AD81BD945E500EFB077 /* ParseErrorHandlingController.swift */; };
+		68F3D3F51BFBAF4300FA85E1 /* AsyncTicketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F3D3F41BFBAF4300FA85E1 /* AsyncTicketManager.swift */; };
 		E1084B3E1BD5DC10002B33A9 /* Message-50.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3D1BD5DC10002B33A9 /* Message-50.png */; };
 		E1084B401BD7594B002B33A9 /* briskit_title.png in Resources */ = {isa = PBXBuildFile; fileRef = E1084B3F1BD7594B002B33A9 /* briskit_title.png */; };
 		E1192B921BCDDC4600DC284D /* black-slr-camera-256.png in Resources */ = {isa = PBXBuildFile; fileRef = E1192B911BCDDC4600DC284D /* black-slr-camera-256.png */; };
@@ -167,6 +168,7 @@
 		689E88881BF980A1005163B5 /* greenTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = greenTriangle.png; path = "ITHelpApp-iOS/Resources/Images/greenTriangle.png"; sourceTree = "<group>"; };
 		689E88891BF980A1005163B5 /* redTriangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = redTriangle.png; path = "ITHelpApp-iOS/Resources/Images/redTriangle.png"; sourceTree = "<group>"; };
 		68DA2AD81BD945E500EFB077 /* ParseErrorHandlingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseErrorHandlingController.swift; sourceTree = "<group>"; };
+		68F3D3F41BFBAF4300FA85E1 /* AsyncTicketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncTicketManager.swift; sourceTree = "<group>"; };
 		9D3DE95869BC1D53A703A47C /* Pods-ITHelpApp-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		E1084B3D1BD5DC10002B33A9 /* Message-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Message-50.png"; path = "ITHelpApp-iOS/Resources/Images/Message-50.png"; sourceTree = "<group>"; };
 		E1084B3F1BD7594B002B33A9 /* briskit_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = briskit_title.png; path = "ITHelpApp-iOS/Resources/Images/briskit_title.png"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				684CEA851BC5BC62008460C6 /* TicketTableCellTableViewCell.swift */,
 				6892F8361BC6EB7200EDC4F0 /* TicketTableViewController.swift */,
 				687006971BF90BC1005F3EFF /* TicketManager.swift */,
+				68F3D3F41BFBAF4300FA85E1 /* AsyncTicketManager.swift */,
 				E177DF4A1BCF2E4900D7A481 /* TicketHandler.swift */,
 				6892F8321BC6C29000EDC4F0 /* tickets.storyboard */,
 			);
@@ -659,6 +662,7 @@
 				684F8C711BC4943A0046345C /* LoginViewController.swift in Sources */,
 				68140B781BCDB70600B73AE7 /* RequestHandler.swift in Sources */,
 				687006981BF90BC1005F3EFF /* TicketManager.swift in Sources */,
+				68F3D3F51BFBAF4300FA85E1 /* AsyncTicketManager.swift in Sources */,
 				684F8CA71BC496CF0046345C /* RequestViewController.swift in Sources */,
 				684CEA7D1BC5AC2A008460C6 /* ProfileViewController.swift in Sources */,
 				E1192B9D1BCE033B00DC284D /* MessageHandler.swift in Sources */,
