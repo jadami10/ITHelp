@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    title BriskIT
+    link(rel='icon', href='/assets/favicon.png', type='image/png')
+    link(rel='stylesheet', href='//brick.a.ssl.fastly.net/Lato:300,300i,400,400i,700')
+    link(rel='stylesheet', href='//fonts.googleapis.com/css?family=Roboto+Condensed:300')
+  body
+    .content
+    script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    script(src='//www.parsecdn.com/js/parse-latest.js')
+    script(src='//cdn.pubnub.com/pubnub-3.7.15.min.js')
+    script.
+      Parse.initialize(
+      "Dxf9sHTC4H9iQoYP7FUPmkX8o99KTTJ01O1tBhjK",
+      "oXnaI5OgVYPggkBhyOkxhhI81eb4p9kvSU4a7fRr"
+      );
+    script(src='/dist/main.js')
