@@ -9,13 +9,11 @@ var messageChannels = {};
 var myRequests = [];
 var testObject;
 
-export function subscribeToChat(requestObject) {
+export function subscribeToChat(requestObject, onMessage) {
   try {
-    //var channel = requestObject.get("comChannel");
-    var channel = requestObject.id;
-    subscribeToChannel(channel, onMessage);
+    subscribeToChannel(requestObject.id, onMessage);
   } catch(err) {
-    console.log("Could not subscribe: " + err);
+    console.log("Chat: Could not subscribe: " + err);
   }
 }
 
@@ -30,7 +28,11 @@ export function subscribeToRequests(onNewRequest) {
     success: function(results) {
       // Do something with the returned Parse.Object values
       reqChannel = results[0].get('val');
-      subscribeToChannel(reqChannel, onNewRequest);
+      try {
+        subscribeToChannel(reqChannel, onNewRequest);
+      } catch(err) {
+        console.log("Requests: Could not subscribe: " + err);
+      }
     },
     error: function(error) {
       console.log("Error: " + error.code + " " + error.message);
@@ -38,26 +40,11 @@ export function subscribeToRequests(onNewRequest) {
   });
 }
 
-// take a request
-export function takeRequest(requestObject) {
-  var currentUser = Parse.User.current();
-
-  if (currentUser) {
-      console.log("Get ticket:", requestObject);
-
-      var objectID = requestObject.id;
-      requestObject.increment("taken");
-      requestObject.save(null, {
-        success: function(reqObject) {
-          // check that it's actually assigned to you
-          checkMyRequest(reqObject, true);
-        },
-        error: function(reqObject, error) {
-          console.log("Failed to create new object with error: " + error.code + " " + error.message);
-        }
-      });
-  } else {
-      console.log("TODO: handle not being logged in");
+export function subscribeToUser(reqChannel, onMessage) {
+  try {
+    subscribeToChannel(reqChannel, onMessage);
+  } catch(err) {
+    console.log("User: Could not subscribe: " + err);
   }
 }
 
@@ -75,6 +62,29 @@ export function subscribeToChannel(reqChannel, onMessage) {
     });
   } catch(err) {
     console.log("Could not subscribe: " + err);
+  }
+}
+
+// take a request
+export function takeRequest(requestObject) {
+  var currentUser = Parse.User.current();
+
+  if (currentUser) {
+      console.log("Get ticket:", requestObject);
+
+      var objectID = requestObject.id;
+      requestObject.increment("taken");
+      requestObject.save(null, {
+        success: function(reqObject) {
+          // check that it's actually assigned to you
+          // checkMyRequest(reqObject, true);
+        },
+        error: function(reqObject, error) {
+          console.log("Failed to create new object with error: " + error.code + " " + error.message);
+        }
+      });
+  } else {
+      console.log("TODO: handle not being logged in");
   }
 }
 

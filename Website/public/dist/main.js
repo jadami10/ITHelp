@@ -25057,8 +25057,9 @@
 	});
 	exports.subscribeToChat = subscribeToChat;
 	exports.subscribeToRequests = subscribeToRequests;
-	exports.takeRequest = takeRequest;
+	exports.subscribeToUser = subscribeToUser;
 	exports.subscribeToChannel = subscribeToChannel;
+	exports.takeRequest = takeRequest;
 
 	var _SolveTicketsBox = __webpack_require__(222);
 
@@ -25078,13 +25079,11 @@
 	var myRequests = [];
 	var testObject;
 
-	function subscribeToChat(requestObject) {
+	function subscribeToChat(requestObject, onMessage) {
 	  try {
-	    //var channel = requestObject.get("comChannel");
-	    var channel = requestObject.id;
-	    subscribeToChannel(channel, onMessage);
+	    subscribeToChannel(requestObject.id, onMessage);
 	  } catch (err) {
-	    console.log("Could not subscribe: " + err);
+	    console.log("Chat: Could not subscribe: " + err);
 	  }
 	}
 
@@ -25099,12 +25098,43 @@
 	    success: function success(results) {
 	      // Do something with the returned Parse.Object values
 	      reqChannel = results[0].get('val');
-	      subscribeToChannel(reqChannel, onNewRequest);
+	      try {
+	        subscribeToChannel(reqChannel, onNewRequest);
+	      } catch (err) {
+	        console.log("Requests: Could not subscribe: " + err);
+	      }
 	    },
 	    error: function error(_error) {
 	      console.log("Error: " + _error.code + " " + _error.message);
 	    }
 	  });
+	}
+
+	function subscribeToUser(reqChannel, onMessage) {
+	  try {
+	    subscribeToChannel(reqChannel, onMessage);
+	  } catch (err) {
+	    console.log("User: Could not subscribe: " + err);
+	  }
+	}
+
+	function subscribeToChannel(reqChannel, onMessage) {
+	  try {
+	    _pubnub2.default.subscribe({
+	      channel: reqChannel,
+	      message: function message(m) {
+	        onMessage(m);
+	      },
+	      connect: function connect() {
+	        console.log("should be subscribed");
+	      },
+	      error: function error(_error2) {
+	        console.log(JSON.stringify(_error2));
+	      }
+	    });
+	  } catch (err) {
+	    console.log("Could not subscribe: " + err);
+	  }
 	}
 
 	// take a request
@@ -25119,33 +25149,14 @@
 	    requestObject.save(null, {
 	      success: function success(reqObject) {
 	        // check that it's actually assigned to you
-	        checkMyRequest(reqObject, true);
+	        // checkMyRequest(reqObject, true);
 	      },
-	      error: function error(reqObject, _error2) {
-	        console.log("Failed to create new object with error: " + _error2.code + " " + _error2.message);
+	      error: function error(reqObject, _error3) {
+	        console.log("Failed to create new object with error: " + _error3.code + " " + _error3.message);
 	      }
 	    });
 	  } else {
 	    console.log("TODO: handle not being logged in");
-	  }
-	}
-
-	function subscribeToChannel(reqChannel, onMessage) {
-	  try {
-	    _pubnub2.default.subscribe({
-	      channel: reqChannel,
-	      message: function message(m) {
-	        onMessage(m);
-	      },
-	      connect: function connect() {
-	        console.log("should be subscribed");
-	      },
-	      error: function error(_error3) {
-	        console.log(JSON.stringify(_error3));
-	      }
-	    });
-	  } catch (err) {
-	    console.log("Could not subscribe: " + err);
 	  }
 	}
 
@@ -25263,7 +25274,6 @@
 	  }, {
 	    key: 'submitHelp',
 	    value: function submitHelp() {
-	      this.props.update();
 	      (0, _utils.takeRequest)(this.props.ticketObj);
 	    }
 	  }, {
@@ -25366,8 +25376,7 @@
 	          desc: ticket.get("requestMessage"),
 	          photo: ticket.get("photoFile"),
 	          ticketObj: ticket,
-	          key: index,
-	          update: _this.props.update });
+	          key: index });
 	      });
 	      return _react2.default.createElement(
 	        'div',
@@ -25403,13 +25412,14 @@
 
 	    _this4.state = { data: [] };
 	    _this4.getTickets = _this4.getTickets.bind(_this4);
+	    _this4.onRequestNotification = _this4.onRequestNotification.bind(_this4);
 	    return _this4;
 	  }
 
 	  _createClass(SolveTicketsBox, [{
 	    key: 'getTickets',
 	    value: function getTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0).notContainedIn("allHelpers", Parse.User.current());
 
 	      var _this = this;
 
@@ -25424,10 +25434,54 @@
 	      });
 	    }
 	  }, {
+	    key: 'onRequestNotification',
+	    value: function onRequestNotification(n) {
+	      var _this5 = this;
+
+	      console.log("onRequestNotification: " + n.requestType);
+	      var tmpData = this.state.data;
+
+	      if (n.requestType === "TicketTaken" || n.requestType === "TicketDeleted") {
+	        // hide the ticket
+	        for (var d = 0; d < tmpData.length; d += 1) {
+	          if (this.state.data[d].id === n.requestID) {
+	            tmpData.splice(d, 1);
+	            this.setState(tmpData);
+	            return;
+	          }
+	        }
+	      } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
+	        (function () {
+	          // add the ticket
+	          var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("objectId", n.requestID).notContainedIn("allHelpers", Parse.User.current());
+
+	          var _this = _this5;
+
+	          query.first({
+	            success: function success(request) {
+	              tmpData.push(request);
+	              _this.setState(request);
+	              return;
+	            },
+	            error: function error(_error2) {
+	              console.log("Error: " + _error2.code + " " + _error2.message);
+	            }
+	          });
+	        })();
+	      } else if (n.requestType === "TicketGranted") {
+	        // increment the badge
+	        this.props.update();
+	      } else if (n.requestType === "TicketSolved") {} else {
+	        console.log("Error: onRequestNotification");
+	      }
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.getTickets();
-	      (0, _utils.subscribeToRequests)(this.getTickets);
+
+	      (0, _utils.subscribeToRequests)(this.onRequestNotification);
+	      (0, _utils.subscribeToUser)(Parse.User.current().id, this.onRequestNotification);
 	    }
 	  }, {
 	    key: 'render',
@@ -25438,7 +25492,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'probs' },
-	          _react2.default.createElement(TicketList, { tickets: this.state.data, update: this.props.update })
+	          _react2.default.createElement(TicketList, { tickets: this.state.data })
 	        )
 	      );
 	    }
@@ -26655,6 +26709,7 @@
 	  _createClass(ChatBox, [{
 	    key: 'addMsg',
 	    value: function addMsg(message) {
+	      console.log(message);
 	      var data = this.state.additionalData;
 	      var newData = data.concat([message]);
 
@@ -26683,18 +26738,7 @@
 
 	              _this.setState({ data: dataMsg });
 
-	              _pubnub2.default.subscribe({
-	                channel: data[0].id,
-	                message: function message(m) {
-	                  _this.addMsg(m);
-	                },
-	                connect: function connect() {
-	                  console.log("should be subscribed");
-	                },
-	                error: function error(_error3) {
-	                  console.log(JSON.stringify(_error3));
-	                }
-	              });
+	              (0, _utils.subscribeToChat)(data[0], _this.addMsg);
 	            },
 	            error: function error(_error2) {
 	              console.log("Error: " + _error2.code + " " + _error2.message);
@@ -26721,8 +26765,8 @@
 	        success: function success(results) {
 	          console.log("Successfully saved message");
 	        },
-	        error: function error(obj, _error4) {
-	          console.log("Error saving message: ", _error4);
+	        error: function error(obj, _error3) {
+	          console.log("Error saving message: ", _error3);
 	        }
 	      });
 	    }

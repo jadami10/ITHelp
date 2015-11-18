@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { subscribeToChannel } from '../utils/utils';
+import { subscribeToChat } from '../utils/utils';
 import pb from '../utils/pubnub'
 
 class Msg extends React.Component {
@@ -113,6 +113,7 @@ class ChatBox extends React.Component {
   }
 
   addMsg(message) {
+    console.log(message)
     let data = this.state.additionalData;
     let newData = data.concat([message]);
     
@@ -145,16 +146,7 @@ class ChatBox extends React.Component {
 
             _this.setState({data: dataMsg});
 
-            pb.subscribe({
-              channel: data[0].id,
-              message: (m) => {_this.addMsg(m)},
-              connect: () => {
-                console.log("should be subscribed");
-              },
-              error: (error) => {
-                console.log(JSON.stringify(error));
-              }
-            });
+            subscribeToChat(data[0], _this.addMsg);
           },
           error: (error) => {
             console.log("Error: " + error.code + " " + error.message);

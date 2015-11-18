@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { takeRequest, subscribeToRequests } from '../utils/utils';
+import { takeRequest, subscribeToRequests, subscribeToUser } from '../utils/utils';
 
 class Ticket extends React.Component {
 
@@ -27,7 +27,6 @@ class Ticket extends React.Component {
   }
 
   submitHelp() {
-    this.props.update();
     takeRequest(this.props.ticketObj);
   }
 
@@ -84,8 +83,7 @@ class TicketList extends React.Component {
           desc={ticket.get("requestMessage")} 
           photo={ticket.get("photoFile")}
           ticketObj={ticket}
-          key={index}
-          update={_this.props.update} >
+          key={index} >
         </Ticket>
       );
     });
@@ -106,11 +104,13 @@ class SolveTicketsBox extends React.Component {
     super(props);
     this.state = {data: []};
     this.getTickets = this.getTickets.bind(this);
+    this.onRequestNotification = this.onRequestNotification.bind(this);
   }
 
   getTickets() {
     const query = new Parse.Query(Parse.Object.extend("Request"))
-      .equalTo("taken", 0);
+      .equalTo("taken", 0)
+      .notContainedIn("allHelpers", Parse.User.current());
 
     const _this = this;
 
@@ -125,16 +125,62 @@ class SolveTicketsBox extends React.Component {
     });
   }
 
+  onRequestNotification(n) {
+    console.log("onRequestNotification: " + n.requestType);
+    let tmpData = this.state.data;
+
+    if (n.requestType === "TicketTaken" || n.requestType === "TicketDeleted") {
+      // hide the ticket
+      for (let d = 0; d < tmpData.length; d += 1) {
+        if (this.state.data[d].id === n.requestID) {
+          tmpData.splice(d, 1);
+          this.setState(tmpData);
+          return;
+        }
+      }
+
+    } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
+      // add the ticket
+      const query = new Parse.Query(Parse.Object.extend("Request"))
+        .equalTo("objectId", n.requestID)
+        .notContainedIn("allHelpers", Parse.User.current());
+
+      const _this = this;
+
+      query.first({
+        success: (request) => {
+          tmpData.push(request);
+          _this.setState(request);
+          return;
+        },
+        error: (error) => {
+          console.log("Error: " + error.code + " " + error.message);
+        }
+      });
+
+    } else if (n.requestType === "TicketGranted") {
+      // increment the badge
+      this.props.update();
+
+    } else if (n.requestType === "TicketSolved") {
+
+    } else {
+      console.log("Error: onRequestNotification");
+    }
+  }
+
   componentDidMount() {
     this.getTickets();
-    subscribeToRequests(this.getTickets);
+
+    subscribeToRequests(this.onRequestNotification);
+    subscribeToUser(Parse.User.current().id, this.onRequestNotification);
   }
 
   render() {
     return (
       <div id="solve">
         <div className="probs">
-          <TicketList tickets={this.state.data} update={this.props.update} />
+          <TicketList tickets={this.state.data} />
         </div>
       </div>
     );
