@@ -108,9 +108,10 @@ class SolveTicketsBox extends React.Component {
   }
 
   getTickets() {
+    console.log('ha')
     const query = new Parse.Query(Parse.Object.extend("Request"))
       .equalTo("taken", 0)
-      .notContainedIn("allHelpers", Parse.User.current());
+      .notContainedIn("allHelpers", [Parse.User.current()]);
 
     const _this = this;
 
@@ -143,7 +144,7 @@ class SolveTicketsBox extends React.Component {
       // add the ticket
       const query = new Parse.Query(Parse.Object.extend("Request"))
         .equalTo("objectId", n.requestID)
-        .notContainedIn("allHelpers", Parse.User.current());
+        .notContainedIn("allHelpers", [Parse.User.current()]);
 
       const _this = this;
 
@@ -163,7 +164,7 @@ class SolveTicketsBox extends React.Component {
       this.props.update();
 
     } else if (n.requestType === "TicketSolved") {
-
+      // this.props.
     } else {
       console.log("Error: onRequestNotification");
     }

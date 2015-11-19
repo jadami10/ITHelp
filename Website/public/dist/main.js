@@ -25419,7 +25419,8 @@
 	  _createClass(SolveTicketsBox, [{
 	    key: 'getTickets',
 	    value: function getTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0).notContainedIn("allHelpers", Parse.User.current());
+	      console.log('ha');
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0).notContainedIn("allHelpers", [Parse.User.current()]);
 
 	      var _this = this;
 
@@ -25453,7 +25454,7 @@
 	      } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
 	        (function () {
 	          // add the ticket
-	          var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("objectId", n.requestID).notContainedIn("allHelpers", Parse.User.current());
+	          var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("objectId", n.requestID).notContainedIn("allHelpers", [Parse.User.current()]);
 
 	          var _this = _this5;
 
@@ -25471,9 +25472,11 @@
 	      } else if (n.requestType === "TicketGranted") {
 	        // increment the badge
 	        this.props.update();
-	      } else if (n.requestType === "TicketSolved") {} else {
-	        console.log("Error: onRequestNotification");
-	      }
+	      } else if (n.requestType === "TicketSolved") {
+	        // this.props.
+	      } else {
+	          console.log("Error: onRequestNotification");
+	        }
 	    }
 	  }, {
 	    key: 'componentDidMount',
