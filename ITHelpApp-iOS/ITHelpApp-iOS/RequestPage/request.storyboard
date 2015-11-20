@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="L8s-Ba-I5k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C47a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="L8s-Ba-I5k">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
     </dependencies>
@@ -39,14 +39,6 @@
                                 <state key="normal" title="Request!" image="requestbutton.png"/>
                                 <connections>
                                     <action selector="requestPressed:" destination="L8s-Ba-I5k" eventType="touchUpInside" id="mGK-Pw-hYQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nyw-Wh-4S6">
-                                <rect key="frame" x="277" y="134" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
-                                <state key="normal" title="Button" image="black-slr-camera-256.png"/>
-                                <connections>
-                                    <action selector="takePhoto" destination="L8s-Ba-I5k" eventType="touchUpInside" id="vVD-RI-Qi7"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xkz-i6-WUS">
@@ -135,6 +127,14 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nyw-Wh-4S6">
+                                <rect key="frame" x="275" y="134" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES"/>
+                                <state key="normal" title="Button" image="black-slr-camera-256.png"/>
+                                <connections>
+                                    <action selector="takePhoto" destination="L8s-Ba-I5k" eventType="touchUpInside" id="vVD-RI-Qi7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
