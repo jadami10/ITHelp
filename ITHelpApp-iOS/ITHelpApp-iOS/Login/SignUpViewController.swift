@@ -92,7 +92,7 @@ class SignUpViewController: UIViewController {
             print(errorString)
             self.releaseUI()
         } else {
-            self.presentAlert("Success", message: "Signup Successful", completion: nil)
+//            self.presentAlert("Success", message: "Signup Successful", completion: nil)
             self.releaseUI()
             goToMainPage()
         }

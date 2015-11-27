@@ -14,6 +14,7 @@ class TagManager {
     static let sharedInstance = TagManager()
     
     var tags = [RequestTags]()
+    var defaultTags = [PFObject]()
     
     func getAvailableTags() {
         let query = PFQuery(className:"Tags")
@@ -26,8 +27,11 @@ class TagManager {
                 // Do something with the found objects
                 if let objects = objects as [PFObject]! {
                     for object in objects {
-                        let tag = RequestTags(name: object["Name"] as! String, color: object["Color"] as! String)
+                        let tag = RequestTags(name: object["Name"] as! String, color: object["Color"] as! String, object: object)
                         self.tags.append(tag)
+                        if object["Default"] as! Bool {
+                            self.defaultTags.append(object)
+                        }
                     }
                 }
             } else {
@@ -50,9 +54,11 @@ class TagManager {
 class RequestTags {
     var tagName: String
     var tagColor: UIColor
+    var tagObject: PFObject
     
-    init(name: String, color: String) {
+    init(name: String, color: String, object: PFObject) {
         tagName = name
         tagColor = UIColor.colorWithHexString(color)
+        tagObject = object
     }
 }
