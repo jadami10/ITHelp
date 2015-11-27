@@ -41,6 +41,30 @@ extension UITextView {
     
 }
 
+extension PFObject {
+    override public func isEqual(object: AnyObject?) -> Bool {
+        if object == nil {
+            return false
+        } else if ((object?.isKindOfClass(PFObject)) == nil) {
+            return false
+        } else {
+            return object?.objectId == self.objectId
+        }
+    }
+}
+
+extension UIView {
+    
+    func blockUI() {
+        
+    }
+    
+    func releaseUI() {
+        
+    }
+    
+}
+
 extension UIViewController {
     
     func presentAlert(title: NSString, message: NSString, completion: ((UIAlertAction) -> Void)?) {

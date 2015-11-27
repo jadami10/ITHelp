@@ -13,12 +13,32 @@ import Parse
 var petitions = [PFObject]()
 
 class TicketHandler{
+    
+    private static var ticketQuery: PFQuery {
+        let _query = PFQuery(className:"Request")
+        _query.whereKey("requesterPointer", equalTo:PFUser.currentUser()!)
+        _query.whereKey("requesterSolved", notEqualTo: 1)
+        _query.includeKey("helper")
+        _query.includeKey("tags")
+        return _query
+    }
+    
+    static func getTicketByID(id: String, completion: ((PFObject?, NSError?) -> Void)?) {
+        let _query = PFQuery(className: "Request")
+        _query.includeKey("helper")
+        _query.includeKey("tags")
+        _query.getObjectInBackgroundWithId(id, block: completion)
+    }
+    
+    static func getTicketByIDSync(id: String) throws -> PFObject {
+        let _query = PFQuery(className: "Request")
+        _query.includeKey("helper")
+        _query.includeKey("tags")
+        return try _query.getObjectWithId(id)
+    }
+    
     static func getTickets(add: ((PFObject, Int) -> Void), completions: [() -> Void]) -> Void{
-        let query = PFQuery(className:"Request")
-        query.whereKey("requesterPointer", equalTo:PFUser.currentUser()!)
-        query.whereKey("requesterSolved", notEqualTo: 1)
-        query.includeKey("helper")
-        query.findObjectsInBackgroundWithBlock {
+        ticketQuery.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             
             if error == nil {
@@ -51,13 +71,30 @@ class TicketHandler{
         }
     }
     
+    static func getTicketsSync() throws -> [PFObject] {
+        return try ticketQuery.findObjects()
+    }
+    
+    static func deleteTicketSync(ticket: PFObject) throws {
+        try ticket.delete()
+    }
+    
     static func deleteTicket(ticket: PFObject, completion: PFBooleanResultBlock) {
         ticket.deleteInBackgroundWithBlock(completion)
+    }
+    
+    static func deleteTicketEventually(ticket: PFObject) {
+        ticket.deleteEventually()
     }
     
     static func markTicketSolved(ticket: PFObject, completion: PFBooleanResultBlock) {
         ticket.setValue(1, forKey: "requesterSolved")
         ticket.saveInBackgroundWithBlock(completion)
+    }
+    
+    static func solveTicketEventually(ticket: PFObject) {
+        ticket.setValue(1, forKey: "requesterSolved")
+        ticket.saveEventually()
     }
     
     static func getReqChannel() -> String {

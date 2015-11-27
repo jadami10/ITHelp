@@ -120,6 +120,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         requestObject["requestMessage"] = ticketMsg
         requestObject["title"] = ticketTitle
         requestObject["taken"] = 0
+        requestObject["tags"] = self.getSelectedTags()
         
         if AppConstants.curTicketsNum < AppConstants.maxTickets {
             RequestHandler.postRequest(requestObject, completion: self.checkRequest)
@@ -262,6 +263,22 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         cell?.layer.borderWidth = 0
         cell?.layer.borderColor = UIConstants.mainUIColor.CGColor
+    }
+    
+    func getSelectedTags() -> [PFObject] {
+        var selTags = [PFObject]()
+        let paths = self.tagCollectionView.indexPathsForSelectedItems()
+        if paths != nil {
+            for path in paths! {
+                selTags.append(TagManager.sharedInstance.getTag(path).tagObject)
+            }
+        }
+        if selTags.count > 0 {
+            return selTags
+        } else {
+            return TagManager.sharedInstance.defaultTags
+        }
+
     }
     
     /*

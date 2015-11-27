@@ -78,17 +78,20 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
         if (ticket!["taken"] as! Int == 0) {
             print("deleting untaken ticket")
             handleTicketDeletion()
-            
+            self.returnToTicketViewController()
         } else {
             print("marking ticket as solved")
             handleTicketSolved()
+            self.returnToTicketViewController()
         }
     }
     
     func handleTicketDeletion() {
-        self.view.userInteractionEnabled = false
-        self.busyFrame = self.progressBarDisplayer("Deleting", indicator: true)
-        TicketHandler.deleteTicket(ticket!, completion: self.checkDeletion)
+//        self.view.userInteractionEnabled = false
+//        self.busyFrame = self.progressBarDisplayer("Deleting", indicator: true)
+//        TicketHandler.deleteTicket(ticket!, completion: self.checkDeletion)
+        TicketHandler.deleteTicketEventually(ticket!)
+        AsyncTicketManager.sharedInstance.deleteTicket(ticket!)
     }
     
     func checkDeletion(isDeleted: Bool, error: NSError?) -> Void {
@@ -121,9 +124,11 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
     }
     
     func handleTicketSolved() {
-        self.view.userInteractionEnabled = false
-        self.busyFrame = self.progressBarDisplayer("Closing", indicator: true)
-        TicketHandler.markTicketSolved(ticket!, completion: self.checkSolved)
+//        self.view.userInteractionEnabled = false
+//        self.busyFrame = self.progressBarDisplayer("Closing", indicator: true)
+//        TicketHandler.markTicketSolved(ticket!, completion: self.checkSolved)
+        TicketHandler.solveTicketEventually(ticket!)
+        AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket!)
     }
     
     func checkSolved(isSolved: Bool, error: NSError?) -> Void {

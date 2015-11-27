@@ -44,19 +44,27 @@ class MainTabController: UITabBarController, PNObjectEventListener {
 
         if let requestID = message.data.message["requestID"] as? String, requestType = message.data.message["requestType"] as? String {
             print(message.data.message)
-            print(String(format: "ID: %s Type: %s", requestID, requestType))
+//            print(String(format: "ID: %@ Type: %@", requestID, requestType))
             if requestType == "RequestTaken" {
                 alertedTicketId = requestID
-                TicketManager.sharedInstance.getTicketsWithCallback(self.handleTicketTaken)
+                print("moving ticket to taken")
+//                AsyncTicketManager.sharedInstance.moveTicketToTakenById(requestID)
+                TicketHandler.getTicketByID(requestID, completion: self.handleTicketTaken)
+//                self.handleTicketTaken()
             } else if requestType == "RequestSolved" {
-                TicketManager.sharedInstance.getTickets()
+                AsyncTicketManager.sharedInstance.moveTicketToSolvedById(requestID)
                 
             } else if requestType == "RequestReleased" {
-                TicketManager.sharedInstance.getTicketsWithCallback(self.handleTicketReleased)
+                // TODO: Handle ticket being released
             } else if requestType == "RequestAdded" {
-                TicketManager.sharedInstance.getTickets()
+                print("Received notice to add ticket")
+                if AsyncTicketManager.sharedInstance.getTicketByID(requestID) == nil {
+                    TicketHandler.getTicketByID(requestID, completion: self.handleTicketAdded)
+                } else {
+                    print("Could not find added ticket")
+                }
             } else if requestType == "RequestDeleted" {
-                //TicketManager.sharedInstance.getTickets()
+                AsyncTicketManager.sharedInstance.deleteTicketByID(requestID)
             } else {
                 print(String(format:"Unhandled request type: %s", requestType))
             }
@@ -66,14 +74,33 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         }
     }
     
-    func handleTicketTaken() {
-        if alertedTicketId != nil {
-            alertedTicket = TicketManager.sharedInstance.getTicketById(alertedTicketId!)
+    func handleTicketAdded(ticket: PFObject?, error: NSError?) -> Void {
+        if ticket != nil {
+            print("Adding new ticket")
+            let type = ticket!["taken"] as! Int
+            AsyncTicketManager.sharedInstance.addTicket(ticket!, type: type)
+        } else if (error != nil) {
+            print("Could not add ticket")
+            print(error)
+        } else {
+            print("Failed to add ticket with no error")
+        }
+    }
+    
+    func handleTicketTaken(ticket: PFObject?, error: NSError?) -> Void {
+        
+        if ticket != nil {
+            print("ticket has been taken")
+            AsyncTicketManager.sharedInstance.moveTicketToTaken(ticket!)
             incrementRequestBadge()
             self.presentYesNoAlert("Someone is here to help!", message: "Go to your ticket?", completion: self.goToTicket)
+        } else if (error != nil) {
+            print("Could not take ticket")
+            print(error)
         } else {
-            print("no ticket id")
+            print("Failed to take ticket with no error")
         }
+        
     }
     
     func handleTicketSolved() {

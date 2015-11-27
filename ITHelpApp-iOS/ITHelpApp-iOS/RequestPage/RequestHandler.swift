@@ -18,7 +18,7 @@ class RequestHandler {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     print("good request!")
-                    TicketManager.sharedInstance.getTickets()
+                    AsyncTicketManager.sharedInstance.addTicket(request, type: 0)
                 }
                 completion(result: error)
             }
