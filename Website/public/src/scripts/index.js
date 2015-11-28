@@ -29,7 +29,8 @@ class App extends React.Component {
     super(props);
     this.state = {solvingBadgeNum: 0, solvedBadgeNum : 0}
 
-    this.getMyTicketsNumber = this.getMyTicketsNumber.bind(this);
+    this.getSolvingNumber = this.getSolvingNumber.bind(this);
+    this.getSolvedNumber = this.getSolvedNumber.bind(this);
     this.updateSolvingBadge = this.updateSolvingBadge.bind(this);
     this.updateSolvedBadge = this.updateSolvedBadge.bind(this);
   }
@@ -43,20 +44,38 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getMyTicketsNumber();
+    this.getSolvingNumber();
+    this.getSolvedNumber();
   }
 
-  getMyTicketsNumber() {
-    let openRequests = Parse.Object.extend("Request");
-    let currentUser = Parse.User.current();
-    let query = new Parse.Query(openRequests);
-    let that = this;
+  getSolvingNumber() {
+    const query = new Parse.Query(Parse.Object.extend("Request"))
+      .equalTo("helper", Parse.User.current())
+      .notEqualTo("helperSolved", 1);
 
-    query.equalTo("helper", currentUser);
-    query.notEqualTo("helperSolved", 1);
+    const _this = this;
+
     query.find({
       success: function(data) {
-        that.setState({solvingBadgeNum: data.length});
+        _this.setState({solvingBadgeNum: data.length});
+      },
+      error: function(error) {
+        console.log("Error: " + error.code + " " + error.message);
+      }
+    });
+  }
+
+  getSolvedNumber() {
+    const query = new Parse.Query(Parse.Object.extend("Request"))
+      .equalTo("helper", Parse.User.current())
+      .equalTo("helperSolved", 1)
+      .equalTo("requesterSolved", -1);
+
+    const _this = this;
+
+    query.find({
+      success: function(data) {
+        _this.setState({solvedBadgeNum: data.length});
       },
       error: function(error) {
         console.log("Error: " + error.code + " " + error.message);

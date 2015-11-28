@@ -17,6 +17,36 @@ textarea, input
 .fa
   margin-right 10px
 
+.tag
+  display inline-block
+  font-size 10px
+  color #fff
+  text-align center
+  border-radius 3px
+  padding 7px 7px
+  transition all 0.3s ease
+  margin-right 5px
+.mac
+  background-color #e77b7b
+  &:after
+    content 'Mac'
+.software
+  background-color #9de7ee
+  &:after
+    content 'Software'
+.hardware
+  background-color #FFBA80
+  &:after
+    content 'Hardware'
+.windows
+  background-color #5899FF
+  &:after
+    content 'Windows'
+.other
+  background-color #999
+  &:after
+    content 'Other'
+
 a
   text-decoration none
   outline 0
@@ -104,6 +134,12 @@ a
     opacity 0
   to
     transform translateX(0px)
+    opacity 1
+
+@keyframes fadein
+  from
+    opacity .3
+  to
     opacity 1
 
 .top-right-avatar
@@ -290,6 +326,8 @@ a
       font-size 16px
       font-weight 400
     .prob
+      animation-duration .5s
+      animation-name fadein
       overflow hidden
       background -webkit-linear-gradient(left, #71CFDA, #64C9DE)
       background -o-linear-gradient(left, #71CFDA, #64C9DE)
@@ -342,26 +380,9 @@ a
         letter-spacing 1px
         text-shadow 0 1px 0 rgba(0,0,0,.2)
       .tag
-        display inline-block
-        font-size 10px
         color #fff
-        text-align center
-        border-radius 3px
         border 1px solid rgba(255,255,255,.7)
-        padding 7px 7px
-        transition all 0.3s ease
-        margin-right 5px
-      .adobe
-        background-color #e77b7b
-        &:after
-          content 'Adobe'
-      .software
-        background-color #9de7ee
-        &:after
-          content 'Software'
-      .hardware
-        &:after
-          content 'Hardware'
+        background-color rgba(255,255,255,0) 
       .requester
         float right
         font-size 14px
@@ -397,8 +418,10 @@ a
       font-weight 400
       color #57B9CD
       &:after
-        content "No data yet"
+        content "Empty"
     .prob
+      animation-duration .5s
+      animation-name fadein
       background -webkit-linear-gradient(left, #71CFDA, #64C9DE)
       background -o-linear-gradient(left, #71CFDA, #64C9DE)
       background -moz-linear-gradient(left, #71CFDA, #64C9DE)
@@ -422,26 +445,9 @@ a
         letter-spacing 1px
         text-shadow 0 1px 0 rgba(0,0,0,.2)
       .tag
-        display inline-block
-        font-size 10px
         color #fff
-        text-align center
-        border-radius 3px
         border 1px solid rgba(255,255,255,.7)
-        padding 7px 7px
-        transition all 0.3s ease
-        margin-right 5px
-      .adobe
-        background-color #e77b7b
-        &:after
-          content 'Adobe'
-      .software
-        background-color #9de7ee
-        &:after
-          content 'Software'
-      .hardware
-        &:after
-          content 'Hardware'
+        background-color rgba(255,255,255,0) 
       .requester
         float right
         font-size 14px
@@ -490,28 +496,6 @@ a
       width 100%
       height auto
       cursor zoom-in
-    .tag
-      display inline-block
-      font-size 10px
-      font-weight 400
-      color #fff
-      text-align center
-      border-radius 3px
-      padding 7px 7px
-      transition all 0.3s ease
-      margin-right 5px
-    .adobe
-      background-color #e77b7b
-      &:after
-        content 'Adobe'
-    .software
-      background-color #9de7ee
-      &:after
-        content 'Software'
-    .hardware
-      background-color #9dcaee
-      &:after
-        content 'Hardware'
     .request-bottom
       margin-top 30px
       font-size 12px

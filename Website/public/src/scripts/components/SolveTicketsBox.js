@@ -15,6 +15,19 @@ class Ticket extends React.Component {
       this.refs.descImage.src = this.props.photo["_url"];
       $(this.refs.descImage).show();
     }
+
+    const tags = this.props.ticketObj.get("tags");
+    for (let i = 0; i < tags.length; i += 1) {
+      const tagName = tags[i].get("Name");
+      switch(tagName) {
+        case "Mac": $(this.refs.tags).append("<div class='tag mac'></div>"); break;
+        case "Software": $(this.refs.tags).append("<div class='tag software'></div>"); break;
+        case "Hardware": $(this.refs.tags).append("<div class='tag hardware'></div>"); break;
+        case "Windows": $(this.refs.tags).append("<div class='tag windows'></div>"); break;
+        case "Other": $(this.refs.tags).append("<div class='tag other'></div>"); break;
+        default: console.log("Tag error");
+      }
+    }
   }
 
   handleClick(e) {
@@ -43,8 +56,7 @@ class Ticket extends React.Component {
             <span className="fa fa-quote-right"></span>
             <img className="desc-image" ref="descImage" />
           </div>
-          <div className="tag adobe"></div>
-          <div className="tag software"></div>
+          <div className="tags" ref="tags"></div>
           <div className="request-bottom">
             <div className="requester"> 
               <span className="fa fa-user"></span>
@@ -109,8 +121,10 @@ class SolveTicketsBox extends React.Component {
 
   getTickets() {
     const query = new Parse.Query(Parse.Object.extend("Request"))
+      .include("tags")
       .equalTo("taken", 0)
-      .notEqualTo("allHelpers", Parse.User.current());
+      .notEqualTo("allHelpers", Parse.User.current())
+      .notEqualTo("requester", Parse.User.current().get("username"));
 
     const _this = this;
 
@@ -142,8 +156,10 @@ class SolveTicketsBox extends React.Component {
     } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
       // add the ticket
       const query = new Parse.Query(Parse.Object.extend("Request"))
+        .include("tags")
         .equalTo("objectId", n.requestID)
-        .noEqualTo("allHelpers", Parse.User.current());
+        .noEqualTo("allHelpers", Parse.User.current())
+        .notEqualTo("requester", Parse.User.current().get("username"));
 
       const _this = this;
 

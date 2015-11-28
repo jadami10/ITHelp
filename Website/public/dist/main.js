@@ -127,7 +127,7 @@
 	exports.i(__webpack_require__(7), "");
 
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n  background-color: #eaf0f0;\n  font-size: 14px;\n  font-family: Lato, sans-serif;\n  min-width: 1000px;\n  color: #4a4a4a;\n}\ntextarea,\ninput {\n  outline: none;\n}\n.fa {\n  margin-right: 10px;\n}\na {\n  text-decoration: none;\n  outline: 0;\n  color: #777;\n  transition: all 0.3s ease;\n}\na:hover {\n  color: #4a4a4a;\n}\na:focus {\n  outline: 0;\n}\n.left-navi {\n  position: fixed;\n  width: 18%;\n  min-height: 100%;\n  background: -webkit-linear-gradient(#3f5655, #4a4a4a);\n  background: -o-linear-gradient(#3f5655, #4a4a4a);\n  background: -moz-linear-gradient(#3f5655, #4a4a4a);\n  background: linear-gradient(#3f5655, #4a4a4a);\n  font-size: 14px;\n  letter-spacing: 1px;\n  padding-bottom: 100px;\n}\n.left-navi .navi-logo {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  text-align: left;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  border-bottom: 1px solid rgba(0,0,0,0.1);\n}\n.left-navi .navi-logo img {\n  padding-left: 0px;\n  width: 100px;\n  height: auto;\n}\n.left-navi .navi {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  transition: all 0.3s ease;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  color: #a8baba;\n  border-left: 3px solid rgba(0,0,0,0);\n}\n.left-navi .navi:hover {\n  color: #f3f3f3;\n  border-left: 3px solid #0396a8;\n}\n.left-navi .navi-current {\n  background: #30c0cc;\n  color: #f3f3f3;\n  border-left: 3px solid #30c0cc;\n}\n.left-navi .log-out {\n  position: fixed;\n  background-color: #555;\n  width: 18%;\n  bottom: 0;\n}\n.left-navi .log-out:hover {\n  cursor: pointer;\n  border-left: 3px solid #999;\n}\n.top-greeting-bar {\n  opacity: 0.95;\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 70px;\n  width: 82%;\n  border-bottom: 1px solid #e2e2e2;\n  background-color: #fff;\n  padding: 0 2%;\n  z-index: 100;\n}\n.top-left-greetings {\n  float: left;\n  line-height: 70px;\n  color: #777;\n  font-size: 16px;\n  font-style: italic;\n  letter-spacing: 1px;\n}\n.top-left-greetings .top-left-greetings-animated {\n  animation-duration: 0.8s;\n  animation-name: slidein;\n}\n.top-right-avatar {\n  float: right;\n  margin-top: 15px;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background: #ccc;\n  color: #fff;\n  text-align: center;\n  font-size: 22px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.top-right-avatar:hover {\n  transform: rotate(15deg);\n  box-shadow: 0 3px 10px rgba(0,0,0,0.15);\n}\n.top-right-avatar-initial {\n  position: relative;\n  line-height: 40px;\n}\n.setting-form {\n  display: none;\n  opacity: 0.9;\n  position: absolute;\n  top: 65px;\n  right: 2%;\n  background: #fff;\n  width: 200px;\n  height: 70px;\n  z-index: 100;\n  text-align: center;\n  font-size: 16px;\n  color: #777;\n  line-height: 70px;\n  box-shadow: 0 3px 15px rgba(0,0,0,0.15);\n  cursor: pointer;\n}\n.setting-form:hover {\n  opacity: 1;\n}\n.num-badge {\n  font-size: 12px;\n  background: #e77b7b;\n  color: #fff;\n  margin-left: 30px;\n  letter-spacing: 0;\n  padding: 2px 10px;\n  border-radius: 12px;\n}\n.num-badge.animated {\n  -webkit-animation: anim-jump 0.5s;\n  -moz-animation: anim-jump 0.5s;\n  -ms-animation: anim-jump 0.5s;\n  -o-animation: anim-jump 0.5s;\n  animation: anim-jump 0.5s;\n}\n#login .wrapper {\n  background: -webkit-linear-gradient(#6dd2db, #5dbaca);\n  background: -o-linear-gradient(#6dd2db, #5dbaca);\n  background: -moz-linear-gradient(#6dd2db, #5dbaca);\n  background: linear-gradient(#6dd2db, #5dbaca);\n  font-size: 18px;\n  color: #777;\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  transition: all 0.6s ease;\n}\n#login .wrapper-signup {\n  background: -webkit-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -o-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -moz-linear-gradient(#6ddbc0, #5dc3ca);\n  background: linear-gradient(#6ddbc0, #5dc3ca);\n}\n#login .login {\n  text-align: center;\n  position: absolute;\n  top: 45%;\n  left: 50%;\n  width: 340px;\n  transform: translate(-50%, -50%);\n}\n#login .login img {\n  width: 100%;\n}\n#login .login-form {\n  margin-top: 50px;\n}\n#login .input-set {\n  display: block;\n  margin: 10px auto;\n  width: 100%;\n}\n#login .input-set span {\n  display: inline-block;\n  line-height: 40px;\n  margin-right: 0;\n  height: 40px;\n  width: 40px;\n  background-color: #fff;\n  color: #42aab3;\n}\n#login .input-set input {\n  padding-bottom: 3px;\n}\n#login .input-set input:focus {\n  color: #333;\n}\n#login .login-input {\n  display: block;\n}\n#login .signup-input {\n  display: none;\n}\n#login input {\n  border: none;\n  height: 40px;\n  width: 300px;\n  font-size: 18px;\n  color: #333;\n}\n#login .button {\n  font-size: 14px;\n  letter-spacing: 1px;\n  width: 100%;\n  margin-top: 10px;\n  color: #fff;\n  border-bottom: 3px solid rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#login .button:focus {\n  border-bottom: 0px solid rgba(0,0,0,0.1);\n  color: #fff;\n}\n#login .login-button {\n  background-color: #6cd1da;\n}\n#login .login-button:hover {\n  background-color: #7fe1e9;\n  cursor: pointer;\n}\n#login .reminder {\n  font-size: 12px;\n  margin-top: 20px;\n  text-align: left;\n  color: rgba(255,255,255,0.7);\n}\n#login .reminder-2 {\n  cursor: pointer;\n  display: none;\n  transition: color 0.3s ease;\n}\n#login .reminder-2:hover {\n  color: #fff;\n}\n#login .signup-button {\n  background-color: #ffc565;\n}\n#login .signup-button:hover {\n  background-color: #ffd583;\n  cursor: pointer;\n}\n#solving {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n  margin-bottom: 20px;\n}\n#solving a {\n  color: #fff;\n}\n#solving .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solving .probs .prob {\n  overflow: hidden;\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  cursor: pointer;\n  border-bottom: 1px solid #4db5cb;\n}\n#solving .probs .prob:hover {\n  opacity: 0.88;\n}\n#solving .probs .prob .wrapper-left {\n  float: left;\n  width: 40px;\n  height: 100%;\n  padding: 0;\n  width: 0%;\n  overflow: hidden;\n  transition: width 0.2s ease;\n}\n#solving .probs .prob .wrapper-left .btn-mark {\n  height: 40px;\n  text-align: center;\n  line-height: 40px;\n  color: rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#solving .probs .prob .wrapper-left .btn-mark:hover {\n  color: #fff;\n  cursor: pointer;\n}\n#solving .probs .prob .wrapper-left .btn-mark span {\n  margin-right: 0;\n}\n#solving .probs .prob .wrapper-left .btn-solve {\n  background-color: #ffc65c;\n}\n#solving .probs .prob .wrapper-left .btn-giveup {\n  background-color: #76afb3;\n}\n#solving .probs .prob:hover .wrapper-left {\n  width: 4%;\n}\n#solving .probs .prob .wrapper-right {\n  float: left;\n  padding: 25px 0 25px 20px;\n  box-shadow: -3px 0 3px rgba(0,0,0,0.15);\n  width: 96%;\n}\n#solving .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solving .probs .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  border: 1px solid rgba(255,255,255,0.7);\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solving .probs .prob .adobe {\n  background-color: #e77b7b;\n}\n#solving .probs .prob .adobe:after {\n  content: 'Adobe';\n}\n#solving .probs .prob .software {\n  background-color: #9de7ee;\n}\n#solving .probs .prob .software:after {\n  content: 'Software';\n}\n#solving .probs .prob .hardware:after {\n  content: 'Hardware';\n}\n#solving .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solved {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n  margin-bottom: 20px;\n}\n#solved .data-title {\n  padding-bottom: 15px;\n  color: #64c9de;\n  font-size: 18px;\n  font-weight: 400;\n}\n#solved a {\n  color: #fff;\n}\n#solved .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solved .probs .prob-blank {\n  background: #eaf0f0;\n  border: 1px solid #57b9cd;\n  padding: 25px 20px;\n  font-size: 16px;\n  font-weight: 400;\n  color: #57b9cd;\n}\n#solved .probs .prob-blank:after {\n  content: \"No data yet\";\n}\n#solved .probs .prob {\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 1px solid #4db5cb;\n}\n#solved .probs .prob:hover {\n  opacity: 0.88;\n}\n#solved .probs .prob .wrapper {\n  padding: 25px 20px;\n  width: 96%;\n}\n#solved .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solved .probs .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  border: 1px solid rgba(255,255,255,0.7);\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solved .probs .prob .adobe {\n  background-color: #e77b7b;\n}\n#solved .probs .prob .adobe:after {\n  content: 'Adobe';\n}\n#solved .probs .prob .software {\n  background-color: #9de7ee;\n}\n#solved .probs .prob .software:after {\n  content: 'Software';\n}\n#solved .probs .prob .hardware:after {\n  content: 'Hardware';\n}\n#solved .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solve {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 80%;\n  font-weight: 300;\n  color: #777;\n}\n#solve .prob {\n  float: left;\n  background: #fff;\n  width: 23%;\n  min-height: 140px;\n  padding: 0;\n  transition: all 0.2s ease;\n  margin-bottom: 10px;\n  margin-right: 10px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  animation-duration: 1s;\n  animation-name: slidein;\n}\n#solve .prob:hover {\n  box-shadow: 0 3px 0 rgba(0,0,0,0.1);\n  transform: translateY(-1px);\n}\n#solve .prob .wrapper {\n  padding: 20px 20px;\n}\n#solve .prob .wrapper-title {\n  padding: 20px 20px;\n  border-bottom: 1px solid #eaf0f0;\n}\n#solve .prob .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solve .prob .desc {\n  display: none;\n  margin-bottom: 20px;\n  font-size: 14px;\n}\n#solve .prob .desc-image {\n  display: none;\n  margin-top: 15px;\n  width: 100%;\n  height: auto;\n  cursor: zoom-in;\n}\n#solve .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  font-weight: 400;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solve .prob .adobe {\n  background-color: #e77b7b;\n}\n#solve .prob .adobe:after {\n  content: 'Adobe';\n}\n#solve .prob .software {\n  background-color: #9de7ee;\n}\n#solve .prob .software:after {\n  content: 'Software';\n}\n#solve .prob .hardware {\n  background-color: #9dcaee;\n}\n#solve .prob .hardware:after {\n  content: 'Hardware';\n}\n#solve .prob .request-bottom {\n  margin-top: 30px;\n  font-size: 12px;\n  padding-bottom: 10px;\n}\n#solve .prob .request-bottom .requester {\n  float: left;\n}\n#solve .prob .request-bottom .request-time {\n  float: right;\n}\n#solve .prob .fa-quote-right {\n  margin-left: 10px;\n}\n#solve .prob .btn-help {\n  display: block;\n  padding-bottom: -25px;\n  height: 50px;\n  width: 100%;\n  background-image: url(\"/assets/bg.png\");\n  text-align: center;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 50px;\n  color: #fff;\n  transition: -webkit-filter 0.3s ease;\n  -webkit-filter: brightness(1);\n  cursor: pointer;\n}\n#solve .prob .btn-help:after {\n  content: 'I want to help!';\n}\n#solve .prob .btn-help:hover {\n  -webkit-filter: brightness(1.05);\n}\n.desc-image-fullscreen-div {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.3);\n  z-index: 101;\n  cursor: zoom-out;\n}\n.desc-image-fullscreen {\n  width: 700px;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n#chat {\n  position: fixed;\n  left: 18%;\n  top: 70px;\n  bottom: 0;\n  right: 0;\n  font-weight: 300;\n  color: #666;\n}\n#chat input {\n  color: #333;\n}\n#chat input:focus {\n  color: #333;\n}\n#chat .chat-content {\n  background-color: #eaf0f0;\n  position: fixed;\n  bottom: 120px;\n  left: 18%;\n  right: 0;\n  top: 70px;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 2px solid rgba(255,255,255,0.8);\n  padding: 10px 2%;\n  overflow: scroll;\n}\n#chat .chat-content .msg-block {\n  overflow: auto;\n  margin-bottom: 15px;\n}\n#chat .chat-content .msg-block .msg {\n  color: #fff;\n  padding: 12px 16px;\n  border-radius: 3px;\n  letter-spacing: 0.5px;\n  font-size: 15px;\n  max-width: 80%;\n  overflow-wrap: break-word;\n}\n#chat .chat-content .msg-block .received {\n  background-color: #60c8d1;\n  float: left;\n}\n#chat .chat-content .msg-block .sent {\n  background-color: #999;\n  float: right;\n}\n#chat .chat-form {\n  background: #fff;\n  width: 96%;\n  height: 85px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-radius: 3px;\n  font-size: 20px;\n  position: absolute;\n  bottom: 15px;\n  left: 2%;\n}\n#chat .chat-form .send-text:hover {\n  background-color: #7ddbe4;\n}\n#chat .chat-box {\n  position: relative;\n  height: 100%;\n}\n#chat .input-text {\n  display: inline-block;\n  width: 90%;\n  height: 100%;\n}\n#chat .input-text textarea {\n  width: 100%;\n  height: 100%;\n  border: none;\n  padding: 10px 20px;\n  resize: none;\n  font-size: 15px;\n}\n#chat .send-text {\n  width: 10%;\n  height: 100%;\n  color: #fff;\n  font-size: 15px;\n  text-align: center;\n  background-color: #60c8d1;\n  float: right;\n  line-height: 50px;\n  transition: all 0.2s ease;\n  border: 0;\n  padding: 0;\n  cursor: pointer;\n}\n#chat .send-text span {\n  margin-right: 0;\n}\n#chat .send-text:focus {\n  outline: 0;\n}\n@-moz-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-o-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-moz-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-webkit-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-o-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n  background-color: #eaf0f0;\n  font-size: 14px;\n  font-family: Lato, sans-serif;\n  min-width: 1000px;\n  color: #4a4a4a;\n}\ntextarea,\ninput {\n  outline: none;\n}\n.fa {\n  margin-right: 10px;\n}\n.tag {\n  display: inline-block;\n  font-size: 10px;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n.mac {\n  background-color: #e77b7b;\n}\n.mac:after {\n  content: 'Mac';\n}\n.software {\n  background-color: #9de7ee;\n}\n.software:after {\n  content: 'Software';\n}\n.hardware {\n  background-color: #ffba80;\n}\n.hardware:after {\n  content: 'Hardware';\n}\n.windows {\n  background-color: #5899ff;\n}\n.windows:after {\n  content: 'Windows';\n}\n.other {\n  background-color: #999;\n}\n.other:after {\n  content: 'Other';\n}\na {\n  text-decoration: none;\n  outline: 0;\n  color: #777;\n  transition: all 0.3s ease;\n}\na:hover {\n  color: #4a4a4a;\n}\na:focus {\n  outline: 0;\n}\n.left-navi {\n  position: fixed;\n  width: 18%;\n  min-height: 100%;\n  background: -webkit-linear-gradient(#3f5655, #4a4a4a);\n  background: -o-linear-gradient(#3f5655, #4a4a4a);\n  background: -moz-linear-gradient(#3f5655, #4a4a4a);\n  background: linear-gradient(#3f5655, #4a4a4a);\n  font-size: 14px;\n  letter-spacing: 1px;\n  padding-bottom: 100px;\n}\n.left-navi .navi-logo {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  text-align: left;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  border-bottom: 1px solid rgba(0,0,0,0.1);\n}\n.left-navi .navi-logo img {\n  padding-left: 0px;\n  width: 100px;\n  height: auto;\n}\n.left-navi .navi {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  transition: all 0.3s ease;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  color: #a8baba;\n  border-left: 3px solid rgba(0,0,0,0);\n}\n.left-navi .navi:hover {\n  color: #f3f3f3;\n  border-left: 3px solid #0396a8;\n}\n.left-navi .navi-current {\n  background: #30c0cc;\n  color: #f3f3f3;\n  border-left: 3px solid #30c0cc;\n}\n.left-navi .log-out {\n  position: fixed;\n  background-color: #555;\n  width: 18%;\n  bottom: 0;\n}\n.left-navi .log-out:hover {\n  cursor: pointer;\n  border-left: 3px solid #999;\n}\n.top-greeting-bar {\n  opacity: 0.95;\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 70px;\n  width: 82%;\n  border-bottom: 1px solid #e2e2e2;\n  background-color: #fff;\n  padding: 0 2%;\n  z-index: 100;\n}\n.top-left-greetings {\n  float: left;\n  line-height: 70px;\n  color: #777;\n  font-size: 16px;\n  font-style: italic;\n  letter-spacing: 1px;\n}\n.top-left-greetings .top-left-greetings-animated {\n  animation-duration: 0.8s;\n  animation-name: slidein;\n}\n.top-right-avatar {\n  float: right;\n  margin-top: 15px;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background: #ccc;\n  color: #fff;\n  text-align: center;\n  font-size: 22px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.top-right-avatar:hover {\n  transform: rotate(15deg);\n  box-shadow: 0 3px 10px rgba(0,0,0,0.15);\n}\n.top-right-avatar-initial {\n  position: relative;\n  line-height: 40px;\n}\n.setting-form {\n  display: none;\n  opacity: 0.9;\n  position: absolute;\n  top: 65px;\n  right: 2%;\n  background: #fff;\n  width: 200px;\n  height: 70px;\n  z-index: 100;\n  text-align: center;\n  font-size: 16px;\n  color: #777;\n  line-height: 70px;\n  box-shadow: 0 3px 15px rgba(0,0,0,0.15);\n  cursor: pointer;\n}\n.setting-form:hover {\n  opacity: 1;\n}\n.num-badge {\n  font-size: 12px;\n  background: #e77b7b;\n  color: #fff;\n  margin-left: 30px;\n  letter-spacing: 0;\n  padding: 2px 10px;\n  border-radius: 12px;\n}\n.num-badge.animated {\n  -webkit-animation: anim-jump 0.5s;\n  -moz-animation: anim-jump 0.5s;\n  -ms-animation: anim-jump 0.5s;\n  -o-animation: anim-jump 0.5s;\n  animation: anim-jump 0.5s;\n}\n#login .wrapper {\n  background: -webkit-linear-gradient(#6dd2db, #5dbaca);\n  background: -o-linear-gradient(#6dd2db, #5dbaca);\n  background: -moz-linear-gradient(#6dd2db, #5dbaca);\n  background: linear-gradient(#6dd2db, #5dbaca);\n  font-size: 18px;\n  color: #777;\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  transition: all 0.6s ease;\n}\n#login .wrapper-signup {\n  background: -webkit-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -o-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -moz-linear-gradient(#6ddbc0, #5dc3ca);\n  background: linear-gradient(#6ddbc0, #5dc3ca);\n}\n#login .login {\n  text-align: center;\n  position: absolute;\n  top: 45%;\n  left: 50%;\n  width: 340px;\n  transform: translate(-50%, -50%);\n}\n#login .login img {\n  width: 100%;\n}\n#login .login-form {\n  margin-top: 50px;\n}\n#login .input-set {\n  display: block;\n  margin: 10px auto;\n  width: 100%;\n}\n#login .input-set span {\n  display: inline-block;\n  line-height: 40px;\n  margin-right: 0;\n  height: 40px;\n  width: 40px;\n  background-color: #fff;\n  color: #42aab3;\n}\n#login .input-set input {\n  padding-bottom: 3px;\n}\n#login .input-set input:focus {\n  color: #333;\n}\n#login .login-input {\n  display: block;\n}\n#login .signup-input {\n  display: none;\n}\n#login input {\n  border: none;\n  height: 40px;\n  width: 300px;\n  font-size: 18px;\n  color: #333;\n}\n#login .button {\n  font-size: 14px;\n  letter-spacing: 1px;\n  width: 100%;\n  margin-top: 10px;\n  color: #fff;\n  border-bottom: 3px solid rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#login .button:focus {\n  border-bottom: 0px solid rgba(0,0,0,0.1);\n  color: #fff;\n}\n#login .login-button {\n  background-color: #6cd1da;\n}\n#login .login-button:hover {\n  background-color: #7fe1e9;\n  cursor: pointer;\n}\n#login .reminder {\n  font-size: 12px;\n  margin-top: 20px;\n  text-align: left;\n  color: rgba(255,255,255,0.7);\n}\n#login .reminder-2 {\n  cursor: pointer;\n  display: none;\n  transition: color 0.3s ease;\n}\n#login .reminder-2:hover {\n  color: #fff;\n}\n#login .signup-button {\n  background-color: #ffc565;\n}\n#login .signup-button:hover {\n  background-color: #ffd583;\n  cursor: pointer;\n}\n#solving {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n  margin-bottom: 20px;\n}\n#solving a {\n  color: #fff;\n}\n#solving .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solving .probs .prob {\n  animation-duration: 0.5s;\n  animation-name: fadein;\n  overflow: hidden;\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  cursor: pointer;\n  border-bottom: 1px solid #4db5cb;\n}\n#solving .probs .prob:hover {\n  opacity: 0.88;\n}\n#solving .probs .prob .wrapper-left {\n  float: left;\n  width: 40px;\n  height: 100%;\n  padding: 0;\n  width: 0%;\n  overflow: hidden;\n  transition: width 0.2s ease;\n}\n#solving .probs .prob .wrapper-left .btn-mark {\n  height: 40px;\n  text-align: center;\n  line-height: 40px;\n  color: rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#solving .probs .prob .wrapper-left .btn-mark:hover {\n  color: #fff;\n  cursor: pointer;\n}\n#solving .probs .prob .wrapper-left .btn-mark span {\n  margin-right: 0;\n}\n#solving .probs .prob .wrapper-left .btn-solve {\n  background-color: #ffc65c;\n}\n#solving .probs .prob .wrapper-left .btn-giveup {\n  background-color: #76afb3;\n}\n#solving .probs .prob:hover .wrapper-left {\n  width: 4%;\n}\n#solving .probs .prob .wrapper-right {\n  float: left;\n  padding: 25px 0 25px 20px;\n  box-shadow: -3px 0 3px rgba(0,0,0,0.15);\n  width: 96%;\n}\n#solving .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solving .probs .prob .tag {\n  color: #fff;\n  border: 1px solid rgba(255,255,255,0.7);\n  background-color: rgba(255,255,255,0);\n}\n#solving .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solved {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n  margin-bottom: 20px;\n}\n#solved .data-title {\n  padding-bottom: 15px;\n  color: #64c9de;\n  font-size: 18px;\n  font-weight: 400;\n}\n#solved a {\n  color: #fff;\n}\n#solved .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solved .probs .prob-blank {\n  background: #eaf0f0;\n  border: 1px solid #57b9cd;\n  padding: 25px 20px;\n  font-size: 16px;\n  font-weight: 400;\n  color: #57b9cd;\n}\n#solved .probs .prob-blank:after {\n  content: \"Empty\";\n}\n#solved .probs .prob {\n  animation-duration: 0.5s;\n  animation-name: fadein;\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 1px solid #4db5cb;\n}\n#solved .probs .prob:hover {\n  opacity: 0.88;\n}\n#solved .probs .prob .wrapper {\n  padding: 25px 20px;\n  width: 96%;\n}\n#solved .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solved .probs .prob .tag {\n  color: #fff;\n  border: 1px solid rgba(255,255,255,0.7);\n  background-color: rgba(255,255,255,0);\n}\n#solved .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solve {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 80%;\n  font-weight: 300;\n  color: #777;\n}\n#solve .prob {\n  float: left;\n  background: #fff;\n  width: 23%;\n  min-height: 140px;\n  padding: 0;\n  transition: all 0.2s ease;\n  margin-bottom: 10px;\n  margin-right: 10px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  animation-duration: 1s;\n  animation-name: slidein;\n}\n#solve .prob:hover {\n  box-shadow: 0 3px 0 rgba(0,0,0,0.1);\n  transform: translateY(-1px);\n}\n#solve .prob .wrapper {\n  padding: 20px 20px;\n}\n#solve .prob .wrapper-title {\n  padding: 20px 20px;\n  border-bottom: 1px solid #eaf0f0;\n}\n#solve .prob .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solve .prob .desc {\n  display: none;\n  margin-bottom: 20px;\n  font-size: 14px;\n}\n#solve .prob .desc-image {\n  display: none;\n  margin-top: 15px;\n  width: 100%;\n  height: auto;\n  cursor: zoom-in;\n}\n#solve .prob .request-bottom {\n  margin-top: 30px;\n  font-size: 12px;\n  padding-bottom: 10px;\n}\n#solve .prob .request-bottom .requester {\n  float: left;\n}\n#solve .prob .request-bottom .request-time {\n  float: right;\n}\n#solve .prob .fa-quote-right {\n  margin-left: 10px;\n}\n#solve .prob .btn-help {\n  display: block;\n  padding-bottom: -25px;\n  height: 50px;\n  width: 100%;\n  background-image: url(\"/assets/bg.png\");\n  text-align: center;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 50px;\n  color: #fff;\n  transition: -webkit-filter 0.3s ease;\n  -webkit-filter: brightness(1);\n  cursor: pointer;\n}\n#solve .prob .btn-help:after {\n  content: 'I want to help!';\n}\n#solve .prob .btn-help:hover {\n  -webkit-filter: brightness(1.05);\n}\n.desc-image-fullscreen-div {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.3);\n  z-index: 101;\n  cursor: zoom-out;\n}\n.desc-image-fullscreen {\n  width: 700px;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n#chat {\n  position: fixed;\n  left: 18%;\n  top: 70px;\n  bottom: 0;\n  right: 0;\n  font-weight: 300;\n  color: #666;\n}\n#chat input {\n  color: #333;\n}\n#chat input:focus {\n  color: #333;\n}\n#chat .chat-content {\n  background-color: #eaf0f0;\n  position: fixed;\n  bottom: 120px;\n  left: 18%;\n  right: 0;\n  top: 70px;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 2px solid rgba(255,255,255,0.8);\n  padding: 10px 2%;\n  overflow: scroll;\n}\n#chat .chat-content .msg-block {\n  overflow: auto;\n  margin-bottom: 15px;\n}\n#chat .chat-content .msg-block .msg {\n  color: #fff;\n  padding: 12px 16px;\n  border-radius: 3px;\n  letter-spacing: 0.5px;\n  font-size: 15px;\n  max-width: 80%;\n  overflow-wrap: break-word;\n}\n#chat .chat-content .msg-block .received {\n  background-color: #60c8d1;\n  float: left;\n}\n#chat .chat-content .msg-block .sent {\n  background-color: #999;\n  float: right;\n}\n#chat .chat-form {\n  background: #fff;\n  width: 96%;\n  height: 85px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-radius: 3px;\n  font-size: 20px;\n  position: absolute;\n  bottom: 15px;\n  left: 2%;\n}\n#chat .chat-form .send-text:hover {\n  background-color: #7ddbe4;\n}\n#chat .chat-box {\n  position: relative;\n  height: 100%;\n}\n#chat .input-text {\n  display: inline-block;\n  width: 90%;\n  height: 100%;\n}\n#chat .input-text textarea {\n  width: 100%;\n  height: 100%;\n  border: none;\n  padding: 10px 20px;\n  resize: none;\n  font-size: 15px;\n}\n#chat .send-text {\n  width: 10%;\n  height: 100%;\n  color: #fff;\n  font-size: 15px;\n  text-align: center;\n  background-color: #60c8d1;\n  float: right;\n  line-height: 50px;\n  transition: all 0.2s ease;\n  border: 0;\n  padding: 0;\n  cursor: pointer;\n}\n#chat .send-text span {\n  margin-right: 0;\n}\n#chat .send-text:focus {\n  outline: 0;\n}\n@-moz-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-o-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-moz-keyframes fadein {\n  from {\n    opacity: 0.3;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-webkit-keyframes fadein {\n  from {\n    opacity: 0.3;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-o-keyframes fadein {\n  from {\n    opacity: 0.3;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@keyframes fadein {\n  from {\n    opacity: 0.3;\n  }\n  to {\n    opacity: 1;\n  }\n}\n@-moz-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-webkit-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-o-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n", ""]);
 
 	// exports
 
@@ -563,14 +563,15 @@
 	  function App(props) {
 	    _classCallCheck(this, App);
 
-	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
+	    var _this3 = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
-	    _this2.state = { solvingBadgeNum: 0, solvedBadgeNum: 0 };
+	    _this3.state = { solvingBadgeNum: 0, solvedBadgeNum: 0 };
 
-	    _this2.getMyTicketsNumber = _this2.getMyTicketsNumber.bind(_this2);
-	    _this2.updateSolvingBadge = _this2.updateSolvingBadge.bind(_this2);
-	    _this2.updateSolvedBadge = _this2.updateSolvedBadge.bind(_this2);
-	    return _this2;
+	    _this3.getSolvingNumber = _this3.getSolvingNumber.bind(_this3);
+	    _this3.getSolvedNumber = _this3.getSolvedNumber.bind(_this3);
+	    _this3.updateSolvingBadge = _this3.updateSolvingBadge.bind(_this3);
+	    _this3.updateSolvedBadge = _this3.updateSolvedBadge.bind(_this3);
+	    return _this3;
 	  }
 
 	  _createClass(App, [{
@@ -586,24 +587,38 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.getMyTicketsNumber();
+	      this.getSolvingNumber();
+	      this.getSolvedNumber();
 	    }
 	  }, {
-	    key: 'getMyTicketsNumber',
-	    value: function getMyTicketsNumber() {
-	      var openRequests = Parse.Object.extend("Request");
-	      var currentUser = Parse.User.current();
-	      var query = new Parse.Query(openRequests);
-	      var that = this;
+	    key: 'getSolvingNumber',
+	    value: function getSolvingNumber() {
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1);
 
-	      query.equalTo("helper", currentUser);
-	      query.notEqualTo("helperSolved", 1);
+	      var _this = this;
+
 	      query.find({
 	        success: function success(data) {
-	          that.setState({ solvingBadgeNum: data.length });
+	          _this.setState({ solvingBadgeNum: data.length });
 	        },
 	        error: function error(_error) {
 	          console.log("Error: " + _error.code + " " + _error.message);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'getSolvedNumber',
+	    value: function getSolvedNumber() {
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).equalTo("helperSolved", 1).equalTo("requesterSolved", -1);
+
+	      var _this = this;
+
+	      query.find({
+	        success: function success(data) {
+	          _this.setState({ solvedBadgeNum: data.length });
+	        },
+	        error: function error(_error2) {
+	          console.log("Error: " + _error2.code + " " + _error2.message);
 	        }
 	      });
 	    }
@@ -25274,6 +25289,25 @@
 	        this.refs.descImage.src = this.props.photo["_url"];
 	        $(this.refs.descImage).show();
 	      }
+
+	      var tags = this.props.ticketObj.get("tags");
+	      for (var i = 0; i < tags.length; i += 1) {
+	        var tagName = tags[i].get("Name");
+	        switch (tagName) {
+	          case "Mac":
+	            $(this.refs.tags).append("<div class='tag mac'></div>");break;
+	          case "Software":
+	            $(this.refs.tags).append("<div class='tag software'></div>");break;
+	          case "Hardware":
+	            $(this.refs.tags).append("<div class='tag hardware'></div>");break;
+	          case "Windows":
+	            $(this.refs.tags).append("<div class='tag windows'></div>");break;
+	          case "Other":
+	            $(this.refs.tags).append("<div class='tag other'></div>");break;
+	          default:
+	            console.log("Tag error");
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'handleClick',
@@ -25328,8 +25362,7 @@
 	            _react2.default.createElement('span', { className: 'fa fa-quote-right' }),
 	            _react2.default.createElement('img', { className: 'desc-image', ref: 'descImage' })
 	          ),
-	          _react2.default.createElement('div', { className: 'tag adobe' }),
-	          _react2.default.createElement('div', { className: 'tag software' }),
+	          _react2.default.createElement('div', { className: 'tags', ref: 'tags' }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'request-bottom' },
@@ -25433,7 +25466,7 @@
 	  _createClass(SolveTicketsBox, [{
 	    key: 'getTickets',
 	    value: function getTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0).notEqualTo("allHelpers", Parse.User.current());
+	      var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("taken", 0).notEqualTo("allHelpers", Parse.User.current()).notEqualTo("requester", Parse.User.current().get("username"));
 
 	      var _this = this;
 
@@ -25467,7 +25500,7 @@
 	      } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
 	        (function () {
 	          // add the ticket
-	          var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("objectId", n.requestID).noEqualTo("allHelpers", Parse.User.current());
+	          var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("objectId", n.requestID).noEqualTo("allHelpers", Parse.User.current()).notEqualTo("requester", Parse.User.current().get("username"));
 
 	          var _this = _this5;
 
@@ -26406,8 +26439,32 @@
 	  }
 
 	  _createClass(Ticket, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var tags = this.props.ticketObj.get("tags");
+	      for (var i = 0; i < tags.length; i += 1) {
+	        var tagName = tags[i].get("Name");
+	        switch (tagName) {
+	          case "Mac":
+	            $(this.refs.tags).append("<div class='tag mac'></div>");break;
+	          case "Software":
+	            $(this.refs.tags).append("<div class='tag software'></div>");break;
+	          case "Hardware":
+	            $(this.refs.tags).append("<div class='tag hardware'></div>");break;
+	          case "Windows":
+	            $(this.refs.tags).append("<div class='tag windows'></div>");break;
+	          case "Other":
+	            $(this.refs.tags).append("<div class='tag other'></div>");break;
+	          default:
+	            console.log("Tag error");
+	        }
+	      }
+	    }
+	  }, {
 	    key: 'markSolve',
 	    value: function markSolve() {
+	      // maybe a confirm box?
+
 	      var currentUser = Parse.User.current();
 	      var requestObject = this.props.ticketObj;
 	      var _this = this;
@@ -26489,7 +26546,7 @@
 	              this.props.title,
 	              ' '
 	            ),
-	            _react2.default.createElement('div', { className: 'tag hardware' }),
+	            _react2.default.createElement('div', { className: 'tags', ref: 'tags' }),
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'requester' },
@@ -26569,7 +26626,7 @@
 	  _createClass(SolvingTicketsBox, [{
 	    key: 'getTickets',
 	    value: function getTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1);
 
 	      var _this = this;
 
@@ -26666,6 +26723,28 @@
 	  }
 
 	  _createClass(Ticket, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var tags = this.props.ticketObj.get("tags");
+	      for (var i = 0; i < tags.length; i += 1) {
+	        var tagName = tags[i].get("Name");
+	        switch (tagName) {
+	          case "Mac":
+	            $(this.refs.tags).append("<div class='tag mac'></div>");break;
+	          case "Software":
+	            $(this.refs.tags).append("<div class='tag software'></div>");break;
+	          case "Hardware":
+	            $(this.refs.tags).append("<div class='tag hardware'></div>");break;
+	          case "Windows":
+	            $(this.refs.tags).append("<div class='tag windows'></div>");break;
+	          case "Other":
+	            $(this.refs.tags).append("<div class='tag other'></div>");break;
+	          default:
+	            console.log("Tag error");
+	        }
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -26681,7 +26760,7 @@
 	            this.props.title,
 	            ' '
 	          ),
-	          _react2.default.createElement('div', { className: 'tag hardware' }),
+	          _react2.default.createElement('div', { className: 'tags', ref: 'tags' }),
 	          _react2.default.createElement(
 	            'div',
 	            { className: 'requester' },
@@ -26761,7 +26840,7 @@
 	  _createClass(SolvedTicketsBox, [{
 	    key: 'getPendingTickets',
 	    value: function getPendingTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).equalTo("helperSolved", 1).equalTo("requesterSolved", -1);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("helper", Parse.User.current()).equalTo("helperSolved", 1).equalTo("requesterSolved", -1);
 
 	      var _this = this;
 
@@ -26777,7 +26856,7 @@
 	  }, {
 	    key: 'getHistoryTickets',
 	    value: function getHistoryTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).equalTo("requesterSolved", 1);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("helper", Parse.User.current()).equalTo("requesterSolved", 1);
 
 	      var _this = this;
 

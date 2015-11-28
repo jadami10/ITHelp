@@ -7,12 +7,27 @@ class Ticket extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    const tags = this.props.ticketObj.get("tags");
+    for (let i = 0; i < tags.length; i += 1) {
+      const tagName = tags[i].get("Name");
+      switch(tagName) {
+        case "Mac": $(this.refs.tags).append("<div class='tag mac'></div>"); break;
+        case "Software": $(this.refs.tags).append("<div class='tag software'></div>"); break;
+        case "Hardware": $(this.refs.tags).append("<div class='tag hardware'></div>"); break;
+        case "Windows": $(this.refs.tags).append("<div class='tag windows'></div>"); break;
+        case "Other": $(this.refs.tags).append("<div class='tag other'></div>"); break;
+        default: console.log("Tag error");
+      }
+    }
+  }
+
   render() {
     return (
       <div className="prob" ref="prob">
         <div className="wrapper">
           <div className="title"> {this.props.title} </div>
-          <div className="tag hardware"></div>
+          <div className="tags" ref="tags"></div>
           <div className="requester"> 
             <span className="fa fa-user"></span>
             <span>{this.props.author}</span>
@@ -64,6 +79,7 @@ class SolvedTicketsBox extends React.Component {
 
   getPendingTickets() {
     const query = new Parse.Query(Parse.Object.extend("Request"))
+      .include("tags")
       .equalTo("helper", Parse.User.current())
       .equalTo("helperSolved", 1)
       .equalTo("requesterSolved", -1);
@@ -82,6 +98,7 @@ class SolvedTicketsBox extends React.Component {
 
   getHistoryTickets() {
     const query = new Parse.Query(Parse.Object.extend("Request"))
+      .include("tags")
       .equalTo("helper", Parse.User.current())
       .equalTo("requesterSolved", 1);
 
