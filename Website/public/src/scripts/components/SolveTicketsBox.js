@@ -180,6 +180,7 @@ class SolveTicketsBox extends React.Component {
 
     } else if (n.requestType === "TicketSolved") {
       // TODO: hide ticket from solving
+      this.props.updateSolvingBadge(-1);
     } else {
       console.log("Error: onRequestNotification");
     }

@@ -25520,9 +25520,10 @@
 	        this.props.updateSolvingBadge(1);
 	      } else if (n.requestType === "TicketSolved") {
 	        // TODO: hide ticket from solving
+	        this.props.updateSolvingBadge(-1);
 	      } else {
-	          console.log("Error: onRequestNotification");
-	        }
+	        console.log("Error: onRequestNotification");
+	      }
 	    }
 	  }, {
 	    key: 'componentDidMount',
