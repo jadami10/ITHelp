@@ -33,7 +33,10 @@ class GreetingBox extends React.Component {
     $(this.refs.gGreetings).hide();
     $(this.refs.gBack).hide();
     $(this.refs.gSessions).hide();
-    if (curPath.indexOf("solve") > -1 || curPath === "/app") {
+    $(this.refs.gHistory).hide();
+    if (curPath.indexOf("solved") > -1) {
+      $(this.refs.gHistory).show();
+    } else if (curPath.indexOf("solve") > -1 || curPath === "/app") {
       $(this.refs.gGreetings).show();
     } else if (curPath.indexOf("solving") > -1) {
       $(this.refs.gSessions).show();
@@ -53,6 +56,9 @@ class GreetingBox extends React.Component {
           </div>
           <div ref="gSessions">
             <span className='fa fa-commenting'></span> Current sessions
+          </div>
+          <div ref="gHistory">
+            <span className='fa fa-clock-o'></span> History
           </div>
           <div ref="gBack" className="top-left-greetings-animated">
             <Link to='/app/solving'>

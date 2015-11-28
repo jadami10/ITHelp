@@ -73,16 +73,32 @@ class ChatForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.submitMsg = this.submitMsg.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
+    this.submitMsg();
+  }
+
+  submitMsg() {
     const content = this.refs.content.value.trim();
     if (!content) {
       return;
     }
     this.props.onMsgSubmit(content);
     this.refs.content.value = '';
+  }
+
+  componentDidMount() {
+    const _this = this;
+    $(this.refs.content).keydown((e) => {
+      if (e.ctrlKey && e.keyCode == 13) {
+        // ctrl + enter
+        e.preventDefault();
+        _this.submitMsg();
+      }
+    })
   }
 
   render() {

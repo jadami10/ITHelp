@@ -11,6 +11,7 @@ import NaviBox from './components/NaviBox';
 import GreetingBox from './components/GreetingBox';
 import SolveTicketsBox from './components/SolveTicketsBox';
 import SolvingTicketsBox from './components/SolvingTicketsBox';
+import SolvedTicketsBox from './components/SolvedTicketsBox';
 import ChatBox from './components/ChatBox';
 
 class Entry extends React.Component {
@@ -26,14 +27,19 @@ class Entry extends React.Component {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {badgeNum: 0}
+    this.state = {solvingBadgeNum: 0, solvedBadgeNum : 0}
 
     this.getMyTicketsNumber = this.getMyTicketsNumber.bind(this);
-    this.update = this.update.bind(this);
+    this.updateSolvingBadge = this.updateSolvingBadge.bind(this);
+    this.updateSolvedBadge = this.updateSolvedBadge.bind(this);
   }
 
-  update() {
-    this.setState({badgeNum: this.state.badgeNum+1});
+  updateSolvingBadge(num) {
+    this.setState({solvingBadgeNum: this.state.solvingBadgeNum + num});
+  }
+
+  updateSolvedBadge(num) {
+    this.setState({solvedBadgeNum: this.state.solvedBadgeNum + num});
   }
 
   componentDidMount() {
@@ -50,7 +56,7 @@ class App extends React.Component {
     query.notEqualTo("helperSolved", 1);
     query.find({
       success: function(data) {
-        that.setState({badgeNum: data.length});
+        that.setState({solvingBadgeNum: data.length});
       },
       error: function(error) {
         console.log("Error: " + error.code + " " + error.message);
@@ -65,10 +71,15 @@ class App extends React.Component {
           <GreetingBox />
         </div>
         <div className="left-navi">
-          <NaviBox badgeNum={this.state.badgeNum} />
+          <NaviBox badgeNum={{
+            solving: this.state.solvingBadgeNum, 
+            solved: this.state.solvedBadgeNum}} />
         </div>
         <div className="right-content">
-          {React.cloneElement(this.props.children, {update: this.update})}
+          {React.cloneElement(
+            this.props.children, 
+            {updateSolvingBadge: this.updateSolvingBadge, 
+              updateSolvedBadge: this.updateSolvedBadge})}
         </div>
       </div>
     )
@@ -87,6 +98,7 @@ const Routes = (
         <Route path="solve" component={SolveTicketsBox}/>
         <Route path="solving" component={SolvingTicketsBox}/>
         <Route path="chat/:id" component={ChatBox}/>
+        <Route path="solved" component={SolvedTicketsBox}/>
       </Route>
     </Route>
 

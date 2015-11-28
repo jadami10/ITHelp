@@ -282,6 +282,7 @@ a
   box-shadow 0 2px 0 rgba(0,0,0,0.15)
   border-radius 3px
   overflow hidden
+  margin-bottom 20px
   a
     color #fff
   .probs
@@ -289,6 +290,7 @@ a
       font-size 16px
       font-weight 400
     .prob
+      overflow hidden
       background -webkit-linear-gradient(left, #71CFDA, #64C9DE)
       background -o-linear-gradient(left, #71CFDA, #64C9DE)
       background -moz-linear-gradient(left, #71CFDA, #64C9DE)
@@ -304,9 +306,117 @@ a
       cursor pointer
       border-bottom 1px solid #4DB5CB
       &:hover
-        opacity .85
+        opacity .88
+      .wrapper-left
+        float left
+        width 40px
+        height 100%
+        padding 0
+        width 0%
+        overflow hidden
+        transition width 0.2s ease
+        .btn-mark
+          height 40px
+          text-align center
+          line-height 40px
+          color rgba(0,0,0,.1)
+          transition all 0.2s ease
+          &:hover
+            color #fff
+            cursor pointer
+          span
+            margin-right 0
+        .btn-solve
+          background-color #FFC65C
+        .btn-giveup
+          background-color #76AFB3
+      &:hover .wrapper-left
+        width 4%
+      .wrapper-right
+        float left
+        padding 25px 0 25px 20px
+        box-shadow -3px 0 3px rgba(0,0,0,.15)
+        width 96%
+      .title
+        margin-bottom 15px
+        letter-spacing 1px
+        text-shadow 0 1px 0 rgba(0,0,0,.2)
+      .tag
+        display inline-block
+        font-size 10px
+        color #fff
+        text-align center
+        border-radius 3px
+        border 1px solid rgba(255,255,255,.7)
+        padding 7px 7px
+        transition all 0.3s ease
+        margin-right 5px
+      .adobe
+        background-color #e77b7b
+        &:after
+          content 'Adobe'
+      .software
+        background-color #9de7ee
+        &:after
+          content 'Software'
+      .hardware
+        &:after
+          content 'Hardware'
+      .requester
+        float right
+        font-size 14px
+        text-shadow 0 1px 0 rgba(0,0,0,.2)
+
+#solved
+  position absolute
+  margin-left 20%
+  margin-top 90px
+  width 78%
+  font-weight 300
+  color #fff
+  box-shadow 0 2px 0 rgba(0,0,0,0.15)
+  border-radius 3px
+  overflow hidden
+  margin-bottom 20px
+  .data-title
+    padding-bottom 15px
+    color #64C9DE
+    font-size 18px
+    font-weight 400
+  a
+    color #fff
+  .probs
+    .title
+      font-size 16px
+      font-weight 400
+    .prob-blank
+      background #EAF0F0
+      border 1px solid #57B9CD
+      padding 25px 20px
+      font-size 16px
+      font-weight 400
+      color #57B9CD
+      &:after
+        content "No data yet"
+    .prob
+      background -webkit-linear-gradient(left, #71CFDA, #64C9DE)
+      background -o-linear-gradient(left, #71CFDA, #64C9DE)
+      background -moz-linear-gradient(left, #71CFDA, #64C9DE)
+      background linear-gradient(left, #71CFDA, #64C9DE)
+      opacity 1
+      color #fff
+      width 100%
+      min-height 100px
+      padding 0
+      transition all 0.2s ease
+      background-repeat no-repeat
+      background-position 100%
+      border-bottom 1px solid #4DB5CB
+      &:hover
+        opacity .88
       .wrapper
         padding 25px 20px
+        width 96%
       .title
         margin-bottom 15px
         letter-spacing 1px

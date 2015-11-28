@@ -108,10 +108,9 @@ class SolveTicketsBox extends React.Component {
   }
 
   getTickets() {
-    console.log('ha')
     const query = new Parse.Query(Parse.Object.extend("Request"))
       .equalTo("taken", 0)
-      .notContainedIn("allHelpers", [Parse.User.current()]);
+      .notEqualTo("allHelpers", Parse.User.current());
 
     const _this = this;
 
@@ -144,7 +143,7 @@ class SolveTicketsBox extends React.Component {
       // add the ticket
       const query = new Parse.Query(Parse.Object.extend("Request"))
         .equalTo("objectId", n.requestID)
-        .notContainedIn("allHelpers", [Parse.User.current()]);
+        .noEqualTo("allHelpers", Parse.User.current());
 
       const _this = this;
 
@@ -161,10 +160,10 @@ class SolveTicketsBox extends React.Component {
 
     } else if (n.requestType === "TicketGranted") {
       // increment the badge
-      this.props.update();
+      this.props.updateSolvingBadge(1);
 
     } else if (n.requestType === "TicketSolved") {
-      // this.props.
+      // TODO: hide ticket from solving
     } else {
       console.log("Error: onRequestNotification");
     }

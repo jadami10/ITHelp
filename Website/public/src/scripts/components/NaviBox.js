@@ -6,7 +6,8 @@ class NaviBox extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     // Animate the badge
-    if (!(nextProps.badgeNum == this.props.badgeNum)) {
+    if (!(nextProps.badgeNum.solving == this.props.badgeNum.solving 
+        && nextProps.badgeNum.solved == this.props.badgeNum.solved )) {
       const numBadge = this.refs.numBadge;
       $(numBadge).removeClass("animated");
       setTimeout(() => {$(numBadge).addClass("animated")}, 10);
@@ -17,8 +18,11 @@ class NaviBox extends React.Component {
     const curPath = window.location.pathname;
     $(this.refs.solve).removeClass("navi-current");
     $(this.refs.solving).removeClass("navi-current");
+    $(this.refs.solved).removeClass("navi-current");
 
-    if (curPath.indexOf("solve") > -1 || curPath === '/app') {
+    if (curPath.indexOf("solved") > -1) {
+      $(this.refs.solved).addClass("navi-current");
+    } else if (curPath.indexOf("solve") > -1 || curPath === '/app') {
       $(this.refs.solve).addClass("navi-current");
     } else if (curPath.indexOf("solving") > -1 || curPath.indexOf("chat") > -1) {
       $(this.refs.solving).addClass("navi-current");
@@ -37,7 +41,10 @@ class NaviBox extends React.Component {
         </div>
 
         <Link to="/app/solve">
-          <div className="navi navi-current" ref="solve"><span className="fa fa-user-md"></span><span>SOLVE</span></div>
+          <div className="navi navi-current" ref="solve">
+            <span className="fa fa-user-md"></span>
+            <span>SOLVE</span>
+          </div>
         </Link>
 
         <Link to="/app/solving">
@@ -45,14 +52,25 @@ class NaviBox extends React.Component {
             <span className="fa fa-commenting"></span>
             <span>SOLVING</span>
             <div className="num-badge" ref="numBadge">
-              {this.props.badgeNum}
+              {this.props.badgeNum.solving}
             </div>
           </div>
         </Link>
 
-        <div className="navi" ref="solved"><span className="fa fa-clock-o"></span><span>SOLVED</span></div>
+        <Link to="/app/solved">
+          <div className="navi" ref="solved">
+            <span className="fa fa-clock-o"></span>
+            <span>SOLVED</span>
+            <div className="num-badge" ref="numBadge">
+              {this.props.badgeNum.solved}
+            </div>
+          </div>
+        </Link>
 
-        <div className="navi log-out" ref="logOut"><span className="fa fa-sign-out"></span><span>Log Out</span></div>
+        <div className="navi log-out" ref="logOut">
+          <span className="fa fa-sign-out"></span>
+          <span>Log Out</span>
+        </div>
       </div>
     );
   }

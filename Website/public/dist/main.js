@@ -127,7 +127,7 @@
 	exports.i(__webpack_require__(7), "");
 
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n  background-color: #eaf0f0;\n  font-size: 14px;\n  font-family: Lato, sans-serif;\n  min-width: 1000px;\n  color: #4a4a4a;\n}\ntextarea,\ninput {\n  outline: none;\n}\n.fa {\n  margin-right: 10px;\n}\na {\n  text-decoration: none;\n  outline: 0;\n  color: #777;\n  transition: all 0.3s ease;\n}\na:hover {\n  color: #4a4a4a;\n}\na:focus {\n  outline: 0;\n}\n.left-navi {\n  position: fixed;\n  width: 18%;\n  min-height: 100%;\n  background: -webkit-linear-gradient(#3f5655, #4a4a4a);\n  background: -o-linear-gradient(#3f5655, #4a4a4a);\n  background: -moz-linear-gradient(#3f5655, #4a4a4a);\n  background: linear-gradient(#3f5655, #4a4a4a);\n  font-size: 14px;\n  letter-spacing: 1px;\n  padding-bottom: 100px;\n}\n.left-navi .navi-logo {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  text-align: left;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  border-bottom: 1px solid rgba(0,0,0,0.1);\n}\n.left-navi .navi-logo img {\n  padding-left: 0px;\n  width: 100px;\n  height: auto;\n}\n.left-navi .navi {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  transition: all 0.3s ease;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  color: #a8baba;\n  border-left: 3px solid rgba(0,0,0,0);\n}\n.left-navi .navi:hover {\n  color: #f3f3f3;\n  border-left: 3px solid #0396a8;\n}\n.left-navi .navi-current {\n  background: #30c0cc;\n  color: #f3f3f3;\n  border-left: 3px solid #30c0cc;\n}\n.left-navi .log-out {\n  position: fixed;\n  background-color: #555;\n  width: 18%;\n  bottom: 0;\n}\n.left-navi .log-out:hover {\n  cursor: pointer;\n  border-left: 3px solid #999;\n}\n.top-greeting-bar {\n  opacity: 0.95;\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 70px;\n  width: 82%;\n  border-bottom: 1px solid #e2e2e2;\n  background-color: #fff;\n  padding: 0 2%;\n  z-index: 100;\n}\n.top-left-greetings {\n  float: left;\n  line-height: 70px;\n  color: #777;\n  font-size: 16px;\n  font-style: italic;\n  letter-spacing: 1px;\n}\n.top-left-greetings .top-left-greetings-animated {\n  animation-duration: 0.8s;\n  animation-name: slidein;\n}\n.top-right-avatar {\n  float: right;\n  margin-top: 15px;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background: #ccc;\n  color: #fff;\n  text-align: center;\n  font-size: 22px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.top-right-avatar:hover {\n  transform: rotate(15deg);\n  box-shadow: 0 3px 10px rgba(0,0,0,0.15);\n}\n.top-right-avatar-initial {\n  position: relative;\n  line-height: 40px;\n}\n.setting-form {\n  display: none;\n  opacity: 0.9;\n  position: absolute;\n  top: 65px;\n  right: 2%;\n  background: #fff;\n  width: 200px;\n  height: 70px;\n  z-index: 100;\n  text-align: center;\n  font-size: 16px;\n  color: #777;\n  line-height: 70px;\n  box-shadow: 0 3px 15px rgba(0,0,0,0.15);\n  cursor: pointer;\n}\n.setting-form:hover {\n  opacity: 1;\n}\n.num-badge {\n  font-size: 12px;\n  background: #e77b7b;\n  color: #fff;\n  margin-left: 30px;\n  letter-spacing: 0;\n  padding: 2px 10px;\n  border-radius: 12px;\n}\n.num-badge.animated {\n  -webkit-animation: anim-jump 0.5s;\n  -moz-animation: anim-jump 0.5s;\n  -ms-animation: anim-jump 0.5s;\n  -o-animation: anim-jump 0.5s;\n  animation: anim-jump 0.5s;\n}\n#login .wrapper {\n  background: -webkit-linear-gradient(#6dd2db, #5dbaca);\n  background: -o-linear-gradient(#6dd2db, #5dbaca);\n  background: -moz-linear-gradient(#6dd2db, #5dbaca);\n  background: linear-gradient(#6dd2db, #5dbaca);\n  font-size: 18px;\n  color: #777;\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  transition: all 0.6s ease;\n}\n#login .wrapper-signup {\n  background: -webkit-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -o-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -moz-linear-gradient(#6ddbc0, #5dc3ca);\n  background: linear-gradient(#6ddbc0, #5dc3ca);\n}\n#login .login {\n  text-align: center;\n  position: absolute;\n  top: 45%;\n  left: 50%;\n  width: 340px;\n  transform: translate(-50%, -50%);\n}\n#login .login img {\n  width: 100%;\n}\n#login .login-form {\n  margin-top: 50px;\n}\n#login .input-set {\n  display: block;\n  margin: 10px auto;\n  width: 100%;\n}\n#login .input-set span {\n  display: inline-block;\n  line-height: 40px;\n  margin-right: 0;\n  height: 40px;\n  width: 40px;\n  background-color: #fff;\n  color: #42aab3;\n}\n#login .input-set input {\n  padding-bottom: 3px;\n}\n#login .input-set input:focus {\n  color: #333;\n}\n#login .login-input {\n  display: block;\n}\n#login .signup-input {\n  display: none;\n}\n#login input {\n  border: none;\n  height: 40px;\n  width: 300px;\n  font-size: 18px;\n  color: #333;\n}\n#login .button {\n  font-size: 14px;\n  letter-spacing: 1px;\n  width: 100%;\n  margin-top: 10px;\n  color: #fff;\n  border-bottom: 3px solid rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#login .button:focus {\n  border-bottom: 0px solid rgba(0,0,0,0.1);\n  color: #fff;\n}\n#login .login-button {\n  background-color: #6cd1da;\n}\n#login .login-button:hover {\n  background-color: #7fe1e9;\n  cursor: pointer;\n}\n#login .reminder {\n  font-size: 12px;\n  margin-top: 20px;\n  text-align: left;\n  color: rgba(255,255,255,0.7);\n}\n#login .reminder-2 {\n  cursor: pointer;\n  display: none;\n  transition: color 0.3s ease;\n}\n#login .reminder-2:hover {\n  color: #fff;\n}\n#login .signup-button {\n  background-color: #ffc565;\n}\n#login .signup-button:hover {\n  background-color: #ffd583;\n  cursor: pointer;\n}\n#solving {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n}\n#solving a {\n  color: #fff;\n}\n#solving .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solving .probs .prob {\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  cursor: pointer;\n  border-bottom: 1px solid #4db5cb;\n}\n#solving .probs .prob:hover {\n  opacity: 0.85;\n}\n#solving .probs .prob .wrapper {\n  padding: 25px 20px;\n}\n#solving .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solving .probs .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  border: 1px solid rgba(255,255,255,0.7);\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solving .probs .prob .adobe {\n  background-color: #e77b7b;\n}\n#solving .probs .prob .adobe:after {\n  content: 'Adobe';\n}\n#solving .probs .prob .software {\n  background-color: #9de7ee;\n}\n#solving .probs .prob .software:after {\n  content: 'Software';\n}\n#solving .probs .prob .hardware:after {\n  content: 'Hardware';\n}\n#solving .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solve {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 80%;\n  font-weight: 300;\n  color: #777;\n}\n#solve .prob {\n  float: left;\n  background: #fff;\n  width: 23%;\n  min-height: 140px;\n  padding: 0;\n  transition: all 0.2s ease;\n  margin-bottom: 10px;\n  margin-right: 10px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  animation-duration: 1s;\n  animation-name: slidein;\n}\n#solve .prob:hover {\n  box-shadow: 0 3px 0 rgba(0,0,0,0.1);\n  transform: translateY(-1px);\n}\n#solve .prob .wrapper {\n  padding: 20px 20px;\n}\n#solve .prob .wrapper-title {\n  padding: 20px 20px;\n  border-bottom: 1px solid #eaf0f0;\n}\n#solve .prob .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solve .prob .desc {\n  display: none;\n  margin-bottom: 20px;\n  font-size: 14px;\n}\n#solve .prob .desc-image {\n  display: none;\n  margin-top: 15px;\n  width: 100%;\n  height: auto;\n  cursor: zoom-in;\n}\n#solve .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  font-weight: 400;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solve .prob .adobe {\n  background-color: #e77b7b;\n}\n#solve .prob .adobe:after {\n  content: 'Adobe';\n}\n#solve .prob .software {\n  background-color: #9de7ee;\n}\n#solve .prob .software:after {\n  content: 'Software';\n}\n#solve .prob .hardware {\n  background-color: #9dcaee;\n}\n#solve .prob .hardware:after {\n  content: 'Hardware';\n}\n#solve .prob .request-bottom {\n  margin-top: 30px;\n  font-size: 12px;\n  padding-bottom: 10px;\n}\n#solve .prob .request-bottom .requester {\n  float: left;\n}\n#solve .prob .request-bottom .request-time {\n  float: right;\n}\n#solve .prob .fa-quote-right {\n  margin-left: 10px;\n}\n#solve .prob .btn-help {\n  display: block;\n  padding-bottom: -25px;\n  height: 50px;\n  width: 100%;\n  background-image: url(\"/assets/bg.png\");\n  text-align: center;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 50px;\n  color: #fff;\n  transition: -webkit-filter 0.3s ease;\n  -webkit-filter: brightness(1);\n  cursor: pointer;\n}\n#solve .prob .btn-help:after {\n  content: 'I want to help!';\n}\n#solve .prob .btn-help:hover {\n  -webkit-filter: brightness(1.05);\n}\n.desc-image-fullscreen-div {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.3);\n  z-index: 101;\n  cursor: zoom-out;\n}\n.desc-image-fullscreen {\n  width: 700px;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n#chat {\n  position: fixed;\n  left: 18%;\n  top: 70px;\n  bottom: 0;\n  right: 0;\n  font-weight: 300;\n  color: #666;\n}\n#chat input {\n  color: #333;\n}\n#chat input:focus {\n  color: #333;\n}\n#chat .chat-content {\n  background-color: #eaf0f0;\n  position: fixed;\n  bottom: 120px;\n  left: 18%;\n  right: 0;\n  top: 70px;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 2px solid rgba(255,255,255,0.8);\n  padding: 10px 2%;\n  overflow: scroll;\n}\n#chat .chat-content .msg-block {\n  overflow: auto;\n  margin-bottom: 15px;\n}\n#chat .chat-content .msg-block .msg {\n  color: #fff;\n  padding: 12px 16px;\n  border-radius: 3px;\n  letter-spacing: 0.5px;\n  font-size: 15px;\n  max-width: 80%;\n  overflow-wrap: break-word;\n}\n#chat .chat-content .msg-block .received {\n  background-color: #60c8d1;\n  float: left;\n}\n#chat .chat-content .msg-block .sent {\n  background-color: #999;\n  float: right;\n}\n#chat .chat-form {\n  background: #fff;\n  width: 96%;\n  height: 85px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-radius: 3px;\n  font-size: 20px;\n  position: absolute;\n  bottom: 15px;\n  left: 2%;\n}\n#chat .chat-form .send-text:hover {\n  background-color: #7ddbe4;\n}\n#chat .chat-box {\n  position: relative;\n  height: 100%;\n}\n#chat .input-text {\n  display: inline-block;\n  width: 90%;\n  height: 100%;\n}\n#chat .input-text textarea {\n  width: 100%;\n  height: 100%;\n  border: none;\n  padding: 10px 20px;\n  resize: none;\n  font-size: 15px;\n}\n#chat .send-text {\n  width: 10%;\n  height: 100%;\n  color: #fff;\n  font-size: 15px;\n  text-align: center;\n  background-color: #60c8d1;\n  float: right;\n  line-height: 50px;\n  transition: all 0.2s ease;\n  border: 0;\n  padding: 0;\n  cursor: pointer;\n}\n#chat .send-text span {\n  margin-right: 0;\n}\n#chat .send-text:focus {\n  outline: 0;\n}\n@-moz-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-o-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-moz-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-webkit-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-o-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box;\n}\nbody {\n  margin: 0;\n  background-color: #eaf0f0;\n  font-size: 14px;\n  font-family: Lato, sans-serif;\n  min-width: 1000px;\n  color: #4a4a4a;\n}\ntextarea,\ninput {\n  outline: none;\n}\n.fa {\n  margin-right: 10px;\n}\na {\n  text-decoration: none;\n  outline: 0;\n  color: #777;\n  transition: all 0.3s ease;\n}\na:hover {\n  color: #4a4a4a;\n}\na:focus {\n  outline: 0;\n}\n.left-navi {\n  position: fixed;\n  width: 18%;\n  min-height: 100%;\n  background: -webkit-linear-gradient(#3f5655, #4a4a4a);\n  background: -o-linear-gradient(#3f5655, #4a4a4a);\n  background: -moz-linear-gradient(#3f5655, #4a4a4a);\n  background: linear-gradient(#3f5655, #4a4a4a);\n  font-size: 14px;\n  letter-spacing: 1px;\n  padding-bottom: 100px;\n}\n.left-navi .navi-logo {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  text-align: left;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  border-bottom: 1px solid rgba(0,0,0,0.1);\n}\n.left-navi .navi-logo img {\n  padding-left: 0px;\n  width: 100px;\n  height: auto;\n}\n.left-navi .navi {\n  width: 100%;\n  height: 70px;\n  padding-left: 20px;\n  transition: all 0.3s ease;\n  display: -webkit-box;\n  -webkit-box-align: center;\n  color: #a8baba;\n  border-left: 3px solid rgba(0,0,0,0);\n}\n.left-navi .navi:hover {\n  color: #f3f3f3;\n  border-left: 3px solid #0396a8;\n}\n.left-navi .navi-current {\n  background: #30c0cc;\n  color: #f3f3f3;\n  border-left: 3px solid #30c0cc;\n}\n.left-navi .log-out {\n  position: fixed;\n  background-color: #555;\n  width: 18%;\n  bottom: 0;\n}\n.left-navi .log-out:hover {\n  cursor: pointer;\n  border-left: 3px solid #999;\n}\n.top-greeting-bar {\n  opacity: 0.95;\n  position: fixed;\n  top: 0;\n  right: 0;\n  height: 70px;\n  width: 82%;\n  border-bottom: 1px solid #e2e2e2;\n  background-color: #fff;\n  padding: 0 2%;\n  z-index: 100;\n}\n.top-left-greetings {\n  float: left;\n  line-height: 70px;\n  color: #777;\n  font-size: 16px;\n  font-style: italic;\n  letter-spacing: 1px;\n}\n.top-left-greetings .top-left-greetings-animated {\n  animation-duration: 0.8s;\n  animation-name: slidein;\n}\n.top-right-avatar {\n  float: right;\n  margin-top: 15px;\n  width: 40px;\n  height: 40px;\n  border-radius: 50%;\n  background: #ccc;\n  color: #fff;\n  text-align: center;\n  font-size: 22px;\n  cursor: pointer;\n  transition: all 0.3s ease;\n}\n.top-right-avatar:hover {\n  transform: rotate(15deg);\n  box-shadow: 0 3px 10px rgba(0,0,0,0.15);\n}\n.top-right-avatar-initial {\n  position: relative;\n  line-height: 40px;\n}\n.setting-form {\n  display: none;\n  opacity: 0.9;\n  position: absolute;\n  top: 65px;\n  right: 2%;\n  background: #fff;\n  width: 200px;\n  height: 70px;\n  z-index: 100;\n  text-align: center;\n  font-size: 16px;\n  color: #777;\n  line-height: 70px;\n  box-shadow: 0 3px 15px rgba(0,0,0,0.15);\n  cursor: pointer;\n}\n.setting-form:hover {\n  opacity: 1;\n}\n.num-badge {\n  font-size: 12px;\n  background: #e77b7b;\n  color: #fff;\n  margin-left: 30px;\n  letter-spacing: 0;\n  padding: 2px 10px;\n  border-radius: 12px;\n}\n.num-badge.animated {\n  -webkit-animation: anim-jump 0.5s;\n  -moz-animation: anim-jump 0.5s;\n  -ms-animation: anim-jump 0.5s;\n  -o-animation: anim-jump 0.5s;\n  animation: anim-jump 0.5s;\n}\n#login .wrapper {\n  background: -webkit-linear-gradient(#6dd2db, #5dbaca);\n  background: -o-linear-gradient(#6dd2db, #5dbaca);\n  background: -moz-linear-gradient(#6dd2db, #5dbaca);\n  background: linear-gradient(#6dd2db, #5dbaca);\n  font-size: 18px;\n  color: #777;\n  display: block;\n  position: absolute;\n  width: 100%;\n  height: 100%;\n  transition: all 0.6s ease;\n}\n#login .wrapper-signup {\n  background: -webkit-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -o-linear-gradient(#6ddbc0, #5dc3ca);\n  background: -moz-linear-gradient(#6ddbc0, #5dc3ca);\n  background: linear-gradient(#6ddbc0, #5dc3ca);\n}\n#login .login {\n  text-align: center;\n  position: absolute;\n  top: 45%;\n  left: 50%;\n  width: 340px;\n  transform: translate(-50%, -50%);\n}\n#login .login img {\n  width: 100%;\n}\n#login .login-form {\n  margin-top: 50px;\n}\n#login .input-set {\n  display: block;\n  margin: 10px auto;\n  width: 100%;\n}\n#login .input-set span {\n  display: inline-block;\n  line-height: 40px;\n  margin-right: 0;\n  height: 40px;\n  width: 40px;\n  background-color: #fff;\n  color: #42aab3;\n}\n#login .input-set input {\n  padding-bottom: 3px;\n}\n#login .input-set input:focus {\n  color: #333;\n}\n#login .login-input {\n  display: block;\n}\n#login .signup-input {\n  display: none;\n}\n#login input {\n  border: none;\n  height: 40px;\n  width: 300px;\n  font-size: 18px;\n  color: #333;\n}\n#login .button {\n  font-size: 14px;\n  letter-spacing: 1px;\n  width: 100%;\n  margin-top: 10px;\n  color: #fff;\n  border-bottom: 3px solid rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#login .button:focus {\n  border-bottom: 0px solid rgba(0,0,0,0.1);\n  color: #fff;\n}\n#login .login-button {\n  background-color: #6cd1da;\n}\n#login .login-button:hover {\n  background-color: #7fe1e9;\n  cursor: pointer;\n}\n#login .reminder {\n  font-size: 12px;\n  margin-top: 20px;\n  text-align: left;\n  color: rgba(255,255,255,0.7);\n}\n#login .reminder-2 {\n  cursor: pointer;\n  display: none;\n  transition: color 0.3s ease;\n}\n#login .reminder-2:hover {\n  color: #fff;\n}\n#login .signup-button {\n  background-color: #ffc565;\n}\n#login .signup-button:hover {\n  background-color: #ffd583;\n  cursor: pointer;\n}\n#solving {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n  margin-bottom: 20px;\n}\n#solving a {\n  color: #fff;\n}\n#solving .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solving .probs .prob {\n  overflow: hidden;\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  cursor: pointer;\n  border-bottom: 1px solid #4db5cb;\n}\n#solving .probs .prob:hover {\n  opacity: 0.88;\n}\n#solving .probs .prob .wrapper-left {\n  float: left;\n  width: 40px;\n  height: 100%;\n  padding: 0;\n  width: 0%;\n  overflow: hidden;\n  transition: width 0.2s ease;\n}\n#solving .probs .prob .wrapper-left .btn-mark {\n  height: 40px;\n  text-align: center;\n  line-height: 40px;\n  color: rgba(0,0,0,0.1);\n  transition: all 0.2s ease;\n}\n#solving .probs .prob .wrapper-left .btn-mark:hover {\n  color: #fff;\n  cursor: pointer;\n}\n#solving .probs .prob .wrapper-left .btn-mark span {\n  margin-right: 0;\n}\n#solving .probs .prob .wrapper-left .btn-solve {\n  background-color: #ffc65c;\n}\n#solving .probs .prob .wrapper-left .btn-giveup {\n  background-color: #76afb3;\n}\n#solving .probs .prob:hover .wrapper-left {\n  width: 4%;\n}\n#solving .probs .prob .wrapper-right {\n  float: left;\n  padding: 25px 0 25px 20px;\n  box-shadow: -3px 0 3px rgba(0,0,0,0.15);\n  width: 96%;\n}\n#solving .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solving .probs .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  border: 1px solid rgba(255,255,255,0.7);\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solving .probs .prob .adobe {\n  background-color: #e77b7b;\n}\n#solving .probs .prob .adobe:after {\n  content: 'Adobe';\n}\n#solving .probs .prob .software {\n  background-color: #9de7ee;\n}\n#solving .probs .prob .software:after {\n  content: 'Software';\n}\n#solving .probs .prob .hardware:after {\n  content: 'Hardware';\n}\n#solving .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solved {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 78%;\n  font-weight: 300;\n  color: #fff;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  overflow: hidden;\n  margin-bottom: 20px;\n}\n#solved .data-title {\n  padding-bottom: 15px;\n  color: #64c9de;\n  font-size: 18px;\n  font-weight: 400;\n}\n#solved a {\n  color: #fff;\n}\n#solved .probs .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solved .probs .prob-blank {\n  background: #eaf0f0;\n  border: 1px solid #57b9cd;\n  padding: 25px 20px;\n  font-size: 16px;\n  font-weight: 400;\n  color: #57b9cd;\n}\n#solved .probs .prob-blank:after {\n  content: \"No data yet\";\n}\n#solved .probs .prob {\n  background: -webkit-linear-gradient(left, #71cfda, #64c9de);\n  background: -o-linear-gradient(left, #71cfda, #64c9de);\n  background: -moz-linear-gradient(left, #71cfda, #64c9de);\n  background: linear-gradient(left, #71cfda, #64c9de);\n  opacity: 1;\n  color: #fff;\n  width: 100%;\n  min-height: 100px;\n  padding: 0;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 1px solid #4db5cb;\n}\n#solved .probs .prob:hover {\n  opacity: 0.88;\n}\n#solved .probs .prob .wrapper {\n  padding: 25px 20px;\n  width: 96%;\n}\n#solved .probs .prob .title {\n  margin-bottom: 15px;\n  letter-spacing: 1px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solved .probs .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  border: 1px solid rgba(255,255,255,0.7);\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solved .probs .prob .adobe {\n  background-color: #e77b7b;\n}\n#solved .probs .prob .adobe:after {\n  content: 'Adobe';\n}\n#solved .probs .prob .software {\n  background-color: #9de7ee;\n}\n#solved .probs .prob .software:after {\n  content: 'Software';\n}\n#solved .probs .prob .hardware:after {\n  content: 'Hardware';\n}\n#solved .probs .prob .requester {\n  float: right;\n  font-size: 14px;\n  text-shadow: 0 1px 0 rgba(0,0,0,0.2);\n}\n#solve {\n  position: absolute;\n  margin-left: 20%;\n  margin-top: 90px;\n  width: 80%;\n  font-weight: 300;\n  color: #777;\n}\n#solve .prob {\n  float: left;\n  background: #fff;\n  width: 23%;\n  min-height: 140px;\n  padding: 0;\n  transition: all 0.2s ease;\n  margin-bottom: 10px;\n  margin-right: 10px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  box-shadow: 0 2px 0 rgba(0,0,0,0.15);\n  border-radius: 3px;\n  animation-duration: 1s;\n  animation-name: slidein;\n}\n#solve .prob:hover {\n  box-shadow: 0 3px 0 rgba(0,0,0,0.1);\n  transform: translateY(-1px);\n}\n#solve .prob .wrapper {\n  padding: 20px 20px;\n}\n#solve .prob .wrapper-title {\n  padding: 20px 20px;\n  border-bottom: 1px solid #eaf0f0;\n}\n#solve .prob .title {\n  font-size: 16px;\n  font-weight: 400;\n}\n#solve .prob .desc {\n  display: none;\n  margin-bottom: 20px;\n  font-size: 14px;\n}\n#solve .prob .desc-image {\n  display: none;\n  margin-top: 15px;\n  width: 100%;\n  height: auto;\n  cursor: zoom-in;\n}\n#solve .prob .tag {\n  display: inline-block;\n  font-size: 10px;\n  font-weight: 400;\n  color: #fff;\n  text-align: center;\n  border-radius: 3px;\n  padding: 7px 7px;\n  transition: all 0.3s ease;\n  margin-right: 5px;\n}\n#solve .prob .adobe {\n  background-color: #e77b7b;\n}\n#solve .prob .adobe:after {\n  content: 'Adobe';\n}\n#solve .prob .software {\n  background-color: #9de7ee;\n}\n#solve .prob .software:after {\n  content: 'Software';\n}\n#solve .prob .hardware {\n  background-color: #9dcaee;\n}\n#solve .prob .hardware:after {\n  content: 'Hardware';\n}\n#solve .prob .request-bottom {\n  margin-top: 30px;\n  font-size: 12px;\n  padding-bottom: 10px;\n}\n#solve .prob .request-bottom .requester {\n  float: left;\n}\n#solve .prob .request-bottom .request-time {\n  float: right;\n}\n#solve .prob .fa-quote-right {\n  margin-left: 10px;\n}\n#solve .prob .btn-help {\n  display: block;\n  padding-bottom: -25px;\n  height: 50px;\n  width: 100%;\n  background-image: url(\"/assets/bg.png\");\n  text-align: center;\n  font-size: 14px;\n  font-weight: 400;\n  line-height: 50px;\n  color: #fff;\n  transition: -webkit-filter 0.3s ease;\n  -webkit-filter: brightness(1);\n  cursor: pointer;\n}\n#solve .prob .btn-help:after {\n  content: 'I want to help!';\n}\n#solve .prob .btn-help:hover {\n  -webkit-filter: brightness(1.05);\n}\n.desc-image-fullscreen-div {\n  display: none;\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.3);\n  z-index: 101;\n  cursor: zoom-out;\n}\n.desc-image-fullscreen {\n  width: 700px;\n  height: auto;\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n#chat {\n  position: fixed;\n  left: 18%;\n  top: 70px;\n  bottom: 0;\n  right: 0;\n  font-weight: 300;\n  color: #666;\n}\n#chat input {\n  color: #333;\n}\n#chat input:focus {\n  color: #333;\n}\n#chat .chat-content {\n  background-color: #eaf0f0;\n  position: fixed;\n  bottom: 120px;\n  left: 18%;\n  right: 0;\n  top: 70px;\n  transition: all 0.2s ease;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-bottom: 2px solid rgba(255,255,255,0.8);\n  padding: 10px 2%;\n  overflow: scroll;\n}\n#chat .chat-content .msg-block {\n  overflow: auto;\n  margin-bottom: 15px;\n}\n#chat .chat-content .msg-block .msg {\n  color: #fff;\n  padding: 12px 16px;\n  border-radius: 3px;\n  letter-spacing: 0.5px;\n  font-size: 15px;\n  max-width: 80%;\n  overflow-wrap: break-word;\n}\n#chat .chat-content .msg-block .received {\n  background-color: #60c8d1;\n  float: left;\n}\n#chat .chat-content .msg-block .sent {\n  background-color: #999;\n  float: right;\n}\n#chat .chat-form {\n  background: #fff;\n  width: 96%;\n  height: 85px;\n  background-repeat: no-repeat;\n  background-position: 100%;\n  border-radius: 3px;\n  font-size: 20px;\n  position: absolute;\n  bottom: 15px;\n  left: 2%;\n}\n#chat .chat-form .send-text:hover {\n  background-color: #7ddbe4;\n}\n#chat .chat-box {\n  position: relative;\n  height: 100%;\n}\n#chat .input-text {\n  display: inline-block;\n  width: 90%;\n  height: 100%;\n}\n#chat .input-text textarea {\n  width: 100%;\n  height: 100%;\n  border: none;\n  padding: 10px 20px;\n  resize: none;\n  font-size: 15px;\n}\n#chat .send-text {\n  width: 10%;\n  height: 100%;\n  color: #fff;\n  font-size: 15px;\n  text-align: center;\n  background-color: #60c8d1;\n  float: right;\n  line-height: 50px;\n  transition: all 0.2s ease;\n  border: 0;\n  padding: 0;\n  cursor: pointer;\n}\n#chat .send-text span {\n  margin-right: 0;\n}\n#chat .send-text:focus {\n  outline: 0;\n}\n@-moz-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-webkit-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-o-keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@keyframes slidein {\n  from {\n    transform: translateX(-15px);\n    opacity: 0;\n  }\n  to {\n    transform: translateX(0px);\n    opacity: 1;\n  }\n}\n@-moz-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-webkit-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@-o-keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n@keyframes anim-jump {\n  0%, 100%, -ms-transform rotate(0), -webkit-transform rotate(0), transform rotate(0), 50% {\n    -webkit-filter: brightness(1.5);\n    filter: brightness(1.5);\n    -ms-transform: rotate(20deg);\n    -webkit-transform: rotate(20deg);\n    transform: rotate(20deg);\n  }\n}\n", ""]);
 
 	// exports
 
@@ -516,7 +516,11 @@
 
 	var _SolvingTicketsBox2 = _interopRequireDefault(_SolvingTicketsBox);
 
-	var _ChatBox = __webpack_require__(232);
+	var _SolvedTicketsBox = __webpack_require__(232);
+
+	var _SolvedTicketsBox2 = _interopRequireDefault(_SolvedTicketsBox);
+
+	var _ChatBox = __webpack_require__(233);
 
 	var _ChatBox2 = _interopRequireDefault(_ChatBox);
 
@@ -561,17 +565,23 @@
 
 	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
-	    _this2.state = { badgeNum: 0 };
+	    _this2.state = { solvingBadgeNum: 0, solvedBadgeNum: 0 };
 
 	    _this2.getMyTicketsNumber = _this2.getMyTicketsNumber.bind(_this2);
-	    _this2.update = _this2.update.bind(_this2);
+	    _this2.updateSolvingBadge = _this2.updateSolvingBadge.bind(_this2);
+	    _this2.updateSolvedBadge = _this2.updateSolvedBadge.bind(_this2);
 	    return _this2;
 	  }
 
 	  _createClass(App, [{
-	    key: 'update',
-	    value: function update() {
-	      this.setState({ badgeNum: this.state.badgeNum + 1 });
+	    key: 'updateSolvingBadge',
+	    value: function updateSolvingBadge(num) {
+	      this.setState({ solvingBadgeNum: this.state.solvingBadgeNum + num });
+	    }
+	  }, {
+	    key: 'updateSolvedBadge',
+	    value: function updateSolvedBadge(num) {
+	      this.setState({ solvedBadgeNum: this.state.solvedBadgeNum + num });
 	    }
 	  }, {
 	    key: 'componentDidMount',
@@ -590,7 +600,7 @@
 	      query.notEqualTo("helperSolved", 1);
 	      query.find({
 	        success: function success(data) {
-	          that.setState({ badgeNum: data.length });
+	          that.setState({ solvingBadgeNum: data.length });
 	        },
 	        error: function error(_error) {
 	          console.log("Error: " + _error.code + " " + _error.message);
@@ -611,12 +621,15 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'left-navi' },
-	          _react2.default.createElement(_NaviBox2.default, { badgeNum: this.state.badgeNum })
+	          _react2.default.createElement(_NaviBox2.default, { badgeNum: {
+	              solving: this.state.solvingBadgeNum,
+	              solved: this.state.solvedBadgeNum } })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'right-content' },
-	          _react2.default.cloneElement(this.props.children, { update: this.update })
+	          _react2.default.cloneElement(this.props.children, { updateSolvingBadge: this.updateSolvingBadge,
+	            updateSolvedBadge: this.updateSolvedBadge })
 	        )
 	      );
 	    }
@@ -641,7 +654,8 @@
 	      _react2.default.createElement(_reactRouter.IndexRoute, { component: _SolveTicketsBox2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'solve', component: _SolveTicketsBox2.default }),
 	      _react2.default.createElement(_reactRouter.Route, { path: 'solving', component: _SolvingTicketsBox2.default }),
-	      _react2.default.createElement(_reactRouter.Route, { path: 'chat/:id', component: _ChatBox2.default })
+	      _react2.default.createElement(_reactRouter.Route, { path: 'chat/:id', component: _ChatBox2.default }),
+	      _react2.default.createElement(_reactRouter.Route, { path: 'solved', component: _SolvedTicketsBox2.default })
 	    )
 	  )
 	);
@@ -25419,8 +25433,7 @@
 	  _createClass(SolveTicketsBox, [{
 	    key: 'getTickets',
 	    value: function getTickets() {
-	      console.log('ha');
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0).notContainedIn("allHelpers", [Parse.User.current()]);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("taken", 0).notEqualTo("allHelpers", Parse.User.current());
 
 	      var _this = this;
 
@@ -25454,7 +25467,7 @@
 	      } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
 	        (function () {
 	          // add the ticket
-	          var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("objectId", n.requestID).notContainedIn("allHelpers", [Parse.User.current()]);
+	          var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("objectId", n.requestID).noEqualTo("allHelpers", Parse.User.current());
 
 	          var _this = _this5;
 
@@ -25471,9 +25484,9 @@
 	        })();
 	      } else if (n.requestType === "TicketGranted") {
 	        // increment the badge
-	        this.props.update();
+	        this.props.updateSolvingBadge(1);
 	      } else if (n.requestType === "TicketSolved") {
-	        // this.props.
+	        // TODO: hide ticket from solving
 	      } else {
 	          console.log("Error: onRequestNotification");
 	        }
@@ -26092,7 +26105,7 @@
 	      var _this2 = this;
 
 	      // Animate the badge
-	      if (!(nextProps.badgeNum == this.props.badgeNum)) {
+	      if (!(nextProps.badgeNum.solving == this.props.badgeNum.solving && nextProps.badgeNum.solved == this.props.badgeNum.solved)) {
 	        (function () {
 	          var numBadge = _this2.refs.numBadge;
 	          $(numBadge).removeClass("animated");
@@ -26108,8 +26121,11 @@
 	      var curPath = window.location.pathname;
 	      $(this.refs.solve).removeClass("navi-current");
 	      $(this.refs.solving).removeClass("navi-current");
+	      $(this.refs.solved).removeClass("navi-current");
 
-	      if (curPath.indexOf("solve") > -1 || curPath === '/app') {
+	      if (curPath.indexOf("solved") > -1) {
+	        $(this.refs.solved).addClass("navi-current");
+	      } else if (curPath.indexOf("solve") > -1 || curPath === '/app') {
 	        $(this.refs.solve).addClass("navi-current");
 	      } else if (curPath.indexOf("solving") > -1 || curPath.indexOf("chat") > -1) {
 	        $(this.refs.solving).addClass("navi-current");
@@ -26159,18 +26175,27 @@
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'num-badge', ref: 'numBadge' },
-	              this.props.badgeNum
+	              this.props.badgeNum.solving
 	            )
 	          )
 	        ),
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'navi', ref: 'solved' },
-	          _react2.default.createElement('span', { className: 'fa fa-clock-o' }),
+	          _reactRouter.Link,
+	          { to: '/app/solved' },
 	          _react2.default.createElement(
-	            'span',
-	            null,
-	            'SOLVED'
+	            'div',
+	            { className: 'navi', ref: 'solved' },
+	            _react2.default.createElement('span', { className: 'fa fa-clock-o' }),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              'SOLVED'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'num-badge', ref: 'numBadge' },
+	              this.props.badgeNum.solved
+	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -26265,7 +26290,10 @@
 	      $(this.refs.gGreetings).hide();
 	      $(this.refs.gBack).hide();
 	      $(this.refs.gSessions).hide();
-	      if (curPath.indexOf("solve") > -1 || curPath === "/app") {
+	      $(this.refs.gHistory).hide();
+	      if (curPath.indexOf("solved") > -1) {
+	        $(this.refs.gHistory).show();
+	      } else if (curPath.indexOf("solve") > -1 || curPath === "/app") {
 	        $(this.refs.gGreetings).show();
 	      } else if (curPath.indexOf("solving") > -1) {
 	        $(this.refs.gSessions).show();
@@ -26298,6 +26326,12 @@
 	            { ref: 'gSessions' },
 	            _react2.default.createElement('span', { className: 'fa fa-commenting' }),
 	            ' Current sessions'
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { ref: 'gHistory' },
+	            _react2.default.createElement('span', { className: 'fa fa-clock-o' }),
+	            ' History'
 	          ),
 	          _react2.default.createElement(
 	            'div',
@@ -26361,24 +26395,93 @@
 	var Ticket = (function (_React$Component) {
 	  _inherits(Ticket, _React$Component);
 
-	  function Ticket() {
+	  function Ticket(props) {
 	    _classCallCheck(this, Ticket);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Ticket).apply(this, arguments));
+	    var _this2 = _possibleConstructorReturn(this, Object.getPrototypeOf(Ticket).call(this, props));
+
+	    _this2.markSolve = _this2.markSolve.bind(_this2);
+	    _this2.markGiveup = _this2.markGiveup.bind(_this2);
+	    return _this2;
 	  }
 
 	  _createClass(Ticket, [{
+	    key: 'markSolve',
+	    value: function markSolve() {
+	      var currentUser = Parse.User.current();
+	      var requestObject = this.props.ticketObj;
+	      var _this = this;
+
+	      requestObject.set({
+	        helperSolved: 1
+	      });
+
+	      requestObject.save(null, {
+	        success: function success(reqObject) {
+	          // decrease solving badge
+	          _this.props.updateSolvingBadge(-1);
+	          // increase solved badge
+	          _this.props.updateSolvedBadge(1);
+
+	          window.alert("You have successfully marked the ticket as solved. Pending accepted.");
+	          $(_this.refs.prob).hide();
+	        },
+	        error: function error(reqObject, _error) {
+	          console.log("Failed to solve the ticket with error: " + _error.code + " " + _error.message);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'markGiveup',
+	    value: function markGiveup() {
+	      var currentUser = Parse.User.current();
+	      var requestObject = this.props.ticketObj;
+	      var _this = this;
+
+	      requestObject.set({
+	        taken: 0
+	      });
+	      requestObject.unset("helper");
+
+	      requestObject.save(null, {
+	        success: function success(reqObject) {
+	          // decrease solving badge
+	          _this.props.updateSolvingBadge(-1);
+
+	          window.alert("You have successfully given up the ticket. (Think twice before picking up a ticket next time!)");
+	          $(_this.refs.prob).hide();
+	        },
+	        error: function error(reqObject, _error2) {
+	          console.log("Failed to give up the ticket with error: " + _error2.code + " " + _error2.message);
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'prob' },
+	        { className: 'prob', ref: 'prob' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'wrapper-left' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'btn-mark btn-solve', ref: 'btnSolve', onClick: this.markSolve },
+	            _react2.default.createElement('span', { className: 'fa fa-check' })
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'btn-mark btn-giveup', ref: 'btnGiveup', onClick: this.markGiveup },
+	            _react2.default.createElement('span', { className: 'fa fa-close' })
+	          )
+	        ),
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: '/app/chat/' + this.props.id },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'wrapper' },
+	            { className: 'wrapper-right' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'title' },
@@ -26420,6 +26523,8 @@
 	  _createClass(TicketList, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this4 = this;
+
 	      var ticketNodes = this.props.tickets.map(function (ticket, index) {
 	        return _react2.default.createElement(
 	          Ticket,
@@ -26428,7 +26533,10 @@
 	            title: ticket.get("title"),
 	            time: ticket.get("createdAt").toString().substring(0, 10),
 	            id: ticket.id,
-	            key: index },
+	            key: index,
+	            ticketObj: ticket,
+	            updateSolvedBadge: _this4.props.updateSolvedBadge,
+	            updateSolvingBadge: _this4.props.updateSolvingBadge },
 	          ticket.get("requestMessage")
 	        );
 	      });
@@ -26451,11 +26559,11 @@
 	  function SolvingTicketsBox(props) {
 	    _classCallCheck(this, SolvingTicketsBox);
 
-	    var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(SolvingTicketsBox).call(this, props));
+	    var _this5 = _possibleConstructorReturn(this, Object.getPrototypeOf(SolvingTicketsBox).call(this, props));
 
-	    _this4.state = { data: [] };
-	    _this4.getTickets = _this4.getTickets.bind(_this4);
-	    return _this4;
+	    _this5.state = { data: [] };
+	    _this5.getTickets = _this5.getTickets.bind(_this5);
+	    return _this5;
 	  }
 
 	  _createClass(SolvingTicketsBox, [{
@@ -26467,17 +26575,10 @@
 
 	      query.find({
 	        success: function success(data) {
-	          // if (data.length > 0) {
-	          //   for (var i = 0; i < data.length; i++) {
-	          //     console.log(data[i].get("helper"));
-	          //     subscribeToChat(data[i]);
-	          //   }
-	          // }
-	          // console.log("Successfully retrieved " + data.length + " scores.");
 	          _this.setState({ data: data });
 	        },
-	        error: function error(_error) {
-	          console.log("Error: " + _error.code + " " + _error.message);
+	        error: function error(_error3) {
+	          console.log("Error: " + _error3.code + " " + _error3.message);
 	        }
 	      });
 	    }
@@ -26486,6 +26587,24 @@
 	    value: function componentDidMount() {
 	      this.getTickets();
 	    }
+
+	    // componentWillReceiveProps(nextProps) {
+	    //   console.log("solvingTicket: ")
+	    //   console.log(this.props.solvingTicket)
+	    //   if (!(nextProps.solvingTicket.length == this.props.solvingTicket.length)) {
+	    //     // hide the ticket
+	    //     let tmpData = this.state.data;
+	    //     for (let id = 0; id < this.props.solvingTicket.length; id += 1) {
+	    //     for (let d = 0; d < tmpData.length; d += 1) {
+	    //       if (this.state.data[d].id === this.props.solvingTicket[id]) {
+	    //         tmpData.splice(d, 1);
+	    //       }
+	    //     }}
+	    //     this.setState(tmpData);
+	    //     return;
+	    //   }
+	    // }
+
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -26495,7 +26614,10 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'probs' },
-	          _react2.default.createElement(TicketList, { tickets: this.state.data })
+	          _react2.default.createElement(TicketList, {
+	            tickets: this.state.data,
+	            updateSolvedBadge: this.props.updateSolvedBadge,
+	            updateSolvingBadge: this.props.updateSolvingBadge })
 	        )
 	      );
 	    }
@@ -26510,6 +26632,209 @@
 
 /***/ },
 /* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(12);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(170);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Ticket = (function (_React$Component) {
+	  _inherits(Ticket, _React$Component);
+
+	  function Ticket(props) {
+	    _classCallCheck(this, Ticket);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Ticket).call(this, props));
+	  }
+
+	  _createClass(Ticket, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'prob', ref: 'prob' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'wrapper' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'title' },
+	            ' ',
+	            this.props.title,
+	            ' '
+	          ),
+	          _react2.default.createElement('div', { className: 'tag hardware' }),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'requester' },
+	            _react2.default.createElement('span', { className: 'fa fa-user' }),
+	            _react2.default.createElement(
+	              'span',
+	              null,
+	              this.props.author
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Ticket;
+	})(_react2.default.Component);
+
+	;
+
+	var TicketList = (function (_React$Component2) {
+	  _inherits(TicketList, _React$Component2);
+
+	  function TicketList() {
+	    _classCallCheck(this, TicketList);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(TicketList).apply(this, arguments));
+	  }
+
+	  _createClass(TicketList, [{
+	    key: 'render',
+	    value: function render() {
+	      if (this.props.tickets.length > 0) {
+	        var ticketNodes = this.props.tickets.map(function (ticket, index) {
+	          return _react2.default.createElement(
+	            Ticket,
+	            {
+	              author: ticket.get("requester"),
+	              title: ticket.get("title"),
+	              time: ticket.get("createdAt").toString().substring(0, 10),
+	              id: ticket.id,
+	              key: index,
+	              ticketObj: ticket },
+	            ticket.get("requestMessage")
+	          );
+	        });
+	        return _react2.default.createElement(
+	          'div',
+	          { className: 'ticket-list' },
+	          ticketNodes
+	        );
+	      } else {
+	        return _react2.default.createElement('div', { className: 'prob-blank' });
+	      }
+	    }
+	  }]);
+
+	  return TicketList;
+	})(_react2.default.Component);
+
+	;
+
+	var SolvedTicketsBox = (function (_React$Component3) {
+	  _inherits(SolvedTicketsBox, _React$Component3);
+
+	  function SolvedTicketsBox(props) {
+	    _classCallCheck(this, SolvedTicketsBox);
+
+	    var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(SolvedTicketsBox).call(this, props));
+
+	    _this4.state = { pendingData: [], historyData: [] };
+	    _this4.getPendingTickets = _this4.getPendingTickets.bind(_this4);
+	    _this4.getHistoryTickets = _this4.getHistoryTickets.bind(_this4);
+	    return _this4;
+	  }
+
+	  _createClass(SolvedTicketsBox, [{
+	    key: 'getPendingTickets',
+	    value: function getPendingTickets() {
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).equalTo("helperSolved", 1).equalTo("requesterSolved", -1);
+
+	      var _this = this;
+
+	      query.find({
+	        success: function success(data) {
+	          _this.setState({ pendingData: data });
+	        },
+	        error: function error(_error) {
+	          console.log("Error: " + _error.code + " " + _error.message);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'getHistoryTickets',
+	    value: function getHistoryTickets() {
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).equalTo("requesterSolved", 1);
+
+	      var _this = this;
+
+	      query.find({
+	        success: function success(data) {
+	          _this.setState({ historyData: data });
+	        },
+	        error: function error(_error2) {
+	          console.log("Error: " + _error2.code + " " + _error2.message);
+	        }
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.getPendingTickets();
+	      this.getHistoryTickets();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        { id: 'solved' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'data-title' },
+	          'Pending tickets'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'probs' },
+	          _react2.default.createElement(TicketList, { tickets: this.state.pendingData })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'data-title', style: { paddingTop: "30px" } },
+	          'History tickets'
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'probs' },
+	          _react2.default.createElement(TicketList, { tickets: this.state.historyData })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return SolvedTicketsBox;
+	})(_react2.default.Component);
+
+	;
+
+	exports.default = SolvedTicketsBox;
+
+/***/ },
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26647,6 +26972,7 @@
 	    var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(ChatForm).call(this, props));
 
 	    _this4.handleSubmit = _this4.handleSubmit.bind(_this4);
+	    _this4.submitMsg = _this4.submitMsg.bind(_this4);
 	    return _this4;
 	  }
 
@@ -26654,12 +26980,29 @@
 	    key: 'handleSubmit',
 	    value: function handleSubmit(e) {
 	      e.preventDefault();
+	      this.submitMsg();
+	    }
+	  }, {
+	    key: 'submitMsg',
+	    value: function submitMsg() {
 	      var content = this.refs.content.value.trim();
 	      if (!content) {
 	        return;
 	      }
 	      this.props.onMsgSubmit(content);
 	      this.refs.content.value = '';
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this = this;
+	      $(this.refs.content).keydown(function (e) {
+	        if (e.ctrlKey && e.keyCode == 13) {
+	          // ctrl + enter
+	          e.preventDefault();
+	          _this.submitMsg();
+	        }
+	      });
 	    }
 	  }, {
 	    key: 'render',
