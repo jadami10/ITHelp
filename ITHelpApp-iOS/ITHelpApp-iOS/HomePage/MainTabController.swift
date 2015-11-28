@@ -52,10 +52,15 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                 TicketHandler.getTicketByID(requestID, completion: self.handleTicketTaken)
 //                self.handleTicketTaken()
             } else if requestType == "RequestSolved" {
-                AsyncTicketManager.sharedInstance.moveTicketToSolvedById(requestID)
-                
+                print("Received notice to solve ticket")
+                if AsyncTicketManager.sharedInstance.getTicketByID(requestID) != nil {
+                    TicketHandler.getTicketByID(requestID, completion: self.handleTicketSolved)
+                } else {
+                    print("Could not find solved ticket")
+                }
             } else if requestType == "RequestReleased" {
                 // TODO: Handle ticket being released
+                TicketHandler.getTicketByID(requestID, completion: self.handleTicketReadded)
             } else if requestType == "RequestAdded" {
                 print("Received notice to add ticket")
                 if AsyncTicketManager.sharedInstance.getTicketByID(requestID) == nil {
@@ -87,6 +92,18 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         }
     }
     
+    func handleTicketReadded(ticket: PFObject?, error: NSError?) -> Void {
+        if ticket != nil {
+            print("Readding new ticket")
+            AsyncTicketManager.sharedInstance.readdTicket(ticket!)
+        } else if (error != nil) {
+            print("Could not readd ticket")
+            print(error)
+        } else {
+            print("Failed to readd ticket with no error")
+        }
+    }
+    
     func handleTicketTaken(ticket: PFObject?, error: NSError?) -> Void {
         
         if ticket != nil {
@@ -99,6 +116,21 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             print(error)
         } else {
             print("Failed to take ticket with no error")
+        }
+        
+    }
+    
+    func handleTicketSolved(ticket: PFObject?, error: NSError?) -> Void {
+        
+        if ticket != nil {
+            print("ticket has been solved")
+            AsyncTicketManager.sharedInstance.moveTicketToSolved(ticket!)
+            incrementRequestBadge()
+        } else if (error != nil) {
+            print("Could not solve ticket")
+            print(error)
+        } else {
+            print("Failed to solve ticket with no error")
         }
         
     }

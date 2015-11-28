@@ -85,6 +85,47 @@ class AsyncTicketManager {
         
     }
     
+    func readdTicket(object: PFObject) -> Void {
+        dispatch_barrier_async(concurrentTicketQueue) {
+            if self.openTickets.contains(object) {
+                print(String(format: "Readding ticket: %@", object.objectId!))
+            } else {
+                print(String(format: "Ticket %@ not open to be readded", object.objectId!))
+                return
+            }
+
+            let sectionAdd = 0
+            let sectionRemove = self.getSectionForQueue(&self.openTickets)
+            let rowAdd = self.pendingTickets.count
+            let rowRemove = self.openTickets.indexOf(object)
+            
+            self.pendingTickets.append(object)
+            self.openTickets.removeAtIndex(rowRemove!)
+            
+            let removeOpen = self.openTickets.count == 0
+            let addPending = self.pendingTickets.count == 1
+            
+            self.updateGlobalTicketCount()
+
+            dispatch_async(GlobalMainQueue) {
+                
+                self.listener.beginUpdates()
+                
+                self.listener.deleteRowsAtIndexPaths([NSIndexPath(forRow: rowRemove!, inSection: sectionRemove!)], withRowAnimation: .Fade)
+                if removeOpen {
+                    self.listener.deleteSections(NSIndexSet(index: sectionRemove!), withRowAnimation: .Fade)
+                }
+                self.listener.insertRowsAtIndexPaths([NSIndexPath(forRow: rowAdd, inSection: sectionAdd)], withRowAnimation: .Fade)
+                if addPending {
+                    self.listener.insertSections(NSIndexSet(index: sectionAdd), withRowAnimation: .Fade)
+                }
+                
+                self.listener.endUpdates()
+            }
+            
+        }
+    }
+    
     func moveTicketToTaken(newTicket: PFObject) {
         let ticket = self.getTicketByID(newTicket.objectId!)
         
@@ -127,6 +168,51 @@ class AsyncTicketManager {
                 
             }
 
+        }
+    }
+    
+    func moveTicketToSolved(newTicket: PFObject) {
+        let ticket = self.getTicketByID(newTicket.objectId!)
+        
+        if ticket != nil {
+            dispatch_barrier_async(concurrentTicketQueue) {
+                
+                let fromIndex = self.openTickets.indexOf(ticket!)
+                let toIndex = self.solvedTickets.count
+                
+                let removeFrom = (fromIndex >= 0 && self.openTickets.count == 1)
+                let addTo = toIndex == 0
+                
+                dispatch_async(GlobalMainQueue) {
+                    
+                    let fromSection = self.getSectionForQueue(&self.openTickets)
+                    if fromIndex >= 0 {
+                        self.openTickets.removeAtIndex(fromIndex!)
+                    }
+                    self.solvedTickets.append(newTicket)
+                    let toSection = self.getSectionForQueue(&self.solvedTickets)
+                    
+                    self.listener.beginUpdates()
+                    if fromIndex >= 0 && fromSection != nil && toSection != nil {
+                        
+                        
+                        self.listener.deleteRowsAtIndexPaths([NSIndexPath(forRow: fromIndex!, inSection: fromSection!)], withRowAnimation: .Fade)
+                        if removeFrom {
+                            self.listener.deleteSections(NSIndexSet(index: fromSection!), withRowAnimation: .Fade)
+                        }
+                        
+                    } else {
+                        print("ticket not in from or sections could not be found")
+                    }
+                    self.listener.insertRowsAtIndexPaths([NSIndexPath(forRow: toIndex, inSection: toSection!)], withRowAnimation: .Fade)
+                    if addTo {
+                        self.listener.insertSections(NSIndexSet(index: toSection!), withRowAnimation: .Fade)
+                    }
+                    self.listener.endUpdates()
+                }
+                
+            }
+            
         }
     }
     
@@ -174,50 +260,7 @@ class AsyncTicketManager {
         }
     }
     */
-    func moveTicketToSolvedById(id: String) {
-        dispatch_sync(concurrentTicketQueue) {
-            let ticket = self.getTicketByID(id)
-            if ticket != nil {
-//                self.moveTicketToSolved(ticket!)
-                //self.moveTicketToQueue(ticket!, from: &self.openTickets, to: &self.solvedTickets)
-            }
-        }
-    }
-    /*
-    private func moveTicketToSolved(ticket: PFObject) {
-        dispatch_sync(concurrentTicketQueue) {
-            
-            let openSection = self.getSectionForQueue(self.openTickets)
-            let solvedSection = self.getSectionForQueue(self.solvedTickets)
-            
-            dispatch_async(GlobalMainQueue) {
-                let openIndex = self.openTickets.indexOf(ticket)
-                let solvedIndex = self.solvedTickets.count
-                
-                let removeOpen = (openIndex >= 0 && self.openTickets.count == 1)
-                let addSolved = solvedIndex == 0
-                
-                if openIndex >= 0 {
-                    self.listener.beginUpdates()
-                    self.openTickets.removeAtIndex(openIndex!)
-                    self.solvedTickets.append(ticket)
-                    
-                    self.listener.deleteRowsAtIndexPaths([NSIndexPath(forRow: openIndex!, inSection: openSection!)], withRowAnimation: .Fade)
-                    if removeOpen {
-                        self.listener.deleteSections(NSIndexSet(index: openSection!), withRowAnimation: .Fade)
-                    }
-                    self.listener.insertRowsAtIndexPaths([NSIndexPath(forRow: solvedIndex, inSection: solvedSection!)], withRowAnimation: .Fade)
-                    if addSolved {
-                        self.listener.insertSections(NSIndexSet(index: solvedSection!), withRowAnimation: .Fade)
-                    }
-                    
-                    self.listener.endUpdates()
-                }
-            }
-        }
-        
-    }
-    */
+    
     func solveTicketByRequester(ticket: PFObject) {
         
         let openSection = self.getSectionForQueue(&self.openTickets)
@@ -244,18 +287,7 @@ class AsyncTicketManager {
             
         }
     }
-    /*
-    func solveTicketById(id: String) {
-        dispatch_sync(concurrentTicketQueue) {
-            
-            let ticket = self.getTicketByID(id)
-            if ticket != nil {
-                self.moveTicketToSolved(ticket!)
-            }
-            
-        }
-    }
-    */
+
     // try to delete a ticket, then reload table
     func deleteTicket(ticket: PFObject) {
         dispatch_barrier_async(concurrentTicketQueue) {
