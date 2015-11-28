@@ -26464,7 +26464,10 @@
 	  }, {
 	    key: 'markSolve',
 	    value: function markSolve() {
-	      // maybe a confirm box?
+	      var r = window.confirm("Are you sure you want to mark this ticket as solved?");
+	      if (r == false) {
+	        return;
+	      }
 
 	      var currentUser = Parse.User.current();
 	      var requestObject = this.props.ticketObj;
@@ -26492,6 +26495,11 @@
 	  }, {
 	    key: 'markGiveup',
 	    value: function markGiveup() {
+	      var r = window.confirm("Are you sure you want to give up this ticket?");
+	      if (r == false) {
+	        return;
+	      }
+
 	      var currentUser = Parse.User.current();
 	      var requestObject = this.props.ticketObj;
 	      var _this = this;

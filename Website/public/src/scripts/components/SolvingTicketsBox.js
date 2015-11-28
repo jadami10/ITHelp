@@ -26,7 +26,10 @@ class Ticket extends React.Component {
   }
 
   markSolve() {
-    // maybe a confirm box?
+    const r = window.confirm("Are you sure you want to mark this ticket as solved?");
+    if (r == false ) {
+      return;
+    }
 
     const currentUser = Parse.User.current();
     const requestObject = this.props.ticketObj;
@@ -53,6 +56,11 @@ class Ticket extends React.Component {
   }
 
   markGiveup() {
+    const r = window.confirm("Are you sure you want to give up this ticket?");
+    if (r == false ) {
+      return;
+    }
+
     const currentUser = Parse.User.current();
     const requestObject = this.props.ticketObj;
     const _this = this;
