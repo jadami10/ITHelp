@@ -26,6 +26,7 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     @IBOutlet weak var requestTextViewCount: UILabel!
     let maxTitleLength = 50
     let maxRequestLength = 500
+    var selectedTags = [Bool](count: TagManager.sharedInstance.getNumTags(), repeatedValue: false)
     
     
     override func viewDidLoad() {
@@ -204,6 +205,10 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         imagePicker.image = nil
         requestTextViewCount.text = String(format: "%d/%d", 0, maxRequestLength)
         titleTextFieldCount.text = String(format: "%d/%d", (titleTextField.text?.characters.count)!, maxTitleLength)
+        for i in 0 ... selectedTags.count - 1 {
+            selectedTags[i] = false
+        }
+        self.tagCollectionView.reloadData()
     }
     
     func releaseUI() {
@@ -228,6 +233,14 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
             let tag = TagManager.sharedInstance.getTag(indexPath)
             cell.tagVal.text = tag.tagName
             cell.backgroundColor = tag.tagColor
+            
+            if selectedTags[indexPath.row] {
+                cell.layer.borderWidth = 2.0
+                cell.layer.borderColor = UIConstants.mainUIColor.CGColor
+            } else {
+                cell.layer.borderWidth = 0.0
+                cell.layer.borderColor = UIConstants.mainUIColor.CGColor
+            }
 //            cell.tagVal.sizeToFit()
         } else {
             cell.backgroundColor = UIColor.whiteColor()
@@ -257,14 +270,17 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         cell?.layer.borderWidth = 2.0
         cell?.layer.borderColor = UIConstants.mainUIColor.CGColor
+        self.selectedTags[indexPath.row] = true
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        print("deselecting")
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
-        cell?.layer.borderWidth = 0
+        cell?.layer.borderWidth = 0.0
         cell?.layer.borderColor = UIConstants.mainUIColor.CGColor
+        self.selectedTags[indexPath.row] = false
     }
-    
+
     func getSelectedTags() -> [PFObject] {
         var selTags = [PFObject]()
         let paths = self.tagCollectionView.indexPathsForSelectedItems()

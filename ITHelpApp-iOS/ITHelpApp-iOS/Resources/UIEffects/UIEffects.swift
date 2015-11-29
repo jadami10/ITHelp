@@ -65,6 +65,19 @@ extension UIView {
     
 }
 
+extension UICollectionView {
+    
+    func deselectAll() {
+        if let paths = self.indexPathsForSelectedItems() {
+            for path in paths {
+                self.deselectItemAtIndexPath(path, animated: true)
+            }
+            self.reloadData()
+        }
+    }
+    
+}
+
 extension UIViewController {
     
     func presentAlert(title: NSString, message: NSString, completion: ((UIAlertAction) -> Void)?) {

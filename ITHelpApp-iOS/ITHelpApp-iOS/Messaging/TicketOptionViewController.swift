@@ -127,7 +127,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
 //        self.view.userInteractionEnabled = false
 //        self.busyFrame = self.progressBarDisplayer("Closing", indicator: true)
 //        TicketHandler.markTicketSolved(ticket!, completion: self.checkSolved)
-        TicketHandler.solveTicketEventually(ticket!)
+//        TicketHandler.solveTicketEventually(ticket!)
         AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket!)
     }
     
