@@ -92,6 +92,8 @@ class TicketTableAsyncViewController: UITableViewController, UIBlockableProtocol
             return cell
         }
         
+        cell.ticket = ticketObject!
+        cell.setCollectionViewAsSelf()
         cell.ticketTitleField.text = (ticketObject!["title"] as! String)
         
         if let curTicket = ticketObject!["helper"] as? PFUser, let curHelper = curTicket.username {

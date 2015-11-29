@@ -22,8 +22,10 @@ class InitViewController: UIViewController {
         let loggedIn = defaults.boolForKey("stayLoggedIn")
         let curUser = PFUser.currentUser()
         if loggedIn && curUser != nil && curUser?.username != nil {
+            print("already logged in. going home.")
             goToHomePage()
         } else {
+            print("going to login")
             self.goToLoginPage()
         }
     

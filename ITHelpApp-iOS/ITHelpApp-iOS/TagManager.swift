@@ -49,6 +49,19 @@ class TagManager {
         return tags[path.row]
     }
     
+    func getTagByRow(row: Int) -> RequestTags {
+        return tags[row]
+    }
+    
+    func getTagByID(id: String) -> RequestTags? {
+        for tag in self.tags {
+            if tag.tagObject.objectId == id {
+                return tag
+            }
+        }
+        return nil
+    }
+    
 }
 
 class RequestTags {

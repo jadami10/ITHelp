@@ -264,6 +264,7 @@ class AsyncTicketManager {
     func solveTicketByRequester(ticket: PFObject) {
         
         let openSection = self.getSectionForQueue(&self.openTickets)
+        
         dispatch_barrier_async(concurrentTicketQueue) {
             if let index = self.openTickets.indexOf(ticket) {
                 TicketHandler.solveTicketEventually(ticket)
