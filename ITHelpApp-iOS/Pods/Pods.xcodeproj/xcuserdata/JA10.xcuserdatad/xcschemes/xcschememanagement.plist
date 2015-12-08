@@ -4,55 +4,55 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Bolts.xcscheme_^#shared#^_</key>
+		<key>Bolts.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Parse.xcscheme_^#shared#^_</key>
+		<key>Parse.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods-ITHelpApp-iOS.xcscheme_^#shared#^_</key>
+		<key>Pods-ITHelpApp-iOS.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>PubNub.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>310AE5712D3270C3ECA1EF0BFAA7BA11</key>
+		<key>3AA412D1A45C0EFFBE4CFA4DDF820C30</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4531E4B9638F76113561AF7194D5C23B</key>
+		<key>708E01B006A9F88B3C13711562282B5E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4B23C7D6472ECBB05E10EB515117A479</key>
+		<key>9341A4EA2E1211609736A33B1A69EBC7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>53D3287ED245BA8747901A287485473A</key>
+		<key>C9D4FC636433B837414659AA32997325</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FE077BD03345C232ED11F39976D405DD</key>
+		<key>E44492EC4984CFD890A4E682A67ADB14</key>
 		<dict>
 			<key>primary</key>
 			<true/>

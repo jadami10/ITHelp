@@ -36,7 +36,7 @@ class TicketTableCellTableViewCell: UITableViewCell, UICollectionViewDataSource,
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TagCell", forIndexPath: indexPath) as! RequestTagCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("TicketTagCell", forIndexPath: indexPath) as! RequestTagCell
         if indexPath.section == 0 {
             let row = indexPath.row
             if row <= ticket["tags"].count {

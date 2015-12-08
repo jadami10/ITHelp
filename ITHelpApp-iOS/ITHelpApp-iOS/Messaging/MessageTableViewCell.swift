@@ -11,8 +11,7 @@ import UIKit
 class MessageTableViewCell: UITableViewCell {
 
     @IBOutlet weak var messageText: UILabel!
-    @IBOutlet weak var leftPortrait: UIImageView!
-    @IBOutlet weak var rightPortrait: UIImageView!
+    @IBOutlet weak var portrait: UIImageView!
     
     func setMessageText(text: String, isSelf: Bool) {
         
@@ -26,11 +25,12 @@ class MessageTableViewCell: UITableViewCell {
             self.messageText.textColor = UIColor.blackColor()
             self.messageText.textAlignment = NSTextAlignment.Left
         }
+        /*
         self.messageText.layer.cornerRadius = 8
         self.messageText.layer.masksToBounds = true
         self.messageText.adjustsFontSizeToFitWidth = false
         self.messageText.numberOfLines = 0
-
+        */
         //self.messageText.frame.width =
         //self.messageText = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 10000))
         /*
@@ -48,18 +48,18 @@ class MessageTableViewCell: UITableViewCell {
         */
     }
     
-    func setPortrait(isMe: Bool) {
+    func setMessagePortrait(isMe: Bool) {
         if (isMe) {
-            self.rightPortrait.image = UIImage(named: "person_blue.png")
+            self.portrait.image = UIImage(named: "person_blue.png")
         } else {
-            self.leftPortrait.image = UIImage(named: "person_gray.png")
+            self.portrait.image = UIImage(named: "person_gray.png")
         }
 
     }
     
     func removePortrait() {
-        self.rightPortrait.image = nil
-        self.leftPortrait.image = nil
+        self.portrait.image = nil
+        self.portrait.image = nil
     }
 
 }

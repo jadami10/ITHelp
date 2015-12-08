@@ -274,7 +274,6 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        print("deselecting")
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         cell?.layer.borderWidth = 0.0
         cell?.layer.borderColor = UIConstants.mainUIColor.CGColor

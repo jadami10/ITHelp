@@ -174,6 +174,7 @@ class TicketTableAsyncViewController: UITableViewController, UIBlockableProtocol
     func goToMessagePage(ticket: PFObject) {
         let storyboard = UIStoryboard(name: "message", bundle: nil)
         let controller = storyboard.instantiateViewControllerWithIdentifier("textTable") as! MessageViewController
+//        let controller = storyboard.instantiateViewControllerWithIdentifier("SlackMessage") as! SlackMessagingView
         controller.ticket = ticket
         self.navigationController?.pushViewController(controller, animated: true)
     }
