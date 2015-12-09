@@ -128,7 +128,7 @@ class TicketOptionViewController: UIViewController, UITableViewDataSource {
 //        self.busyFrame = self.progressBarDisplayer("Closing", indicator: true)
 //        TicketHandler.markTicketSolved(ticket!, completion: self.checkSolved)
 //        TicketHandler.solveTicketEventually(ticket!)
-        AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket!)
+        AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket!,isMe: true)
     }
     
     func checkSolved(isSolved: Bool, error: NSError?) -> Void {

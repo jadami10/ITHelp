@@ -13,7 +13,12 @@ class InitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        TagManager.sharedInstance.getAvailableTags()
+        do {
+            try TagManager.sharedInstance.getAvailableTags()
+        } catch let error as NSError {
+            print("could not get tags")
+            print(error)
+        }
         // Do any additional setup after loading the view.
     }
     

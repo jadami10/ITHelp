@@ -16,9 +16,18 @@ class TagManager {
     var tags = [RequestTags]()
     var defaultTags = [PFObject]()
     
-    func getAvailableTags() {
+    func getAvailableTags() throws {
         let query = PFQuery(className:"Tags")
         //query.whereKey("sender", equalTo:username)
+        let objects = try query.findObjects()
+        for object in objects {
+            let tag = RequestTags(name: object["Name"] as! String, color: object["Color"] as! String, object: object)
+            self.tags.append(tag)
+            if object["Default"] as! Bool {
+                self.defaultTags.append(object)
+            }
+        }
+        /*
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
@@ -39,6 +48,7 @@ class TagManager {
                 print("Error: \(error!))")
             }
         }
+        */
     }
     
     func getNumTags() -> Int {

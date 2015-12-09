@@ -138,7 +138,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if application.applicationState == UIApplicationState.Background || application.applicationState == UIApplicationState.Inactive {
             PFPush.handlePush(userInfo)
-            print("push notification info", userInfo)
+            print("push background info", userInfo)
         } else {
             print("push notification info", userInfo)
         }

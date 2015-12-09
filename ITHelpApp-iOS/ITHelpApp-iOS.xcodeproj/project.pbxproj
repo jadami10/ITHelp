@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C1CDF351BDCFB7C00621C28 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF321BDCFB7C00621C28 /* AppIcon.appiconset */; };
 		4C5713331BDCEBAC006646CC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5713311BDCEB45006646CC /* Parse.framework */; };
-		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; };
 		68075ED71BD6A4EB00975B5C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68075ED61BD6A4EB00975B5C /* Message.swift */; };
 		68075ED91BD80C6A00975B5C /* forward.png in Resources */ = {isa = PBXBuildFile; fileRef = 68075ED81BD80C6A00975B5C /* forward.png */; };
 		68088E651BF585B200D7C6A4 /* cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = 68088E641BF585B200D7C6A4 /* cancel.png */; };

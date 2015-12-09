@@ -62,11 +62,14 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     
     //adding photo functionality - need to test with real device
     @IBAction func takePhoto() {
+        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
             imagePickerView =  UIImagePickerController()
             imagePickerView.delegate = self
             imagePickerView.sourceType = .Camera
-            
             presentViewController(imagePickerView, animated: true, completion: checkImageButton)
+        } else {
+            self.presentAlert("No Rear Camera", message: "Camera not available", completion: nil)
+        }
 
     }
     
@@ -274,7 +277,6 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     }
     
     func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        print("deselecting")
         let cell = collectionView.cellForItemAtIndexPath(indexPath)
         cell?.layer.borderWidth = 0.0
         cell?.layer.borderColor = UIConstants.mainUIColor.CGColor

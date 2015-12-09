@@ -97,6 +97,11 @@ class TicketHandler{
         ticket.saveEventually()
     }
     
+    static func declineSolutionEventually(ticket: PFObject) {
+        ticket.setValue(0, forKey: "requesterSolved")
+        ticket.saveEventually()
+    }
+    
     static func getReqChannel() -> String {
         var reqChannel = "RequestChannel"
         let query = PFQuery(className:"Config")

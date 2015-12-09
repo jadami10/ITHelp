@@ -58,6 +58,20 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                 } else {
                     print("Could not find solved ticket")
                 }
+            } else if requestType == "TicketSolved" {
+                print("Received notice I solved ticket")
+                if let ticket = AsyncTicketManager.sharedInstance.getTicketByID(requestID) {
+                    AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket, isMe: false)
+                } else {
+                    print("Could not find solved ticket")
+                }
+            } else if requestType == "SolutionDeclined" {
+                print("Received notice I declined solution")
+                if let ticket = AsyncTicketManager.sharedInstance.getTicketByID(requestID) {
+                    AsyncTicketManager.sharedInstance.declineSolutionByRequester(ticket, isMe: false)
+                } else {
+                    print("Could not find solved ticket")
+                }
             } else if requestType == "RequestReleased" {
                 // TODO: Handle ticket being released
                 TicketHandler.getTicketByID(requestID, completion: self.handleTicketReadded)
@@ -110,6 +124,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             print("ticket has been taken")
             AsyncTicketManager.sharedInstance.moveTicketToTaken(ticket!)
             incrementRequestBadge()
+            alertedTicket = ticket
             self.presentYesNoAlert("Someone is here to help!", message: "Go to your ticket?", completion: self.goToTicket)
         } else if (error != nil) {
             print("Could not take ticket")
@@ -126,6 +141,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             print("ticket has been solved")
             AsyncTicketManager.sharedInstance.moveTicketToSolved(ticket!)
             incrementRequestBadge()
+            self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: self.goToTicket)
         } else if (error != nil) {
             print("Could not solve ticket")
             print(error)
@@ -133,10 +149,6 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             print("Failed to solve ticket with no error")
         }
         
-    }
-    
-    func handleTicketSolved() {
-        self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: self.goToTicket)
     }
     
     func handleTicketReleased() {

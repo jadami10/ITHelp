@@ -19,9 +19,13 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var messageTextField: UITextView!
     @IBOutlet weak var textTable: UITableView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var messageView: UIView!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var lastHelperIndex = -1
     var lastUserIndex = -1
+    
+    var keyboardShowing: Bool!
     
     var messages: [Message?] = []
 
@@ -36,6 +40,20 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func gotMessages() {
+
+        
+        if ticket!["helperSolved"] as! Int == 1 && ticket!["requesterSolved"] as! Int != 0 {
+            self.messageView.userInteractionEnabled = false
+            self.messageTextField.userInteractionEnabled = false
+//            self.messageView.removeFromSuperview()
+            let msg = Message(sender: "", message: "", time: NSDate())
+            msg.solution = true
+            self.messages.append(msg)
+            
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.bottomConstraint.constant -= self.messageView.frame.height
+            })
+        }
         self.textTable.reloadData()
         self.busyFrame?.removeFromSuperview()
         self.view.userInteractionEnabled = true
@@ -49,15 +67,22 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             messages = []
             self.refreshMessage()
         }
-//        self.tabBarController?.tabBar.hidden = true
         
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+        self.tableViewScrollToBottom(true)
+        self.tabBarController?.tabBar.hidden = true
+        
+        
 //        self.tabBarController?.tabBar.hidden = false
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.keyboardShowing = false
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+        self.automaticallyAdjustsScrollViewInsets = false
+        
         self.hidesBottomBarWhenPushed = true
 
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -65,6 +90,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
         let optionButton = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: "goToOptionPage")
         self.navigationItem.rightBarButtonItem = optionButton
+        
+        self.textTable.estimatedRowHeight = 80
+        self.textTable.rowHeight = UITableViewAutomaticDimension
+        
+        self.textTable.setNeedsLayout()
+        self.textTable.layoutIfNeeded()
         
         if let ticket = ticket {
             if (reqHandler == nil) {
@@ -84,10 +115,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     }
     
-//    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.dismissKeyboard()
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: self.view.window)
 //        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: self.view.window)
-//    }
+    }
     
     func setupMessageView() {
         
@@ -105,12 +138,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         messageTextField.delegate = self
         
         // size message field correctly
-        let fixedWidth : CGFloat = messageTextField.frame.size.width
-        let newSize : CGSize = messageTextField.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)))
-        var newFrame : CGRect = messageTextField.frame
-        newFrame.size = CGSizeMake(CGFloat(fmaxf((Float)(newSize.width), (Float)(fixedWidth))),newSize.height)
-        
-        messageTextField.frame = newFrame
+//        let fixedWidth : CGFloat = messageTextField.frame.size.width
+//        let newSize : CGSize = messageTextField.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)))
+//        var newFrame : CGRect = messageTextField.frame
+//        newFrame.size = CGSizeMake(CGFloat(fmaxf((Float)(newSize.width), (Float)(fixedWidth))),newSize.height)
+//        
+//        messageTextField.frame = newFrame
     }
     
     @IBAction func sendPressed(sender: AnyObject) {
@@ -140,7 +173,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         return true
     }
-    
+    /*
     func textViewDidChange(textView: UITextView) {
         let fixedWidth : CGFloat = textView.frame.size.width
         let newSize : CGSize = textView.sizeThatFits(CGSizeMake(fixedWidth, CGFloat(MAXFLOAT)))
@@ -151,7 +184,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         print(newFrame.size)
 
     }
-
+    */
     func checkMessage(result: NSError?) -> Void {
         if let error = result {
             
@@ -206,22 +239,28 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         // self goes to right
         
         if let message = messages[indexPath.row]?.message {
-            let cell = textTable.dequeueReusableCellWithIdentifier("MessageCell", forIndexPath: indexPath) as! MessageTableViewCell
-            let isMe = messages[indexPath.row]!.sender == PFUser.currentUser()?.username
             
-            cell.setMessageText(message, isSelf: isMe)
-            
-            //let count = messages.count
-            let row = indexPath.row
-            if (row == lastUserIndex) {
-                cell.setPortrait(true)
-            } else if (row == lastHelperIndex) {
-                cell.setPortrait(false)
+            if messages[indexPath.row]?.solution == true {
+                let cell = textTable.dequeueReusableCellWithIdentifier("SolvedCell", forIndexPath: indexPath)
+                return cell
             } else {
-                cell.removePortrait()
+                let isMe = messages[indexPath.row]!.sender == PFUser.currentUser()?.username
+                let cell = isMe ? textTable.dequeueReusableCellWithIdentifier("SendMessageCell", forIndexPath: indexPath) as! MessageTableViewCell :
+                    textTable.dequeueReusableCellWithIdentifier("ReceiveMessageCell", forIndexPath: indexPath) as! MessageTableViewCell
+                
+                cell.setMessageText(message, isSelf: isMe)
+                
+                //let count = messages.count
+                let row = indexPath.row
+                if (row == lastUserIndex) {
+                    cell.setMessagePortrait(true)
+                } else if (row == lastHelperIndex) {
+                    cell.setMessagePortrait(false)
+                } else {
+                    cell.removePortrait()
+                }
+                return cell
             }
-            
-            return cell
 
         } else {
            let cell = textTable.dequeueReusableCellWithIdentifier("LargeSpacer", forIndexPath: indexPath)
@@ -300,19 +339,45 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             if numberOfRows > 0 {
                 let indexPath = NSIndexPath(forRow: numberOfRows-1, inSection: (numberOfSections-1))
-                self.textTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Bottom, animated: animated)
+                self.textTable.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPosition.Top, animated: animated)
             }
             
         })
     }
-    
+    /*
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if messages[indexPath.row]?.solution == true {
+            return 90
+        }
         if let message = messages[indexPath.row]?.message {
         return MessageHandler.getMessageHeight(message, width: self.view.frame.width)
         } else {
-            return 5
+            return 50
         }
 
+    }
+    */
+    @IBAction func noButtonPressed(sender: AnyObject) {
+        
+        AsyncTicketManager.sharedInstance.declineSolutionByRequester(ticket!,isMe: true)
+        
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.bottomConstraint.constant += self.messageView.frame.height
+        })
+        
+        self.textTable.beginUpdates()
+        self.messages.removeLast()
+        self.textTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: messages.count, inSection: 0)], withRowAnimation: .Fade)
+        
+        self.textTable.endUpdates()
+        
+        self.messageView.userInteractionEnabled = true
+        self.messageTextField.userInteractionEnabled = true
+    }
+    
+    @IBAction func yesButtonPressed(sender: AnyObject) {
+        AsyncTicketManager.sharedInstance.acceptSolutionByRequester(ticket!)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     /*
@@ -356,6 +421,54 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         let controller = storyboard.instantiateViewControllerWithIdentifier("TicketOptions") as! TicketOptionViewController
         controller.ticket = ticket
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    func keyboardWillHide(sender: NSNotification) {
+        
+        if keyboardShowing == true {
+            print("keyboard will hide")
+            let userInfo: [NSObject : AnyObject] = sender.userInfo!
+            let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+//            self.view.frame.origin.y += keyboardSize.height
+            self.bottomConstraint.constant += keyboardSize.height
+            keyboardShowing = false
+        } else {
+            print("keyboard already hidden")
+        }
+        
+    }
+    
+    func keyboardWillShow(sender: NSNotification) {
+        
+        
+        if keyboardShowing == false {
+            print("Keyboard will show")
+        } else {
+            print("keyboard already showing")
+        }
+        let userInfo: [NSObject : AnyObject] = sender.userInfo!
+        
+        let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
+        let offset: CGSize = userInfo[UIKeyboardFrameEndUserInfoKey]!.CGRectValue.size
+        
+        if keyboardSize.height == offset.height {
+            if self.view.frame.origin.y == 0 {
+                UIView.animateWithDuration(0.1, animations: { () -> Void in
+//                    self.view.frame.origin.y -= keyboardSize.height
+                    self.bottomConstraint.constant -= keyboardSize.height
+                })
+            }
+        } else {
+            UIView.animateWithDuration(0.1, animations: { () -> Void in
+//                self.view.frame.origin.y += keyboardSize.height - offset.height
+                self.bottomConstraint.constant  += keyboardSize.height - offset.height
+            })
+        }
+//        print(self.view.frame.origin.y)
+        keyboardShowing = true
+        //        } else {
+        //            print("keyboard already showing")
+        //        }
     }
 
 }
