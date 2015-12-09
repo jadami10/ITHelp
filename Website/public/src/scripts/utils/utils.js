@@ -1,5 +1,4 @@
-import SolveTicketsBox from '../components/SolveTicketsBox';
-import pb from '../utils/pubnub'
+import pb from '../utils/pubnub';
 
 var user = {};
 var flg = {};
@@ -77,7 +76,6 @@ export function takeRequest(requestObject) {
       requestObject.save(null, {
         success: function(reqObject) {
           // check that it's actually assigned to you
-          // checkMyRequest(reqObject, true);
         },
         error: function(reqObject, error) {
           console.log("Failed to create new object with error: " + error.code + " " + error.message);
@@ -86,57 +84,4 @@ export function takeRequest(requestObject) {
   } else {
       console.log("TODO: handle not being logged in");
   }
-}
-
-// returns all of your requests
-function getMyRequests(doSubscribe) {
-  var openRequests = Parse.Object.extend("Request");
-  var currentUser = Parse.User.current();
-  var query = new Parse.Query(openRequests);
-  query.matchesKeyInQuery("helper", "objectId", currentUser);
-  query.find({
-    success: function(results) {
-      myRequests = results;
-      if (results.length > 0) {
-        for (var i = 0; i < results.length; i++) {
-          var result = results[i];
-          if (doSubscribe) {
-            subscribeToChat(result);
-          }
-        }
-      }
-      console.log("Successfully retrieved " + results.length + " scores.");
-      // TODO: return my requests
-    },
-    error: function(error) {
-      console.log("Error: " + error.code + " " + error.message);
-    }
-  });
-}
-
-// check if request is yours
-function checkMyRequest(reqObject, doSubscribe) {
-  var openRequests = Parse.Object.extend("Request");
-  var currentUser = Parse.User.current();
-  var query = new Parse.Query(openRequests);
-  query.matchesKeyInQuery("helper", "objectId", currentUser);
-  query.equalTo("objectId", reqObject.id);
-  query.find({
-    success: function(results) {
-      if (results.length > 0) {
-        console.log(reqObject + " was mine");
-        if (doSubscribe) {
-          subscribeToChat(results[0]);
-          myRequests.push(results[0]);
-        }
-      } else {
-        console.log("someone else grabbed the request");
-        return false;
-      }
-    },
-    error: function(error) {
-      console.log("Error: " + error.code + " " + error.message);
-      return false;
-    }
-  });
 }

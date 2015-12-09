@@ -158,7 +158,7 @@ class SolveTicketsBox extends React.Component {
       const query = new Parse.Query(Parse.Object.extend("Request"))
         .include("tags")
         .equalTo("objectId", n.requestID)
-        .noEqualTo("allHelpers", Parse.User.current())
+        // .noEqualTo("allHelpers", Parse.User.current())
         .notEqualTo("requester", Parse.User.current().get("username"));
 
       const _this = this;

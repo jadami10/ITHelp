@@ -25500,7 +25500,9 @@
 	      } else if (n.requestType === "TicketAdded" || n.requestType === "TicketReadded") {
 	        (function () {
 	          // add the ticket
-	          var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("objectId", n.requestID).noEqualTo("allHelpers", Parse.User.current()).notEqualTo("requester", Parse.User.current().get("username"));
+	          var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("objectId", n.requestID)
+	          // .noEqualTo("allHelpers", Parse.User.current())
+	          .notEqualTo("requester", Parse.User.current().get("username"));
 
 	          var _this = _this5;
 
