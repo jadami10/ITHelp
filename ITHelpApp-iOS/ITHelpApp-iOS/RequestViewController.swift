@@ -62,11 +62,14 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
     
     //adding photo functionality - need to test with real device
     @IBAction func takePhoto() {
+        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
             imagePickerView =  UIImagePickerController()
             imagePickerView.delegate = self
             imagePickerView.sourceType = .Camera
-            
             presentViewController(imagePickerView, animated: true, completion: checkImageButton)
+        } else {
+            self.presentAlert("No Rear Camera", message: "Camera not available", completion: nil)
+        }
 
     }
     

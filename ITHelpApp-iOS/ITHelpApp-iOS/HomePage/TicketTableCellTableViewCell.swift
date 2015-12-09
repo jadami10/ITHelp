@@ -75,6 +75,7 @@ class TicketTableCellTableViewCell: UITableViewCell, UICollectionViewDataSource,
     func setCollectionViewAsSelf() {
         tagViewCollection.delegate = self
         tagViewCollection.dataSource = self
+        tagViewCollection.reloadData()
     }
 
 

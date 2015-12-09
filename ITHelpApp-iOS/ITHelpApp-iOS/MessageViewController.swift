@@ -19,7 +19,9 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var messageTextField: UITextView!
     @IBOutlet weak var textTable: UITableView!
     @IBOutlet weak var sendButton: UIButton!
+    @IBOutlet weak var messageView: UIView!
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     var lastHelperIndex = -1
     var lastUserIndex = -1
     
@@ -38,6 +40,20 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func gotMessages() {
+
+        
+        if ticket!["helperSolved"] as! Int == 1 && ticket!["requesterSolved"] as! Int != 0 {
+            self.messageView.userInteractionEnabled = false
+            self.messageTextField.userInteractionEnabled = false
+//            self.messageView.removeFromSuperview()
+            let msg = Message(sender: "", message: "", time: NSDate())
+            msg.solution = true
+            self.messages.append(msg)
+            
+            UIView.animateWithDuration(1, animations: { () -> Void in
+                self.bottomConstraint.constant -= self.messageView.frame.height
+            })
+        }
         self.textTable.reloadData()
         self.busyFrame?.removeFromSuperview()
         self.view.userInteractionEnabled = true
@@ -52,8 +68,8 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             self.refreshMessage()
         }
         
-        
-//        self.tabBarController?.tabBar.hidden = true
+        self.tableViewScrollToBottom(true)
+        self.tabBarController?.tabBar.hidden = true
         
         
 //        self.tabBarController?.tabBar.hidden = false
@@ -63,9 +79,9 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         self.keyboardShowing = false
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
-//        self.automaticallyAdjustsScrollViewInsets = false
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name:UIKeyboardWillShowNotification, object: self.view.window)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name:UIKeyboardWillHideNotification, object: self.view.window)
+        self.automaticallyAdjustsScrollViewInsets = false
         
         self.hidesBottomBarWhenPushed = true
 
@@ -74,6 +90,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.navigationController?.navigationBar.barTintColor = UIConstants.mainUIColor
         let optionButton = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: "goToOptionPage")
         self.navigationItem.rightBarButtonItem = optionButton
+        
+        self.textTable.estimatedRowHeight = 80
+        self.textTable.rowHeight = UITableViewAutomaticDimension
+        
+        self.textTable.setNeedsLayout()
+        self.textTable.layoutIfNeeded()
         
         if let ticket = ticket {
             if (reqHandler == nil) {
@@ -217,23 +239,28 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         // self goes to right
         
         if let message = messages[indexPath.row]?.message {
-            let isMe = messages[indexPath.row]!.sender == PFUser.currentUser()?.username
-            let cell = isMe ? textTable.dequeueReusableCellWithIdentifier("SendMessageCell", forIndexPath: indexPath) as! MessageTableViewCell :
-                textTable.dequeueReusableCellWithIdentifier("ReceiveMessageCell", forIndexPath: indexPath) as! MessageTableViewCell
             
-            cell.setMessageText(message, isSelf: isMe)
-            
-            //let count = messages.count
-            let row = indexPath.row
-            if (row == lastUserIndex) {
-                cell.setMessagePortrait(true)
-            } else if (row == lastHelperIndex) {
-                cell.setMessagePortrait(false)
+            if messages[indexPath.row]?.solution == true {
+                let cell = textTable.dequeueReusableCellWithIdentifier("SolvedCell", forIndexPath: indexPath)
+                return cell
             } else {
-                cell.removePortrait()
+                let isMe = messages[indexPath.row]!.sender == PFUser.currentUser()?.username
+                let cell = isMe ? textTable.dequeueReusableCellWithIdentifier("SendMessageCell", forIndexPath: indexPath) as! MessageTableViewCell :
+                    textTable.dequeueReusableCellWithIdentifier("ReceiveMessageCell", forIndexPath: indexPath) as! MessageTableViewCell
+                
+                cell.setMessageText(message, isSelf: isMe)
+                
+                //let count = messages.count
+                let row = indexPath.row
+                if (row == lastUserIndex) {
+                    cell.setMessagePortrait(true)
+                } else if (row == lastHelperIndex) {
+                    cell.setMessagePortrait(false)
+                } else {
+                    cell.removePortrait()
+                }
+                return cell
             }
-            
-            return cell
 
         } else {
            let cell = textTable.dequeueReusableCellWithIdentifier("LargeSpacer", forIndexPath: indexPath)
@@ -317,14 +344,40 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             
         })
     }
-    
+    /*
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if messages[indexPath.row]?.solution == true {
+            return 90
+        }
         if let message = messages[indexPath.row]?.message {
         return MessageHandler.getMessageHeight(message, width: self.view.frame.width)
         } else {
-            return 5
+            return 50
         }
 
+    }
+    */
+    @IBAction func noButtonPressed(sender: AnyObject) {
+        
+        AsyncTicketManager.sharedInstance.declineSolutionByRequester(ticket!,isMe: true)
+        
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.bottomConstraint.constant += self.messageView.frame.height
+        })
+        
+        self.textTable.beginUpdates()
+        self.messages.removeLast()
+        self.textTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: messages.count, inSection: 0)], withRowAnimation: .Fade)
+        
+        self.textTable.endUpdates()
+        
+        self.messageView.userInteractionEnabled = true
+        self.messageTextField.userInteractionEnabled = true
+    }
+    
+    @IBAction func yesButtonPressed(sender: AnyObject) {
+        AsyncTicketManager.sharedInstance.acceptSolutionByRequester(ticket!)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     /*
@@ -377,8 +430,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             let userInfo: [NSObject : AnyObject] = sender.userInfo!
             let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
 //            self.view.frame.origin.y += keyboardSize.height
-            self.sendButton.frame.origin.y += keyboardSize.height
-            self.messageTextField.frame.origin.y += keyboardSize.height
+            self.bottomConstraint.constant += keyboardSize.height
             keyboardShowing = false
         } else {
             print("keyboard already hidden")
@@ -403,15 +455,13 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             if self.view.frame.origin.y == 0 {
                 UIView.animateWithDuration(0.1, animations: { () -> Void in
 //                    self.view.frame.origin.y -= keyboardSize.height
-                    self.sendButton.frame.origin.y -= keyboardSize.height
-                    self.messageTextField.frame.origin.y -= keyboardSize.height
+                    self.bottomConstraint.constant -= keyboardSize.height
                 })
             }
         } else {
             UIView.animateWithDuration(0.1, animations: { () -> Void in
 //                self.view.frame.origin.y += keyboardSize.height - offset.height
-                self.sendButton.frame.origin.y  += keyboardSize.height - offset.height
-                self.messageTextField.frame.origin.y += keyboardSize.height - offset.height
+                self.bottomConstraint.constant  += keyboardSize.height - offset.height
             })
         }
 //        print(self.view.frame.origin.y)

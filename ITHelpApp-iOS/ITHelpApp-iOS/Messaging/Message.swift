@@ -12,6 +12,7 @@ class Message {
     var sender: String
     var message: String
     var time: NSDate
+    var solution = false
     
     init(sender: String, message: String, time: NSDate) {
         self.sender = sender

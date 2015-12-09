@@ -19,18 +19,19 @@ class MessageTableViewCell: UITableViewCell {
         if isSelf {
             self.messageText.backgroundColor = UIConstants.mainUIColor
             self.messageText.textColor = UIColor.whiteColor()
-            self.messageText.textAlignment = NSTextAlignment.Right
+            self.messageText.textAlignment = NSTextAlignment.Left
         } else {
             self.messageText.backgroundColor = UIColor.lightGrayColor()
             self.messageText.textColor = UIColor.blackColor()
-            self.messageText.textAlignment = NSTextAlignment.Left
+            self.messageText.textAlignment = NSTextAlignment.Right
         }
-        /*
-        self.messageText.layer.cornerRadius = 8
-        self.messageText.layer.masksToBounds = true
-        self.messageText.adjustsFontSizeToFitWidth = false
-        self.messageText.numberOfLines = 0
-        */
+        
+//        self.messageText.layer.cornerRadius = 4
+//        self.messageText.layer.masksToBounds = true
+//        self.messageText.adjustsFontSizeToFitWidth = false
+//        self.messageText.numberOfLines = 0
+//        self.messageText.sizeToFit()
+        
         //self.messageText.frame.width =
         //self.messageText = UILabel(frame: CGRect(x: 0, y: 0, width: 250, height: 10000))
         /*

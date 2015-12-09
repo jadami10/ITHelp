@@ -285,9 +285,13 @@ function handleRequest(request) {
         if (requesterSolved == 1) {
           // requester marked it as solved
           publishRequest(helper.id, reqID, "TicketSolved", pubnub_web);
-        } else if (helperSolved == 1 && requesterSolved != 1) {
+          publishRequest(requester, reqID, "TicketSolved", pubnub_ios);
+        } else if (helperSolved == 1 && requesterSolved == -1) {
           // helper marked as solved
           publishRequest(requester, reqID, "RequestSolved", pubnub_ios);
+        } else if (helperSolved == 1 && requesterSolved != 1) {
+          // requester declined solution
+          publishRequest(requester, reqID, "SolutionDeclined", pubnub_ios);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }
