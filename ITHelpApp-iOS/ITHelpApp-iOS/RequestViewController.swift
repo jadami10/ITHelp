@@ -257,14 +257,14 @@ class RequestViewController: UIViewController, UINavigationControllerDelegate,UI
         
         let tagNum = TagManager.sharedInstance.getNumTags()
         if tagNum > 0 {
-            myWidth = collectionView.frame.width/CGFloat(tagNum) - 5
+            myWidth = collectionView.frame.width/CGFloat(tagNum) - 10
         } else {
             myWidth = 0
         }
 
         return CGSizeMake(myWidth, myHeight)
     }
-    
+
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
