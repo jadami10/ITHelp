@@ -1,5 +1,6 @@
 # Travis CI
 <img src="https://travis-ci.org/jadami10/ITHelp.svg?branch=master">
+[![Build Status](https://travis-ci.org/hanax/BriskIT.svg?branch=master)](https://travis-ci.org/hanax/BriskIT)
 
 # BriskIT
 <img src="http://jadami10.github.io/ITHelp/git_logo.png" width=200px>
