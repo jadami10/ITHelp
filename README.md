@@ -16,5 +16,4 @@ Continuous Integration with Travis CI
 <img src="http://jadami10.github.io/ITHelp/mock.png" width=500px>
 * [Supporter side (web app) (for testing: log in with hannah/hannah)](https://briskit.herokuapp.com/)
 * [Requester side (iOS native app)](some link)
-* The BriskIT iOS App is now available for internal testing through TestFlight - please contact xs262@cornell.edu with your Apple ID to be added to the beta.
-* External testing on TestFlight coming soon, pending Apple app review.
+* The BriskIT iOS App is now available through TestFlight - please submit your email to maria.shen91@gmail.com
