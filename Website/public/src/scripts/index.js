@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   updateSolvingBadge(num) {
-    this.setState({solvingBadgeNum: this.state.solvingBadgeNum + num});
+    this.setState({solvingBadgeNum: Math.max(this.state.solvingBadgeNum + num, 0)});
   }
 
   updateSolvedBadge(num) {
@@ -51,7 +51,8 @@ class App extends React.Component {
   getSolvingNumber() {
     const query = new Parse.Query(Parse.Object.extend("Request"))
       .equalTo("helper", Parse.User.current())
-      .notEqualTo("helperSolved", 1);
+      .notEqualTo("helperSolved", 1)
+      .notEqualTo("requesterSolved", 1);
 
     const _this = this;
 

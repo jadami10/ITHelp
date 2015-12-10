@@ -179,6 +179,9 @@ class SolveTicketsBox extends React.Component {
       this.props.updateSolvingBadge(1);
 
     } else if (n.requestType === "TicketSolved") {
+      this.props.updateSolvedBadge(-1);
+
+    } else if (n.requestType === "RequestSolved") {
       // TODO: hide ticket from solving
       this.props.updateSolvingBadge(-1);
     } else {

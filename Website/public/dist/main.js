@@ -577,7 +577,7 @@
 	  _createClass(App, [{
 	    key: 'updateSolvingBadge',
 	    value: function updateSolvingBadge(num) {
-	      this.setState({ solvingBadgeNum: this.state.solvingBadgeNum + num });
+	      this.setState({ solvingBadgeNum: Math.max(this.state.solvingBadgeNum + num, 0) });
 	    }
 	  }, {
 	    key: 'updateSolvedBadge',
@@ -593,7 +593,7 @@
 	  }, {
 	    key: 'getSolvingNumber',
 	    value: function getSolvingNumber() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1).notEqualTo("requesterSolved", 1);
 
 	      var _this = this;
 
@@ -25521,6 +25521,8 @@
 	        // increment the badge
 	        this.props.updateSolvingBadge(1);
 	      } else if (n.requestType === "TicketSolved") {
+	        this.props.updateSolvedBadge(-1);
+	      } else if (n.requestType === "RequestSolved") {
 	        // TODO: hide ticket from solving
 	        this.props.updateSolvingBadge(-1);
 	      } else {
@@ -26637,7 +26639,7 @@
 	  _createClass(SolvingTicketsBox, [{
 	    key: 'getTickets',
 	    value: function getTickets() {
-	      var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1);
+	      var query = new Parse.Query(Parse.Object.extend("Request")).include("tags").equalTo("helper", Parse.User.current()).notEqualTo("helperSolved", 1).notEqualTo("requesterSolved", 1);
 
 	      var _this = this;
 
