@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TZh-Ce-R3G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TZh-Ce-R3G">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -37,7 +37,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XF8-ad-mm5">
-                                    <rect key="frame" x="85" y="2" width="150" height="40"/>
+                                    <rect key="frame" x="0.0" y="2" width="320" height="40"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <state key="normal" title="Create New Ticket"/>
                                     <connections>
@@ -49,7 +49,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="TicketCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTableCell" rowHeight="125" id="cMd-4u-4Et" customClass="TicketTableCellTableViewCell" customModule="ITHelpApp_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="158" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="157.5" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMd-4u-4Et" id="FoX-df-LcB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -67,7 +67,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x9t-GA-yQn">
-                                                    <rect key="frame" x="196.00000005488772" y="80" width="100" height="21"/>
+                                                    <rect key="frame" x="196" y="80" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
