@@ -125,6 +125,31 @@ class ITHelpApp_iOSTests: XCTestCase {
         }
 
     }
-
     
+    func testSendingRequest() {
+        
+        testGoodLogin()
+        
+        let requestObject = PFObject(className:"Request")
+        requestObject["requester"] = PFUser.currentUser()!.username
+        requestObject["requesterPointer"] = PFUser.currentUser()
+        requestObject["requestMessage"] = "testticket"
+        requestObject["title"] = "TestTicket"
+        requestObject["taken"] = 0
+        requestObject["tags"] = TagManager.sharedInstance.defaultTags
+        
+        RequestHandler.postRequest(requestObject, completion: self.ignoreError)
+        do {
+            try TicketHandler.deleteTicketSync(requestObject)
+        }
+        catch {
+            XCTAssert(false)
+        }
+
+            XCTAssert(true)
+    }
+    
+    func ignoreError(result: NSError?) -> Void {
+
+    }
 }
