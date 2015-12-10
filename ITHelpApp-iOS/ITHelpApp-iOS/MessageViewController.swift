@@ -59,6 +59,25 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.view.userInteractionEnabled = true
     }
     
+    func ticketWasSolved() {
+        self.messageView.userInteractionEnabled = false
+        self.messageTextField.userInteractionEnabled = false
+        
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.bottomConstraint.constant -= self.messageView.frame.height
+        })
+        
+        self.textTable.beginUpdates()
+        
+        let msg = Message(sender: "", message: "", time: NSDate())
+        msg.solution = true
+        self.messages.append(msg)
+        
+        self.textTable.insertRowsAtIndexPaths([NSIndexPath(forRow: messages.count - 1, inSection: 0)], withRowAnimation: .Fade)
+        self.textTable.endUpdates()
+        
+    }
+    
     override func viewWillAppear(animated: Bool) {
         changeSendButtonState(false)
         textTable.delegate = self
@@ -241,7 +260,14 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         if let message = messages[indexPath.row]?.message {
             
             if messages[indexPath.row]?.solution == true {
-                let cell = textTable.dequeueReusableCellWithIdentifier("SolvedCell", forIndexPath: indexPath)
+                let cell = textTable.dequeueReusableCellWithIdentifier("SolvedCell", forIndexPath: indexPath) as! SolvedMessageCell
+                if let curTicket = ticket!["helper"] as? PFUser, let curHelper = curTicket.username {
+                    cell.solverText.text = String(format: "%@ marked this as solved. Accept?", curHelper)
+                    cell.detailTextLabel?.text = curHelper
+                } else {
+                    cell.detailTextLabel?.text = "Ticket is marked as solved. Accept?"
+                }
+                
                 return cell
             } else {
                 let isMe = messages[indexPath.row]!.sender == PFUser.currentUser()?.username
@@ -430,7 +456,12 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
             let userInfo: [NSObject : AnyObject] = sender.userInfo!
             let keyboardSize: CGSize = userInfo[UIKeyboardFrameBeginUserInfoKey]!.CGRectValue.size
 //            self.view.frame.origin.y += keyboardSize.height
-            self.bottomConstraint.constant += keyboardSize.height
+            self.bottomConstraint.constant -= keyboardSize.height
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
+                //                    self.view.frame.origin.y -= keyboardSize.height
+                self.view.layoutIfNeeded()
+                
+            })
             keyboardShowing = false
         } else {
             print("keyboard already hidden")
@@ -453,15 +484,19 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         if keyboardSize.height == offset.height {
             if self.view.frame.origin.y == 0 {
-                UIView.animateWithDuration(0.1, animations: { () -> Void in
+                self.bottomConstraint.constant += keyboardSize.height
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
 //                    self.view.frame.origin.y -= keyboardSize.height
-                    self.bottomConstraint.constant -= keyboardSize.height
+                    self.view.layoutIfNeeded()
+                    
                 })
             }
         } else {
-            UIView.animateWithDuration(0.1, animations: { () -> Void in
+            self.bottomConstraint.constant  += keyboardSize.height - offset.height
+            UIView.animateWithDuration(0.5, animations: { () -> Void in
 //                self.view.frame.origin.y += keyboardSize.height - offset.height
-                self.bottomConstraint.constant  += keyboardSize.height - offset.height
+                self.view.layoutIfNeeded()
+
             })
         }
 //        print(self.view.frame.origin.y)

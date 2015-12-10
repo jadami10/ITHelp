@@ -60,7 +60,11 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                 }
             } else if requestType == "TicketSolved" {
                 print("Received notice I solved ticket")
+
                 if let ticket = AsyncTicketManager.sharedInstance.getTicketByID(requestID) {
+                    if let msgController = lookingAtTicket(ticket) {
+                        msgController.navigationController?.popToRootViewControllerAnimated(true)
+                    }
                     AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket, isMe: false)
                 } else {
                     print("Could not find solved ticket")
@@ -110,6 +114,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         if ticket != nil {
             print("Readding new ticket")
             AsyncTicketManager.sharedInstance.readdTicket(ticket!)
+            self.handleTicketReleased(ticket!)
         } else if (error != nil) {
             print("Could not readd ticket")
             print(error)
@@ -141,7 +146,12 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             print("ticket has been solved")
             AsyncTicketManager.sharedInstance.moveTicketToSolved(ticket!)
             incrementRequestBadge()
-            self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: self.goToTicket)
+            alertedTicket = ticket!
+            if let curController = lookingAtTicket(ticket!) {
+                curController.ticketWasSolved()
+            } else {
+                self.presentYesNoAlert("Request Solved!", message: "Go check your solution!", completion: self.goToTicket)
+            }
         } else if (error != nil) {
             print("Could not solve ticket")
             print(error)
@@ -151,7 +161,10 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         
     }
     
-    func handleTicketReleased() {
+    func handleTicketReleased(ticket: PFObject) {
+        if let curController = lookingAtTicket(ticket) {
+            curController.navigationController?.popToRootViewControllerAnimated(true)
+        }
         self.presentAlert("Your helper canceled", message: "A new helper will be on the way soon!", completion: nil)
     }
     
@@ -189,6 +202,28 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                 print("could not find ticket view controller")
             }
         }*/
+    }
+    
+    func lookingAtTicket(incomingTicket: PFObject) -> MessageViewController? {
+        if self.tabBar.selectedItem == self.tabBar.items![AppConstants.ticketsTabIndex] {
+            if let topController = UIApplication.topViewController() {
+                if topController .isKindOfClass(MessageViewController) {
+                    print ("looking at a message view")
+                    let msgView = topController as! MessageViewController
+                    if (msgView.ticket?.objectId == incomingTicket.objectId) {
+                        return msgView
+                    } else {
+                        print("in a different message view")
+                    }
+                } else {
+                    print("in a different view in right tab")
+                }
+            }
+            self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
+        } else {
+            print ("Tickets tab not selected")
+        }
+        return nil
     }
     
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
