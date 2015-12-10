@@ -263,24 +263,25 @@ class AsyncTicketManager {
     
     func solveTicketByRequester(ticket: PFObject, isMe: Bool) {
         
-        let solvedSection = self.getSectionForQueue(&self.solvedTickets)
+        let openSection = self.getSectionForQueue(&self.openTickets)
         
         dispatch_barrier_async(concurrentTicketQueue) {
-            if let index = self.solvedTickets.indexOf(ticket) {
+            if let index = self.openTickets.indexOf(ticket) {
                 if isMe {
                     TicketHandler.solveTicketEventually(ticket)
                 }
+
                 dispatch_async(GlobalMainQueue) {
                     
-                    let removeOpen = (index >= 0 && self.solvedTickets.count == 1)
+                    let removeOpen = (index >= 0 && self.openTickets.count == 1)
                     
                     if index >= 0 {
                         self.listener.beginUpdates()
-                        self.solvedTickets.removeAtIndex(index)
+                        self.openTickets.removeAtIndex(index)
                         
-                        self.listener.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: solvedSection!)], withRowAnimation: .Fade)
+                        self.listener.deleteRowsAtIndexPaths([NSIndexPath(forRow: index, inSection: openSection!)], withRowAnimation: .Fade)
                         if removeOpen {
-                            self.listener.deleteSections(NSIndexSet(index: solvedSection!), withRowAnimation: .Fade)
+                            self.listener.deleteSections(NSIndexSet(index: openSection!), withRowAnimation: .Fade)
                         }
                         
                         self.listener.endUpdates()
@@ -289,7 +290,6 @@ class AsyncTicketManager {
             }
             
         }
-        
     }
     
     func acceptSolutionByRequester(ticket: PFObject) {

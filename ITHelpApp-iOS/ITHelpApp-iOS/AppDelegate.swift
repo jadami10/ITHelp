@@ -139,12 +139,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if application.applicationState == UIApplicationState.Background || application.applicationState == UIApplicationState.Inactive {
             PFPush.handlePush(userInfo)
             print("push background info", userInfo)
+            if let requestID = userInfo["ticketObjectId"] {
+                pushToTicketTaken(requestID as! String)
+            }
         } else {
             print("push notification info", userInfo)
         }
         if application.applicationState == UIApplicationState.Inactive {
             PFAnalytics.trackAppOpenedWithRemoteNotificationPayload(userInfo)
         }
+    }
+    
+    func pushToTicketTaken(requestID: String) {
+        do {
+            alertedTicket = try TicketHandler.getTicketByIDSync(requestID)
+            let storyboard = UIStoryboard(name: "message", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("textTable") as! MessageViewController
+            controller.ticket = alertedTicket
+            AppConstants.ticketNavController?.pushViewController(controller, animated: true)
+//            self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
+//            self.selectedIndex = AppConstants.ticketsTabIndex
+        } catch _ {
+            print ("Could not get ticket")
+        }
+        
     }
 
     ///////////////////////////////////////////////////////////

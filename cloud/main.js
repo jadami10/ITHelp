@@ -276,7 +276,7 @@ function handleRequest(request) {
           publishRequest(requester, reqID, "RequestTaken", pubnub_ios);
           publishRequest(req_channel, reqID, "TicketTaken", pubnub_web);
           publishRequest(taker.id, reqID, "TicketGranted", pubnub_web);
-          sendPush(requesterPointer);
+          sendPush(requesterPointer, reqID);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }
@@ -307,7 +307,7 @@ function unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved)
   " helper: " + helper + " reqSolved: " + requesterSolved + " helpSolved: " + helperSolved);
 }
 
-function sendPush(user) {
+function sendPush(user, reqID) {
   var installation = Parse.Object.extend("Installation");
   var installQuery = new Parse.Query(installation);
   installQuery.equalTo("user", user);
@@ -316,7 +316,7 @@ function sendPush(user) {
     data: {
       alert: "Someone is here to help you with your issue!",
       viewIdentifier: "testidentifier",
-      ticketObjectId: "testobjectid"
+      ticketObjectId: reqID
     }
   }, {
     success: function() {

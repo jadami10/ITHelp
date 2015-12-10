@@ -72,6 +72,9 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             } else if requestType == "SolutionDeclined" {
                 print("Received notice I declined solution")
                 if let ticket = AsyncTicketManager.sharedInstance.getTicketByID(requestID) {
+                    if let msgController = lookingAtTicket(ticket) {
+                        msgController.solutionWasDeclined()
+                    }
                     AsyncTicketManager.sharedInstance.declineSolutionByRequester(ticket, isMe: false)
                 } else {
                     print("Could not find solved ticket")
@@ -123,6 +126,21 @@ class MainTabController: UITabBarController, PNObjectEventListener {
         }
     }
     
+    func pushToTicketTaken(requestID: String) {
+        do {
+            alertedTicket = try TicketHandler.getTicketByIDSync(requestID)
+            let storyboard = UIStoryboard(name: "message", bundle: nil)
+            let controller = storyboard.instantiateViewControllerWithIdentifier("textTable") as! MessageViewController
+            controller.ticket = alertedTicket
+            AppConstants.ticketNavController?.pushViewController(controller, animated: true)
+            self.tabBar.items![AppConstants.ticketsTabIndex].badgeValue = nil
+            self.selectedIndex = AppConstants.ticketsTabIndex
+        } catch _ {
+            print ("Could not get ticket")
+        }
+        
+    }
+    
     func handleTicketTaken(ticket: PFObject?, error: NSError?) -> Void {
         
         if ticket != nil {
@@ -130,6 +148,9 @@ class MainTabController: UITabBarController, PNObjectEventListener {
             AsyncTicketManager.sharedInstance.moveTicketToTaken(ticket!)
             incrementRequestBadge()
             alertedTicket = ticket
+            if let _ = lookingAtTicket(alertedTicket!) {
+                return
+            }
             self.presentYesNoAlert("Someone is here to help!", message: "Go to your ticket?", completion: self.goToTicket)
         } else if (error != nil) {
             print("Could not take ticket")
