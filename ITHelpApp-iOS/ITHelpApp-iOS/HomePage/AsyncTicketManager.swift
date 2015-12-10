@@ -292,12 +292,15 @@ class AsyncTicketManager {
         }
     }
     
-    func acceptSolutionByRequester(ticket: PFObject) {
+    func acceptSolutionByRequester(ticket: PFObject, isMe: Bool) {
         let solvedSection = self.getSectionForQueue(&self.solvedTickets)
         
         dispatch_barrier_async(concurrentTicketQueue) {
             if let index = self.solvedTickets.indexOf(ticket) {
-                TicketHandler.solveTicketEventually(ticket)
+                if isMe {
+                    TicketHandler.solveTicketEventually(ticket)                    
+                }
+
                 dispatch_async(GlobalMainQueue) {
                     
                     let removeOpen = (index >= 0 && self.solvedTickets.count == 1)
