@@ -282,9 +282,9 @@ function handleRequest(request) {
         }
       } else {
         // there is a current helper
-        if (requesterSolved == 1) {
+        if (requesterSolved == 1 && helperSolved != 1 ) {
           // requester marked it as solved
-          publishRequest(helper.id, reqID, "TicketSolved", pubnub_web);
+          publishRequest(helper.id, reqID, "RequestSolved", pubnub_web);
           publishRequest(requester, reqID, "TicketSolved", pubnub_ios);
         } else if (helperSolved == 1 && requesterSolved == -1) {
           // helper marked as solved
@@ -292,6 +292,9 @@ function handleRequest(request) {
         } else if (helperSolved == 1 && requesterSolved != 1) {
           // requester declined solution
           publishRequest(requester, reqID, "SolutionDeclined", pubnub_ios);
+        } else if (helperSolved == 1 && requesterSolved == 1) {
+          // requester declined solution
+          publishRequest(helper.id, reqID, "TicketSolved", pubnub_web);
         } else {
           unhandledRequest(curUser, taken, helper, requesterSolved, helperSolved);
         }

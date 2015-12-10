@@ -417,7 +417,7 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     @IBAction func yesButtonPressed(sender: AnyObject) {
-        AsyncTicketManager.sharedInstance.acceptSolutionByRequester(ticket!)
+        AsyncTicketManager.sharedInstance.acceptSolutionByRequester(ticket!, isMe: true)
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     

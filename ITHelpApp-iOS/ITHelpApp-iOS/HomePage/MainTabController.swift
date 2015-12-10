@@ -65,7 +65,7 @@ class MainTabController: UITabBarController, PNObjectEventListener {
                     if let msgController = lookingAtTicket(ticket) {
                         msgController.navigationController?.popToRootViewControllerAnimated(true)
                     }
-                    AsyncTicketManager.sharedInstance.solveTicketByRequester(ticket, isMe: false)
+                    AsyncTicketManager.sharedInstance.acceptSolutionByRequester(ticket, isMe: false)
                 } else {
                     print("Could not find solved ticket")
                 }
