@@ -78,6 +78,21 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    func solutionWasDeclined() {
+        UIView.animateWithDuration(1, animations: { () -> Void in
+            self.bottomConstraint.constant += self.messageView.frame.height
+        })
+        
+        self.textTable.beginUpdates()
+        self.messages.removeLast()
+        self.textTable.deleteRowsAtIndexPaths([NSIndexPath(forRow: messages.count, inSection: 0)], withRowAnimation: .Fade)
+        
+        self.textTable.endUpdates()
+        
+        self.messageView.userInteractionEnabled = true
+        self.messageTextField.userInteractionEnabled = true
+    }
+    
     override func viewWillAppear(animated: Bool) {
         changeSendButtonState(false)
         textTable.delegate = self
