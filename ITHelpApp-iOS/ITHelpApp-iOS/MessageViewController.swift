@@ -91,11 +91,11 @@ class MessageViewController: UIViewController, UITableViewDelegate, UITableViewD
         let optionButton = UIBarButtonItem(title: "Options", style: .Plain, target: self, action: "goToOptionPage")
         self.navigationItem.rightBarButtonItem = optionButton
         
-        self.textTable.estimatedRowHeight = 80
+        self.textTable.estimatedRowHeight = 10
         self.textTable.rowHeight = UITableViewAutomaticDimension
         
-        self.textTable.setNeedsLayout()
-        self.textTable.layoutIfNeeded()
+//        self.textTable.setNeedsLayout()
+//        self.textTable.layoutIfNeeded()
         
         if let ticket = ticket {
             if (reqHandler == nil) {

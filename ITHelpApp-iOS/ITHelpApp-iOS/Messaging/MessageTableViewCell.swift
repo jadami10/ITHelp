@@ -10,6 +10,7 @@ import UIKit
 
 class MessageTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var messageTextContainer: UIView!
     @IBOutlet weak var messageText: UILabel!
     @IBOutlet weak var portrait: UIImageView!
     
@@ -17,17 +18,17 @@ class MessageTableViewCell: UITableViewCell {
         
         self.messageText.text = text
         if isSelf {
-            self.messageText.backgroundColor = UIConstants.mainUIColor
+            self.messageTextContainer.backgroundColor = UIConstants.mainUIColor
             self.messageText.textColor = UIColor.whiteColor()
             self.messageText.textAlignment = NSTextAlignment.Left
         } else {
-            self.messageText.backgroundColor = UIColor.lightGrayColor()
-            self.messageText.textColor = UIColor.blackColor()
+            self.messageTextContainer.backgroundColor = UIColor.lightGrayColor()
+            self.messageText.textColor = UIColor.whiteColor()
             self.messageText.textAlignment = NSTextAlignment.Right
         }
         
-//        self.messageText.layer.cornerRadius = 4
-//        self.messageText.layer.masksToBounds = true
+        self.messageTextContainer.layer.cornerRadius = 4
+        self.messageTextContainer.layer.masksToBounds = true
 //        self.messageText.adjustsFontSizeToFitWidth = false
 //        self.messageText.numberOfLines = 0
 //        self.messageText.sizeToFit()
