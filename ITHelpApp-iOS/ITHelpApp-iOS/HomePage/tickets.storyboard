@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9527.1" systemVersion="15C48a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TZh-Ce-R3G">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="TZh-Ce-R3G">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9525.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -27,14 +27,29 @@
         <!--Tickets-->
         <scene sceneID="5Ir-R3-UGu">
             <objects>
-                <tableViewController id="60T-PF-OJ0" customClass="TicketTableAsyncViewController" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="TicketTableAsyncViewController" id="60T-PF-OJ0" customClass="TicketTableAsyncViewController" customModule="ITHelpApp_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="125" sectionHeaderHeight="10" sectionFooterHeight="10" id="Ov5-5c-YER">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="ErL-TK-ihj">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XF8-ad-mm5">
+                                    <rect key="frame" x="85" y="2" width="150" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <state key="normal" title="Create New Ticket"/>
+                                    <connections>
+                                        <action selector="createNewTicketButton:" destination="60T-PF-OJ0" eventType="touchUpInside" id="cHz-dV-dVp"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.31764705882352939" green="0.74117647058823533" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" restorationIdentifier="TicketCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="TicketTableCell" rowHeight="125" id="cMd-4u-4Et" customClass="TicketTableCellTableViewCell" customModule="ITHelpApp_iOS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="113.5" width="320" height="125"/>
+                                <rect key="frame" x="0.0" y="158" width="320" height="125"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cMd-4u-4Et" id="FoX-df-LcB">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
@@ -52,7 +67,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x9t-GA-yQn">
-                                                    <rect key="frame" x="196" y="80" width="100" height="21"/>
+                                                    <rect key="frame" x="196.00000005488772" y="80" width="100" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -127,7 +142,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Tickets" image="ticket.png" id="h2W-9A-4YK"/>
-                    <navigationItem key="navigationItem" id="MT5-8C-xkU"/>
+                    <navigationItem key="navigationItem" id="MT5-8C-xkU">
+                        <nil key="title"/>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Dl8-zx-BDC">
                         <autoresizingMask key="autoresizingMask"/>

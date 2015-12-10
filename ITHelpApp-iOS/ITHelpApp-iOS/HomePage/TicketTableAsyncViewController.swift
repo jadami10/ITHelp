@@ -12,11 +12,10 @@ import Parse
 class TicketTableAsyncViewController: UITableViewController, UIBlockableProtocol {
     
     var busyFrame: UIView?
-    
+    var notAtRootView = 0
     var shouldDelete = NSIndexPath?()
     var manager = AsyncTicketManager.sharedInstance
-    
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if let path = self.tableView.indexPathForSelectedRow {
@@ -240,6 +239,19 @@ class TicketTableAsyncViewController: UITableViewController, UIBlockableProtocol
         self.tableView.userInteractionEnabled = true
     }
     
+    @IBAction func createNewTicketButton(sender: UIButton) {
+        let toView = tabBarController?.viewControllers![1].view
+        UIView.transitionFromView((tabBarController?.selectedViewController?.view)!, toView: toView!, duration: 0.5, options:UIViewAnimationOptions.TransitionCrossDissolve) { (finished) -> Void in
+            if finished{
+                self.tabBarController?.selectedIndex = 1
+            }
+        }
+//        let storyboard = UIStoryboard(name: "request", bundle: nil)
+//        let controller = storyboard.instantiateViewControllerWithIdentifier("RequestViewController") as! RequestViewController
+//        self.navigationController?.pushViewController(controller, animated: true)
+//        notAtRootView = 1
+
+    }
     /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
