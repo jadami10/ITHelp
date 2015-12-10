@@ -241,7 +241,7 @@ class TicketTableAsyncViewController: UITableViewController, UIBlockableProtocol
     
     @IBAction func createNewTicketButton(sender: UIButton) {
         let toView = tabBarController?.viewControllers![1].view
-        UIView.transitionFromView((tabBarController?.selectedViewController?.view)!, toView: toView!, duration: 0.2, options:UIViewAnimationOptions.TransitionFlipFromLeft) { (finished) -> Void in
+        UIView.transitionFromView((tabBarController?.selectedViewController?.view)!, toView: toView!, duration: 0.5, options:UIViewAnimationOptions.TransitionCrossDissolve) { (finished) -> Void in
             if finished{
                 self.tabBarController?.selectedIndex = 1
             }

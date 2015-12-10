@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="320px" height="30px" viewBox="0 0 320 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.4.4 (17249) - http://www.bohemiancoding.com/sketch -->
+    <title>Rectangle 1 + Create New Ticket + ticket</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Rectangle-1-+-Create-New-Ticket-+-ticket" sketch:type="MSLayerGroup" transform="translate(0.000000, -18.000000)">
+            <rect id="Rectangle-1" stroke="#31CDD4" fill="#31CDD4" sketch:type="MSShapeGroup" x="0" y="18" width="320" height="30"></rect>
+            <text id="Create-New-Ticket" sketch:type="MSTextLayer" font-family="Helvetica" font-size="18" font-weight="normal" line-spacing="42" fill="#FFFFFF">
+                <tspan x="86" y="18">Create New Ticket</tspan>
+            </text>
+            <image id="ticket" sketch:type="MSBitmapLayer" x="56" y="21" width="25" height="25" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAAXNSR0IArs4c6QAAA2JJREFUSA2llmtIVEEUgGfm3nV9LdSPMoKgEFxDyhR/iIZUgmZBkfjEslJMShSUxB4/sh/Vn8wfprZ6V0UR3e1Bf4TeaJIlhEESuptSkW2Sylbrc/XOdM/a9bHulase2D1zzsw5H+fMMHMx2oCYrXVXEaJnECINKUFZN5RSEaWJ1fyMMWyy1pZTKh6fRjPHEKYnTBbDHaWYNUMA8HDQWI4ZjpqaGo/LDMrrm3ZOJBJM8o09Fds9gXhPTiUfAO5bjS8RRgF2x2hUbsSlP7BWy/lEMobassPzbZ5iVVcCgAcDQgUiZCvl2G0ZAEkpQ76Iw3ZPAPCpggDAbDXelVT48Nh4VFpgTn2rReho6as+AEk450wHEtHhut7KHWCD1H8o3zQ/UgFxAQaFKoRYqOPXWHxBZMFfCGZ09hrHaaNhnBKa/wVTsdRf69VtttZWmSxCg5+fbthsEcpgHsOfkswD6quxyEIcI6NHsveXONzXmi1Gg0idLem7z7c39VfpNZz3IY7S2Wnm7NQgTROHUZvyxpciYh4w3sOMBo/YbAl5B0vH3QFgA4Ajmixp2H4q+IJF0vBzSWuvIZ1p+beeK5EApgyDgVEuaMw2dFQJICcDbeqvKaFM7IaKwG7+eGuzxmfLc0bpsxWV/N+DSiyS4HGpRWoAkFRk6B1PvG5Kw2jYdI1W90TK1ZmqP3dleSXQopOCEVEaOPLDphoAEFla+oUsgtlFabefpgblFIJ/EQItShfqGEK71LZITixrqMDX179LSvozRZ8TK/tdkGRzMpcUGm/cKMDPV/eUYdYlVyBDiAsQFleHMdv5/at9XS2CCpQAACKp4fFl0mW3bWjUkVAcXzwh09VqOEV+/roXDIlv3CuQc/AiZWmzUyiiKKpoSnaq1YvHVHydqs8tUorjCUPVvBY9arRWnvYmfCwTsY6bY6+SQnK7lYLArxYAa0myPuc6wbjTG2t7kMjvkXw6qiEtJkttKSzwJGsBLItfemtCErNV+Nb8qWbfskWS4Zr7LLxf7SV0j1m46s+GFf6WJzP2XrYzxB5rORwj+0Cvt4IFyNJkMOYYChAxdb18YK8XALEeIfBWiwgnTk7Sjo0CIH7xWgFriUDPMeFinM65TC8vvpHR1Y/pktAVQ0UIrFT7XbUiq5vjH5dRr3EqLTC2AAAAAElFTkSuQmCC"></image>
+        </g>
+    </g>
+</svg>

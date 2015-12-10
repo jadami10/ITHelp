@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C1CDF351BDCFB7C00621C28 /* AppIcon.appiconset in Resources */ = {isa = PBXBuildFile; fileRef = 4C1CDF321BDCFB7C00621C28 /* AppIcon.appiconset */; };
+		4C2739D71C1A145E0070EAC2 /* createticketbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 4C2739D61C1A145E0070EAC2 /* createticketbutton.png */; };
+		4C2739D91C1A1D5A0070EAC2 /* createnewticketbuttonsvg.svg in Resources */ = {isa = PBXBuildFile; fileRef = 4C2739D81C1A1D5A0070EAC2 /* createnewticketbuttonsvg.svg */; };
 		4C5713331BDCEBAC006646CC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C5713311BDCEB45006646CC /* Parse.framework */; };
 		5931530583F182B7DC05C20B /* Pods_ITHelpApp_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */; };
 		680018E21C19273700C36892 /* SolvedMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680018E11C19273700C36892 /* SolvedMessageCell.swift */; };
@@ -104,6 +106,8 @@
 /* Begin PBXFileReference section */
 		455D6243885F25C1DAE9F12E /* Pods-ITHelpApp-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ITHelpApp-iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ITHelpApp-iOS/Pods-ITHelpApp-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4C1CDF321BDCFB7C00621C28 /* AppIcon.appiconset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = AppIcon.appiconset; path = "ITHelpApp-iOS/Assets.xcassets/AppIcon.appiconset"; sourceTree = "<group>"; };
+		4C2739D61C1A145E0070EAC2 /* createticketbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = createticketbutton.png; path = "ITHelpApp-iOS/Resources/Images/createticketbutton.png"; sourceTree = "<group>"; };
+		4C2739D81C1A1D5A0070EAC2 /* createnewticketbuttonsvg.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = createnewticketbuttonsvg.svg; path = "ITHelpApp-iOS/Resources/Images/createnewticketbuttonsvg.svg"; sourceTree = "<group>"; };
 		4C5713311BDCEB45006646CC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../../../Downloads/parse-library-1.9.0/Parse.framework"; sourceTree = "<group>"; };
 		57DEC88C7607AEA5001A7045 /* Pods_ITHelpApp_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ITHelpApp_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		680018E11C19273700C36892 /* SolvedMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SolvedMessageCell.swift; path = Messaging/SolvedMessageCell.swift; sourceTree = "<group>"; };
@@ -316,6 +320,7 @@
 		684F8CAF1BC499B40046345C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				4C2739D81C1A1D5A0070EAC2 /* createnewticketbuttonsvg.svg */,
 				689E88871BF980A1005163B5 /* blueTriangle.png */,
 				689E88881BF980A1005163B5 /* greenTriangle.png */,
 				689E88891BF980A1005163B5 /* redTriangle.png */,
@@ -342,6 +347,7 @@
 				6892F81A1BC6A13A00EDC4F0 /* Profile.png */,
 				E1D9ECB31BE050A400EFBE1D /* camera.svg */,
 				684F8CB01BC499C10046345C /* AuthHeader.png */,
+				4C2739D61C1A145E0070EAC2 /* createticketbutton.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				E1192B921BCDDC4600DC284D /* black-slr-camera-256.png in Resources */,
 				684F8C791BC4943A0046345C /* LaunchScreen.storyboard in Resources */,
 				E1F5AC021BD5A551000A0F36 /* requestbutton.png in Resources */,
+				4C2739D71C1A145E0070EAC2 /* createticketbutton.png in Resources */,
 				68088E6D1BF6527B00D7C6A4 /* mainLogo.png in Resources */,
 				6892F81B1BC6A13A00EDC4F0 /* Profile.png in Resources */,
 				686D0CB91BE1745E0041A954 /* person_gray.png in Resources */,
@@ -574,6 +581,7 @@
 				684F8C761BC4943A0046345C /* Assets.xcassets in Resources */,
 				68088E691BF590DE00D7C6A4 /* Lock-50.png in Resources */,
 				E1D9ECB41BE050A400EFBE1D /* camera.svg in Resources */,
+				4C2739D91C1A1D5A0070EAC2 /* createnewticketbuttonsvg.svg in Resources */,
 				684CEA881BC5CC2A008460C6 /* login.storyboard in Resources */,
 				684CEA801BC5B150008460C6 /* Main.storyboard in Resources */,
 				68088E671BF590BB00D7C6A4 /* helpOnWay.png in Resources */,
